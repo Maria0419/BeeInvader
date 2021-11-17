@@ -22,14 +22,11 @@ public:
 	void updateColisoesJanela();
 	bool updateColisoes(Entidade* pEn);
 	bool updateCombate(Entidade* pProjetil, Entidade* pInimigo);
-	bool deletaProjetil(Entidade* projetil);
+	bool entidadeSaiuDaTela(Entidade* entidade);
 
 	//set
 	void setJogador(Jogador* jogador1);
 	void setGraphicManager(GraphicManager* pGM);
-	void incluaEntidade(Entidade* pEn);
-
-	void updateCombate();
 
 };
 

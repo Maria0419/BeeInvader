@@ -77,6 +77,8 @@ void Lista<TIPO>::incluaElemento(Elemento<TIPO>* pElemento)
 			pAtual->setProximo(pElemento);
 			pAtual = pAtual->getProximo();
 		}
+		pPrimeiro->setAnterior(NULL);
+		pAtual->setProximo(NULL);
 	}
 	else
 	{
@@ -117,14 +119,18 @@ void Lista<TIPO>::deletaInfo(TIPO* pElemento)
 		pProximo = pAux->getProximo();
 		if (pAux->getInfo() == pElemento)
 		{
-			if (pAnterior != NULL && pProximo != NULL)
+			if (pAnterior != NULL && pProximo != NULL) //se o elemento a ser deletado estiver no meio da lista
+			{
 				pAnterior->setProximo(pProximo);
-			else if (pAnterior != NULL && pProximo == NULL)
+				pProximo->setAnterior(pAnterior);
+			}
+				
+			else if (pAnterior != NULL && pProximo == NULL) //se o elemento a ser deletado for o ultimo da lista
 			{
 				pAnterior->setProximo(NULL);
 				pAtual = pAnterior;
 			}
-			else if (pAnterior == NULL && pProximo != NULL)
+			else if (pAnterior == NULL && pProximo != NULL) //se o elemento a ser deletado for o primeiro da lista
 			{
 				pPrimeiro = pProximo;
 				pPrimeiro->setAnterior(NULL);

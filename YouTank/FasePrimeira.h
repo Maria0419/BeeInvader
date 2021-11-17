@@ -25,7 +25,7 @@ public:
     void spawnInimigos();
     void spawnPlataforma();
     
-    void updateInimigos();
+    void updateMovimento();
     void updateColisoes();
     void updateCombate();
     void update();

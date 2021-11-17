@@ -3,11 +3,11 @@
 
 void Jogador::initShape()
 {
-	id = 402; //j0g4d0r, 2 pois é sprite
+	id = 402; //j0g4d0r, 2 pois é rectangle shape
 	setSize(50.f, 50.f);
 	setTexture("Imagens/tank.png", 1.f);
 	body.setOrigin(getSize() / 2.0f);
-	setPosition(150.f, 150.f);
+	setPosition(50.f, 50.f);
 }
 
 void Jogador::initBarraVida()

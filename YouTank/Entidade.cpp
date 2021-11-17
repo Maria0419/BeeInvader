@@ -62,4 +62,8 @@ float Entidade::getDirecao_y()
 	return 0.0f;
 }
 
+void Entidade::persegue()
+{
+}
+
 

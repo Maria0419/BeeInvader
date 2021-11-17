@@ -29,5 +29,7 @@ public:
     
     virtual float getDirecao_x();
     virtual float getDirecao_y();
+
+    virtual void persegue();
 };
 

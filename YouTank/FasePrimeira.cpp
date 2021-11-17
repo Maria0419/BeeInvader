@@ -31,7 +31,7 @@ void FasePrimeira::spawnInimigos()
 
 	else if (contaInimigos < inimigosMAX)
 	{
-		InimigoTerrestre* inim = new InimigoTerrestre();
+		InimigoTerrestre* inim = new InimigoTerrestre(pJogador->getPosition().x, pJogador->getPosition().y);
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(inim));
 		contaInimigos++;
 		spawnTimer = 0.f;
@@ -63,6 +63,33 @@ void FasePrimeira::spawnPlataforma()
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat7));
 }
 
+void FasePrimeira::updateMovimento()
+{
+	for (int i = 0; i < listaEntidades.getTamanho(); i++)
+	{
+		switch (listaEntidades.operator[](i)->getId())
+		{
+		case 11102://move inimigos
+		{
+			float dir_x = listaEntidades.operator[](i)->getDirecao_x();
+			float dir_y = listaEntidades.operator[](i)->getDirecao_y();
+			float rapidez = listaEntidades.operator[](i)->getRapidez();
+			listaEntidades.operator[](i)->getBody()->move(dir_x * rapidez, dir_y * rapidez);
+		}
+		break;
+		case 312://move projeteis
+		{
+			float dir_x = listaEntidades.operator[](i)->getDirecao_x();
+			float dir_y = listaEntidades.operator[](i)->getDirecao_y();
+			float rapidez = listaEntidades.operator[](i)->getRapidez();
+			listaEntidades.operator[](i)->getBody()->move(dir_x * rapidez, dir_y * rapidez);
+		}
+		break;
+		}
+
+	}
+}
+
 void FasePrimeira::updateColisoes()
 {
 	int i;
@@ -70,6 +97,7 @@ void FasePrimeira::updateColisoes()
 	unsigned counter = 0;
 	for (i = 0; i < listaEntidades.getTamanho(); i++) 
 	{
+		
 		switch (listaEntidades.operator[](counter)->getId())
 		{
 		case 44042://update colisoes com plataforma
@@ -77,7 +105,7 @@ void FasePrimeira::updateColisoes()
 			collisionManager.updateColisoes(listaEntidades.operator[](counter));
 		}
 		break;
-		case 11102://update colisoes do player com inimigos
+		case 11102://update colisoes do player com inimigos e janela
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](counter)))
 			{
@@ -85,15 +113,18 @@ void FasePrimeira::updateColisoes()
 				counter--;
 				contaInimigos--;
 			}
+			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](counter)))
+			{
+				listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
+				counter--;
+				contaInimigos--;
+			}
+			
 		}
 		break;
-		case 312://ve se o projetil saiu da area da janela
+		case 312://update colisoes do projetil com janela
 		{
-			float dir_x = listaEntidades.operator[](counter)->getDirecao_x();
-			float dir_y = listaEntidades.operator[](counter)->getDirecao_y();
-			float rapidez = listaEntidades.operator[](counter)->getRapidez();
-			listaEntidades.operator[](counter)->getBody()->move(dir_x * rapidez, dir_y * rapidez);
-			if (collisionManager.deletaProjetil(listaEntidades.operator[](counter)))
+			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](counter)))
 			{
 				listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
 				counter--;
@@ -111,16 +142,16 @@ void FasePrimeira::updateCombate()
 	int i, j;
 	bool colidiu = false;
 	unsigned counter = 0;
-	for (i = 0; i < listaEntidades.getTamanho(); i++)
+	for (i = 0; !colidiu && i < listaEntidades.getTamanho(); i++)
 	{
 		unsigned counter_2 = 0;
-		if (listaEntidades.operator[](counter)->getId() == 312)
+		if (listaEntidades.operator[](counter)->getId() == 312) //se eh projetil
 		{
-			for (j = 0; j < listaEntidades.getTamanho(); j++)
+			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
 			{
-				if (listaEntidades.operator[](counter_2)->getId() == 11102)
+				if (listaEntidades.operator[](counter_2)->getId() == 11102) //se eh inimigo
 				{
-					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
+					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2))) //se colidem
 					{
 						listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
 						listaEntidades.destruaEntidade(listaEntidades.operator[](counter_2));
@@ -128,13 +159,9 @@ void FasePrimeira::updateCombate()
 						colidiu = true;
 					}
 				}
-				if (colidiu)
-					break;
 				counter_2++;
 			}
 		}
-		if (colidiu)
-			break;
 		counter++;
 	}
 }
@@ -142,6 +169,7 @@ void FasePrimeira::updateCombate()
 void FasePrimeira::update()
 {
 	spawnInimigos();
+	updateMovimento();
 	updateColisoes();
 	updateCombate();
 }

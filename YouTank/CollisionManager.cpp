@@ -138,17 +138,18 @@ bool CollisionManager::updateCombate(Entidade* pProjetil, Entidade* pInimigo)
 		return false;
 }
 
-bool CollisionManager::deletaProjetil(Entidade* projetil)
+bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
 {
-	if (projetil->getBounds().top + projetil->getBounds().height < 0.f ||
-		projetil->getBounds().top + projetil->getBounds().height > pGraphic->getWindow()->getSize().y ||
-		projetil->getPosition().x > pGraphic->getWindow()->getSize().x ||
-		projetil->getPosition().x + projetil->getBounds().width < 0.f)
+	if (entidade->getBounds().top + entidade->getBounds().height < 0.f ||
+		entidade->getBounds().top + entidade->getBounds().height > pGraphic->getWindow()->getSize().y ||
+		entidade->getPosition().x > pGraphic->getWindow()->getSize().x ||
+		entidade->getPosition().x + entidade->getBounds().width < 0.f)
 	{
 		return true;
 	}
 	return false;
 }
+
 
 void CollisionManager::setJogador(Jogador* pJ1)
 {

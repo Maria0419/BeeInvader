@@ -7,10 +7,13 @@ private:
     //private functions
     void initShape();
 public:
+    InimigoTerrestre(float dir_x, float dir_y);
     InimigoTerrestre();
     ~InimigoTerrestre();
 
-   
+    float getDirecao_x();
+    float getDirecao_y();
+    void persegue();
     
 };
 
