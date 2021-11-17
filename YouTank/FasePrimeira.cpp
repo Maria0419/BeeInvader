@@ -13,9 +13,9 @@ FasePrimeira::FasePrimeira():
 	Fase(),
 	background("Imagens/backgroundCidade.jpg", 0.8f)
 {
+	initInimigo();
 	collisionManager.setGraphicManager(pGraphic);
 	collisionManager.setJogador(pJogador);
-	initInimigo();
 }
 
 FasePrimeira::~FasePrimeira()
