@@ -9,8 +9,6 @@ void Ente::setSize(float x, float y)
 	body.setSize(sf::Vector2f(x, y));
 }
 
-
-
 void Ente::setCor(int r, int g, int b, int t)
 {
 	body.setFillColor(sf::Color(r, g, b, t));
@@ -43,6 +41,19 @@ void Ente::setBodyBack(float x, float y, float largura, float altura)
 	bodyBack.setFillColor(sf::Color(255, 255, 255, 55));
 	bodyBack.setOutlineColor(sf::Color::Black);
 	bodyBack.setOutlineThickness(2.f);
+}
+
+void Ente::setOriginCenter()
+{
+	if (id % 2)
+	{
+		//sprite.setOrigin(sprite.getGlobalBounds() / 2.0f);;
+	}
+	else
+	{
+		body.setOrigin(body.getSize() / 2.0f);
+	}
+	
 }
 
 void Ente::renderBodyBack()

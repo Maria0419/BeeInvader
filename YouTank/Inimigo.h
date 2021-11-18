@@ -3,5 +3,11 @@
 class Inimigo :
     public Personagem
 {
+private:
+
+public:
+    Inimigo();
+    Inimigo(int vida, int dano);
+    ~Inimigo();
 };
 

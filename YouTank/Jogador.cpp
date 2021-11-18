@@ -7,7 +7,7 @@ void Jogador::initShape()
 	id = ID_JOGADOR; //j0g4d0r, 2 pois é rectangle shape
 	setSize(50.f, 50.f);
 	setTexture("Imagens/tank.png", 1.f);
-	body.setOrigin(getSize() / 2.0f);
+	setOriginCenter();
 	setPosition(150.f, 150.f);
 }
 
