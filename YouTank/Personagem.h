@@ -4,9 +4,10 @@ class Personagem :
     public Entidade
 {
 protected:
-    int num_vidas;
+    int vida;
+    int vidaMAX;
     int dano;
-    int points;
+    int pontos;
 
     //Pulo
     bool podePular;
@@ -19,8 +20,12 @@ protected:
     
 public:
     Personagem();
-    Personagem(int n_vida, int dmg, int pontos);
+    Personagem(int n_vida, int dmg);
     ~Personagem();
+
+    void tomarDano(int dmg);
+    const int getVida() const;
+    const int getVidaMAX() const;
 
     void setPodePular(bool pode);
     const bool getPodePular() const;

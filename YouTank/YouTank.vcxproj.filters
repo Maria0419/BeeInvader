@@ -144,11 +144,11 @@
     <ClCompile Include="Projetil.cpp">
       <Filter>Arquivos de Origem\Miscelania</Filter>
     </ClCompile>
+    <ClCompile Include="BarraVida.cpp">
+      <Filter>Arquivos de Origem\Miscelania</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ente.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
@@ -225,6 +225,12 @@
       <Filter>Arquivos de Cabeçalho\Miscelania</Filter>
     </ClInclude>
     <ClInclude Include="Projetil.h">
+      <Filter>Arquivos de Cabeçalho\Miscelania</Filter>
+    </ClInclude>
+    <ClInclude Include="BarraVida.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Ente.h">
       <Filter>Arquivos de Cabeçalho\Miscelania</Filter>
     </ClInclude>
   </ItemGroup>

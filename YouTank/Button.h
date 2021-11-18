@@ -12,6 +12,7 @@ private:
     sf::Text texto;
     sf::Font* fonte;
 
+    //cores
     unsigned int red, green, blue;
 
 public:

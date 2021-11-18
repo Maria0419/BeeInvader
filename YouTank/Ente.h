@@ -12,6 +12,7 @@ protected:
 
 	//Shape
 	sf::RectangleShape body;
+	sf::RectangleShape bodyBack;
 	sf::Sprite sprite;
 	sf::Texture texture;
 
@@ -21,6 +22,8 @@ protected:
 	void setCor(int r, int g, int b, int t);
 	void setOutline(float grossura);
 	void setTexture(const char* file, float escala);
+	void setBodyBack(float x, float y, float largura, float altura);
+	
 
 public:
 	Ente();
@@ -31,6 +34,7 @@ public:
 	//Functions
 	void render();
 	void renderTexto(sf::Text texto);
+	void renderBodyBack();
 	bool contem(float x, float y);
 
 	//setters

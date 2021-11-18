@@ -36,6 +36,20 @@ void Ente::setTexture(const char* file, float escala)
 	}
 }
 
+void Ente::setBodyBack(float x, float y, float largura, float altura)
+{
+	bodyBack.setPosition(x, y);
+	bodyBack.setSize(sf::Vector2f(largura, altura));
+	bodyBack.setFillColor(sf::Color(255, 255, 255, 55));
+	bodyBack.setOutlineColor(sf::Color::Black);
+	bodyBack.setOutlineThickness(2.f);
+}
+
+void Ente::renderBodyBack()
+{
+	pGraphic->drawShapes(bodyBack);
+}
+
 
 Ente::Ente():
 	aparece(false),

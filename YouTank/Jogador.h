@@ -1,13 +1,13 @@
 #pragma once
 #include "Personagem.h"
+#include "BarraVida.h"
 
 class Jogador :
     public Personagem
 {
 private:
 
-    sf::RectangleShape barraVida;
-    sf::RectangleShape barraVidaFundo;
+    BarraVida barraVida;
 
     //private functions
     void initShape();
