@@ -80,10 +80,10 @@ void FasePrimeira::updateMovimento()
 		break;
 		case 312://move projeteis
 		{
-			float dir_x = listaEntidades.operator[](i)->getDirecao_x();
-			float dir_y = listaEntidades.operator[](i)->getDirecao_y();
-			float rapidez = listaEntidades.operator[](i)->getRapidez();
-			listaEntidades.operator[](i)->getBody()->move(dir_x * rapidez, dir_y * rapidez);
+			//float dir_x = listaEntidades.operator[](i)->getDirecao_x();
+			//float dir_y = listaEntidades.operator[](i)->getDirecao_y();
+			//float rapidez = listaEntidades.operator[](i)->getRapidez();
+			listaEntidades.operator[](i)->updateProjetil();
 		}
 		break;
 		}
@@ -94,7 +94,7 @@ void FasePrimeira::updateMovimento()
 void FasePrimeira::updateColisoes()
 {
 	int i;
-	std::cout << "tamanho lista " << listaEntidades.getTamanho() << std::endl;
+	//std::cout << "tamanho lista " << listaEntidades.getTamanho() << std::endl;
 	unsigned counter = 0;
 	for (i = 0; i < listaEntidades.getTamanho(); i++) 
 	{

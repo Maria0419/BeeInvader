@@ -76,4 +76,8 @@ void Entidade::persegue()
 {
 }
 
+void Entidade::updateProjetil()
+{
+}
+
 
