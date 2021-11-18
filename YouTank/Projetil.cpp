@@ -12,10 +12,9 @@ Projetil::Projetil(float dir_x, float dir_y, float velocidade, float x_jogador, 
 	id = ID_PROJETIL;
 	aparece = true;
 	podeMatar = true;
-	texture.loadFromFile("Imagens/bola.png");
-	body.setTexture(&texture);
-	setSize(30.f, 30.f);
-	body.setOrigin(body.getSize() / 2.f);
+	setTexture("Imagens/orb3.png", 1.f);
+	setSize(20.f, 18.f);
+	setOriginCenter();
 	setPosition(x_jogador, y_jogador);
 	destino.x = dir_x;
 	destino.y = dir_y;
@@ -75,6 +74,7 @@ void Projetil::updateProjetil()
 {
 	float dt = 0.1f;
 	float gravidade = 9.81f;
-	this->move((this->getPosition().x + velocidade.x * dt) - this->getPosition().x, (this->getPosition().y - velocidade.y * dt) - this->getPosition().y);
+	move((getPosition().x + velocidade.x * dt) - getPosition().x, (getPosition().y - velocidade.y * dt) - getPosition().y);
+	rotate(5.f);
 	velocidade.y = velocidade.y - 0.5f * gravidade * dt;
 }

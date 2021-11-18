@@ -30,6 +30,21 @@ void Fase::ataca(float dir_x, float dir_y, float x_jogador, float y_jogador)
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(pP));
 }
 
+void Fase::limpeza()
+{
+	unsigned counter = 0;
+	for (int i = 0; i < listaEntidades.getTamanho(); i++)
+	{
+		if (listaEntidades.operator[](counter)->getShowing() == false)
+		{
+			listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
+			counter--;
+		}
+		counter++;
+	}
+}
+
+
 void Fase::setJogador(Jogador* pJ)
 {
 	if (pJ)

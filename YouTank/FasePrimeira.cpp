@@ -150,7 +150,8 @@ void FasePrimeira::updateCombate()
 		{
 			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&robomba)))
 			{
-				robomba.tomarDano(5);
+				listaEntidades.operator[](counter)->setShowing(false);
+				robomba.tomarDano(30);
 			}
 			unsigned counter_2 = 0;
 			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
@@ -159,8 +160,8 @@ void FasePrimeira::updateCombate()
 				{
 					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
 					{
-						listaEntidades.destruaEntidade(listaEntidades.operator[](counter_2));
-						counter_2--;
+						listaEntidades.operator[](counter_2)->setShowing(false);
+						listaEntidades.operator[](counter)->setShowing(false);
 						contaInimigos--;
 						colidiu = true;
 					}
@@ -181,6 +182,7 @@ void FasePrimeira::updateCombate()
 
 void FasePrimeira::update()
 {
+	limpeza();
 	updateMovimento();
 	updateColisoes();
 	updateCombate();

@@ -56,6 +56,11 @@ void Ente::setOriginCenter()
 	
 }
 
+void Ente::rotate(float angulo)
+{
+	body.rotate(angulo);
+}
+
 void Ente::renderBodyBack()
 {
 	pGraphic->drawShapes(bodyBack);

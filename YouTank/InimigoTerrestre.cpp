@@ -48,8 +48,7 @@ const bool InimigoTerrestre::getShowing() const
 void InimigoTerrestre::initShape()
 {
 	setSize(30.f, 30.f);
-	texture.loadFromFile("Imagens/droid.png");
-	body.setTexture(&texture);
-	body.setOrigin(body.getSize() / 2.0f);
-	body.setPosition(static_cast<float> (rand() % 1100+25), static_cast<float>(rand() % 50+25));
+	setTexture("Imagens/minidragon_red.png",1.f);
+	setOriginCenter();
+	setPosition(static_cast<float> (rand() % 1100+25), static_cast<float>(rand() % 50+25));
 }
