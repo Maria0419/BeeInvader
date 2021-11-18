@@ -22,14 +22,13 @@ void InputManager::updateAtaque()
 {
 	pJogador1->updateAtaqueCooldown();
 
-	//std::cout << sf::Mouse::getPosition(*pGraphic->getWindow()).x << " " <<
-	//	sf::Mouse::getPosition(*pGraphic->getWindow()).y << std::endl;
-
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && pJogador1->getPodeAtacar())
 	{
-		float dir_x = static_cast<float> (sf::Mouse::getPosition(*pGraphic->getWindow()).x) - pJogador1->getPosition().x;
-		float dir_y = static_cast<float> (sf::Mouse::getPosition(*pGraphic->getWindow()).y) - pJogador1->getPosition().y;
-		pFase->ataca(dir_x,dir_y);
+		float dir_x = static_cast<float> (sf::Mouse::getPosition(*pGraphic->getWindow()).x);
+		float dir_y = static_cast<float> (sf::Mouse::getPosition(*pGraphic->getWindow()).y);
+		float x_jogador = pJogador1->getPosition().x;
+		float y_jogador = pJogador1->getPosition().y;
+		pFase->ataca(dir_x, dir_y, x_jogador, y_jogador);
 	}
 }
 

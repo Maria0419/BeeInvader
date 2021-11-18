@@ -8,6 +8,7 @@ protected:
     //Velocidade de movimento
     sf::Vector2f velocidade;
     sf::Vector2f direcao;
+    sf::Vector2f destino;
     float rapidez;
     bool podeMatar;
    
@@ -35,5 +36,6 @@ public:
     virtual const bool getPodeMatar() const;
 
     virtual void persegue();
+    virtual void updateProjetil();
 };
 

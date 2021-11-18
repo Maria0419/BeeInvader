@@ -4,10 +4,9 @@ class Projetil :
     public Entidade
 {
 private:
-    sf::Vector2f direcao;
 public:
     Projetil();
-    Projetil(float pos_x, float pos_y, float dir_x, float dir_y, float velocidade);
+    Projetil(float dir_x, float dir_y, float velocidade, float x_jogador, float y_jogador);
     ~Projetil();
 
     void renderProjetil();
@@ -19,5 +18,7 @@ public:
 
     void setPodeMatar(bool x);
     const bool getPodeMatar() const;
+
+    void updateProjetil();
 };
 
