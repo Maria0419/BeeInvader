@@ -9,7 +9,6 @@ protected:
     sf::Vector2f velocidade;
     sf::Vector2f direcao;
     sf::Vector2f destino;
-    sf::Vector2f posicaoInicial;
     float rapidez;
     bool podeMatar;
    

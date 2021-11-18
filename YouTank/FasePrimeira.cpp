@@ -21,7 +21,7 @@ FasePrimeira::FasePrimeira():
 
 FasePrimeira::~FasePrimeira()
 {
-	listaEntidades.limpaLista();
+	
 }
 
 void FasePrimeira::spawnInimigos()
