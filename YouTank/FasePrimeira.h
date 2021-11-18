@@ -10,7 +10,7 @@ private:
     Background background;
 
     //Boss
-   // Robomba robomba;
+    Robomba robomba;
 
     //Timer dos inimigos
     float spawnTimer;

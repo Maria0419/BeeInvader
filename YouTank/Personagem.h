@@ -23,7 +23,7 @@ public:
     Personagem(int n_vida, int dmg);
     ~Personagem();
 
-    void tomarDano(int dmg);
+    virtual void tomarDano(int dmg);
     const int getVida() const;
     const int getVidaMAX() const;
 

@@ -123,8 +123,8 @@ void FasePrimeira::updateColisoes()
 			
 		}
 		break;
-		case ID_PROJETIL://update colisoes do projetil com janela
-		{
+		case ID_PROJETIL:
+		{	//update colisoes do projetil com janela
 			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](counter)))
 			{
 				listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
@@ -145,38 +145,41 @@ void FasePrimeira::updateCombate()
 	unsigned counter = 0;
 	for (i = 0; !colidiu && i < listaEntidades.getTamanho(); i++)
 	{
-		if (listaEntidades.operator[](counter)->getPodeMatar())
+
+		if (listaEntidades.operator[](counter)->getId() == ID_PROJETIL)
 		{
-			if (listaEntidades.operator[](counter)->getId() == ID_PROJETIL)
+			unsigned counter_2 = 0;
+			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
 			{
-				unsigned counter_2 = 0;
-				for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
+				if (listaEntidades.operator[](counter_2)->getId() == ID_INIMIGO)
 				{
-					if (listaEntidades.operator[](counter_2)->getId() == ID_INIMIGO)
+					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
 					{
-						if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
-						{
-							//listaEntidades.operator[](counter)->setShowing(false);
-							listaEntidades.destruaEntidade(listaEntidades.operator[](counter_2));
-							counter_2--;
-							contaInimigos--;
-							//listaEntidades.operator[](counter)->setPodeMatar(false);
-							colidiu = true;
-						}
+						listaEntidades.destruaEntidade(listaEntidades.operator[](counter_2));
+						counter_2--;
+						contaInimigos--;
+						colidiu = true;
 					}
-					counter_2++;
 				}
+				counter_2++;
+			}
+			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&robomba)))
+			{
+				robomba.tomarDano(5);
 			}
 		}
-		
 		counter++;
+	}
+	if (robomba.EmFuria())
+	{
+		spawnInimigos();
+		robomba.curaVida(1);
 	}
 
 }
 
 void FasePrimeira::update()
 {
-	spawnInimigos();
 	updateMovimento();
 	updateColisoes();
 	updateCombate();
@@ -192,7 +195,7 @@ void FasePrimeira::renderFasePrimeira()
 		{
 			listaEntidades.operator[](i)->render();
 		}
-		//robomba.render();
+		robomba.render();
 		
 	}
 }
