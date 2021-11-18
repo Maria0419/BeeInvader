@@ -12,7 +12,7 @@ Projetil::Projetil(float dir_x, float dir_y, float velocidade, float x_jogador, 
 	id = ID_PROJETIL;
 	aparece = true;
 	podeMatar = true;
-	texture.loadFromFile("Imagens/Cannonball.png");
+	texture.loadFromFile("Imagens/bola.png");
 	body.setTexture(&texture);
 	setSize(30.f, 30.f);
 	body.setOrigin(body.getSize() / 2.f);

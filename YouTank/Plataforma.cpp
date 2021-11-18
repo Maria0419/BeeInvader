@@ -28,11 +28,12 @@ Plataforma::~Plataforma()
 
 void Plataforma::initShape()
 {
-	setSize(1400.f, 50.f);
+	setSize(1400.f, 100.f);
 	aparece = true;
-	setPosition(700.f, 600.f);
+	body.setOrigin(body.getSize() / 2.0f);
+	setPosition(700.f, 700.f);
 	setCor(124,124,124,200);
-	body.setOrigin(body.getSize() /2.0f);
+	
 }
 
 

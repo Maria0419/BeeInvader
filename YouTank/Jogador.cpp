@@ -8,7 +8,7 @@ void Jogador::initShape()
 	setSize(50.f, 50.f);
 	setTexture("Imagens/tank.png", 1.f);
 	body.setOrigin(getSize() / 2.0f);
-	setPosition(150.f, 300.f);
+	setPosition(150.f, 150.f);
 }
 
 void Jogador::initBarraVida()
