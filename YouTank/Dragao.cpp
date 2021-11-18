@@ -7,10 +7,11 @@ Dragao::Dragao():
 	barraVida(static_cast<Personagem*>(this), 1000.f, 20.f, 250.f, 25.f)
 {
 	id = ID_ROBOMBA; //j0g4d0r, 2 pois é rectangle shape
-	setSize(300.f, 150.f);
-	setTexture("Imagens/dragon.png", 1.f);
+	setSize(300.f, 400.f);
+	setTexture("Imagens/queen_bee.png", 1.f);
 	setOriginCenter();
 	setPosition(1130.f, 250.f);
+	body.setScale(-1.f*body.getScale().x, body.getScale().y);
 	curaTimerMAX = 20.f;
 	curaTimer = curaTimerMAX;
 }

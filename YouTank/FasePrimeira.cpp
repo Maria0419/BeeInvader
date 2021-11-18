@@ -194,7 +194,7 @@ void FasePrimeira::updateCombate()
 
 void FasePrimeira::update()
 {
-	spawnCogumelo();
+	//spawnCogumelo();
 	updateColisoes();
 	limpeza();
 	updateMovimento();
