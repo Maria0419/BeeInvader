@@ -12,7 +12,7 @@ void FasePrimeira::initInimigo()
 
 FasePrimeira::FasePrimeira():
 	Fase(),
-	background("Imagens/background_halo.jpg", 0.6f)
+	background("Imagens/floresta.png", 2.f)
 {
 	initInimigo();
 	collisionManager.setGraphicManager(pGraphic);
@@ -32,7 +32,7 @@ void FasePrimeira::spawnInimigos()
 
 	else if (contaInimigos < inimigosMAX)
 	{
-		InimigoTerrestre* inim = new InimigoTerrestre(pJogador->getPosition().x, pJogador->getPosition().y);
+		Abelha* inim = new Abelha(pJogador->getPosition().x, pJogador->getPosition().y);
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(inim));
 		contaInimigos++;
 		spawnTimer = 0.f;
@@ -45,22 +45,22 @@ void FasePrimeira::spawnPlataforma()
 	Plataforma* plat = new Plataforma();
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat));
 
-	Plataforma* plat2 = new Plataforma(300.f, 20.f, 100.f, 500.f, 0);
+	Plataforma* plat2 = new Plataforma(300.f, 20.f, 100.f, 580.f, 0);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat2));
 
-	Plataforma* plat3 = new Plataforma(300.f, 20.f, 300.f, 420.f, 0);
+	Plataforma* plat3 = new Plataforma(300.f, 20.f, 300.f, 500.f, 0);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat3));
 
-	Plataforma* plat4 = new Plataforma(300.f, 20.f, 500.f, 340.f, 0);
+	Plataforma* plat4 = new Plataforma(300.f, 20.f, 500.f, 420.f, 0);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat4));
 
-	Plataforma* plat5 = new Plataforma(300.f, 20.f, 300.f, 260.f, 0);
+	Plataforma* plat5 = new Plataforma(300.f, 20.f, 300.f, 340.f, 0);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat5));
 
-	Plataforma* plat6 = new Plataforma(300.f, 20.f, 500.f, 180.f, 0);
+	Plataforma* plat6 = new Plataforma(300.f, 20.f, 500.f, 260.f, 0);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat6));
 
-	Plataforma* plat7 = new Plataforma(300.f, 20.f, 300.f, 100.f, 0);
+	Plataforma* plat7 = new Plataforma(300.f, 20.f, 300.f, 180.f, 0);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat7));
 }
 
@@ -106,7 +106,7 @@ void FasePrimeira::updateColisoes()
 			collisionManager.updateColisoes(listaEntidades.operator[](counter));
 		}
 		break;
-		case ID_DROID://update colisoes do player com inimigos e janela
+		case ID_ABELHA://update colisoes do player com inimigos e janela
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](counter)))
 			{
@@ -148,15 +148,15 @@ void FasePrimeira::updateCombate()
 
 		if (listaEntidades.operator[](counter)->getId() == ID_PROJETIL)
 		{
-			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&robomba)))
+			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&dragao)))
 			{
 				listaEntidades.operator[](counter)->setShowing(false);
-				robomba.tomarDano(30);
+				dragao.tomarDano(30);
 			}
 			unsigned counter_2 = 0;
 			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
 			{
-				if (listaEntidades.operator[](counter_2)->getId() == ID_DROID)
+				if (listaEntidades.operator[](counter_2)->getId() == ID_ABELHA)
 				{
 					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
 					{
@@ -172,10 +172,10 @@ void FasePrimeira::updateCombate()
 		}
 		counter++;
 	}
-	if (robomba.EmFuria())
+	if (dragao.EmFuria())
 	{
 		spawnInimigos();
-		robomba.curaVida(1);
+		dragao.curaVida(1);
 	}
 
 }
@@ -198,7 +198,7 @@ void FasePrimeira::renderFasePrimeira()
 		{
 			listaEntidades.operator[](i)->render();
 		}
-		robomba.renderRobomba();
+		dragao.renderDragao();
 		
 	}
 }

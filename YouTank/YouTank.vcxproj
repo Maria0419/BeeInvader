@@ -152,6 +152,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BarraVida.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Cogumelo.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Elemento.cpp" />
     <ClCompile Include="Ente.cpp" />
@@ -163,7 +164,7 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="Inimigo.cpp" />
-    <ClCompile Include="InimigoTerrestre.cpp" />
+    <ClCompile Include="Abelha.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="Lista.cpp" />
@@ -173,7 +174,7 @@
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Plataforma.cpp" />
     <ClCompile Include="Projetil.cpp" />
-    <ClCompile Include="Robomba.cpp" />
+    <ClCompile Include="Dragao.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -187,6 +188,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="BarraVida.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Cogumelo.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Elemento.h" />
     <ClInclude Include="Ente.h" />
@@ -199,7 +201,7 @@
     <ClInclude Include="Global.h" />
     <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="Inimigo.h" />
-    <ClInclude Include="InimigoTerrestre.h" />
+    <ClInclude Include="Abelha.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Jogador.h" />
     <ClInclude Include="Lista.h" />
@@ -209,7 +211,7 @@
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Plataforma.h" />
     <ClInclude Include="Projetil.h" />
-    <ClInclude Include="Robomba.h" />
+    <ClInclude Include="Dragao.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

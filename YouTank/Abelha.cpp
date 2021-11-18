@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "InimigoTerrestre.h"
+#include "Abelha.h"
 #include "Global.h"
 
-InimigoTerrestre::InimigoTerrestre(float dir_x, float dir_y)
+Abelha::Abelha(float dir_x, float dir_y)
 {
-	id = ID_DROID; 
+	id = ID_ABELHA; 
 	initShape();
 	rapidez = 5.f;
 	aparece = true;
@@ -14,41 +14,41 @@ InimigoTerrestre::InimigoTerrestre(float dir_x, float dir_y)
 	direcao.y = dir_y / sqrtf(static_cast<float>(pow(dir_x, 2)) + static_cast<float>(pow(dir_y, 2)));
 }
 
-InimigoTerrestre::InimigoTerrestre()
+Abelha::Abelha()
 {
-	id = ID_DROID; // 1n1m1g0
+	id = ID_ABELHA; // 1n1m1g0
 	initShape();
 }
 
-InimigoTerrestre::~InimigoTerrestre()
+Abelha::~Abelha()
 {
 }
 
-float InimigoTerrestre::getDirecao_x()
+float Abelha::getDirecao_x()
 {
 	return direcao.x;
 }
 
-float InimigoTerrestre::getDirecao_y()
+float Abelha::getDirecao_y()
 {
 	return direcao.y;
 }
 
-void InimigoTerrestre::setShowing(bool x)
+void Abelha::setShowing(bool x)
 {
 	aparece = x;
 }
 
-const bool InimigoTerrestre::getShowing() const
+const bool Abelha::getShowing() const
 {
 	return aparece;
 }
 
 
-void InimigoTerrestre::initShape()
+void Abelha::initShape()
 {
 	setSize(30.f, 30.f);
-	setTexture("Imagens/minidragon_red.png",1.f);
+	setTexture("Imagens/bee.png",1.f);
 	setOriginCenter();
 	setPosition(static_cast<float> (rand() % 1100+25), static_cast<float>(rand() % 50+25));
 }

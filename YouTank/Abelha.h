@@ -1,15 +1,15 @@
 #pragma once
 #include "Inimigo.h"
-class InimigoTerrestre :
+class Abelha :
     public Inimigo
 {
 private:
     //private functions
     void initShape();
 public:
-    InimigoTerrestre(float dir_x, float dir_y);
-    InimigoTerrestre();
-    ~InimigoTerrestre();
+    Abelha(float dir_x, float dir_y);
+    Abelha();
+    ~Abelha();
 
     float getDirecao_x();
     float getDirecao_y();

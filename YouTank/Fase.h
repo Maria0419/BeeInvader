@@ -4,7 +4,7 @@
 #include "Jogador.h"
 #include "Projetil.h"
 #include "ListaEntidades.h"
-#include "InimigoTerrestre.h"
+#include "Abelha.h"
 #include "Plataforma.h"
 #include "Background.h"
 

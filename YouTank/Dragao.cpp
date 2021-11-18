@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "Robomba.h"
+#include "Dragao.h"
 #include "Global.h"
 
-Robomba::Robomba():
+Dragao::Dragao():
 	Inimigo(1000, 7),
 	barraVida(static_cast<Personagem*>(this), 1000.f, 20.f, 250.f, 25.f)
 {
@@ -13,11 +13,11 @@ Robomba::Robomba():
 	setPosition(1130.f, 250.f);
 }
 
-Robomba::~Robomba()
+Dragao::~Dragao()
 {
 }
 
-const bool Robomba::EmFuria() const
+const bool Dragao::EmFuria() const
 {
 	if (vida < vida / 2)
 		return true;
@@ -25,22 +25,22 @@ const bool Robomba::EmFuria() const
 		return false;
 }
 
-void Robomba::tomarDano(int x)
+void Dragao::tomarDano(int x)
 {
 	vida -= x;
 }
 
-void Robomba::curaVida(int x)
+void Dragao::curaVida(int x)
 {
 	vida += x;
 }
 
-const bool Robomba::getVida() const
+const bool Dragao::getVida() const
 {
 	return vida;
 }
 
-void Robomba::renderRobomba()
+void Dragao::renderDragao()
 {
 	barraVida.renderBodyBack();
 	barraVida.render();

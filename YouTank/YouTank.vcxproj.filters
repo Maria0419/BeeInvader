@@ -96,7 +96,7 @@
     <ClCompile Include="Inimigo.cpp">
       <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
     </ClCompile>
-    <ClCompile Include="InimigoTerrestre.cpp">
+    <ClCompile Include="Abelha.cpp">
       <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
     </ClCompile>
     <ClCompile Include="Lista.cpp">
@@ -129,7 +129,7 @@
     <ClCompile Include="FasePrimeira.cpp">
       <Filter>Arquivos de Origem\Fases</Filter>
     </ClCompile>
-    <ClCompile Include="Robomba.cpp">
+    <ClCompile Include="Dragao.cpp">
       <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
@@ -146,6 +146,9 @@
     </ClCompile>
     <ClCompile Include="BarraVida.cpp">
       <Filter>Arquivos de Origem\Miscelania</Filter>
+    </ClCompile>
+    <ClCompile Include="Cogumelo.cpp">
+      <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,10 +173,10 @@
     <ClInclude Include="Jogador.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="InimigoTerrestre.h">
+    <ClInclude Include="Abelha.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="Robomba.h">
+    <ClInclude Include="Dragao.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
     </ClInclude>
     <ClInclude Include="Entidade.h">
@@ -232,6 +235,9 @@
     </ClInclude>
     <ClInclude Include="Ente.h">
       <Filter>Arquivos de Cabeçalho\Miscelania</Filter>
+    </ClInclude>
+    <ClInclude Include="Cogumelo.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

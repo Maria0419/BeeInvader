@@ -1,6 +1,6 @@
 #pragma once
 #include "Fase.h"
-#include "Robomba.h"
+#include "Dragao.h"
 
 class FasePrimeira :
     public Fase
@@ -10,7 +10,7 @@ private:
     Background background;
 
     //Boss
-    Robomba robomba;
+    Dragao dragao;
 
     //Timer dos inimigos
     float spawnTimer;
