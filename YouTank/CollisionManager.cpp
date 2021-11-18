@@ -73,7 +73,7 @@ bool CollisionManager::verificaColisao(Entidade& entidade, sf::Vector2f& direcao
 				direcao.y = -1.0f;
 			}
 		}
-		if (entidade.getId() == ID_INIMIGO)
+		if (entidade.getId() == ID_DROID)
 		{
 	
 		}

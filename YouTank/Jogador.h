@@ -20,8 +20,6 @@ public:
 
     void setOlhaEsquerda(bool x);
     const bool olhandoEsquerda() const;
-
-    void trocaLado();
     
     void naColisao(sf::Vector2f direcao);
 

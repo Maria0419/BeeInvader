@@ -24,7 +24,7 @@ Projetil::Projetil(float dir_x, float dir_y, float velocidade, float x_jogador, 
 	rapidez = velocidade;
 
 	float distanciaJogadorDestino;
-	distanciaJogadorDestino = sqrt(pow(y_jogador - destino.y, 2) + pow(destino.x - x_jogador, 2));
+	distanciaJogadorDestino = (float) (sqrt(pow(y_jogador - destino.y, 2) + pow(destino.x - x_jogador, 2)));
 	this->velocidade.x = rapidez * (destino.x - x_jogador)/distanciaJogadorDestino;
 	this->velocidade.y = rapidez * (y_jogador - destino.y)/distanciaJogadorDestino;
 
@@ -76,5 +76,5 @@ void Projetil::updateProjetil()
 	float dt = 0.1f;
 	float gravidade = 9.81f;
 	this->move((this->getPosition().x + velocidade.x * dt) - this->getPosition().x, (this->getPosition().y - velocidade.y * dt) - this->getPosition().y);
-	velocidade.y = velocidade.y - 0.5 * gravidade * dt;
+	velocidade.y = velocidade.y - 0.5f * gravidade * dt;
 }

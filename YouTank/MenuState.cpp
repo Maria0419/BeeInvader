@@ -10,7 +10,7 @@ void MenuState::initButtons()
 	buttons["SAIR"] = new Button(550, 400, 200, 50, "Sair");
 }
 
-MenuState::MenuState(InputManager* pIM, std::stack<State*>* state):
+MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
 	State(state),
 	background("Imagens/background_.jpg", 0.8f)
 {

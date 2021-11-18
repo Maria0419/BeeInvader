@@ -106,7 +106,7 @@ void FasePrimeira::updateColisoes()
 			collisionManager.updateColisoes(listaEntidades.operator[](counter));
 		}
 		break;
-		case ID_INIMIGO://update colisoes do player com inimigos e janela
+		case ID_DROID://update colisoes do player com inimigos e janela
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](counter)))
 			{
@@ -148,10 +148,14 @@ void FasePrimeira::updateCombate()
 
 		if (listaEntidades.operator[](counter)->getId() == ID_PROJETIL)
 		{
+			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&robomba)))
+			{
+				robomba.tomarDano(5);
+			}
 			unsigned counter_2 = 0;
 			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
 			{
-				if (listaEntidades.operator[](counter_2)->getId() == ID_INIMIGO)
+				if (listaEntidades.operator[](counter_2)->getId() == ID_DROID)
 				{
 					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
 					{
@@ -163,10 +167,7 @@ void FasePrimeira::updateCombate()
 				}
 				counter_2++;
 			}
-			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&robomba)))
-			{
-				robomba.tomarDano(5);
-			}
+			
 		}
 		counter++;
 	}
@@ -195,7 +196,7 @@ void FasePrimeira::renderFasePrimeira()
 		{
 			listaEntidades.operator[](i)->render();
 		}
-		robomba.render();
+		robomba.renderRobomba();
 		
 	}
 }

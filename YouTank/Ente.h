@@ -23,6 +23,7 @@ protected:
 	void setOutline(float grossura);
 	void setTexture(const char* file, float escala);
 	void setBodyBack(float x, float y, float largura, float altura);
+	void setOriginCenter();
 	
 
 public:
