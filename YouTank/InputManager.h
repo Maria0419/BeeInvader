@@ -18,7 +18,6 @@ private:
 
 public:
 	InputManager();
-	~InputManager();
 
 	void updateAtaque();
 	void updateMousePos();

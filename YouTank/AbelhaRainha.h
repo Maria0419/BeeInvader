@@ -2,7 +2,7 @@
 #include "Inimigo.h"
 #include "BarraVida.h"
 
-class Dragao:
+class AbelhaRainha:
 	public Inimigo
 {
 private:
@@ -11,12 +11,12 @@ private:
 	float curaTimerMAX;
 
 public:
-	Dragao();
-	~Dragao();
+	AbelhaRainha();
+	~AbelhaRainha();
 	const bool EmFuria() const;
 	void curaVida(int x);
 
 	void update();
-	void renderDragao();
+	void renderAbelhaRainha();
 };
 

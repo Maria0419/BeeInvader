@@ -55,11 +55,17 @@
     <Filter Include="Arquivos de Origem\Listas">
       <UniqueIdentifier>{704ac44b-db63-497b-aa69-97f8ef191a8b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Arquivos de Cabeçalho\Miscelania">
+    <Filter Include="Arquivos de Origem\Elementos Visuais">
+      <UniqueIdentifier>{959c53c4-53cb-491a-9030-456be58ee69a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Elementos Visuais">
       <UniqueIdentifier>{bbb529ef-b2fb-467a-9e8b-da5acf564ac4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Arquivos de Origem\Miscelania">
-      <UniqueIdentifier>{959c53c4-53cb-491a-9030-456be58ee69a}</UniqueIdentifier>
+    <Filter Include="Arquivos de Cabeçalho\Entidades\Projetis">
+      <UniqueIdentifier>{02274687-8a48-4a31-8086-aa28b5e6104c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Entidades\Projetis">
+      <UniqueIdentifier>{3c896714-a336-4517-9c29-a56bd6b0f0ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -129,26 +135,29 @@
     <ClCompile Include="FasePrimeira.cpp">
       <Filter>Arquivos de Origem\Fases</Filter>
     </ClCompile>
-    <ClCompile Include="Dragao.cpp">
+    <ClCompile Include="AbelhaRainha.cpp">
       <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
       <Filter>Arquivos de Origem\States</Filter>
     </ClCompile>
     <ClCompile Include="Background.cpp">
-      <Filter>Arquivos de Origem\Miscelania</Filter>
+      <Filter>Arquivos de Origem\Elementos Visuais</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Arquivos de Origem\Miscelania</Filter>
-    </ClCompile>
-    <ClCompile Include="Projetil.cpp">
-      <Filter>Arquivos de Origem\Miscelania</Filter>
+      <Filter>Arquivos de Origem\Elementos Visuais</Filter>
     </ClCompile>
     <ClCompile Include="BarraVida.cpp">
-      <Filter>Arquivos de Origem\Miscelania</Filter>
+      <Filter>Arquivos de Origem\Elementos Visuais</Filter>
     </ClCompile>
     <ClCompile Include="Cogumelo.cpp">
       <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Orbe.cpp">
+      <Filter>Arquivos de Origem\Entidades\Projetis</Filter>
+    </ClCompile>
+    <ClCompile Include="Projetil.cpp">
+      <Filter>Arquivos de Origem\Entidades\Projetis</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,7 +185,7 @@
     <ClInclude Include="Abelha.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="Dragao.h">
+    <ClInclude Include="AbelhaRainha.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
     </ClInclude>
     <ClInclude Include="Entidade.h">
@@ -222,22 +231,25 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Background.h">
-      <Filter>Arquivos de Cabeçalho\Miscelania</Filter>
+      <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Arquivos de Cabeçalho\Miscelania</Filter>
-    </ClInclude>
-    <ClInclude Include="Projetil.h">
-      <Filter>Arquivos de Cabeçalho\Miscelania</Filter>
+      <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
     </ClInclude>
     <ClInclude Include="BarraVida.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Ente.h">
-      <Filter>Arquivos de Cabeçalho\Miscelania</Filter>
+      <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
     </ClInclude>
     <ClInclude Include="Cogumelo.h">
       <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Orbe.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
+    </ClInclude>
+    <ClInclude Include="Projetil.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

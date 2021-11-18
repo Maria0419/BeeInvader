@@ -173,8 +173,9 @@
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Plataforma.cpp" />
+    <ClCompile Include="Orbe.cpp" />
+    <ClCompile Include="AbelhaRainha.cpp" />
     <ClCompile Include="Projetil.cpp" />
-    <ClCompile Include="Dragao.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -210,8 +211,9 @@
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Plataforma.h" />
+    <ClInclude Include="Orbe.h" />
+    <ClInclude Include="AbelhaRainha.h" />
     <ClInclude Include="Projetil.h" />
-    <ClInclude Include="Dragao.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

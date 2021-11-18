@@ -21,7 +21,7 @@ public:
 	void colidindoComPlataforma();
 	void updateColisoesJanela();
 	bool updateColisoes(Entidade* pEn);
-	bool updateCombate(Entidade* pProjetil, Entidade* pInimigo);
+	bool updateCombate(Entidade* pOrbe, Entidade* pInimigo);
 	bool entidadeSaiuDaTela(Entidade* entidade);
 
 	//set

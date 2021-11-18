@@ -4,12 +4,13 @@ class Projetil :
     public Entidade
 {
 private:
+
+protected:
+
 public:
     Projetil();
-    Projetil(float dir_x, float dir_y, float velocidade, float x_jogador, float y_jogador);
     ~Projetil();
 
-    void renderProjetil();
     float getDirecao_x();
     float getDirecao_y();
 
@@ -18,7 +19,5 @@ public:
 
     void setPodeMatar(bool x);
     const bool getPodeMatar() const;
-
-    void updateProjetil();
 };
 

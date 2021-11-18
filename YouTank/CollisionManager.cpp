@@ -31,7 +31,7 @@ bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& 
 	float intersectX = abs(deltaX) - (outraMetadeTam.x + jogadorMetadeTam.x);
 	float intersectY = abs(deltaY) - (outraMetadeTam.y + jogadorMetadeTam.y);
 
-	if (intersectX < 0.f && intersectY < 0.f && entidade.getId() != ID_PROJETIL)
+	if (intersectX < 0.f && intersectY < 0.f && entidade.getId() != ID_ORBE)
 	{
 		push = std::min(std::max(push, 0.f), 1.f);
 
@@ -141,9 +141,9 @@ bool CollisionManager::updateColisoes(Entidade* pEn)
 	return verificaColisaoJogador(*pEn, direcao, push);
 }
 
-bool CollisionManager::updateCombate(Entidade* pProjetil, Entidade* pInimigo)
+bool CollisionManager::updateCombate(Entidade* pOrbe, Entidade* pInimigo)
 {
-	return pProjetil->intersecta(static_cast<Ente*>(pInimigo));
+	return pOrbe->intersecta(static_cast<Ente*>(pInimigo));
 }
 
 bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)

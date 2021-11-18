@@ -92,9 +92,9 @@ void FasePrimeira::updateMovimento()
 			listaEntidades.operator[](i)->getBody()->move(dir_x * rapidez, dir_y * rapidez);
 		}
 		break;
-		case ID_PROJETIL://move projeteis
+		case ID_ORBE://move projeteis
 		{
-			listaEntidades.operator[](i)->updateProjetil();
+			listaEntidades.operator[](i)->updateOrbe();
 		}
 		break;
 		case 32:
@@ -135,7 +135,7 @@ void FasePrimeira::updateColisoes()
 			
 		}
 		break;
-		case ID_PROJETIL:
+		case ID_ORBE:
 		{	//update colisoes do projetil com janela
 			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](counter)))
 			{
@@ -158,12 +158,12 @@ void FasePrimeira::updateCombate()
 	for (i = 0; !colidiu && i < listaEntidades.getTamanho(); i++)
 	{
 
-		if (listaEntidades.operator[](counter)->getId() == ID_PROJETIL)
+		if (listaEntidades.operator[](counter)->getId() == ID_ORBE)
 		{
-			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&dragao)))
+			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&abelha_rainha)))
 			{
 				listaEntidades.operator[](counter)->setShowing(false);
-				dragao.tomarDano(pJogador->getDano());
+				abelha_rainha.tomarDano(pJogador->getDano());
 			}
 			unsigned counter_2 = 0;
 			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
@@ -184,10 +184,10 @@ void FasePrimeira::updateCombate()
 		}
 		counter++;
 	}
-	if (dragao.EmFuria())
+	if (abelha_rainha.EmFuria())
 	{
 		spawnAbelhas();
-		dragao.curaVida(1);
+		abelha_rainha.curaVida(1);
 	}
 
 }
@@ -200,7 +200,7 @@ void FasePrimeira::update()
 	updateMovimento();
 	updateCombate();
 	pJogador->update();
-	dragao.update();
+	abelha_rainha.update();
 }
 
 
@@ -213,7 +213,7 @@ void FasePrimeira::renderFasePrimeira()
 		{
 			listaEntidades.operator[](i)->render();
 		}
-		dragao.renderDragao();
+		abelha_rainha.renderAbelhaRainha();
 		
 	}
 }

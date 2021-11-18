@@ -46,7 +46,7 @@ public:
     virtual const bool getPodeMatar() const;
 
     virtual void persegue();
-    virtual void updateProjetil();
+    virtual void updateOrbe();
 
     virtual void naColisao(sf::Vector2f direcao);
 };

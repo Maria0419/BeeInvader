@@ -2,7 +2,7 @@
 #include "ListaEntidades.h"
 #include "CollisionManager.h"
 #include "Jogador.h"
-#include "Projetil.h"
+#include "Orbe.h"
 #include "ListaEntidades.h"
 #include "Abelha.h"
 #include "Plataforma.h"

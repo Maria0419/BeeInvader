@@ -1,26 +1,25 @@
 #include "stdafx.h"
-#include "Dragao.h"
+#include "AbelhaRainha.h"
 #include "Global.h"
 
-Dragao::Dragao():
+AbelhaRainha::AbelhaRainha():
 	Inimigo(1000, 7),
 	barraVida(static_cast<Personagem*>(this), 1000.f, 20.f, 250.f, 25.f)
 {
-	id = ID_ROBOMBA; //j0g4d0r, 2 pois é rectangle shape
+	id = ID_RAINHA; //j0g4d0r, 2 pois é rectangle shape
 	setSize(300.f, 400.f);
 	setTexture("Imagens/queen_bee.png", 1.f);
 	setOriginCenter();
 	setPosition(1130.f, 250.f);
-	body.setScale(-1.f*body.getScale().x, body.getScale().y);
 	curaTimerMAX = 20.f;
 	curaTimer = curaTimerMAX;
 }
 
-Dragao::~Dragao()
+AbelhaRainha::~AbelhaRainha()
 {
 }
 
-const bool Dragao::EmFuria() const
+const bool AbelhaRainha::EmFuria() const
 {
 	if (vida < float(vidaMAX)/ 2)
 		return true;
@@ -28,7 +27,7 @@ const bool Dragao::EmFuria() const
 		return false;
 }
 
-void Dragao::curaVida(int x)
+void AbelhaRainha::curaVida(int x)
 {
 	if (EmFuria())
 	{
@@ -42,12 +41,12 @@ void Dragao::curaVida(int x)
 	}
 }
 
-void Dragao::update()
+void AbelhaRainha::update()
 {
 	barraVida.update();
 }
 
-void Dragao::renderDragao()
+void AbelhaRainha::renderAbelhaRainha()
 {
 	barraVida.renderBodyBack();
 	barraVida.render();
