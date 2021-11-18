@@ -34,9 +34,7 @@ void InputManager::updateAtaque()
 
 void InputManager::updateMousePos()
 {
-	//mousePosScreen = sf::Mouse::getPosition();
 	mousePosWindow = sf::Mouse::getPosition(*pGraphic->getWindow());
-	//mousePosView = pGraphic->getWindow()->mapPixelToCoords(sf::Mouse::getPosition(*pGraphic->getWindow()));
 }
 
 

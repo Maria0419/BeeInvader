@@ -24,7 +24,7 @@ FasePrimeira::~FasePrimeira()
 	
 }
 
-void FasePrimeira::spawnInimigos()
+void FasePrimeira::spawnAbelhas()
 {
 	//timer
 	if (spawnTimer < spawnTimerMAX)
@@ -37,6 +37,20 @@ void FasePrimeira::spawnInimigos()
 		contaInimigos++;
 		spawnTimer = 0.f;
 	}
+}
+
+void FasePrimeira::spawnCogumelo()
+{
+	if (spawnTimer < spawnTimerMAX)
+		spawnTimer += 5.f;
+	else if (contaInimigos < inimigosMAX) 
+	{
+		Cogumelo* cogu = new Cogumelo();
+		listaEntidades.incluaEntidade(static_cast<Entidade*>(cogu));
+		contaInimigos++;
+		spawnTimer = 0.f;
+	}
+	
 }
 
 void FasePrimeira::spawnPlataforma()
@@ -86,6 +100,8 @@ void FasePrimeira::updateMovimento()
 			listaEntidades.operator[](i)->updateProjetil();
 		}
 		break;
+		case 32:
+			listaEntidades.operator[](i)->getBody()->move(2.f, -1.f);
 		}
 
 	}
@@ -174,7 +190,7 @@ void FasePrimeira::updateCombate()
 	}
 	if (dragao.EmFuria())
 	{
-		spawnInimigos();
+		spawnAbelhas();
 		dragao.curaVida(1);
 	}
 
@@ -182,9 +198,10 @@ void FasePrimeira::updateCombate()
 
 void FasePrimeira::update()
 {
+	spawnCogumelo();
+	updateColisoes();
 	limpeza();
 	updateMovimento();
-	updateColisoes();
 	updateCombate();
 }
 

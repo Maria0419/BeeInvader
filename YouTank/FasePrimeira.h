@@ -26,7 +26,8 @@ public:
     ~FasePrimeira();
 
     //Funçoes
-    void spawnInimigos();
+    void spawnAbelhas();
+    void spawnCogumelo();
     void spawnPlataforma();
     
     void updateMovimento();

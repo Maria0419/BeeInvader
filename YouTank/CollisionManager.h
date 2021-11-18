@@ -16,7 +16,7 @@ public:
 	~CollisionManager();
 	
 	/*Funções*/
-	bool verificaColisao(Entidade& entidade, sf::Vector2f& direcao, float push);
+	bool verificaColisaoJogador(Entidade& entidade, sf::Vector2f& direcao, float push);
 	void colidindoComInimigo(Entidade entidade);
 	void colidindoComPlataforma();
 	void updateColisoesJanela();

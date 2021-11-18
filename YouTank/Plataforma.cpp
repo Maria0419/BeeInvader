@@ -11,7 +11,7 @@ Plataforma::Plataforma(float tam_x, float tam_y, float pos_x, float pos_y, float
 	setSize(tam_x, tam_y);
 	setPosition(pos_x, pos_y);
 	setCor(124, 124, 124, 200);
-	body.setOrigin(body.getSize() / 2.0f);
+	setOriginCenter();
 	body.rotate(angulo);
 }
 

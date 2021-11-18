@@ -28,8 +28,6 @@ public:
 	void setJogador(Jogador* pJogador);
 	void setGraphicManager(GraphicManager* pGM);
 	void setFase(Fase* pFase);
-
 	const sf::Vector2i getMousePos() const;
-	
 };
 

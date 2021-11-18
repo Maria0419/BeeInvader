@@ -80,4 +80,8 @@ void Entidade::updateProjetil()
 {
 }
 
+void Entidade::naColisao(sf::Vector2f direcao)
+{
+}
+
 

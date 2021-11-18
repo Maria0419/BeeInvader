@@ -4,5 +4,9 @@
 class Cogumelo :
 	public Inimigo
 {
+private:
+public:
+	Cogumelo();
+	~Cogumelo();
 };
 

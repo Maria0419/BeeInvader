@@ -18,7 +18,7 @@ CollisionManager::~CollisionManager()
 }
 
 
-bool CollisionManager::verificaColisao(Entidade& entidade, sf::Vector2f& direcao, float push)
+bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& direcao, float push)
 {
 	sf::Vector2f outraPosicao = entidade.getPosition();
 	sf::Vector2f outraMetadeTam = (entidade.getSize()/ 2.f);
@@ -128,7 +128,17 @@ void CollisionManager::updateColisoesJanela()
 bool CollisionManager::updateColisoes(Entidade* pEn)
 {
 	updateColisoesJanela();
-	return verificaColisao(*pEn, direcao, 0.0f);
+	float push;
+	switch (pEn->getId())
+	{
+	case 32:
+		push = 0.3f;
+		break;
+	default:
+		push = 0.0f;
+		break;
+	}
+	return verificaColisaoJogador(*pEn, direcao, push);
 }
 
 bool CollisionManager::updateCombate(Entidade* pProjetil, Entidade* pInimigo)

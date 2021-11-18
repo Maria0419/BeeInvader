@@ -37,5 +37,7 @@ public:
 
     virtual void persegue();
     virtual void updateProjetil();
+
+    virtual void naColisao(sf::Vector2f direcao);
 };
 

@@ -7,6 +7,7 @@
 #include "Abelha.h"
 #include "Plataforma.h"
 #include "Background.h"
+#include "Cogumelo.h"
 
 class Fase :
     public Ente
