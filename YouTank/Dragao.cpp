@@ -11,6 +11,8 @@ Dragao::Dragao():
 	setTexture("Imagens/dragon.png", 1.f);
 	setOriginCenter();
 	setPosition(1130.f, 250.f);
+	curaTimerMAX = 20.f;
+	curaTimer = curaTimerMAX;
 }
 
 Dragao::~Dragao()
@@ -19,25 +21,29 @@ Dragao::~Dragao()
 
 const bool Dragao::EmFuria() const
 {
-	if (vida < vida / 2)
+	if (vida < float(vidaMAX)/ 2)
 		return true;
 	else
 		return false;
 }
 
-void Dragao::tomarDano(int x)
-{
-	vida -= x;
-}
-
 void Dragao::curaVida(int x)
 {
-	vida += x;
+	if (EmFuria())
+	{
+		if (curaTimer < curaTimerMAX)
+			curaTimer += 1.f;
+		else
+		{
+			vida += x;
+			curaTimer = 0.f;
+		}
+	}
 }
 
-const bool Dragao::getVida() const
+void Dragao::update()
 {
-	return vida;
+	barraVida.update();
 }
 
 void Dragao::renderDragao()

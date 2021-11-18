@@ -23,7 +23,6 @@ public:
     
     void naColisao(sf::Vector2f direcao);
 
-    void updateBarraVida();
     void updateAnimacao();
     void update();
 

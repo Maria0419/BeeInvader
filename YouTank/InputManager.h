@@ -18,7 +18,6 @@ private:
 
 public:
 	InputManager();
-	InputManager(float dir_x, float dir_y);
 	~InputManager();
 
 	void updateAtaque();

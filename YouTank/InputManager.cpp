@@ -9,10 +9,6 @@ InputManager::InputManager():
 	
 }
 
-InputManager::InputManager(float dir_x, float dir_y)
-{
-}
-
 InputManager::~InputManager()
 {
 	

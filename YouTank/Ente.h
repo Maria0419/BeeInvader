@@ -38,6 +38,7 @@ public:
 	void renderTexto(sf::Text texto);
 	void renderBodyBack();
 	bool contem(float x, float y);
+	bool intersecta( Ente* pE);
 
 	//setters
 	

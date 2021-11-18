@@ -2,7 +2,8 @@
 #include "Abelha.h"
 #include "Global.h"
 
-Abelha::Abelha(float dir_x, float dir_y)
+Abelha::Abelha(float dir_x, float dir_y):
+	Inimigo(1, 1)
 {
 	id = ID_ABELHA; 
 	initShape();

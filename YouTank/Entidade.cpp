@@ -1,12 +1,27 @@
 #include "stdafx.h"
 #include "Entidade.h"
 
-Entidade::Entidade() :
+Entidade::Entidade(int hp, int dmg) :
 	Ente(),
-	rapidez(100.f)
+	rapidez(100.f),
+	dano(dmg),
+	vida(hp),
+	podeMatar(true)
 {
+	vidaMAX = hp;
+	vida = vidaMAX;
 	direcao.x = 1.f;
 	direcao.y = 0.f;
+}
+
+Entidade::Entidade():
+	Ente(),
+	rapidez(100.f),
+	dano(0),
+	vida(0),
+	vidaMAX(0),
+	podeMatar(true)
+{
 }
 
 Entidade::~Entidade()
@@ -15,6 +30,19 @@ Entidade::~Entidade()
 
 void Entidade::executar()
 {
+}
+
+void Entidade::tomarDano(int dmg)
+{
+	vida -= dmg;
+
+	if (vida < 0)
+		vida = 0;
+}
+
+const int Entidade::getDano() const
+{
+	return dano;
 }
 
 void Entidade::setRapidez(float rapidez)
@@ -49,7 +77,7 @@ float Entidade::getVelocidadeY()
 
 void Entidade::move(float dx, float dy)
 {
-	this->body.move(dx, dy);
+	body.move(dx, dy);
 }
 
 float Entidade::getDirecao_x()

@@ -84,7 +84,7 @@ void FasePrimeira::updateMovimento()
 	{
 		switch (listaEntidades.operator[](i)->getId())
 		{
-		case 11102://move inimigos
+		case ID_ABELHA://move inimigos
 		{
 			float dir_x = listaEntidades.operator[](i)->getDirecao_x();
 			float dir_y = listaEntidades.operator[](i)->getDirecao_y();
@@ -92,11 +92,8 @@ void FasePrimeira::updateMovimento()
 			listaEntidades.operator[](i)->getBody()->move(dir_x * rapidez, dir_y * rapidez);
 		}
 		break;
-		case 312://move projeteis
+		case ID_PROJETIL://move projeteis
 		{
-			//float dir_x = listaEntidades.operator[](i)->getDirecao_x();
-			//float dir_y = listaEntidades.operator[](i)->getDirecao_y();
-			//float rapidez = listaEntidades.operator[](i)->getRapidez();
 			listaEntidades.operator[](i)->updateProjetil();
 		}
 		break;
@@ -126,14 +123,13 @@ void FasePrimeira::updateColisoes()
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](counter)))
 			{
-				listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
-				counter--;
+				pJogador->tomarDano(listaEntidades.operator[](counter)->getDano());
+				listaEntidades.operator[](counter)->setShowing(false);
 				contaInimigos--;
 			}
 			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](counter)))
 			{
-				listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
-				counter--;
+				listaEntidades.operator[](counter)->setShowing(false);
 				contaInimigos--;
 			}
 			
@@ -167,7 +163,7 @@ void FasePrimeira::updateCombate()
 			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&dragao)))
 			{
 				listaEntidades.operator[](counter)->setShowing(false);
-				dragao.tomarDano(30);
+				dragao.tomarDano(pJogador->getDano());
 			}
 			unsigned counter_2 = 0;
 			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
@@ -203,6 +199,8 @@ void FasePrimeira::update()
 	limpeza();
 	updateMovimento();
 	updateCombate();
+	pJogador->update();
+	dragao.update();
 }
 
 

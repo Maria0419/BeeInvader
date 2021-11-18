@@ -12,7 +12,7 @@ Plataforma::Plataforma(float tam_x, float tam_y, float pos_x, float pos_y, float
 	setPosition(pos_x, pos_y);
 	setCor(124, 124, 124, 200);
 	setOriginCenter();
-	body.rotate(angulo);
+	rotate(angulo);
 }
 
 Plataforma::Plataforma():

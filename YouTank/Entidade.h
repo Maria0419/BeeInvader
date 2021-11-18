@@ -11,12 +11,22 @@ protected:
     sf::Vector2f destino;
     float rapidez;
     bool podeMatar;
+
+    //vida e dano
+    int dano;
+    int vida;
+    int vidaMAX;
    
 
 public:
+    Entidade(int hp, int dmg);
     Entidade();
     ~Entidade();
     virtual void executar();
+
+    //vida e dano
+    virtual void tomarDano(int dmg);
+    const int getDano() const;
 
     void setRapidez(float rapidez);
     float getRapidez() const;

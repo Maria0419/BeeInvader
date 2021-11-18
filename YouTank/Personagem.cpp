@@ -3,22 +3,18 @@
 
 Personagem::Personagem():
 	Entidade(),
-	dano(0),
 	pontos(0),
 	alturaPulo(3.f),
 	podePular(false),
 	cooldownAtaque(0.f),
 	cooldownAtaqueMax(0.f),
-	vida(0),
-	vidaMAX(0),
 	podeAtacar(true)
 {
 
 }
 
 Personagem::Personagem(int n_vida, int dmg) :
-	Entidade(),
-	dano(dmg),
+	Entidade(n_vida, dmg),
 	pontos(0),
 	alturaPulo(3.f),
 	podePular(false),
@@ -26,20 +22,11 @@ Personagem::Personagem(int n_vida, int dmg) :
 	cooldownAtaqueMax(0.f),
 	podeAtacar(true)
 {
-	vidaMAX = n_vida;
-	vida = 33;
+	
 }
 
 Personagem::~Personagem()
 {
-}
-
-void Personagem::tomarDano(int dmg)
-{
-	vida -= dmg;
-
-	if (vida < 0)
-		vida = 0;
 }
 
 const int Personagem::getVida() const

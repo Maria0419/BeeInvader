@@ -44,6 +44,10 @@ void Fase::limpeza()
 	}
 }
 
+void Fase::update()
+{
+}
+
 
 void Fase::setJogador(Jogador* pJ)
 {
