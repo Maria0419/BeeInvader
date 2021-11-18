@@ -2,7 +2,7 @@
 #include "GameState.h"
 
 //Construtora e Destrutora
-GameState::GameState(std::stack<State*>* state, InputManager* pIM, int f):
+GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f):
 	State(state),
 	fasePrimeira(NULL)
 {

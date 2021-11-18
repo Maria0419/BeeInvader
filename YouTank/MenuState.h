@@ -13,7 +13,7 @@ private:
     void initButtons();
 
 public:
-    MenuState(InputManager* pIM, std::stack<State*>* state);
+    MenuState(std::stack<State*>* state, InputManager* pIM);
     ~MenuState();
 
     const short getState();

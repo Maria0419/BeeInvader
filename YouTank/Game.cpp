@@ -31,7 +31,7 @@ Game::~Game()
 
 void Game::initStates()
 {
-	states.push(new MenuState(&inputManager, &states));
+	states.push(new MenuState(&states, &inputManager));
 }
 
 void Game::setGraphicManager()

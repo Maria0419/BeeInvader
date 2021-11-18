@@ -13,7 +13,7 @@ private:
 public:
 
     //Construtora e Destrutora
-    GameState(std::stack<State*>* state, InputManager* pIM, int fase);
+    GameState(std::stack<State*>* state, InputManager* pIM, short fase);
     ~GameState();
 
     const short getState();
