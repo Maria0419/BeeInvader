@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "Plataforma.h"
-
+#include "Global.h"
 
 
 Plataforma::Plataforma(float tam_x, float tam_y, float pos_x, float pos_y, float angulo):
 	Obstaculo()
 {
-	id = 44042; //pl4t4f0rm4, 2 pois é um Rectangle shape
+	id = ID_PLATAFORMA; //pl4t4f0rm4, 2 pois é um Rectangle shape
 	aparece = true;
 	setSize(tam_x, tam_y);
 	setPosition(pos_x, pos_y);

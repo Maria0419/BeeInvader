@@ -194,6 +194,7 @@
     <ClInclude Include="FasePrimeira.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="Inimigo.h" />
     <ClInclude Include="InimigoTerrestre.h" />

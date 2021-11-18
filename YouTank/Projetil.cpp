@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Projetil.h"
+#include "Global.h"
 
 Projetil::Projetil()
 {
@@ -8,7 +9,7 @@ Projetil::Projetil()
 
 Projetil::Projetil(float pos_x, float pos_y, float dir_x, float dir_y, float velocidade)
 {
-	id = 312;
+	id = ID_PROJETIL;
 	aparece = true;
 	podeMatar = true;
 	texture.loadFromFile("Imagens/bola.png");

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "CollisionManager.h"
+#include "Global.h"
 
 
 CollisionManager::CollisionManager():
@@ -30,7 +31,7 @@ bool CollisionManager::verificaColisao(Entidade& entidade, sf::Vector2f& direcao
 	float intersectX = abs(deltaX) - (outraMetadeTam.x + jogadorMetadeTam.x);
 	float intersectY = abs(deltaY) - (outraMetadeTam.y + jogadorMetadeTam.y);
 
-	if (intersectX < 0.f && intersectY < 0.f && entidade.getId() != 312)
+	if (intersectX < 0.f && intersectY < 0.f && entidade.getId() != ID_PROJETIL)
 	{
 		push = std::min(std::max(push, 0.f), 1.f);
 
@@ -72,11 +73,11 @@ bool CollisionManager::verificaColisao(Entidade& entidade, sf::Vector2f& direcao
 				direcao.y = -1.0f;
 			}
 		}
-		if (entidade.getId() == 1110)
+		if (entidade.getId() == ID_INIMIGO)
 		{
 	
 		}
-		else if (entidade.getId() == 44042)
+		else if (entidade.getId() == ID_PLATAFORMA)
 		{
 			
 		}

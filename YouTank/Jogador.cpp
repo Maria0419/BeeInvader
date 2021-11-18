@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "Jogador.h"
+#include "Global.h"
 
 void Jogador::initShape()
 {
-	id = 402; //j0g4d0r, 2 pois é rectangle shape
+	id = ID_JOGADOR; //j0g4d0r, 2 pois é rectangle shape
 	setSize(50.f, 50.f);
 	setTexture("Imagens/tank.png", 1.f);
 	body.setOrigin(getSize() / 2.0f);

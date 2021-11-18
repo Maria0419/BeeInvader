@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "InimigoTerrestre.h"
+#include "Global.h"
 
 InimigoTerrestre::InimigoTerrestre(float dir_x, float dir_y)
 {
-	id = 11102; // 1n1m1g0
+	id = ID_INIMIGO; 
 	initShape();
 	rapidez = 5.f;
 	aparece = true;
@@ -15,7 +16,7 @@ InimigoTerrestre::InimigoTerrestre(float dir_x, float dir_y)
 
 InimigoTerrestre::InimigoTerrestre()
 {
-	id = 11102; // 1n1m1g0
+	id = ID_INIMIGO; // 1n1m1g0
 	initShape();
 }
 

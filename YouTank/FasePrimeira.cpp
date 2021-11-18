@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "FasePrimeira.h"
+#include "Global.h"
 
 void FasePrimeira::initInimigo()
 {
@@ -11,7 +12,7 @@ void FasePrimeira::initInimigo()
 
 FasePrimeira::FasePrimeira():
 	Fase(),
-	background("Imagens/destroyedCity.png", 1.f)
+	background("Imagens/background_halo.jpg", 0.6f)
 {
 	initInimigo();
 	collisionManager.setGraphicManager(pGraphic);
@@ -100,12 +101,12 @@ void FasePrimeira::updateColisoes()
 		
 		switch (listaEntidades.operator[](counter)->getId())
 		{
-		case 44042://update colisoes com plataforma
+		case ID_PLATAFORMA://update colisoes com plataforma
 		{
 			collisionManager.updateColisoes(listaEntidades.operator[](counter));
 		}
 		break;
-		case 11102://update colisoes do player com inimigos e janela
+		case ID_INIMIGO://update colisoes do player com inimigos e janela
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](counter)))
 			{
@@ -122,7 +123,7 @@ void FasePrimeira::updateColisoes()
 			
 		}
 		break;
-		case 312://update colisoes do projetil com janela
+		case ID_PROJETIL://update colisoes do projetil com janela
 		{
 			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](counter)))
 			{
@@ -146,12 +147,12 @@ void FasePrimeira::updateCombate()
 	{
 		if (listaEntidades.operator[](counter)->getPodeMatar())
 		{
-			if (listaEntidades.operator[](counter)->getId() == 312)
+			if (listaEntidades.operator[](counter)->getId() == ID_PROJETIL)
 			{
 				unsigned counter_2 = 0;
 				for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
 				{
-					if (listaEntidades.operator[](counter_2)->getId() == 11102)
+					if (listaEntidades.operator[](counter_2)->getId() == ID_INIMIGO)
 					{
 						if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
 						{

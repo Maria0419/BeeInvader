@@ -3,8 +3,11 @@
 
 void MenuState::initButtons()
 {
-	buttons["FASE_1"] = new Button(550, 200, 200, 50, "Primeira Fase");
-	buttons["SAIR"] = new Button(550, 275, 200, 50, "Sair");
+	buttons["NOVO_JOGO"] = new Button(550, 100, 200, 50, "Novo Jogo");
+	buttons["FASE_1"] = new Button(550, 175, 200, 50, "Primeira Fase");
+	buttons["FASE_2"] = new Button(550, 250, 200, 50, "Segunda Fase");
+	buttons["RANKING"] = new Button(550, 325, 200, 50, "Ranking");
+	buttons["SAIR"] = new Button(550, 400, 200, 50, "Sair");
 }
 
 MenuState::MenuState(InputManager* pIM, std::stack<State*>* state):
@@ -40,7 +43,7 @@ void MenuState::updateButtons()
 {
 	for (auto& it : buttons)
 	{
-		it.second->update(pInput->getMousePos().x, pInput->getMousePos().y);
+		it.second->update((const float) (pInput->getMousePos().x), (const float) (pInput->getMousePos().y));
 	}
 
 	if (buttons["FASE_1"]->estaPressionado())

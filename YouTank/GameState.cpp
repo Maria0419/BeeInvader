@@ -3,7 +3,8 @@
 
 //Construtora e Destrutora
 GameState::GameState(std::stack<State*>* state, InputManager* pIM, int f):
-	State(state)
+	State(state),
+	fasePrimeira(NULL)
 {
 	pInput = pIM;
 	stateID = GAME_STATE;
