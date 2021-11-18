@@ -13,7 +13,9 @@ public:
 
     float getDirecao_x();
     float getDirecao_y();
-    void persegue();
+
+    void setShowing(bool x);
+    const bool getShowing() const;
     
 };
 

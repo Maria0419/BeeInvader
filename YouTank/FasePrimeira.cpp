@@ -11,7 +11,7 @@ void FasePrimeira::initInimigo()
 
 FasePrimeira::FasePrimeira():
 	Fase(),
-	background("Imagens/backgroundCidade.jpg", 0.8f)
+	background("Imagens/destroyedCity.png", 1.f)
 {
 	initInimigo();
 	collisionManager.setGraphicManager(pGraphic);
@@ -20,7 +20,7 @@ FasePrimeira::FasePrimeira():
 
 FasePrimeira::~FasePrimeira()
 {
-	
+	listaEntidades.limpaLista();
 }
 
 void FasePrimeira::spawnInimigos()
@@ -144,26 +144,33 @@ void FasePrimeira::updateCombate()
 	unsigned counter = 0;
 	for (i = 0; !colidiu && i < listaEntidades.getTamanho(); i++)
 	{
-		unsigned counter_2 = 0;
-		if (listaEntidades.operator[](counter)->getId() == 312) //se eh projetil
+		if (listaEntidades.operator[](counter)->getPodeMatar())
 		{
-			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
+			if (listaEntidades.operator[](counter)->getId() == 312)
 			{
-				if (listaEntidades.operator[](counter_2)->getId() == 11102) //se eh inimigo
+				unsigned counter_2 = 0;
+				for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
 				{
-					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2))) //se colidem
+					if (listaEntidades.operator[](counter_2)->getId() == 11102)
 					{
-						listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
-						listaEntidades.destruaEntidade(listaEntidades.operator[](counter_2));
-						contaInimigos--;
-						colidiu = true;
+						if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
+						{
+							//listaEntidades.operator[](counter)->setShowing(false);
+							listaEntidades.destruaEntidade(listaEntidades.operator[](counter_2));
+							counter_2--;
+							contaInimigos--;
+							//listaEntidades.operator[](counter)->setPodeMatar(false);
+							colidiu = true;
+						}
 					}
+					counter_2++;
 				}
-				counter_2++;
 			}
 		}
+		
 		counter++;
 	}
+
 }
 
 void FasePrimeira::update()
@@ -180,7 +187,11 @@ void FasePrimeira::renderFasePrimeira()
 	background.renderBackground();
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{
-		listaEntidades.operator[](i)->setShowing(true);
-		listaEntidades.operator[](i)->render();
+		if (listaEntidades.operator[](i)->getShowing())
+		{
+			listaEntidades.operator[](i)->render();
+		}
+		//robomba.render();
+		
 	}
 }

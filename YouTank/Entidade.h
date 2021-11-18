@@ -9,6 +9,7 @@ protected:
     sf::Vector2f velocidade;
     sf::Vector2f direcao;
     float rapidez;
+    bool podeMatar;
    
 
 public:
@@ -29,6 +30,9 @@ public:
     
     virtual float getDirecao_x();
     virtual float getDirecao_y();
+
+    virtual void setPodeMatar(bool x);
+    virtual const bool getPodeMatar() const;
 
     virtual void persegue();
 };

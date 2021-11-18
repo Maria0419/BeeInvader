@@ -36,11 +36,11 @@ public:
 	//setters
 	
 	static void setGraphicManager(GraphicManager* pGM);
-	void setShowing(bool x);
+	virtual void setShowing(bool x);
 
 	//Getters
 	sf::RectangleShape* getBody();
-	const bool getShowing() const;
+	virtual const bool getShowing() const;
 	sf::Vector2f getPosition() const;
 	sf::FloatRect getBounds() const;
 	sf::Vector2f getSize() const;

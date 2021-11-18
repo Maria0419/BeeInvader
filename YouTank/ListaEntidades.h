@@ -12,6 +12,7 @@ public:
 	~ListaEntidades();
 	void incluaEntidade(Entidade* pE);
 	void destruaEntidade(Entidade* pE);
+	void limpaLista();
 	int getTamanho();
 
 	Entidade* operator[](int i);

@@ -62,6 +62,16 @@ float Entidade::getDirecao_y()
 	return 0.0f;
 }
 
+void Entidade::setPodeMatar(bool x)
+{
+	podeMatar = x;
+}
+
+const bool Entidade::getPodeMatar() const
+{
+	return false;
+}
+
 void Entidade::persegue()
 {
 }

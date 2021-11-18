@@ -19,11 +19,12 @@ public:
 
 	void incluaElemento(Elemento<TIPO>* pElemento);
 	void incluaInfo(TIPO* pInfo);
-	void deletaElemento(Elemento<TIPO>* pElemento);
 	void deletaInfo(TIPO* pInfo);
+	Elemento<TIPO>* procuraElemento(TIPO* pInfo);
 
 	Elemento<TIPO>* getPrimeiro();
 	Elemento<TIPO>* getAtual();
+	TIPO* operator[](int i);
 
 	int getTamanho();
 };
@@ -64,26 +65,24 @@ void Lista<TIPO>::limpaLista()
 template<class TIPO>
 void Lista<TIPO>::incluaElemento(Elemento<TIPO>* pElemento)
 {
-	if (pElemento != NULL)
+	if (pElemento)
 	{
 		if (pPrimeiro == NULL)
 		{
 			pPrimeiro = pElemento;
-			pAtual = pPrimeiro;
+			pAtual = pElemento;
+			pPrimeiro->setAnterior(NULL);
+			pAtual->setProximo(NULL);
 		}
 		else
 		{
-			pElemento->setAnterior(pAtual);
 			pAtual->setProximo(pElemento);
+			pElemento->setAnterior(pAtual);
 			pAtual = pAtual->getProximo();
+			pAtual->setProximo(NULL);
 		}
-		pPrimeiro->setAnterior(NULL);
-		pAtual->setProximo(NULL);
 	}
-	else
-	{
-		std::cout << "Erro, elemento nulo na lista?" << std::endl;
-	}
+	
 }
 
 template<class TIPO>
@@ -103,51 +102,41 @@ void Lista<TIPO>::incluaInfo(TIPO* pInfo)
 }
 
 template<class TIPO>
-inline void Lista<TIPO>::deletaElemento(Elemento<TIPO>* pElemento)
+void Lista<TIPO>::deletaInfo(TIPO* pElemento)
 {
+	Elemento<TIPO>* pAux = procuraElemento(pElemento);
+	if (pAux->getAnterior() != NULL && pAux->getProximo() != NULL)
+	{
+		pAux->getAnterior()->setProximo(pAux->getProximo());
+		pAux->getProximo()->setAnterior(pAux->getAnterior());
+	}
+	else if (pAux->getAnterior() == NULL && pAux->getProximo() != NULL)
+	{
+		pPrimeiro = pAux->getProximo();
+		pPrimeiro->setAnterior(NULL);
+	}
+	else if (pAux->getProximo() == NULL && pAux->getAnterior() != NULL)
+	{
+		pAtual = pAux->getAnterior();
+		pAtual->setProximo(NULL);
+	}
+	else
+		pPrimeiro = NULL;
+	pAux->deletaInfo();
+	delete pAux;
+	pAux = NULL;
+	tamanho--;
 }
 
 template<class TIPO>
-void Lista<TIPO>::deletaInfo(TIPO* pElemento)
+inline Elemento<TIPO>* Lista<TIPO>::procuraElemento(TIPO* pInfo)
 {
-	bool deleted = false;
 	Elemento<TIPO>* pAux = pPrimeiro;
-	Elemento<TIPO>* pProximo = NULL;
-	Elemento<TIPO>* pAnterior = NULL;
-	while (pAux != NULL && !deleted)
+	while (pAux != NULL && pAux->getInfo() != pInfo)
 	{
-		pProximo = pAux->getProximo();
-		if (pAux->getInfo() == pElemento)
-		{
-			if (pAnterior != NULL && pProximo != NULL) //se o elemento a ser deletado estiver no meio da lista
-			{
-				pAnterior->setProximo(pProximo);
-				pProximo->setAnterior(pAnterior);
-			}
-				
-			else if (pAnterior != NULL && pProximo == NULL) //se o elemento a ser deletado for o ultimo da lista
-			{
-				pAnterior->setProximo(NULL);
-				pAtual = pAnterior;
-			}
-			else if (pAnterior == NULL && pProximo != NULL) //se o elemento a ser deletado for o primeiro da lista
-			{
-				pPrimeiro = pProximo;
-				pPrimeiro->setAnterior(NULL);
-			}
-			else
-				pPrimeiro = NULL;
-			pAux->deletaInfo();
-			delete pAux;
-			tamanho--;
-			deleted = true;
-		}
-		else
-		{
-			pAnterior = pAux;
-			pAux = pAux->getProximo();
-		}
+		pAux = pAux->getProximo();
 	}
+	return pAux;
 }
 
 template<class TIPO>
@@ -160,6 +149,18 @@ template<class TIPO>
 Elemento<TIPO>* Lista<TIPO>::getAtual()
 {
 	return pAtual;
+}
+
+template<class TIPO>
+inline TIPO* Lista<TIPO>::operator[](int i)
+{
+	Elemento<TIPO>* pAux = pPrimeiro;
+	while (pAux != NULL && i > 0)
+	{
+		pAux = pAux->getProximo();
+		i--;
+	}
+	return pAux->getInfo();
 }
 
 template<class TIPO>

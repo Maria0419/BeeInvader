@@ -29,6 +29,11 @@ void ListaEntidades::destruaEntidade(Entidade* pE)
 
 }
 
+void ListaEntidades::limpaLista()
+{
+	listaEntidades.limpaLista();
+}
+
 
 int ListaEntidades::getTamanho()
 {
@@ -37,18 +42,6 @@ int ListaEntidades::getTamanho()
 
 Entidade* ListaEntidades::operator[](int i)
 {
-	Entidade* pAux = NULL;
-	Elemento<Entidade> *pAuxEn = NULL;
-	pAuxEn = listaEntidades.getPrimeiro();
-
-	while (i > 0)
-	{
-		pAuxEn = pAuxEn->getProximo();
-		i--;
-	}
-		
-	pAux = pAuxEn->getInfo();
-
-	return pAux;
+	return listaEntidades.operator[](i);
 }
 
