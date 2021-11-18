@@ -18,7 +18,7 @@ void Jogador::initBarraVida()
 }
 
 Jogador::Jogador():
-	Personagem(100,5),
+	Personagem(100,100),
 	barraVida(static_cast<Personagem*>(this),25.f, 20.f, 210.f, 25.f)
 {
 	rapidez = 25.f;
@@ -42,11 +42,6 @@ void Jogador::setOlhaEsquerda(bool x)
 const bool Jogador::olhandoEsquerda() const
 {
 	return olhaEsquerda;
-}
-
-void Jogador::updateBarraVida()
-{
-	
 }
 
 void Jogador::renderBarraVida()

@@ -7,14 +7,16 @@ class Dragao:
 {
 private:
 	BarraVida barraVida;
+	float curaTimer;
+	float curaTimerMAX;
 
 public:
 	Dragao();
 	~Dragao();
 	const bool EmFuria() const;
-	void tomarDano(int dmg);
 	void curaVida(int x);
-	const bool getVida() const;
+
+	void update();
 	void renderDragao();
 };
 

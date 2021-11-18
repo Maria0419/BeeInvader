@@ -23,7 +23,7 @@ private:
 
 	//Fases
 	Fase fase;
-	Fase f1;
+
 	//aux
 	sf::Clock clock;
 	float deltaTime;

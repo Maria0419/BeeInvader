@@ -9,10 +9,6 @@ InputManager::InputManager():
 	
 }
 
-InputManager::InputManager(float dir_x, float dir_y)
-{
-}
-
 InputManager::~InputManager()
 {
 	
@@ -34,9 +30,7 @@ void InputManager::updateAtaque()
 
 void InputManager::updateMousePos()
 {
-	//mousePosScreen = sf::Mouse::getPosition();
 	mousePosWindow = sf::Mouse::getPosition(*pGraphic->getWindow());
-	//mousePosView = pGraphic->getWindow()->mapPixelToCoords(sf::Mouse::getPosition(*pGraphic->getWindow()));
 }
 
 

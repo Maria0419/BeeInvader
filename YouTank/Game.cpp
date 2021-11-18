@@ -60,17 +60,14 @@ void Game::update()
 
 	if (!states.empty())
 	{
-		
+		states.top()->update(deltaTime);
 		if (states.top()->getState() == MENU_STATE)
 		{
-			states.top()->update(deltaTime);
 		}
 
 		if (states.top()->getState() == GAME_STATE)
 		{
-			inputManager.update(deltaTime);
-			jogador1.update();
-			states.top()->update(deltaTime);
+			inputManager.update(deltaTime);			
 		}
 
 		if (states.top()->getTerminar())

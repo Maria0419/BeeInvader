@@ -38,7 +38,7 @@ void Ente::setBodyBack(float x, float y, float largura, float altura)
 {
 	bodyBack.setPosition(x, y);
 	bodyBack.setSize(sf::Vector2f(largura, altura));
-	bodyBack.setFillColor(sf::Color(255, 255, 255, 55));
+	bodyBack.setFillColor(sf::Color(255, 255, 255, 10));
 	bodyBack.setOutlineColor(sf::Color::Black);
 	bodyBack.setOutlineThickness(2.f);
 }
@@ -124,6 +124,14 @@ bool Ente::contem(float x, float y)
 		else
 			return false;
 	}
+}
+
+bool Ente::intersecta(Ente* pE)
+{
+	if (this->getBounds().intersects(pE->getBounds()))
+		return true;
+	else
+		return false;
 }
 
 void Ente::setGraphicManager(GraphicManager* pGM)

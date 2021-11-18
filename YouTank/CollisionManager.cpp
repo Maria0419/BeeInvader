@@ -133,10 +133,7 @@ bool CollisionManager::updateColisoes(Entidade* pEn)
 
 bool CollisionManager::updateCombate(Entidade* pProjetil, Entidade* pInimigo)
 {
-	if (pProjetil->getBounds().intersects(pInimigo->getBounds()))
-		return true;
-	else
-		return false;
+	return pProjetil->intersecta(static_cast<Ente*>(pInimigo));
 }
 
 bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
