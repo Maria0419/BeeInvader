@@ -1,7 +1,7 @@
 #pragma once
 #include "Lista.h"
-#include "Entidade.h"
 
+class Entidade;
 class ListaEntidades
 {
 private:

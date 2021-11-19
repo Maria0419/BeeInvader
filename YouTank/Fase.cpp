@@ -8,7 +8,7 @@ Fase::Fase():
 	pEn(NULL),
 	listaEntidades()
 {
-	Ente::pLista = &listaEntidades;
+	
 }
 
 Fase::~Fase()

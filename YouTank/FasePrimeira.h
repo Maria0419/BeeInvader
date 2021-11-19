@@ -13,12 +13,7 @@ private:
     AbelhaRainha abelha_rainha;
 
     //Timer dos inimigos
-    float spawnTimer;
-    float spawnTimerMAX;
-    float ferraoTimer;
-    float ferraoTimerMAX;
-    unsigned int abelhasMAX;
-    unsigned int contaAbelhas;
+    
     unsigned int cogumelosMAX;
     unsigned int contaCogu;
 
@@ -30,7 +25,6 @@ public:
     ~FasePrimeira();
 
     //Funçoes
-    void spawnAbelhas();
     void spawnCogumelo();
     void spawnPlataforma();
     

@@ -4,12 +4,7 @@
 
 void FasePrimeira::initInimigo()
 {
-	spawnTimerMAX = 100.f;
-	spawnTimer = spawnTimerMAX;
-	ferraoTimerMAX = 500.f;
-	ferraoTimer = ferraoTimerMAX;
-	abelhasMAX = 10;
-	contaAbelhas = 0;
+	abelha_rainha.setJogadorAlvo(&(*pJogador));
 	contaCogu = 0;
 	cogumelosMAX = rand() % 3 + 2;
 }
@@ -18,6 +13,7 @@ FasePrimeira::FasePrimeira():
 	Fase(),
 	background("Imagens/floresta.png", 2.f)
 {
+	Ente::pLista = &listaEntidades;
 	initInimigo();
 	collisionManager.setGraphicManager(pGraphic);
 	collisionManager.setJogador(pJogador);
@@ -26,21 +22,6 @@ FasePrimeira::FasePrimeira():
 FasePrimeira::~FasePrimeira()
 {
 	
-}
-
-void FasePrimeira::spawnAbelhas()
-{
-	//timer
-	if (spawnTimer < spawnTimerMAX)
-		spawnTimer += 5.f;
-
-	else if (contaAbelhas < abelhasMAX)
-	{
-		Abelha* inim = new Abelha();
-		listaEntidades.incluaEntidade(static_cast<Entidade*>(inim));
-		contaAbelhas++;
-		spawnTimer = 0.f;
-	}
 }
 
 void FasePrimeira::spawnCogumelo()
@@ -124,12 +105,12 @@ void FasePrimeira::updateColisoes()
 			{
 				pJogador->tomarDano(listaEntidades.operator[](i)->getDano());
 				listaEntidades.operator[](i)->setShowing(false);
-				contaAbelhas--;
+				abelha_rainha.morreuAbelha();
 			}
 			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
-				contaAbelhas--;
+				abelha_rainha.morreuAbelha();
 			}
 			
 		}
@@ -179,7 +160,7 @@ void FasePrimeira::updateCombate()
 					{
 						listaEntidades.operator[](counter_2)->setShowing(false);
 						listaEntidades.operator[](counter)->setShowing(false);
-						contaAbelhas--;
+						abelha_rainha.morreuAbelha();
 						colidiu = true;
 					}
 				}
@@ -189,28 +170,11 @@ void FasePrimeira::updateCombate()
 		}
 		counter++;
 	}
-	if (abelha_rainha.emFuria())
-	{
-		spawnAbelhas();
-		abelha_rainha.curaVida(3);
-	}
-
 }
 
 void FasePrimeira::updateBoss()
 {
 	abelha_rainha.update();
-	if (ferraoTimer < ferraoTimerMAX)
-		ferraoTimer += 5.f;
-	else
-	{
-		Ferrao* ferrao = new Ferrao(abelha_rainha.getPosition().x, abelha_rainha.getPosition().y,
-									pJogador->getPosition().x, pJogador->getPosition().y);
-		listaEntidades.incluaEntidade(static_cast<Entidade*>(ferrao));
-		ferraoTimer = 0.f;
-	}
-		
-
 }
 
 void FasePrimeira::update()

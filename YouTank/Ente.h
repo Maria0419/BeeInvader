@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "GraphicManager.h"
-class ListaEntidades;
+#include "ListaEntidades.h"
 
 class Ente
 {

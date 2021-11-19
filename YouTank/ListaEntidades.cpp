@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ListaEntidades.h"
+#include "Entidade.h"
 
 ListaEntidades::ListaEntidades():
 	listaEntidades()
