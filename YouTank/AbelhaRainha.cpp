@@ -100,7 +100,7 @@ void AbelhaRainha::spawnAbelhas()
 	else if (contaAbelhas < abelhasMAX)
 	{
 		Abelha* inim = new Abelha();
-		std::cout << "nova abelha" << std::endl;
+		std::cout << contaAbelhas << std::endl;
 		pLista->incluaEntidade(static_cast<Entidade*>(inim));
 		contaAbelhas++;
 		spawnTimer = 0;

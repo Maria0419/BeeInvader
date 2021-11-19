@@ -1,5 +1,6 @@
 #pragma once
 #include "Personagem.h"
+#include "Orbe.h"
 #include "BarraVida.h"
 
 class Jogador :
@@ -8,6 +9,7 @@ class Jogador :
 private:
 
     BarraVida barraVida;
+    Orbe* pOrbe;
 
     //private functions
     void initShape();
@@ -22,8 +24,10 @@ public:
     const bool olhandoEsquerda() const;
     
     void naColisao(sf::Vector2f direcao);
+    void ataca(float dir_x, float dir_y);
 
     void updateAnimacao();
+    
     void update();
 
     void renderBarraVida();    
