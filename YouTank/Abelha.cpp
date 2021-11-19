@@ -2,23 +2,13 @@
 #include "Abelha.h"
 #include "Global.h"
 
-Abelha::Abelha(float dir_x, float dir_y):
+Abelha::Abelha():
 	Inimigo(1, 1)
 {
 	id = ID_ABELHA; 
 	initShape();
-	rapidez = 5.f;
+	setRapidez(8.f);
 	aparece = true;
-	dir_x -= getPosition().x;
-	dir_y -= getPosition().y;
-	direcao.x = dir_x / sqrtf(static_cast<float>(pow(dir_x, 2)) + static_cast<float>(pow(dir_y, 2)));
-	direcao.y = dir_y / sqrtf(static_cast<float>(pow(dir_x, 2)) + static_cast<float>(pow(dir_y, 2)));
-}
-
-Abelha::Abelha()
-{
-	id = ID_ABELHA; // 1n1m1g0
-	initShape();
 }
 
 Abelha::~Abelha()
@@ -43,6 +33,15 @@ void Abelha::setShowing(bool x)
 const bool Abelha::getShowing() const
 {
 	return aparece;
+}
+
+void Abelha::persegue(float x_jogador, float y_jogador)
+{
+	x_jogador -= getPosition().x;
+	y_jogador -= getPosition().y;
+	direcao.x = x_jogador / sqrtf(static_cast<float>(pow(x_jogador, 2)) + static_cast<float>(pow(y_jogador, 2)));
+	direcao.y = y_jogador / sqrtf(static_cast<float>(pow(x_jogador, 2)) + static_cast<float>(pow(y_jogador, 2)));
+	this->body.move(direcao.x * rapidez, direcao.y * rapidez);
 }
 
 

@@ -6,8 +6,12 @@ void FasePrimeira::initInimigo()
 {
 	spawnTimerMAX = 100.f;
 	spawnTimer = spawnTimerMAX;
-	inimigosMAX = 10;
-	contaInimigos = 0;
+	ferraoTimerMAX = 500.f;
+	ferraoTimer = ferraoTimerMAX;
+	abelhasMAX = 10;
+	contaAbelhas = 0;
+	contaCogu = 0;
+	cogumelosMAX = rand() % 3 + 2;
 }
 
 FasePrimeira::FasePrimeira():
@@ -30,26 +34,24 @@ void FasePrimeira::spawnAbelhas()
 	if (spawnTimer < spawnTimerMAX)
 		spawnTimer += 5.f;
 
-	else if (contaInimigos < inimigosMAX)
+	else if (contaAbelhas < abelhasMAX)
 	{
-		Abelha* inim = new Abelha(pJogador->getPosition().x, pJogador->getPosition().y);
+		Abelha* inim = new Abelha();
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(inim));
-		contaInimigos++;
+		contaAbelhas++;
 		spawnTimer = 0.f;
 	}
 }
 
 void FasePrimeira::spawnCogumelo()
 {
-	if (spawnTimer < spawnTimerMAX)
-		spawnTimer += 5.f;
-	else if (contaInimigos < inimigosMAX) 
+	if (contaCogu < cogumelosMAX)
 	{
 		Cogumelo* cogu = new Cogumelo();
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(cogu));
-		contaInimigos++;
-		spawnTimer = 0.f;
+		contaCogu++;
 	}
+
 	
 }
 
@@ -86,10 +88,7 @@ void FasePrimeira::updateMovimento()
 		{
 		case ID_ABELHA://move inimigos
 		{
-			float dir_x = listaEntidades.operator[](i)->getDirecao_x();
-			float dir_y = listaEntidades.operator[](i)->getDirecao_y();
-			float rapidez = listaEntidades.operator[](i)->getRapidez();
-			listaEntidades.operator[](i)->getBody()->move(dir_x * rapidez, dir_y * rapidez);
+			listaEntidades.operator[](i)->persegue(pJogador->getPosition().x, pJogador->getPosition().y);
 		}
 		break;
 		case ID_ORBE://move projeteis
@@ -97,56 +96,61 @@ void FasePrimeira::updateMovimento()
 			listaEntidades.operator[](i)->updateOrbe();
 		}
 		break;
-		case 32:
-			listaEntidades.operator[](i)->getBody()->move(2.f, -1.f);
+		case ID_FERRAO://move ferrao
+		{
+			listaEntidades.operator[](i)->updateFerrao();
 		}
-
+		break;
+		}
 	}
 }
 
 void FasePrimeira::updateColisoes()
 {
 	int i;
-	//std::cout << "tamanho lista " << listaEntidades.getTamanho() << std::endl;
-	unsigned counter = 0;
 	for (i = 0; i < listaEntidades.getTamanho(); i++) 
 	{
 		
-		switch (listaEntidades.operator[](counter)->getId())
+		switch (listaEntidades.operator[](i)->getId())
 		{
 		case ID_PLATAFORMA://update colisoes com plataforma
 		{
-			collisionManager.updateColisoes(listaEntidades.operator[](counter));
+			collisionManager.updateColisoes(listaEntidades.operator[](i));
 		}
 		break;
 		case ID_ABELHA://update colisoes do player com inimigos e janela
 		{
-			if (collisionManager.updateColisoes(listaEntidades.operator[](counter)))
+			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
-				pJogador->tomarDano(listaEntidades.operator[](counter)->getDano());
-				listaEntidades.operator[](counter)->setShowing(false);
-				contaInimigos--;
+				pJogador->tomarDano(listaEntidades.operator[](i)->getDano());
+				listaEntidades.operator[](i)->setShowing(false);
+				contaAbelhas--;
 			}
-			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](counter)))
+			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
-				listaEntidades.operator[](counter)->setShowing(false);
-				contaInimigos--;
+				listaEntidades.operator[](i)->setShowing(false);
+				contaAbelhas--;
 			}
 			
 		}
 		break;
 		case ID_ORBE:
 		{	//update colisoes do projetil com janela
-			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](counter)))
+			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
-				listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
-				counter--;
+				listaEntidades.operator[](i)->setShowing(false);
 			}
 		}
 		break;
+		case ID_FERRAO:
+		{
+			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
+			{
+				listaEntidades.operator[](i)->setShowing(false);
+			}
 		}
 
-		++counter;
+		}
 	}
 }
 
@@ -174,7 +178,7 @@ void FasePrimeira::updateCombate()
 					{
 						listaEntidades.operator[](counter_2)->setShowing(false);
 						listaEntidades.operator[](counter)->setShowing(false);
-						contaInimigos--;
+						contaAbelhas--;
 						colidiu = true;
 					}
 				}
@@ -187,26 +191,45 @@ void FasePrimeira::updateCombate()
 	if (abelha_rainha.EmFuria())
 	{
 		spawnAbelhas();
-		abelha_rainha.curaVida(1);
+		abelha_rainha.curaVida(3);
 	}
+
+}
+
+void FasePrimeira::updateBoss()
+{
+	abelha_rainha.update();
+	if (ferraoTimer < ferraoTimerMAX)
+		ferraoTimer += 5.f;
+	else
+	{
+		Ferrao* ferrao = new Ferrao(abelha_rainha.getPosition().x, abelha_rainha.getPosition().y,
+									pJogador->getPosition().x, pJogador->getPosition().y);
+		listaEntidades.incluaEntidade(static_cast<Entidade*>(ferrao));
+		ferraoTimer = 0.f;
+	}
+		
 
 }
 
 void FasePrimeira::update()
 {
-	//spawnCogumelo();
+	
 	updateColisoes();
 	limpeza();
 	updateMovimento();
 	updateCombate();
+	spawnCogumelo();
 	pJogador->update();
-	abelha_rainha.update();
+	updateBoss();
+	
 }
 
 
 void FasePrimeira::renderFasePrimeira()
 {
 	background.renderBackground();
+	
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{
 		if (listaEntidades.operator[](i)->getShowing())

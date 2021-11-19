@@ -3,11 +3,12 @@
 
 Entidade::Entidade(int hp, int dmg) :
 	Ente(),
-	rapidez(100.f),
+	rapidez(1.f),
 	dano(dmg),
 	vida(hp),
 	podeMatar(true)
 {
+	aparece = true;
 	vidaMAX = hp;
 	vida = vidaMAX;
 	direcao.x = 1.f;
@@ -16,7 +17,7 @@ Entidade::Entidade(int hp, int dmg) :
 
 Entidade::Entidade():
 	Ente(),
-	rapidez(100.f),
+	rapidez(5.f),
 	dano(0),
 	vida(0),
 	vidaMAX(0),
@@ -100,11 +101,15 @@ const bool Entidade::getPodeMatar() const
 	return false;
 }
 
-void Entidade::persegue()
+void Entidade::persegue(float x_jogador, float y_jogador)
 {
 }
 
 void Entidade::updateOrbe()
+{
+}
+
+void Entidade::updateFerrao()
 {
 }
 

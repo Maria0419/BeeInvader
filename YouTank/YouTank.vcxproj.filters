@@ -159,6 +159,9 @@
     <ClCompile Include="Projetil.cpp">
       <Filter>Arquivos de Origem\Entidades\Projetis</Filter>
     </ClCompile>
+    <ClCompile Include="Ferrao.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -245,11 +248,8 @@
     <ClInclude Include="Projetil.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
     </ClInclude>
-    <ClInclude Include="Ente.h">
+    <ClInclude Include="Ferrao.h">
       <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="BarraVida.h">
-      <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
