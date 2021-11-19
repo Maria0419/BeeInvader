@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "GraphicManager.h"
 
+GraphicManager* GraphicManager::instance = NULL;
+
 void GraphicManager::initFont()
 {
 	if (!fonte.loadFromFile("Fonts/GraphikSemibold.otf"))
@@ -16,6 +18,14 @@ GraphicManager::GraphicManager():
 
 GraphicManager::~GraphicManager()
 {
+	delete instance;
+}
+
+GraphicManager* GraphicManager::getInstance()
+{
+	if (instance == NULL)
+		instance = new GraphicManager();
+	return instance;
 }
 
 void GraphicManager::clear()

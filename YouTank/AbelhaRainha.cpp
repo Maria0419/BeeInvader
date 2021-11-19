@@ -46,10 +46,10 @@ void AbelhaRainha::curaVida()
 	if (emFuria())
 	{
 		if (curaTimer < curaTimerMAX)
-			curaTimer += 5;
+			curaTimer += 1;
 		else
 		{
-			vida += 5;
+			vida += 1;
 			curaTimer = 0;
 		}
 	}
