@@ -17,8 +17,7 @@ CollisionManager::~CollisionManager()
 {
 }
 
-
-bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& direcao, float push)
+bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& direcao)
 {
 	sf::Vector2f outraPosicao = entidade.getPosition();
 	sf::Vector2f outraMetadeTam = (entidade.getSize()/ 2.f);
@@ -33,22 +32,19 @@ bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& 
 
 	if (intersectX < 0.f && intersectY < 0.f && entidade.getId() != ID_ORBE)
 	{
-		push = std::min(std::max(push, 0.f), 1.f);
 
 		if (intersectX > intersectY)
 		{
 			if (deltaX > 0.0f)
 			{
-				pJogador->move(intersectX * (1.0f - push), 0.0f);
-				entidade.move(-intersectX * push, 0.0f);
+				pJogador->move(intersectX , 0.0f);
 				
 				direcao.x = 1.0f;
 				direcao.y = 0.0f;
 			}
 			else
 			{
-				pJogador->move(-intersectX * (1.0f - push), 0.0f);
-				entidade.move(intersectX * push, 0.0f);
+				pJogador->move(-intersectX * 1.0f , 0.0f);
 
 				direcao.x = -1.0f;
 				direcao.y = 0.0f;
@@ -58,28 +54,20 @@ bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& 
 		{
 			if (deltaY > 0.0f)
 			{
-				pJogador->move(0.0f,intersectY * (1.0f - push));
-				entidade.move(0.0f ,-intersectY * push);
+				pJogador->move(0.0f,intersectY * 1.0f );
+		
 
 				direcao.x = 0.0f;
 				direcao.y = 1.0f;
 			}
 			else
 			{
-				pJogador->move(0.0f, -intersectY * (1.0f - push));
-				entidade.move(0.0f, intersectY * push);
+				pJogador->move(0.0f, -intersectY * 1.0f );
+	
 
 				direcao.x = 0.0f;
 				direcao.y = -1.0f;
 			}
-		}
-		if (entidade.getId() == ID_ABELHA)
-		{
-	
-		}
-		else if (entidade.getId() == ID_PLATAFORMA)
-		{
-			
 		}
 		pJogador->naColisao(direcao);
 		return true;
@@ -118,22 +106,61 @@ void CollisionManager::updateColisoesJanela()
 bool CollisionManager::updateColisoes(Entidade* pEn)
 {
 	updateColisoesJanela();
-	float push;
-	switch (pEn->getId())
-	{
-	case 32:
-		push = 0.3f;
-		break;
-	default:
-		push = 0.0f;
-		break;
-	}
-	return verificaColisaoJogador(*pEn, direcao, push);
+	return verificaColisaoJogador(*pEn, direcao);
 }
 
 bool CollisionManager::updateCombate(Entidade* pOrbe, Entidade* pInimigo)
 {
 	return pOrbe->intersecta(static_cast<Ente*>(pInimigo));
+}
+
+void CollisionManager::updateInimigoPlataforma(Entidade& inimigo, Entidade* plataforma)
+{
+	sf::Vector2f outraPosicao = plataforma->getPosition();
+	sf::Vector2f outraMetadeTam = (plataforma->getSize() / 2.f);
+	sf::Vector2f Posicao = inimigo.getPosition();
+	sf::Vector2f MetadeTam = (inimigo.getSize() / 2.f);
+
+	float deltaX = outraPosicao.x - Posicao.x;
+	float deltaY = outraPosicao.y - Posicao.y;
+
+	float intersectX = abs(deltaX) - (outraMetadeTam.x + MetadeTam.x);
+	float intersectY = abs(deltaY) - (outraMetadeTam.y + MetadeTam.y);
+	if (intersectX < 0.f && intersectY < 0.f)
+	{
+		
+		if (intersectX > intersectY)
+		{
+			if (deltaX > 0.0f)
+			{
+				inimigo.move(intersectX, 0.0f);
+				inimigo.setVelocidadeX(-2.f);
+			}
+			else
+			{
+				inimigo.move(-intersectX, 0.0f);
+				inimigo.setVelocidadeX(2.f);
+			}
+		}
+		else
+		{
+			if (deltaY > 0.0f)
+			{
+				inimigo.move(0.0f, intersectY);
+				inimigo.setVelocidadeY(0.0f);
+			}
+			else
+			{
+				inimigo.move(0.0f, -intersectY);
+				inimigo.setVelocidadeY(0.0f);
+			}
+		}
+	}
+	
+	if (inimigo.getBounds().left + inimigo.getBounds().width > pGraphic->getWindow()->getSize().x)
+		inimigo.setVelocidadeX(-2.f);
+	else if (inimigo.getBounds().left < 0.f)
+		inimigo.setVelocidadeX(2.f);
 }
 
 bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
@@ -147,7 +174,6 @@ bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
 	}
 	return false;
 }
-
 
 void CollisionManager::setJogador(Jogador* pJ1)
 {
@@ -167,6 +193,7 @@ void CollisionManager::setGraphicManager(GraphicManager* pGM)
 	else
 		std::cout << "ERROR::COLLISIONMANAGER::SETGRAPHICMANAGER::Ponteiro Nulo" << std::endl;
 }
+
 
 
 

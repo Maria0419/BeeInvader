@@ -6,7 +6,7 @@ void FasePrimeira::initInimigo()
 {
 	abelha_rainha.setJogadorAlvo(&(*pJogador));
 	contaCogu = 0;
-	cogumelosMAX = rand() % 3 + 2;
+	cogumelosMAX = rand() % 3 + 3;
 }
 
 FasePrimeira::FasePrimeira():
@@ -32,8 +32,6 @@ void FasePrimeira::spawnCogumelo()
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(cogu));
 		contaCogu++;
 	}
-
-	
 }
 
 void FasePrimeira::spawnPlataforma()
@@ -80,6 +78,13 @@ void FasePrimeira::updateMovimento()
 		case ID_FERRAO://move ferrao
 		{
 			listaEntidades.operator[](i)->updateFerrao();
+		}
+		break;
+		case ID_COGUMELO:
+		{
+			listaEntidades.operator[](i)->move(listaEntidades.operator[](i)->getVelocidadeX(), listaEntidades.operator[](i)->getVelocidadeY());
+			listaEntidades.operator[](i)->setVelocidadeY(listaEntidades.operator[](i)->getVelocidadeY() + 1.f);
+			listaEntidades.operator[](i)->updateAnimacao();
 		}
 		break;
 		}
@@ -131,6 +136,16 @@ void FasePrimeira::updateColisoes()
 				listaEntidades.operator[](i)->setShowing(false);
 			}
 		}
+		break;
+		case ID_COGUMELO:
+		{
+			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
+			{
+				pJogador->tomarDano(5);
+				listaEntidades.operator[](i)->setShowing(false);
+				contaCogu--;
+			}
+		}
 
 		}
 	}
@@ -172,6 +187,19 @@ void FasePrimeira::updateCombate()
 	}
 }
 
+void FasePrimeira::updateInimigoPlataforma()
+{
+	for (int i = 0; i < listaEntidades.getTamanho(); i++)
+	{
+		if (listaEntidades.operator[](i)->getId() == ID_PLATAFORMA)
+		{
+			for (int j = 0; j < listaEntidades.getTamanho(); j++)
+				if (listaEntidades.operator[](j)->getId() == ID_COGUMELO)
+					collisionManager.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
+		}
+	}
+}
+
 void FasePrimeira::updateBoss()
 {
 	abelha_rainha.update();
@@ -185,7 +213,7 @@ void FasePrimeira::update()
 	spawnCogumelo();
 	updateMovimento();
 	updateCombate();
-	
+	updateInimigoPlataforma();
 	pJogador->update();
 	updateBoss();
 	

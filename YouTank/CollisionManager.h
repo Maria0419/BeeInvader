@@ -12,18 +12,17 @@ private:
 	//Tela
 	GraphicManager* pGraphic;
 	sf::RenderWindow* pWindow;
-	
-	std::vector<Obstaculo*> obstaculos;
 
 public:
 	CollisionManager();
 	~CollisionManager();
 	
 	/*Funções*/
-	bool verificaColisaoJogador(Entidade& entidade, sf::Vector2f& direcao, float push);
+	bool verificaColisaoJogador(Entidade& entidade, sf::Vector2f& direcao);
 	void updateColisoesJanela();
 	bool updateColisoes(Entidade* pEn);
 	bool updateCombate(Entidade* pOrbe, Entidade* pInimigo);
+	void updateInimigoPlataforma(Entidade& inimigo, Entidade* plataforma);
 	bool entidadeSaiuDaTela(Entidade* entidade);
 
 	//set

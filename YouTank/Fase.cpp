@@ -23,7 +23,9 @@ void Fase::limpeza()
 	{
 		if (listaEntidades.operator[](counter)->getShowing() == false)
 		{
-			listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
+			Entidade* pAux = listaEntidades.operator[](counter);
+			listaEntidades.destruaEntidade(pAux);
+			delete pAux;
 			counter--;
 		}
 		counter++;

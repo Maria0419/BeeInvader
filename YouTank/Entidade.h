@@ -49,6 +49,7 @@ public:
     virtual void persegue(float x_jogador, float y_jogador);
     virtual void updateOrbe();
     virtual void updateFerrao();
+    virtual void updateAnimacao();
 
     virtual void naColisao(sf::Vector2f direcao);
 };

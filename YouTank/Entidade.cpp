@@ -115,6 +115,10 @@ void Entidade::updateFerrao()
 {
 }
 
+void Entidade::updateAnimacao()
+{
+}
+
 void Entidade::naColisao(sf::Vector2f direcao)
 {
 }

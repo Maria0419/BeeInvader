@@ -80,6 +80,5 @@ TIPO* Elemento<TIPO>::getInfo()
 template<class TIPO>
 void Elemento<TIPO>::deletaInfo()
 {
-	delete pInfo;
 	pInfo = NULL;
 }

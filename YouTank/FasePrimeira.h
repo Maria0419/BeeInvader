@@ -31,6 +31,7 @@ public:
     void updateMovimento();
     void updateColisoes();
     void updateCombate();
+    void updateInimigoPlataforma();
     void updateBoss();
     void update();
 

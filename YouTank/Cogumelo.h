@@ -8,5 +8,6 @@ private:
 public:
 	Cogumelo();
 	~Cogumelo();
+	void updateAnimacao();
 };
 
