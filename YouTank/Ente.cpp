@@ -68,7 +68,7 @@ void Ente::renderBodyBack()
 
 
 Ente::Ente():
-	aparece(false),
+	aparece(true),
 	id(0),
 	pWindow(NULL),
 	texture()
@@ -148,7 +148,7 @@ void Ente::setShowing(bool x)
 
 const bool Ente::getShowing() const
 {
-	return false;
+	return aparece;
 }
 
 

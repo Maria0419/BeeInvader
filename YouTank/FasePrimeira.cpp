@@ -146,6 +146,7 @@ void FasePrimeira::updateColisoes()
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
+				pJogador->tomarDano(10);
 				listaEntidades.operator[](i)->setShowing(false);
 			}
 		}
@@ -217,9 +218,10 @@ void FasePrimeira::update()
 	
 	updateColisoes();
 	limpeza();
+	spawnCogumelo();
 	updateMovimento();
 	updateCombate();
-	spawnCogumelo();
+	
 	pJogador->update();
 	updateBoss();
 	

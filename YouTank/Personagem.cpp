@@ -10,7 +10,7 @@ Personagem::Personagem():
 	cooldownAtaqueMax(0.f),
 	podeAtacar(true)
 {
-
+	aparece = true;
 }
 
 Personagem::Personagem(int n_vida, int dmg) :
@@ -22,7 +22,7 @@ Personagem::Personagem(int n_vida, int dmg) :
 	cooldownAtaqueMax(0.f),
 	podeAtacar(true)
 {
-	
+	aparece = true;
 }
 
 Personagem::~Personagem()

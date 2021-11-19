@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Fase.h"
+#include "Global.h"
 
 Jogador* Fase::pJogador = NULL;
 

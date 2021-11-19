@@ -11,6 +11,7 @@ protected:
     sf::Vector2f destino;
     float rapidez;
     bool podeMatar;
+    bool olhaEsquerda;
 
     //vida e dano
     int dano;
@@ -38,6 +39,7 @@ public:
     float getVelocidadeY();
 
     void move(float dx, float dy);
+    const bool getShowing() const;
     
     virtual float getDirecao_x();
     virtual float getDirecao_y();

@@ -23,6 +23,7 @@ Entidade::Entidade():
 	vidaMAX(0),
 	podeMatar(true)
 {
+	aparece = true;
 }
 
 Entidade::~Entidade()
@@ -81,14 +82,19 @@ void Entidade::move(float dx, float dy)
 	body.move(dx, dy);
 }
 
+const bool Entidade::getShowing() const
+{
+	return aparece;
+}
+
 float Entidade::getDirecao_x()
 {
-	return 0.0f;
+	return direcao.x;
 }
 
 float Entidade::getDirecao_y()
 {
-	return 0.0f;
+	return direcao.y;
 }
 
 void Entidade::setPodeMatar(bool x)
@@ -98,7 +104,7 @@ void Entidade::setPodeMatar(bool x)
 
 const bool Entidade::getPodeMatar() const
 {
-	return false;
+	return podeMatar;
 }
 
 void Entidade::persegue(float x_jogador, float y_jogador)
