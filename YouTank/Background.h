@@ -1,5 +1,6 @@
 #pragma once
 #include "Ente.h"
+
 class Background :
     public Ente
 {

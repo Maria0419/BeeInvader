@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "GraphicManager.h"
+class ListaEntidades;
 
 class Ente
 {
@@ -13,6 +14,7 @@ protected:
 	bool aparece;
 	static GraphicManager* pGraphic;
 	sf::RenderWindow* pWindow;
+	
 
 	//Shape
 	sf::RectangleShape body;
@@ -29,6 +31,8 @@ protected:
 	
 
 public:
+	static ListaEntidades* pLista;
+
 	Ente();
 	~Ente();
 
@@ -58,4 +62,6 @@ public:
 
 	
 };
+
+
 

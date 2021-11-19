@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "Ente.h"
+#include "ListaEntidades.h"
 
 GraphicManager* Ente::pGraphic = NULL;
+ListaEntidades* Ente::pLista = NULL;
 
 
 void Ente::setSize(float x, float y)
