@@ -4,7 +4,7 @@
 BarraVida::BarraVida(Personagem* pP, float x, float y, float largura, float altura)
 {
 	pPersonagem = pP;
-	comprimento = largura;
+	tamanho = largura;
 	setPosition(x, y);
 	setSize(largura, altura);
 	setCor(200, 10, 10, 255);
@@ -18,7 +18,7 @@ BarraVida::~BarraVida()
 void BarraVida::update()
 {
 	float vidaPorcento = static_cast<float> (pPersonagem->getVida()) / pPersonagem->getVidaMAX();
-	setSize(comprimento * vidaPorcento, getSize().y);
+	setSize(tamanho * vidaPorcento, getSize().y);
 }
 
 

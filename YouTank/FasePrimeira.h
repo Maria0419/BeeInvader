@@ -36,7 +36,6 @@ public:
     void update();
 
     void renderFasePrimeira();
-    
-    void spawnFasePrimeiraEstatica(); 
+   
 };
 

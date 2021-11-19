@@ -3,7 +3,7 @@
 #include "Global.h"
 
 
-Plataforma::Plataforma(float tam_x, float tam_y, float pos_x, float pos_y, float angulo):
+Plataforma::Plataforma(float tam_x, float tam_y, float pos_x, float pos_y):
 	Obstaculo()
 {
 	id = ID_PLATAFORMA; //pl4t4f0rm4, 2 pois é um Rectangle shape
@@ -12,7 +12,7 @@ Plataforma::Plataforma(float tam_x, float tam_y, float pos_x, float pos_y, float
 	setPosition(pos_x, pos_y);
 	setTexture("Imagens/grass.png");
 	setOriginCenter();
-	rotate(angulo);
+	setOutline(2.f);
 }
 
 Plataforma::Plataforma():
@@ -33,6 +33,7 @@ void Plataforma::initShape()
 	setOriginCenter();
 	setPosition(700.f, 700.f);
 	setTexture("Imagens/grass_main.png");
+	setOutline(2.f);
 	
 }
 

@@ -9,6 +9,10 @@ InputManager::InputManager():
 	
 }
 
+InputManager::~InputManager()
+{
+}
+
 void InputManager::updateAtaque()
 {
 	pJogador1->updateAtaqueCooldown();

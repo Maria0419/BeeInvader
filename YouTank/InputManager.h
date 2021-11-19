@@ -12,12 +12,11 @@ private:
 	GraphicManager* pGraphic;
 	Fase* pFase;
 	
-	sf::Vector2i mousePosScreen;
 	sf::Vector2i mousePosWindow;
-	sf::Vector2f mousePosView;
 
 public:
 	InputManager();
+	~InputManager();
 
 	void updateAtaque();
 	void updateMousePos();

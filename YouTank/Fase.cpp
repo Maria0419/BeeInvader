@@ -15,15 +15,6 @@ Fase::~Fase()
 	listaEntidades.limpaLista();
 }
 
-void Fase::executar()
-{
-}
-
-void Fase::gerenciarColisoes()
-{
-
-}
-
 void Fase::ataca(float dir_x, float dir_y, float x_jogador, float y_jogador)
 {
 	Orbe* pP = new Orbe(dir_x, dir_y, 80.f, x_jogador, y_jogador);
