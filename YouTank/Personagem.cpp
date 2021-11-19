@@ -13,8 +13,8 @@ Personagem::Personagem():
 	aparece = true;
 }
 
-Personagem::Personagem(int n_vida, int dmg) :
-	Entidade(n_vida, dmg),
+Personagem::Personagem(int hp, int dmg) :
+	Entidade(hp, dmg),
 	pontos(0),
 	alturaPulo(3.f),
 	podePular(false),

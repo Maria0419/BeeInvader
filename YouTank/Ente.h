@@ -4,6 +4,10 @@
 
 class Ente
 {
+private:
+	sf::RectangleShape bodyBack;
+	sf::Texture texture;
+
 protected:
 	int id;
 	bool aparece;
@@ -12,10 +16,7 @@ protected:
 
 	//Shape
 	sf::RectangleShape body;
-	sf::RectangleShape bodyBack;
 	sf::Sprite sprite;
-	sf::Texture texture;
-
 
 	//Create shape
 	void setSize(float x, float y);

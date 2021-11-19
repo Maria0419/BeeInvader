@@ -189,7 +189,7 @@ void FasePrimeira::updateCombate()
 		}
 		counter++;
 	}
-	if (abelha_rainha.EmFuria())
+	if (abelha_rainha.emFuria())
 	{
 		spawnAbelhas();
 		abelha_rainha.curaVida(3);

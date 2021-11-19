@@ -23,7 +23,6 @@ public:
     Entidade(int hp, int dmg);
     Entidade();
     ~Entidade();
-    virtual void executar();
 
     //vida e dano
     virtual void tomarDano(int dmg);

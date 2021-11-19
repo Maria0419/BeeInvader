@@ -239,17 +239,23 @@
     <ClInclude Include="Button.h">
       <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
     </ClInclude>
-    <ClInclude Include="Cogumelo.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="Orbe.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
     </ClInclude>
     <ClInclude Include="Projetil.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
     </ClInclude>
-    <ClInclude Include="Ferrao.h">
+    <ClInclude Include="Ente.h">
       <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="BarraVida.h">
+      <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
+    </ClInclude>
+    <ClInclude Include="Cogumelo.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Ferrao.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

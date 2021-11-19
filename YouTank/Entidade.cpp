@@ -30,10 +30,6 @@ Entidade::~Entidade()
 {
 }
 
-void Entidade::executar()
-{
-}
-
 void Entidade::tomarDano(int dmg)
 {
 	vida -= dmg;

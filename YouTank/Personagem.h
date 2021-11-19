@@ -18,7 +18,7 @@ protected:
     
 public:
     Personagem();
-    Personagem(int n_vida, int dmg);
+    Personagem(int hp, int dmg);
     ~Personagem();
 
     const int getVida() const;

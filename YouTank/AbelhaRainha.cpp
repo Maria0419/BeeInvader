@@ -19,7 +19,7 @@ AbelhaRainha::~AbelhaRainha()
 {
 }
 
-const bool AbelhaRainha::EmFuria()
+const bool AbelhaRainha::emFuria()
 {
 	if (vida < float(vidaMAX) / 2)
 	{
@@ -32,15 +32,15 @@ const bool AbelhaRainha::EmFuria()
 		
 }
 
-void AbelhaRainha::curaVida(int x)
+void AbelhaRainha::curaVida(int hp)
 {
-	if (EmFuria())
+	if (emFuria())
 	{
 		if (curaTimer < curaTimerMAX)
 			curaTimer += 1.f;
 		else
 		{
-			vida += x;
+			vida += hp;
 			curaTimer = 0.f;
 		}
 	}
