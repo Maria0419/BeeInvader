@@ -14,7 +14,6 @@ protected:
 	bool aparece;
 	static GraphicManager* pGraphic;
 	sf::RenderWindow* pWindow;
-	
 
 	//Shape
 	sf::RectangleShape body;

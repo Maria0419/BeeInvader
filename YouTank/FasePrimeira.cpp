@@ -33,7 +33,6 @@ void FasePrimeira::spawnCogumelo()
 		contaCogu++;
 	}
 
-	
 }
 
 void FasePrimeira::spawnPlataforma()
@@ -127,7 +126,7 @@ void FasePrimeira::updateColisoes()
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
-				pJogador->tomarDano(10);
+				pJogador->tomarDano(abelha_rainha.getDano());
 				listaEntidades.operator[](i)->setShowing(false);
 			}
 		}

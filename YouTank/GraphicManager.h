@@ -8,12 +8,20 @@ private:
 	sf::RenderWindow window;
 	sf::Font fonte;
 
+	//Singleton
+	static GraphicManager* instance;
+
 	//private functions
 	void initFont();
 
-public:
+protected:
 	GraphicManager();
+
+public:
 	~GraphicManager();
+
+	//Singleton
+	static GraphicManager* getInstance();
 
 	//clear & display
 	void clear();

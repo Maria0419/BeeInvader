@@ -2,12 +2,10 @@
 #include "Game.h"
 
 Game::Game() :
-	graphicManager(),
 	deltaTime(0)
 {
-	inputManager.setGraphicManager(&graphicManager);
-	State::setGraphicManager(&graphicManager);
-	Ente::setGraphicManager(&graphicManager);
+	graphicManager = GraphicManager::getInstance();
+	
 	fase.setJogador(&jogador1);
 
 	setGraphicManager();
@@ -36,7 +34,10 @@ void Game::initStates()
 
 void Game::setGraphicManager()
 {
-	eventManager.setGraphicManager(&graphicManager);
+	State::setGraphicManager(graphicManager);
+	Ente::setGraphicManager(graphicManager);
+	inputManager.setGraphicManager(graphicManager);
+	eventManager.setGraphicManager(graphicManager);
 	
 
 	inputManager.setJogador(&jogador1);
@@ -45,7 +46,7 @@ void Game::setGraphicManager()
 void Game::run()
 {
 	
-	while (graphicManager.isRunning())
+	while (graphicManager->isRunning())
 	{
 		update();
 		render();
@@ -81,7 +82,7 @@ void Game::update()
 
 void Game::render()
 {
-	graphicManager.clear();
+	graphicManager->clear();
 
 	if (!states.empty())
 	{
@@ -94,7 +95,7 @@ void Game::render()
 		}
 	}
 				
-	graphicManager.display();
+	graphicManager->display();
 }
 
 

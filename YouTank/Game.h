@@ -14,7 +14,7 @@ class Game
 {
 private:
 	//Gerenciadores
-	GraphicManager graphicManager;
+	GraphicManager *graphicManager;
 	EventManager eventManager;
 	InputManager inputManager;
 
