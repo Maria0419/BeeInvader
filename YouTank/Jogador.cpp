@@ -88,6 +88,12 @@ void Jogador::updateAnimacao()
 	}
 }
 
+void Jogador::ataca(float dir_x, float dir_y)
+{
+	Orbe* pP = new Orbe(dir_x, dir_y, 80.f, getPosition().x, getPosition().y);
+	pLista->incluaEntidade(static_cast<Entidade*>(pP));
+}
+
 void Jogador::update()
 {
 	updateAnimacao();

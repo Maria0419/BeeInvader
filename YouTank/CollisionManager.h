@@ -1,6 +1,8 @@
 #pragma once
 #include "Jogador.h"
 #include "GraphicManager.h"
+#include "Obstaculo.h"
+#include "Inimigo.h"
 
 class CollisionManager
 {
@@ -10,6 +12,8 @@ private:
 	//Tela
 	GraphicManager* pGraphic;
 	sf::RenderWindow* pWindow;
+	
+	std::vector<Obstaculo*> obstaculos;
 
 public:
 	CollisionManager();

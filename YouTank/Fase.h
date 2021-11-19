@@ -24,8 +24,6 @@ protected:
 public:
     Fase();
     ~Fase();
-
-    virtual void ataca(float dir_x, float dir_y, float x_jogador, float y_jogador);
     void limpeza();
 
     virtual void update();
