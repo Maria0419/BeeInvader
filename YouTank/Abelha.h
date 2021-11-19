@@ -7,7 +7,6 @@ private:
     //private functions
     void initShape();
 public:
-    Abelha(float dir_x, float dir_y);
     Abelha();
     ~Abelha();
 
@@ -16,6 +15,6 @@ public:
 
     void setShowing(bool x);
     const bool getShowing() const;
-    
+    void persegue(float x_jogador, float y_jogador);
 };
 

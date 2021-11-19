@@ -13,7 +13,7 @@ private:
 public:
 	AbelhaRainha();
 	~AbelhaRainha();
-	const bool EmFuria() const;
+	const bool EmFuria();
 	void curaVida(int x);
 
 	void update();

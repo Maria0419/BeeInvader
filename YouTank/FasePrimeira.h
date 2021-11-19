@@ -15,8 +15,12 @@ private:
     //Timer dos inimigos
     float spawnTimer;
     float spawnTimerMAX;
-    unsigned int inimigosMAX;
-    unsigned int contaInimigos;
+    float ferraoTimer;
+    float ferraoTimerMAX;
+    unsigned int abelhasMAX;
+    unsigned int contaAbelhas;
+    unsigned int cogumelosMAX;
+    unsigned int contaCogu;
 
     //privateFunctions
     void initInimigo();
@@ -33,10 +37,10 @@ public:
     void updateMovimento();
     void updateColisoes();
     void updateCombate();
+    void updateBoss();
     void update();
 
     void renderFasePrimeira();
-    
-    void spawnFasePrimeiraEstatica(); 
+ 
 };
 

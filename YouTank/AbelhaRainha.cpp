@@ -19,12 +19,17 @@ AbelhaRainha::~AbelhaRainha()
 {
 }
 
-const bool AbelhaRainha::EmFuria() const
+const bool AbelhaRainha::EmFuria()
 {
-	if (vida < float(vidaMAX)/ 2)
+	if (vida < float(vidaMAX) / 2)
+	{
 		return true;
+	}
 	else
+	{
 		return false;
+	}
+		
 }
 
 void AbelhaRainha::curaVida(int x)

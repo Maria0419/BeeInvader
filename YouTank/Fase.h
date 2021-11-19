@@ -5,6 +5,7 @@
 #include "Orbe.h"
 #include "ListaEntidades.h"
 #include "Abelha.h"
+#include "Ferrao.h"
 #include "Plataforma.h"
 #include "Background.h"
 #include "Cogumelo.h"

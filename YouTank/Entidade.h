@@ -45,8 +45,9 @@ public:
     virtual void setPodeMatar(bool x);
     virtual const bool getPodeMatar() const;
 
-    virtual void persegue();
+    virtual void persegue(float x_jogador, float y_jogador);
     virtual void updateOrbe();
+    virtual void updateFerrao();
 
     virtual void naColisao(sf::Vector2f direcao);
 };
