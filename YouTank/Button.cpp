@@ -1,14 +1,15 @@
 #include "stdafx.h"
 #include "Button.h"
+#include "Global.h"
 
 
-Button::Button(float x, float y, float largura, float altura, std::string text):
+Button::Button(float x, float y, std::string text):
 	Ente()
 {
-	id = 302;
+	id = ID_BUTTON;
 	estadoBotao = BT_IDLE;
 
-	setSize(largura, altura);
+	setSize(200, 50);
 	setPosition(x, y);
 	setOutline(2.f);
 

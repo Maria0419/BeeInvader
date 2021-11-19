@@ -16,7 +16,7 @@ private:
     unsigned int red, green, blue;
 
 public:
-    Button(float x, float y, float largura, float altura, std::string text);
+    Button(float x, float y, std::string text);
     ~Button();
 
     //Gets
