@@ -9,8 +9,8 @@ Abelha::Abelha(float dir_x, float dir_y):
 	initShape();
 	rapidez = 5.f;
 	aparece = true;
-	dir_x -= this->getPosition().x;
-	dir_y -= this->getPosition().y;
+	dir_x -= getPosition().x;
+	dir_y -= getPosition().y;
 	direcao.x = dir_x / sqrtf(static_cast<float>(pow(dir_x, 2)) + static_cast<float>(pow(dir_y, 2)));
 	direcao.y = dir_y / sqrtf(static_cast<float>(pow(dir_x, 2)) + static_cast<float>(pow(dir_y, 2)));
 }
@@ -49,7 +49,7 @@ const bool Abelha::getShowing() const
 void Abelha::initShape()
 {
 	setSize(30.f, 30.f);
-	setTexture("Imagens/bee.png",1.f);
+	setTexture("Imagens/bee.png");
 	setOriginCenter();
 	setPosition(static_cast<float> (rand() % 1100+25), static_cast<float>(rand() % 50+25));
 }

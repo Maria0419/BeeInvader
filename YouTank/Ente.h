@@ -21,7 +21,7 @@ protected:
 	void setSize(float x, float y);
 	void setCor(int r, int g, int b, int t);
 	void setOutline(float grossura);
-	void setTexture(const char* file, float escala);
+	void setTexture(const char* file, float escala = 1.f);
 	void setBodyBack(float x, float y, float largura, float altura);
 	void setOriginCenter();
 	void rotate(float angulo);

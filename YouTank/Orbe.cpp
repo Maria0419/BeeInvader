@@ -12,7 +12,7 @@ Orbe::Orbe(float dir_x, float dir_y, float velocidade, float x_jogador, float y_
 	id = ID_ORBE;
 	aparece = true;
 	podeMatar = true;
-	setTexture("Imagens/orb3.png", 1.f);
+	setTexture("Imagens/orb3.png");
 	setSize(20.f, 18.f);
 	setOriginCenter();
 	setPosition(x_jogador, y_jogador);

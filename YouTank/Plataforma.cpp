@@ -10,7 +10,7 @@ Plataforma::Plataforma(float tam_x, float tam_y, float pos_x, float pos_y, float
 	aparece = true;
 	setSize(tam_x, tam_y);
 	setPosition(pos_x, pos_y);
-	setCor(124, 124, 124, 200);
+	setTexture("Imagens/grass.png");
 	setOriginCenter();
 	rotate(angulo);
 }
@@ -30,9 +30,9 @@ void Plataforma::initShape()
 {
 	setSize(1400.f, 100.f);
 	aparece = true;
-	body.setOrigin(body.getSize() / 2.0f);
+	setOriginCenter();
 	setPosition(700.f, 700.f);
-	setCor(124,124,124,200);
+	setTexture("Imagens/grass_main.png");
 	
 }
 

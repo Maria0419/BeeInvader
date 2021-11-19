@@ -12,7 +12,7 @@ void MenuState::initButtons()
 
 MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
 	State(state),
-	background("Imagens/background_.jpg", 0.8f)
+	background("Imagens/background_.jpg", 0.73f)
 {
 	stateID = MENU_STATE;
 	pInput = pIM;
