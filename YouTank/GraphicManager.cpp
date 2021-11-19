@@ -1,23 +1,17 @@
 #include "stdafx.h"
 #include "GraphicManager.h"
 
+void GraphicManager::initFont()
+{
+	if (!fonte.loadFromFile("Fonts/GraphikSemibold.otf"))
+		std::cout << "ERROR::GRAPHICMANAGER::INITFONT::Erro ao carregar a fonte" << std::endl;
+}
 
 GraphicManager::GraphicManager():
 	window(sf::VideoMode(1280, 720), "CubeTank", sf::Style::Close | sf::Style::Titlebar)
 {
 	window.setFramerateLimit(60);
 	initFont();
-}
-
-void GraphicManager::initTextures()
-{
-
-}
-
-void GraphicManager::initFont()
-{
-	if (!fonte.loadFromFile("Fonts/GraphikSemibold.otf"))
-		std::cout << "ERROR::GRAPHICMANAGER::INITFONT::Erro ao carregar a fonte" << std::endl;
 }
 
 GraphicManager::~GraphicManager()
@@ -62,7 +56,7 @@ sf::Font* GraphicManager::getFont()
 
 const bool GraphicManager::isRunning() const
 {
-	return this->window.isOpen();
+	return window.isOpen();
 }
 
 

@@ -6,7 +6,7 @@ class BarraVida :
 {
 private:
     Personagem* pPersonagem;
-    float comprimento;
+    float tamanho;
 
 public:
     BarraVida(Personagem* pP, float x, float y, float largura, float altura);

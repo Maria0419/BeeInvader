@@ -9,7 +9,6 @@ private:
 	sf::Font fonte;
 
 	//private functions
-	void initTextures();
 	void initFont();
 
 public:

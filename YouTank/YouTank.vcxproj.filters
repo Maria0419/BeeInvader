@@ -239,12 +239,6 @@
     <ClInclude Include="Button.h">
       <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
     </ClInclude>
-    <ClInclude Include="BarraVida.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="Ente.h">
-      <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
-    </ClInclude>
     <ClInclude Include="Cogumelo.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>

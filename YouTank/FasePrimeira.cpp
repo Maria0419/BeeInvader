@@ -61,22 +61,22 @@ void FasePrimeira::spawnPlataforma()
 	Plataforma* plat = new Plataforma();
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat));
 
-	Plataforma* plat2 = new Plataforma(300.f, 20.f, 100.f, 580.f, 0);
+	Plataforma* plat2 = new Plataforma(300.f, 20.f, 100.f, 580.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat2));
 
-	Plataforma* plat3 = new Plataforma(300.f, 20.f, 300.f, 500.f, 0);
+	Plataforma* plat3 = new Plataforma(300.f, 20.f, 300.f, 500.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat3));
 
-	Plataforma* plat4 = new Plataforma(300.f, 20.f, 500.f, 420.f, 0);
+	Plataforma* plat4 = new Plataforma(300.f, 20.f, 500.f, 420.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat4));
 
-	Plataforma* plat5 = new Plataforma(300.f, 20.f, 300.f, 340.f, 0);
+	Plataforma* plat5 = new Plataforma(300.f, 20.f, 300.f, 340.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat5));
 
-	Plataforma* plat6 = new Plataforma(300.f, 20.f, 500.f, 260.f, 0);
+	Plataforma* plat6 = new Plataforma(300.f, 20.f, 500.f, 260.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat6));
 
-	Plataforma* plat7 = new Plataforma(300.f, 20.f, 300.f, 180.f, 0);
+	Plataforma* plat7 = new Plataforma(300.f, 20.f, 300.f, 180.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat7));
 }
 

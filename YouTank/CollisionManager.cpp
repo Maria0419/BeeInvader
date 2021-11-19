@@ -87,16 +87,6 @@ bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& 
 	return false;
 }
 
-void CollisionManager::colidindoComInimigo(Entidade entidade)
-{
-	
-}
-
-void CollisionManager::colidindoComPlataforma()
-{
-	
-}
-
 void CollisionManager::updateColisoesJanela()
 {
 	//Colisão com a borda esquerda da janela
