@@ -27,6 +27,7 @@ public:
     //Funçoes
     void spawnCogumelo();
     void spawnPlataforma();
+    void spawnCurandeira();
     
     void updateMovimento();
     void updateColisoes();
@@ -36,6 +37,7 @@ public:
     void update();
 
     void renderFasePrimeira();
- 
+
+    Curandeira* getCurandeira() const;
 };
 

@@ -11,7 +11,7 @@ Cogumelo::Cogumelo():
 	setTexture("Imagens/mushroom.png", 1.f);
 	setSize(50.f, 55.f);
 	setOriginCenter();
-	setPosition(rand()%1200, rand()%100);
+	setPosition(static_cast<float>(rand()%1200), static_cast<float>(rand()%100));
 	setVelocidadeY(1.f);
 	setVelocidadeX(2.f);
 }

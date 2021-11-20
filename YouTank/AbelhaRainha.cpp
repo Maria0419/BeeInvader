@@ -30,7 +30,7 @@ AbelhaRainha::AbelhaRainha():
 	id = ID_RAINHA; //j0g4d0r, 2 pois é rectangle shape
 	initShape();
 	initTimers();
-	anguloMAX = 2*3.141592;
+	anguloMAX = 2*3.1415;
 	angulo = anguloMAX;
 	abelhasMAX = 10;
 	contaAbelhas = 0;
@@ -97,7 +97,7 @@ void AbelhaRainha::setJogadorAlvo(Jogador* pJ)
 
 void AbelhaRainha::updateMovimento()
 {
-	float hipotenusa, moveX, moveY;
+	float moveX, moveY;
 	if (angulo > anguloMAX)
 	{
 		angulo = 0;
