@@ -20,7 +20,7 @@ protected:
     ListaEntidades listaEntidades;
     Entidade* pEn;
     CollisionManager collisionManager;
-    Curandeira* curandeira;
+    Curandeira* pCurandeira;
 
     //Jogador
     static Jogador* pJogador;

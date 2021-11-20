@@ -39,6 +39,9 @@ public:
 
     void move(float dx, float dy);
     const bool getShowing() const;
+
+    virtual void setDirecao_x(float dir_x);
+    virtual void setDirecao_y(float dir_y);
     
     virtual float getDirecao_x();
     virtual float getDirecao_y();
@@ -48,9 +51,10 @@ public:
 
     virtual void persegue(float x_jogador, float y_jogador);
     virtual void updateOrbe();
+    virtual void updateOrbeCura();
     virtual void updateFerrao();
     virtual void updateAnimacao();
 
-    virtual void naColisao(sf::Vector2f direcao);
+    virtual void naColisao();
 };
 

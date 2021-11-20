@@ -23,8 +23,11 @@ public:
 
     void setOlhaEsquerda(bool x);
     const bool olhandoEsquerda() const;
+
+    void setDirecao_x(float dir_x);
+    void setDirecao_y(float dir_y);
     
-    void naColisao(sf::Vector2f direcao);
+    void naColisao();
     void ataca(float dir_x, float dir_y);
 
     void updateAnimacao();

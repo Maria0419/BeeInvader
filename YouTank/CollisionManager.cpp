@@ -5,19 +5,17 @@
 
 CollisionManager::CollisionManager():
 	pJogador(NULL),
+	pCurandeira(NULL),
 	pWindow(NULL),
 	pGraphic(NULL)
 {
-	direcao.x = 0.0f;
-	direcao.y = 0.0f;
-	
 }
 
 CollisionManager::~CollisionManager()
 {
 }
 
-bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& direcao)
+bool CollisionManager::verificaColisaoJogador(Entidade& entidade)
 {
 	sf::Vector2f outraPosicao = entidade.getPosition();
 	sf::Vector2f outraMetadeTam = (entidade.getSize()/ 2.f);
@@ -39,15 +37,15 @@ bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& 
 			{
 				pJogador->move(intersectX , 0.0f);
 				
-				direcao.x = 1.0f;
-				direcao.y = 0.0f;
+				pJogador->setDirecao_x(1.0f);
+				pJogador->setDirecao_y(0.0f);
 			}
 			else
 			{
 				pJogador->move(-intersectX * 1.0f , 0.0f);
 
-				direcao.x = -1.0f;
-				direcao.y = 0.0f;
+				pJogador->setDirecao_x(-1.0f);
+				pJogador->setDirecao_y(0.0f);
 			}
 		}
 		else
@@ -56,20 +54,18 @@ bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& 
 			{
 				pJogador->move(0.0f,intersectY * 1.0f );
 		
-
-				direcao.x = 0.0f;
-				direcao.y = 1.0f;
+				pJogador->setDirecao_x(0.0f);
+				pJogador->setDirecao_y(1.0f);
 			}
 			else
 			{
 				pJogador->move(0.0f, -intersectY * 1.0f );
 	
-
-				direcao.x = 0.0f;
-				direcao.y = -1.0f;
+				pJogador->setDirecao_x(0.0f);
+				pJogador->setDirecao_y(-1.0f);
 			}
 		}
-		pJogador->naColisao(direcao);
+		pJogador->naColisao();
 		return true;
 	}
 	return false;
@@ -77,36 +73,66 @@ bool CollisionManager::verificaColisaoJogador(Entidade& entidade, sf::Vector2f& 
 
 void CollisionManager::updateColisoesJanela()
 {
+	updateColisoesJanelaJ1();
+	updateColisoesJanelaJ2();
+}
+
+void CollisionManager::updateColisoesJanelaJ1()
+{
 	//Colisão com a borda esquerda da janela
 	if (pJogador->getBounds().left < 0.f)
 	{
-		pJogador->setPosition(pJogador->getBounds().width / 2.f, pJogador->getBounds().top + pJogador->getBounds().width/2.f);
+		pJogador->setPosition(pJogador->getBounds().width / 2.f, pJogador->getBounds().top + pJogador->getBounds().width / 2.f);
 	}
 	if (pJogador->getBounds().left + pJogador->getBounds().width > pWindow->getSize().x)
 	{
-		pJogador->setPosition(pWindow->getSize().x - pJogador->getBounds().width/2.f, pJogador->getBounds().top + pJogador->getBounds().width/2.f);
+		pJogador->setPosition(pWindow->getSize().x - pJogador->getBounds().width / 2.f, pJogador->getBounds().top + pJogador->getBounds().width / 2.f);
 	}
 
 	//Colisão com a borda inferior da janela
 	if (pJogador->getBounds().top + pJogador->getBounds().height > pWindow->getSize().y)
 	{
-		pJogador->setPosition(pJogador->getPosition().x, pWindow->getSize().y - pJogador->getBounds().height/2);
+		pJogador->setPosition(pJogador->getPosition().x, pWindow->getSize().y - pJogador->getBounds().height / 2);
 	}
 
 	//Colisão com a borda superior da janela
 	else if (pJogador->getBounds().top < 0.f)
 	{
 		pJogador->setPosition(pJogador->getPosition().x, pJogador->getBounds().height / 2.f);
-		direcao.x = 0.0f;
-		direcao.y = -1.f;
-		pJogador->naColisao(direcao);
+		pJogador->setDirecao_x(0.0f);
+		pJogador->setDirecao_y(-1.0f);
+	}
+}
+
+void CollisionManager::updateColisoesJanelaJ2()
+{
+	//Colisão com a borda esquerda da janela
+	if (pCurandeira->getBounds().left < 0.f)
+	{
+		pCurandeira->setPosition(pCurandeira->getBounds().width / 2.f, pCurandeira->getBounds().top + pCurandeira->getBounds().width / 2.f);
+	}
+	if (pCurandeira->getBounds().left + pCurandeira->getBounds().width > pWindow->getSize().x)
+	{
+		pCurandeira->setPosition(pWindow->getSize().x - pCurandeira->getBounds().width / 2.f, pCurandeira->getBounds().top + pCurandeira->getBounds().width / 2.f);
+	}
+
+	//Colisão com a borda inferior da janela
+	if (pCurandeira->getBounds().top + pCurandeira->getBounds().height + 100.f> pWindow->getSize().y)
+	{
+		pCurandeira->setPosition(pCurandeira->getPosition().x, pWindow->getSize().y - pCurandeira->getBounds().height / 2 - 100.f);
+	}
+
+	//Colisão com a borda superior da janela
+	else if (pCurandeira->getBounds().top < 0.f)
+	{
+		pCurandeira->setPosition(pCurandeira->getPosition().x, pCurandeira->getBounds().height / 2.f);
 	}
 }
 
 bool CollisionManager::updateColisoes(Entidade* pEn)
 {
 	updateColisoesJanela();
-	return verificaColisaoJogador(*pEn, direcao);
+	return verificaColisaoJogador(*pEn);
 }
 
 bool CollisionManager::updateCombate(Entidade* pOrbe, Entidade* pInimigo)
@@ -181,6 +207,11 @@ void CollisionManager::setJogador(Jogador* pJ1)
 		pJogador = pJ1;
 	else
 		std::cout << "ERROR::COLLISIONMANAGER::SETJOGADOR::Ponteiro Nulo" << std::endl;
+}
+
+void CollisionManager::setCurandeira(Curandeira* curandeira)
+{
+	pCurandeira = curandeira;
 }
 
 void CollisionManager::setGraphicManager(GraphicManager* pGM)

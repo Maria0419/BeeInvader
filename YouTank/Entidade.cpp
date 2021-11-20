@@ -85,6 +85,14 @@ const bool Entidade::getShowing() const
 	return aparece;
 }
 
+void Entidade::setDirecao_x(float dir_x)
+{
+}
+
+void Entidade::setDirecao_y(float dir_y)
+{
+}
+
 float Entidade::getDirecao_x()
 {
 	return direcao.x;
@@ -113,6 +121,10 @@ void Entidade::updateOrbe()
 {
 }
 
+void Entidade::updateOrbeCura()
+{
+}
+
 void Entidade::updateFerrao()
 {
 }
@@ -121,7 +133,7 @@ void Entidade::updateAnimacao()
 {
 }
 
-void Entidade::naColisao(sf::Vector2f direcao)
+void Entidade::naColisao()
 {
 }
 

@@ -3,12 +3,13 @@
 #include "GraphicManager.h"
 #include "Obstaculo.h"
 #include "Inimigo.h"
+#include "Curandeira.h"
 
 class CollisionManager
 {
 private:
 	Jogador* pJogador;
-	sf::Vector2f direcao;
+	Curandeira* pCurandeira;
 	//Tela
 	GraphicManager* pGraphic;
 	sf::RenderWindow* pWindow;
@@ -18,8 +19,10 @@ public:
 	~CollisionManager();
 	
 	/*Funções*/
-	bool verificaColisaoJogador(Entidade& entidade, sf::Vector2f& direcao);
+	bool verificaColisaoJogador(Entidade& entidade);
 	void updateColisoesJanela();
+	void updateColisoesJanelaJ1();
+	void updateColisoesJanelaJ2();
 	bool updateColisoes(Entidade* pEn);
 	bool updateCombate(Entidade* pOrbe, Entidade* pInimigo);
 	void updateInimigoPlataforma(Entidade& inimigo, Entidade* plataforma);
@@ -27,6 +30,7 @@ public:
 
 	//set
 	void setJogador(Jogador* jogador1);
+	void setCurandeira(Curandeira* curandeira);
 	void setGraphicManager(GraphicManager* pGM);
 
 };

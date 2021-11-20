@@ -19,16 +19,18 @@ FasePrimeira::FasePrimeira():
 	initInimigo();
 	collisionManager.setGraphicManager(pGraphic);
 	collisionManager.setJogador(pJogador);
+	
 }
 
 FasePrimeira::~FasePrimeira()
 {
-	delete curandeira;
+	delete pCurandeira;
 }
 
 void FasePrimeira::spawnCurandeira()
 {
-	Curandeira* jogador2 = new Curandeira();
+	pCurandeira = new Curandeira();
+	collisionManager.setCurandeira(pCurandeira);
 }
 
 void FasePrimeira::spawnCogumelo()
@@ -93,9 +95,14 @@ void FasePrimeira::updateMovimento()
 			listaEntidades.operator[](i)->persegue(pJogador->getPosition().x, pJogador->getPosition().y);
 		}
 		break;
-		case ID_ORBE://move projeteis
+		case ID_ORBE://move orbe de dano
 		{
 			listaEntidades.operator[](i)->updateOrbe();
+		}
+		break;
+		case ID_ORBECURA: //move orbe de cura
+		{
+			listaEntidades.operator[](i)->updateOrbeCura();
 		}
 		break;
 		case ID_FERRAO://move ferrao
@@ -144,13 +151,20 @@ void FasePrimeira::updateColisoes()
 		}
 		break;
 		case ID_ORBE:
-		{	//update colisoes do projetil com janela
+		{	//update colisoes do orbe de dano com janela
 			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
 			}
 		}
 		break;
+		case ID_ORBECURA:
+		{   //update colisoes do orbe de cura com janela
+			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
+			{
+				listaEntidades.operator[](i)->setShowing(false);
+			}
+		}
 		case ID_FERRAO:
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
@@ -254,6 +268,7 @@ void FasePrimeira::update()
 	updateCombate();
 	updateInimigoPlataforma();
 	pJogador->update();
+	pCurandeira->update();
 	updateBoss();
 	
 }
@@ -271,9 +286,10 @@ void FasePrimeira::renderFasePrimeira()
 		}
 		abelha_rainha.renderAbelhaRainha();
 	}
+	pCurandeira->render();
 }
 
 Curandeira* FasePrimeira::getCurandeira() const
 {
-	return curandeira;
+	return pCurandeira;
 }

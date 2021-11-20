@@ -10,6 +10,10 @@ public:
     Curandeira();
     ~Curandeira();
 
-    void cura(float dir_x, float dir_y);
+    void setOlhaEsquerda(bool x);
+    const bool olhandoEsquerda() const;
+    void update();
+    void updateAnimacao();
+    void cura(float dir_x, float dir_y, float pos_x, float pos_y);
 };
 

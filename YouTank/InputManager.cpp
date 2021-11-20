@@ -38,9 +38,9 @@ void InputManager::updateAtaqueCurandeira()
 {
 	pCurandeira->updateAtaqueCooldown();
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && pCurandeira->getPodeAtacar())
 	{
-		pCurandeira->cura(pJogador1->getPosition().x , pJogador1->getPosition().y);
+		pCurandeira->cura(pJogador1->getPosition().x , pJogador1->getPosition().y, pCurandeira->getPosition().x, pCurandeira->getPosition().y);
 	}
 }
 
@@ -53,7 +53,6 @@ void InputManager::updateFadaCaida(float deltaTime)
 {
 	
 	pJogador1->setVelocidadeX(pJogador1->getVelocidadeX() * 0.94f);
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		pJogador1->setVelocidadeX(pJogador1->getVelocidadeX() - pJogador1->getRapidez());
 
@@ -79,6 +78,8 @@ void InputManager::updateFadaCaida(float deltaTime)
 
 void InputManager::updateCurandeira(float deltaTime)
 {
+	pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() * 0.98f);
+	pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() * 0.98f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() - pCurandeira->getRapidez());
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -87,6 +88,10 @@ void InputManager::updateCurandeira(float deltaTime)
 		pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() - pCurandeira->getRapidez());
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() + pCurandeira->getRapidez());
+	if (pCurandeira->getVelocidadeX() < 0)
+		pCurandeira->setOlhaEsquerda(true);
+	else
+		pCurandeira->setOlhaEsquerda(false);
 	pCurandeira->move(pCurandeira->getVelocidadeX() * deltaTime, pCurandeira->getVelocidadeY() * deltaTime);
 	updateAtaqueCurandeira();
 }

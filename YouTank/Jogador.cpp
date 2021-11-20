@@ -24,6 +24,8 @@ Jogador::Jogador():
 	rapidez = 25.f;
 	alturaPulo = 100.f;
 	cooldownAtaqueMax = 30.f;
+	direcao.x = 0.0f;
+	direcao.y = 0.0f;
 	colisaoBot = false;
 	cooldownAtaque = cooldownAtaqueMax;
 	initShape();
@@ -45,6 +47,16 @@ const bool Jogador::olhandoEsquerda() const
 	return olhaEsquerda;
 }
 
+void Jogador::setDirecao_x(float dir_x)
+{
+	direcao.x = dir_x;
+}
+
+void Jogador::setDirecao_y(float dir_y)
+{
+	direcao.y = dir_y;
+}
+
 void Jogador::renderBarraVida()
 {
 	barraVida.renderBodyBack();
@@ -56,7 +68,7 @@ const bool Jogador::getColisaoBot() const
 	return colisaoBot;
 }
 
-void Jogador::naColisao(sf::Vector2f direcao)
+void Jogador::naColisao()
 {
 	if (direcao.x < 0.0f)
 	{
