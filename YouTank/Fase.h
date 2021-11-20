@@ -9,6 +9,7 @@
 #include "Plataforma.h"
 #include "Background.h"
 #include "Cogumelo.h"
+#include "Curandeira.h"
 #include "Espinhos.h"
 #include "Pedra.h"
 
@@ -19,6 +20,7 @@ protected:
     ListaEntidades listaEntidades;
     Entidade* pEn;
     CollisionManager collisionManager;
+    Curandeira* curandeira;
 
     //Jogador
     static Jogador* pJogador;

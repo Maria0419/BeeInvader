@@ -8,7 +8,10 @@ void GameState::runFase()
 	case 1:
 		fasePrimeira = new FasePrimeira();
 		fasePrimeira->spawnPlataforma();
+		fasePrimeira->spawnCurandeira();
+		pInput->setCurandeira(fasePrimeira->getCurandeira());
 		pInput->setFase(static_cast<Fase*>(fasePrimeira));
+		
 		break;
 
 	case 2:

@@ -23,7 +23,12 @@ FasePrimeira::FasePrimeira():
 
 FasePrimeira::~FasePrimeira()
 {
-	
+	delete curandeira;
+}
+
+void FasePrimeira::spawnCurandeira()
+{
+	Curandeira* jogador2 = new Curandeira();
 }
 
 void FasePrimeira::spawnCogumelo()
@@ -159,7 +164,8 @@ void FasePrimeira::updateColisoes()
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
-				pJogador->tomarDano(5);
+				if(!pJogador->getColisaoBot())
+					pJogador->tomarDano(5);
 				listaEntidades.operator[](i)->setShowing(false);
 				contaCogu--;
 			}
@@ -265,4 +271,9 @@ void FasePrimeira::renderFasePrimeira()
 		}
 		abelha_rainha.renderAbelhaRainha();
 	}
+}
+
+Curandeira* FasePrimeira::getCurandeira() const
+{
+	return curandeira;
 }

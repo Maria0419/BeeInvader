@@ -154,6 +154,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Cogumelo.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Curandeira.cpp" />
     <ClCompile Include="Elemento.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
+    <ClCompile Include="OrbeCura.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Pedra.cpp" />
     <ClCompile Include="Personagem.cpp" />
@@ -195,6 +197,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Cogumelo.h" />
     <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Curandeira.h" />
     <ClInclude Include="Elemento.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
@@ -215,6 +218,7 @@
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Obstaculo.h" />
+    <ClInclude Include="OrbeCura.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Pedra.h" />
     <ClInclude Include="Personagem.h" />

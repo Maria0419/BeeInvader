@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "InputManager.h"
 
-InputManager::InputManager():
+InputManager::InputManager() :
+	pCurandeira(NULL),
 	pJogador1(NULL),
 	pGraphic(NULL), 
 	pFase(NULL)
@@ -13,7 +14,13 @@ InputManager::~InputManager()
 {
 }
 
-void InputManager::updateAtaque()
+void InputManager::update(float deltaTime)
+{
+	updateFadaCaida(deltaTime);
+	updateCurandeira(deltaTime);
+}
+
+void InputManager::updateAtaqueFadaCaida()
 {
 	pJogador1->updateAtaqueCooldown();
 
@@ -27,12 +34,22 @@ void InputManager::updateAtaque()
 	
 }
 
+void InputManager::updateAtaqueCurandeira()
+{
+	pCurandeira->updateAtaqueCooldown();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	{
+		pCurandeira->cura(pJogador1->getPosition().x , pJogador1->getPosition().y);
+	}
+}
+
 void InputManager::updateMousePos()
 {
 	mousePosWindow = sf::Mouse::getPosition(*pGraphic->getWindow());
 }
 
-void InputManager::update(float deltaTime)
+void InputManager::updateFadaCaida(float deltaTime)
 {
 	
 	pJogador1->setVelocidadeX(pJogador1->getVelocidadeX() * 0.94f);
@@ -57,7 +74,21 @@ void InputManager::update(float deltaTime)
 
 	pJogador1->move(pJogador1->getVelocidadeX() * deltaTime, pJogador1->getVelocidadeY() * deltaTime);
 
-	updateAtaque();
+	updateAtaqueFadaCaida();
+}
+
+void InputManager::updateCurandeira(float deltaTime)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() - pCurandeira->getRapidez());
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() + pCurandeira->getRapidez());
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() - pCurandeira->getRapidez());
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() + pCurandeira->getRapidez());
+	pCurandeira->move(pCurandeira->getVelocidadeX() * deltaTime, pCurandeira->getVelocidadeY() * deltaTime);
+	updateAtaqueCurandeira();
 }
 
 
@@ -91,4 +122,9 @@ const bool InputManager::getPause() const
 	else
 		return false;
 
+}
+
+void InputManager::setCurandeira(Curandeira* pC)
+{
+	pCurandeira = pC;
 }

@@ -24,6 +24,7 @@ Jogador::Jogador():
 	rapidez = 25.f;
 	alturaPulo = 100.f;
 	cooldownAtaqueMax = 30.f;
+	colisaoBot = false;
 	cooldownAtaque = cooldownAtaqueMax;
 	initShape();
 }
@@ -50,28 +51,37 @@ void Jogador::renderBarraVida()
 	barraVida.render();
 }
 
+const bool Jogador::getColisaoBot() const
+{
+	return colisaoBot;
+}
+
 void Jogador::naColisao(sf::Vector2f direcao)
 {
 	if (direcao.x < 0.0f)
 	{
 		//colisao na esquerda
 		setVelocidadeX(0.0f);
+		colisaoBot = false;
 	}
 	else if (direcao.x > 0.0f)
 	{
 		//colisao na direita
 		setVelocidadeX(0.0f);
+		colisaoBot = false;
 	}
 	if (direcao.y > 0.0f)
 	{
 		//colisao embaixo
 		velocidade.y = 0.0f;
 		podePular = true;
+		colisaoBot = true;
 	}
 	else if (direcao.y < 0.0f)
 	{
 		//colisao em cima
 		velocidade.y = 0.0f;
+		colisaoBot = false;
 	}
 }
 

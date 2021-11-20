@@ -15,6 +15,7 @@ private:
     void initShape();
     void initBarraVida();
     bool olhaEsquerda;
+    bool colisaoBot;
 
 public:
     Jogador();
@@ -31,6 +32,8 @@ public:
     void update();
 
     void renderBarraVida();    
+
+    const bool getColisaoBot() const;
    
 };
 
