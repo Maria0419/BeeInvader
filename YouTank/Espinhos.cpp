@@ -5,7 +5,7 @@
 Espinhos::Espinhos(float pos_x, float pos_y)
 {
 	id = ID_ESPINHOS; 
-	setSize(60.f, 87.f);
+	setSize(57.f, 83.f);
 	setPosition(pos_x, pos_y);
 	setTexture("Imagens/thorn.png");
 	setOriginCenter();

@@ -13,6 +13,9 @@ private:
 	GraphicManager* pGraphic;
 	sf::RenderWindow* pWindow;
 
+	float timer;
+	float timerMAX;
+
 public:
 	CollisionManager();
 	~CollisionManager();
@@ -24,6 +27,7 @@ public:
 	bool updateCombate(Entidade* pOrbe, Entidade* pInimigo);
 	void updateInimigoPlataforma(Entidade& inimigo, Entidade* plataforma);
 	bool entidadeSaiuDaTela(Entidade* entidade);
+	bool verificaContato(Entidade* entidade);
 
 	//set
 	void setJogador(Jogador* jogador1);

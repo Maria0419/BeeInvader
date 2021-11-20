@@ -6,8 +6,9 @@ void FasePrimeira::initInimigo()
 {
 	abelha_rainha.setJogadorAlvo(&(*pJogador));
 	contaCogu = 0;
-	cogumelosMAX = rand() % 1 + 3;
+	cogumelosMAX = rand() % 4;
 	obstaculosMAX = rand() % 3 + 3;
+	contaPedras = 0;
 	contaObstaculos = 0;
 }
 
@@ -28,7 +29,7 @@ FasePrimeira::~FasePrimeira()
 
 void FasePrimeira::spawnCurandeira()
 {
-	Curandeira* jogador2 = new Curandeira();
+	curandeira = new Curandeira();
 }
 
 void FasePrimeira::spawnCogumelo()
@@ -70,12 +71,21 @@ void FasePrimeira::spawnObstaculos()
 {
 	if (contaObstaculos < obstaculosMAX)
 	{
-		Espinhos* espinhos = new Espinhos((float)(rand() % 1180+100), 610.f);
+		Espinhos* espinhos = new Espinhos((float)(rand() % 1180+100), 620.f);
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(espinhos));
-		Pedra* pedra = new Pedra((float)(rand() % 300+150), 480.f);
-		listaEntidades.incluaEntidade(static_cast<Entidade*>(pedra));
-		Pedra* pedra2 = new Pedra((float)(rand() % 300+150), 160.f);
-		listaEntidades.incluaEntidade(static_cast<Entidade*>(pedra2));
+		if (contaPedras < obstaculosMAX)
+		{
+			Pedra* pedra = new Pedra((float)(rand() % 190 + 160), 480.f);
+			listaEntidades.incluaEntidade(static_cast<Entidade*>(pedra));
+			contaPedras++;
+		}
+		if (contaPedras < obstaculosMAX)
+		{
+			Pedra* pedra2 = new Pedra((float)(rand() % 190 + 160), 160.f);
+			listaEntidades.incluaEntidade(static_cast<Entidade*>(pedra2));
+			contaPedras++;
+		}
+		
 		contaObstaculos++;
 
 	}
@@ -171,11 +181,24 @@ void FasePrimeira::updateColisoes()
 			}
 		}
 		break;
+		case ID_ESPINHOS:
+		{
+			if (collisionManager.verificaContato(listaEntidades.operator[](i)))
+			{
+				pJogador->tomarDano(1);
+			}
+		}
+		break;
+		case ID_PEDRA:
+		{
+			collisionManager.updateColisoes(listaEntidades.operator[](i));
+		}
+		break;
 		default:
 		break;
 		}
-		if(collisionManager.updateColisoes(static_cast<Entidade*>(&abelha_rainha)))
-			pJogador->tomarDano(30);
+		if(collisionManager.verificaContato(static_cast<Entidade*>(&abelha_rainha)))
+			pJogador->tomarDano(4);
 	}
 }
 

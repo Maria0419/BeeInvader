@@ -25,7 +25,7 @@ Jogador::Jogador():
 	alturaPulo = 100.f;
 	cooldownAtaqueMax = 30.f;
 	colisaoBot = false;
-	cooldownAtaque = cooldownAtaqueMax;
+	cooldownAtaque = 0.f;
 	initShape();
 }
 

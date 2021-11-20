@@ -18,6 +18,7 @@ private:
     unsigned int contaCogu;
     unsigned int obstaculosMAX;
     unsigned int contaObstaculos;
+    unsigned int contaPedras;
 
     //privateFunctions
     void initInimigo();

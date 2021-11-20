@@ -9,7 +9,7 @@ void AbelhaRainha::initTimers()
 	curaTimerMAX = 20;
 	curaTimer = curaTimerMAX;
 	ferraoTimerMAX = 500;
-	ferraoTimer = ferraoTimerMAX;
+	ferraoTimer = 0;
 }
 
 void AbelhaRainha::initShape()
@@ -30,7 +30,7 @@ AbelhaRainha::AbelhaRainha():
 	id = ID_RAINHA; //j0g4d0r, 2 pois é rectangle shape
 	initShape();
 	initTimers();
-	anguloMAX = 2*3.1415;
+	anguloMAX =(float) (2*3.1415);
 	angulo = anguloMAX;
 	abelhasMAX = 10;
 	contaAbelhas = 0;

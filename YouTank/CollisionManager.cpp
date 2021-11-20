@@ -10,7 +10,8 @@ CollisionManager::CollisionManager():
 {
 	direcao.x = 0.0f;
 	direcao.y = 0.0f;
-	
+	timerMAX = 300.f;
+	timer = timerMAX;
 }
 
 CollisionManager::~CollisionManager()
@@ -173,6 +174,23 @@ bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
 		return true;
 	}
 	return false;
+}
+
+bool CollisionManager::verificaContato(Entidade* entidade)
+{
+	bool intersecta = pJogador->intersecta(static_cast<Ente*>(entidade));
+	if (timer < timerMAX || intersecta == false )
+	{
+		timer += 1.f;
+		return false;
+	}
+	else
+	{
+		timer = 0.f;
+		return intersecta;
+	}
+	
+	
 }
 
 void CollisionManager::setJogador(Jogador* pJ1)

@@ -29,7 +29,6 @@ void InputManager::updateAtaqueFadaCaida()
 		float dir_x = static_cast<float> (sf::Mouse::getPosition(*pGraphic->getWindow()).x);
 		float dir_y = static_cast<float> (sf::Mouse::getPosition(*pGraphic->getWindow()).y);
 		pJogador1->ataca(dir_x, dir_y);
-		std::cout << dir_x << "  " << dir_y << std::endl;
 	}
 	
 }
