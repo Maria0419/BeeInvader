@@ -18,7 +18,7 @@ Plataforma::Plataforma(float tam_x, float tam_y, float pos_x, float pos_y):
 Plataforma::Plataforma():
 	Obstaculo()
 {
-	id = 44042; //pl4t4f0rm4, 2 pois é um Rectangle shape
+	id = ID_PLATAFORMA; //pl4t4f0rm4, 2 pois é um Rectangle shape
 	initShape();
 }
 
@@ -34,16 +34,4 @@ void Plataforma::initShape()
 	setPosition(700.f, 700.f);
 	setTexture("Imagens/grass_main.png");
 	setOutline(2.f);
-	
-}
-
-
-void Plataforma::setShowing(bool x)
-{
-	aparece = x;
-}
-
-const bool Plataforma::getShowing() const
-{
-	return aparece;
 }

@@ -15,7 +15,7 @@ void AbelhaRainha::initTimers()
 void AbelhaRainha::initShape()
 {
 	setSize(300.f, 400.f);
-	setTexture("Imagens/queen_bee.png", 1.f);
+	setTexture("Imagens/queen_bee.png");
 	setOriginCenter();
 	setPosition(1130.f, 250.f);
 }
@@ -30,7 +30,7 @@ AbelhaRainha::AbelhaRainha():
 	id = ID_RAINHA; //j0g4d0r, 2 pois é rectangle shape
 	initShape();
 	initTimers();
-	anguloMAX = 2*3.141592;
+	anguloMAX = float(2*3.141592);
 	angulo = anguloMAX;
 	abelhasMAX = 10;
 	contaAbelhas = 0;
@@ -97,7 +97,7 @@ void AbelhaRainha::setJogadorAlvo(Jogador* pJ)
 
 void AbelhaRainha::updateMovimento()
 {
-	float hipotenusa, moveX, moveY;
+	float moveX, moveY;
 	if (angulo > anguloMAX)
 	{
 		angulo = 0;

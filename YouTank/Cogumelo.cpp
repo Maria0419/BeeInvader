@@ -8,10 +8,10 @@ Cogumelo::Cogumelo():
 	id = ID_COGUMELO;
 	aparece = true;
 	olhaEsquerda = false;
-	setTexture("Imagens/mushroom.png", 1.f);
+	setTexture("Imagens/mushroom.png");
 	setSize(50.f, 55.f);
 	setOriginCenter();
-	setPosition(rand()%1200, rand()%100);
+	setPosition((float)(rand()%1200), (float)(rand()%100));
 	setVelocidadeY(1.f);
 	setVelocidadeX(2.f);
 }

@@ -11,7 +11,7 @@ Ferrao::Ferrao(float pos_x, float pos_y, float x_jogador, float y_jogador):
 {
 	id = ID_FERRAO;
 	aparece = true;
-	setTexture("Imagens/ferrao.png", 1.f);
+	setTexture("Imagens/ferrao.png");
 	setSize(30.f, 30.f);
 	setOriginCenter();
 	setPosition(pos_x, pos_y+100.f);

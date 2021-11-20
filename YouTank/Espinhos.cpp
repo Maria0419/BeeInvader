@@ -1,0 +1,16 @@
+#include "stdafx.h"
+#include "Espinhos.h"
+#include "Global.h"
+
+Espinhos::Espinhos(float pos_x, float pos_y)
+{
+	id = ID_ESPINHOS; 
+	setSize(60.f, 87.f);
+	setPosition(pos_x, pos_y);
+	setTexture("Imagens/thorn.png");
+	setOriginCenter();
+}
+
+Espinhos::~Espinhos()
+{
+}

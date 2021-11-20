@@ -9,6 +9,8 @@
 #include "Plataforma.h"
 #include "Background.h"
 #include "Cogumelo.h"
+#include "Espinhos.h"
+#include "Pedra.h"
 
 class Fase :
     public Ente

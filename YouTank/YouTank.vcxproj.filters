@@ -150,19 +150,25 @@
     <ClCompile Include="BarraVida.cpp">
       <Filter>Arquivos de Origem\Elementos Visuais</Filter>
     </ClCompile>
-    <ClCompile Include="Cogumelo.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
     <ClCompile Include="Orbe.cpp">
       <Filter>Arquivos de Origem\Entidades\Projetis</Filter>
     </ClCompile>
     <ClCompile Include="Projetil.cpp">
       <Filter>Arquivos de Origem\Entidades\Projetis</Filter>
     </ClCompile>
+    <ClCompile Include="Cogumelo.cpp">
+      <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
+    </ClCompile>
     <ClCompile Include="Ferrao.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Origem\Entidades\Projetis</Filter>
     </ClCompile>
     <ClCompile Include="PauseState.cpp">
+      <Filter>Arquivos de Origem\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Espinhos.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Pedra.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
@@ -261,6 +267,12 @@
       <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
     </ClInclude>
     <ClInclude Include="PauseState.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Espinhos.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Pedra.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>

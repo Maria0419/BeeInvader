@@ -6,7 +6,9 @@ void FasePrimeira::initInimigo()
 {
 	abelha_rainha.setJogadorAlvo(&(*pJogador));
 	contaCogu = 0;
-	cogumelosMAX = rand() % 3 + 3;
+	cogumelosMAX = rand() % 1 + 3;
+	obstaculosMAX = rand() % 3 + 3;
+	contaObstaculos = 0;
 }
 
 FasePrimeira::FasePrimeira():
@@ -36,7 +38,7 @@ void FasePrimeira::spawnCogumelo()
 
 void FasePrimeira::spawnPlataforma()
 {
-
+	//plataforma
 	Plataforma* plat = new Plataforma();
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat));
 
@@ -57,6 +59,22 @@ void FasePrimeira::spawnPlataforma()
 
 	Plataforma* plat7 = new Plataforma(300.f, 20.f, 300.f, 180.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat7));
+}
+
+void FasePrimeira::spawnObstaculos()
+{
+	if (contaObstaculos < obstaculosMAX)
+	{
+		Espinhos* espinhos = new Espinhos((float)(rand() % 1180+100), 610.f);
+		listaEntidades.incluaEntidade(static_cast<Entidade*>(espinhos));
+		Pedra* pedra = new Pedra((float)(rand() % 300+150), 480.f);
+		listaEntidades.incluaEntidade(static_cast<Entidade*>(pedra));
+		Pedra* pedra2 = new Pedra((float)(rand() % 300+150), 160.f);
+		listaEntidades.incluaEntidade(static_cast<Entidade*>(pedra2));
+		contaObstaculos++;
+
+	}
+
 }
 
 void FasePrimeira::updateMovimento()
@@ -225,6 +243,7 @@ void FasePrimeira::update()
 	updateColisoes();
 	limpeza();
 	spawnCogumelo();
+	spawnObstaculos();
 	updateMovimento();
 	updateCombate();
 	updateInimigoPlataforma();

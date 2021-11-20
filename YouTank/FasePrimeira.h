@@ -16,6 +16,8 @@ private:
     
     unsigned int cogumelosMAX;
     unsigned int contaCogu;
+    unsigned int obstaculosMAX;
+    unsigned int contaObstaculos;
 
     //privateFunctions
     void initInimigo();
@@ -27,6 +29,7 @@ public:
     //Funçoes
     void spawnCogumelo();
     void spawnPlataforma();
+    void spawnObstaculos();
     
     void updateMovimento();
     void updateColisoes();

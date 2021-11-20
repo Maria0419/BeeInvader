@@ -157,6 +157,7 @@
     <ClCompile Include="Elemento.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
+    <ClCompile Include="Espinhos.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Fase.cpp" />
     <ClCompile Include="FasePrimeira.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="PauseState.cpp" />
+    <ClCompile Include="Pedra.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Plataforma.cpp" />
     <ClCompile Include="Orbe.cpp" />
@@ -196,6 +198,7 @@
     <ClInclude Include="Elemento.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
+    <ClInclude Include="Espinhos.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Fase.h" />
     <ClInclude Include="FasePrimeira.h" />
@@ -213,6 +216,7 @@
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="PauseState.h" />
+    <ClInclude Include="Pedra.h" />
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Plataforma.h" />
     <ClInclude Include="Orbe.h" />

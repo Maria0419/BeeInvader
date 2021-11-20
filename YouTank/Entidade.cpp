@@ -6,7 +6,8 @@ Entidade::Entidade(int hp, int dmg) :
 	rapidez(1.f),
 	dano(dmg),
 	vida(hp),
-	podeMatar(true)
+	podeMatar(true),
+	olhaEsquerda(false)
 {
 	aparece = true;
 	vidaMAX = hp;
@@ -21,7 +22,8 @@ Entidade::Entidade():
 	dano(0),
 	vida(0),
 	vidaMAX(0),
-	podeMatar(true)
+	podeMatar(true),
+	olhaEsquerda(false)
 {
 	aparece = true;
 }

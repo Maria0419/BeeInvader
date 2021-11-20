@@ -51,7 +51,7 @@ public:
 
 	//Getters
 	sf::RectangleShape* getBody();
-	virtual const bool getShowing() const;
+	const bool getShowing() const;
 	sf::Vector2f getPosition() const;
 	sf::FloatRect getBounds() const;
 	sf::Vector2f getSize() const;

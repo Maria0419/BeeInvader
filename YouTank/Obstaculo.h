@@ -3,7 +3,9 @@
 class Obstaculo :
     public Entidade
 {
-private:
+protected:
+
+
 public:
     Obstaculo();
     ~Obstaculo();
