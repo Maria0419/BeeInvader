@@ -5,10 +5,9 @@ Game::Game() :
 	deltaTime(0)
 {
 	graphicManager = GraphicManager::getInstance();
-	
-	fase.setJogador(&jogador1);
 
 	setGraphicManager();
+	setJogador();
 
 	clock.restart();
 	deltaTime = clock.restart().asSeconds();
@@ -38,9 +37,13 @@ void Game::setGraphicManager()
 	Ente::setGraphicManager(graphicManager);
 	inputManager.setGraphicManager(graphicManager);
 	eventManager.setGraphicManager(graphicManager);
-	
+}
 
+void Game::setJogador()
+{
+	fase.setJogador(&jogador1);
 	inputManager.setJogador(&jogador1);
+
 }
 
 void Game::run()
@@ -61,14 +64,20 @@ void Game::update()
 
 	if (!states.empty())
 	{
-		states.top()->update(deltaTime);
+		states.top()->update();
 		if (states.top()->getState() == MENU_STATE)
 		{
 		}
 
-		if (states.top()->getState() == GAME_STATE)
+		else if (states.top()->getState() == GAME_STATE)
 		{
 			inputManager.update(deltaTime);			
+		}
+		else if (states.top()->getState() == PAUSE_STATE && states.top()->getPause() == false)
+		{
+			delete states.top();
+			states.pop();
+			states.top()->setPause(false);
 		}
 
 		if (states.top()->getTerminar())

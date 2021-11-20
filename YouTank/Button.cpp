@@ -3,18 +3,10 @@
 #include "Global.h"
 
 
-Button::Button(float x, float y, std::string text):
-	Ente()
+void Button::initText(std::string text)
 {
-	id = ID_BUTTON;
-	estadoBotao = BT_IDLE;
-
-	setSize(200, 50);
-	setPosition(x, y);
-	setOutline(2.f);
-
+	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
-
 
 	texto.setFont(*fonte);
 	texto.setString(text);
@@ -23,13 +15,29 @@ Button::Button(float x, float y, std::string text):
 	texto.setPosition(
 		getPosition().x + getBounds().width / 2.f - texto.getGlobalBounds().width / 2.f,
 		getPosition().y + getBounds().height / 3.f - texto.getGlobalBounds().height / 2.f);
-	
+}
 
+void Button::initShape(float x, float y)
+{
+	//Inicializa a forma e cor do botão
+	setSize(200, 50);
+	setPosition(x, y);
+	setOutline(2.f);
 	red = 100;
 	green = 100;
 	blue = 100;
 
 	setCor(red, green, blue, 255);
+}
+
+Button::Button(float x, float y, std::string text):
+	Ente()
+{
+	id = ID_BUTTON;
+	estadoBotao = BT_IDLE;
+
+	initShape(x,y);
+	initText(text);
 }
 
 Button::~Button()
@@ -38,6 +46,7 @@ Button::~Button()
 
 const bool Button::estaPressionado() const
 {
+	//Indica se o botão está pressionado ou não
 	if (estadoBotao == BT_PRESSIONADO)
 		return true;
 	else
@@ -60,6 +69,7 @@ void Button::update(const float posX, const float posY)
 		}
 	}
 
+	/*Muda a cor do botão dependendo do seu estado*/
 	switch (estadoBotao)
 	{
 	case BT_IDLE:
@@ -78,7 +88,6 @@ void Button::update(const float posX, const float posY)
 		setCor(255, 0, 0, 255);
 		break;
 	}
-
 }
 
 void Button::renderText()

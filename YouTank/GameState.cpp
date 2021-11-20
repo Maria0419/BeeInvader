@@ -1,15 +1,8 @@
 #include "stdafx.h"
 #include "GameState.h"
 
-//Construtora e Destrutora
-GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f):
-	State(state),
-	fasePrimeira(NULL)
+void GameState::runFase()
 {
-	pInput = pIM;
-	stateID = GAME_STATE;
-	fase = f;
-
 	switch (fase)
 	{
 	case 1:
@@ -25,6 +18,17 @@ GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f):
 		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
 		break;
 	}
+}
+
+//Construtora e Destrutora
+GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f):
+	State(state,pIM),
+	fasePrimeira(NULL)
+{
+	stateID = GAME_STATE;
+	fase = f;
+	runFase();
+	
 }
 
 GameState::~GameState()
@@ -44,9 +48,19 @@ GameState::~GameState()
 	}
 }
 
+void GameState::setPause(bool p)
+{
+	pause = p;
+}
+
 const short GameState::getState()
 {
 	return stateID;
+}
+
+const bool GameState::getPause() const
+{
+	return pause;
 }
 
 void GameState::endState()
@@ -55,14 +69,24 @@ void GameState::endState()
 }
 
 
-void GameState::updateInput(const float& dt)
+void GameState::updatePause()
 {
-	verificarFim();
+	if (pause == true)
+	{
+		states->push(new PauseState(states, pInput));
+	}
+		
 }
 
-void GameState::update(const float& dt)
+void GameState::updateInput()
 {
-	updateInput(dt);
+	verificarPause();
+}
+
+void GameState::update()
+{
+	updateInput();
+	updatePause();
 	switch (fase)
 	{
 	case 1:

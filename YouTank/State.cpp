@@ -3,10 +3,11 @@
 
 GraphicManager* State::pGraphic = NULL;
 
-State::State(std::stack<State*>* state):
+State::State(std::stack<State*>* state, InputManager* pIM):
 	terminar(false),
+	pause(false),
 	stateID(STATE),
-	pInput(NULL)
+	pInput(pIM)
 {
 	states = state;
 }
@@ -25,13 +26,27 @@ void State::setGraphicManager(GraphicManager* pGM)
 	
 }
 
+void State::setPause(bool p)
+{
+	pause = p;
+}
+
 const bool& State::getTerminar() const
 {
 	return terminar;
 }
 
-void State::verificarFim()
+const bool State::getPause() const
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-		terminar = true;
+	return pause;
+}
+
+void State::verificarPause()
+{
+	if (pInput->getPause() == true)
+		pause = true;	
+}
+
+void State::endState()
+{
 }

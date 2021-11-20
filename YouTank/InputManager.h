@@ -26,5 +26,6 @@ public:
 	void setGraphicManager(GraphicManager* pGM);
 	void setFase(Fase* pFase);
 	const sf::Vector2i getMousePos() const;
+	const bool getPause() const;
 };
 

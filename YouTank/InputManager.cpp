@@ -31,7 +31,6 @@ void InputManager::updateMousePos()
 	mousePosWindow = sf::Mouse::getPosition(*pGraphic->getWindow());
 }
 
-
 void InputManager::update(float deltaTime)
 {
 	
@@ -82,4 +81,13 @@ void InputManager::setFase(Fase* pF)
 const sf::Vector2i InputManager::getMousePos() const
 {
 	return mousePosWindow;
+}
+
+const bool InputManager::getPause() const 
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		return true;
+	else
+		return false;
+
 }

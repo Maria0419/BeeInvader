@@ -2,6 +2,24 @@
 #include "AbelhaRainha.h"
 #include "Global.h"
 
+void AbelhaRainha::initTimers()
+{
+	spawnTimerMAX = 200;
+	spawnTimer = spawnTimerMAX;
+	curaTimerMAX = 20;
+	curaTimer = curaTimerMAX;
+	ferraoTimerMAX = 500;
+	ferraoTimer = ferraoTimerMAX;
+}
+
+void AbelhaRainha::initShape()
+{
+	setSize(300.f, 400.f);
+	setTexture("Imagens/queen_bee.png", 1.f);
+	setOriginCenter();
+	setPosition(1130.f, 250.f);
+}
+
 AbelhaRainha::AbelhaRainha():
 	pFerrao(NULL),
 	pJogador(NULL),
@@ -10,16 +28,9 @@ AbelhaRainha::AbelhaRainha():
 	barraVida(static_cast<Personagem*>(this), 1000.f, 20.f, 250.f, 25.f)
 {
 	id = ID_RAINHA; //j0g4d0r, 2 pois é rectangle shape
-	setSize(300.f, 400.f);
-	setTexture("Imagens/queen_bee.png", 1.f);
-	setOriginCenter();
-	setPosition(1130.f, 250.f);
-	spawnTimerMAX = 200;
-	spawnTimer = spawnTimerMAX;
-	curaTimerMAX = 20;
-	curaTimer = curaTimerMAX;
-	ferraoTimerMAX = 500;
-	ferraoTimer = ferraoTimerMAX;
+
+	initShape();
+	initTimers();
 	abelhasMAX = 10;
 	contaAbelhas = 0;
 }
