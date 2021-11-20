@@ -27,7 +27,7 @@ Jogador::Jogador():
 	direcao.x = 0.0f;
 	direcao.y = 0.0f;
 	colisaoBot = false;
-	cooldownAtaque = cooldownAtaqueMax;
+	cooldownAtaque = 0.f;
 	initShape();
 }
 
