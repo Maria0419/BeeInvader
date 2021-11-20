@@ -272,20 +272,20 @@
     <ClInclude Include="Ferrao.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
     </ClInclude>
-    <ClInclude Include="PauseState.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="Espinhos.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="Pedra.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Entidades\Obstaculos</Filter>
     </ClInclude>
     <ClInclude Include="Curandeira.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
     </ClInclude>
     <ClInclude Include="OrbeCura.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
+    </ClInclude>
+    <ClInclude Include="Pedra.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseState.h">
+      <Filter>Arquivos de Cabeçalho\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

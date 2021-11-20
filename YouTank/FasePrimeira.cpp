@@ -6,7 +6,7 @@ void FasePrimeira::initInimigo()
 {
 	abelha_rainha.setJogadorAlvo(&(*pJogador));
 	contaCogu = 0;
-	cogumelosMAX = rand() % 4;
+	cogumelosMAX = rand() % 5;
 	obstaculosMAX = rand() % 3 + 3;
 	contaPedras = 0;
 	contaObstaculos = 0;
@@ -25,7 +25,8 @@ FasePrimeira::FasePrimeira():
 
 FasePrimeira::~FasePrimeira()
 {
-	delete pCurandeira;
+	if(pCurandeira != NULL)
+		delete pCurandeira;
 }
 
 void FasePrimeira::spawnCurandeira()
@@ -77,7 +78,7 @@ void FasePrimeira::spawnObstaculos()
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(espinhos));
 		if (contaPedras < obstaculosMAX)
 		{
-			Pedra* pedra = new Pedra((float)(rand() % 190 + 160), 480.f);
+			Pedra* pedra = new Pedra((float)(rand() % 170 + 180), 480.f);
 			listaEntidades.incluaEntidade(static_cast<Entidade*>(pedra));
 			contaPedras++;
 		}
@@ -290,9 +291,11 @@ void FasePrimeira::update()
 	updateMovimento();
 	updateCombate();
 	updateInimigoPlataforma();
-	pJogador->update();
-	pCurandeira->update();
 	updateBoss();
+	pJogador->update();
+	if(pCurandeira!=NULL)
+		pCurandeira->update();
+	
 	
 }
 
@@ -309,7 +312,8 @@ void FasePrimeira::renderFasePrimeira()
 		}
 		abelha_rainha.renderAbelhaRainha();
 	}
-	pCurandeira->render();
+	if(pCurandeira!=NULL)
+		pCurandeira->render();
 }
 
 Curandeira* FasePrimeira::getCurandeira() const

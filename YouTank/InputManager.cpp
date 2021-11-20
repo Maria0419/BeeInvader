@@ -17,7 +17,8 @@ InputManager::~InputManager()
 void InputManager::update(float deltaTime)
 {
 	updateFadaCaida(deltaTime);
-	updateCurandeira(deltaTime);
+	if(pCurandeira!=NULL)
+		updateCurandeira(deltaTime);
 }
 
 void InputManager::updateAtaqueFadaCaida()

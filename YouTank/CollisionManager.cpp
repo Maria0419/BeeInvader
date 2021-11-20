@@ -9,8 +9,6 @@ CollisionManager::CollisionManager():
 	pWindow(NULL),
 	pGraphic(NULL)
 {
-	direcao.x = 0.0f;
-	direcao.y = 0.0f;
 	timerMAX = 300.f;
 	timer = timerMAX;
 }
@@ -78,7 +76,8 @@ bool CollisionManager::verificaColisaoJogador(Entidade& entidade)
 void CollisionManager::updateColisoesJanela()
 {
 	updateColisoesJanelaJ1();
-	updateColisoesJanelaJ2();
+	if(pCurandeira!=NULL)
+		updateColisoesJanelaJ2();
 }
 
 void CollisionManager::updateColisoesJanelaJ1()

@@ -6,6 +6,7 @@ Jogador* Fase::pJogador = NULL;
 
 Fase::Fase():
 	pEn(NULL),
+	pCurandeira(NULL),
 	listaEntidades()
 {
 

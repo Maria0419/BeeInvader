@@ -8,8 +8,14 @@ void GameState::runFase()
 	case 1:
 		fasePrimeira = new FasePrimeira();
 		fasePrimeira->spawnPlataforma();
-		fasePrimeira->spawnCurandeira();
-		pInput->setCurandeira(fasePrimeira->getCurandeira());
+
+		if (multiplayer == true)
+		{
+			fasePrimeira->spawnCurandeira();
+			pInput->setCurandeira(fasePrimeira->getCurandeira());
+		}
+		
+		
 		pInput->setFase(static_cast<Fase*>(fasePrimeira));
 		
 		break;
@@ -24,10 +30,11 @@ void GameState::runFase()
 }
 
 //Construtora e Destrutora
-GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f):
+GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool multip):
 	State(state,pIM),
 	fasePrimeira(NULL)
 {
+	multiplayer = multip;
 	stateID = GAME_STATE;
 	fase = f;
 	runFase();

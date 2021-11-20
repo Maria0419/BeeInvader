@@ -10,12 +10,13 @@ private:
     FasePrimeira* fasePrimeira;
     //Funções Inicializadoras
     short fase;
+    bool multiplayer;
 
     void runFase();
 public:
 
     //Construtora e Destrutora
-    GameState(std::stack<State*>* state, InputManager* pIM, short fase);
+    GameState(std::stack<State*>* state, InputManager* pIM, short fase, bool multip = false);
     ~GameState();
 
     void setPause(bool p);

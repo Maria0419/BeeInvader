@@ -45,14 +45,10 @@ AbelhaRainha::~AbelhaRainha()
 const bool AbelhaRainha::emFuria()
 {
 	if (vida < float(vidaMAX) / 2)
-	{
 		return true;
-	}
+	
 	else
-	{
-		return false;
-	}
-		
+		return false;		
 }
 
 void AbelhaRainha::curaVida()
@@ -131,7 +127,6 @@ void AbelhaRainha::spawnAbelhas()
 	else if (contaAbelhas < abelhasMAX)
 	{
 		Abelha* inim = new Abelha();
-		std::cout << contaAbelhas << std::endl;
 		pLista->incluaEntidade(static_cast<Entidade*>(inim));
 		contaAbelhas++;
 		spawnTimer = 0;
