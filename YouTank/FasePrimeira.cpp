@@ -146,8 +146,12 @@ void FasePrimeira::updateColisoes()
 				contaCogu--;
 			}
 		}
-
+		break;
+		default:
+		break;
 		}
+		if(collisionManager.updateColisoes(static_cast<Entidade*>(&abelha_rainha)))
+			pJogador->tomarDano(30);
 	}
 }
 
@@ -176,6 +180,16 @@ void FasePrimeira::updateCombate()
 						listaEntidades.operator[](counter_2)->setShowing(false);
 						listaEntidades.operator[](counter)->setShowing(false);
 						abelha_rainha.morreuAbelha();
+						colidiu = true;
+					}
+				}
+				else if (listaEntidades.operator[](counter_2)->getId() == ID_COGUMELO)
+				{
+					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
+					{
+						listaEntidades.operator[](counter_2)->setShowing(false);
+						listaEntidades.operator[](counter)->setShowing(false);
+						contaCogu--;
 						colidiu = true;
 					}
 				}
