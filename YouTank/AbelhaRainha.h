@@ -10,6 +10,9 @@ class AbelhaRainha:
 {
 private:
 	BarraVida barraVida;
+	float originX;
+	float x;
+	float y;
 	unsigned int curaTimer;
 	unsigned int curaTimerMAX;
 	unsigned int ferraoTimer;
@@ -18,6 +21,8 @@ private:
 	unsigned int spawnTimerMAX;
 	unsigned int abelhasMAX;
 	unsigned int contaAbelhas;
+	float angulo;
+	float anguloMAX;
 	Ferrao* pFerrao;
 	Abelha* pAbelha;
 	Jogador* pJogador;
@@ -30,6 +35,7 @@ public:
 
 	void update();
 	void updateAtaque();
+	void updateMovimento();
 	void renderAbelhaRainha();
 
 	void setJogadorAlvo(Jogador* pJ);

@@ -2,7 +2,7 @@
 #include "AbelhaRainha.h"
 #include "Global.h"
 
-AbelhaRainha::AbelhaRainha():
+AbelhaRainha::AbelhaRainha() :
 	pFerrao(NULL),
 	pJogador(NULL),
 	pAbelha(NULL),
@@ -14,6 +14,8 @@ AbelhaRainha::AbelhaRainha():
 	setTexture("Imagens/queen_bee.png", 1.f);
 	setOriginCenter();
 	setPosition(1130.f, 250.f);
+	anguloMAX = 2*3.141592;
+	angulo = anguloMAX;
 	spawnTimerMAX = 200;
 	spawnTimer = spawnTimerMAX;
 	curaTimerMAX = 20;
@@ -22,6 +24,8 @@ AbelhaRainha::AbelhaRainha():
 	ferraoTimer = ferraoTimerMAX;
 	abelhasMAX = 10;
 	contaAbelhas = 0;
+	x = getPosition().x - 50.f;
+	y = getPosition().y;
 }
 
 AbelhaRainha::~AbelhaRainha()
@@ -64,6 +68,7 @@ void AbelhaRainha::update()
 		spawnAbelhas();
 	}
 	updateAtaque();
+	updateMovimento();
 }
 
 void AbelhaRainha::renderAbelhaRainha()
@@ -76,6 +81,20 @@ void AbelhaRainha::renderAbelhaRainha()
 void AbelhaRainha::setJogadorAlvo(Jogador* pJ)
 {
 	pJogador = pJ;
+}
+
+void AbelhaRainha::updateMovimento()
+{
+	float hipotenusa, moveX, moveY;
+	if (angulo > anguloMAX)
+	{
+		angulo = 0;
+	}
+	else
+		angulo += 0.01f;
+	moveX = x + cosf(angulo) * 50.f;
+	moveY = y + sinf(angulo) * 50.f;
+	setPosition(moveX, moveY);
 }
 
 void AbelhaRainha::updateAtaque()
