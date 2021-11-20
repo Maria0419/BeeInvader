@@ -27,6 +27,9 @@ private:
 	Abelha* pAbelha;
 	Jogador* pJogador;
 
+	void initTimers();
+	void initShape();
+
 public:
 	AbelhaRainha();
 	~AbelhaRainha();

@@ -4,19 +4,18 @@
 void MenuState::initButtons()
 {
 	buttons["NOVO_JOGO"] = new Button(550, 100, "Novo Jogo");
-	buttons["MULTIPLAYER"] = new Button(550, 175, "Multiplayer");
-	buttons["FASE_1"] = new Button(550, 250, "Primeira Fase");
-	buttons["FASE_2"] = new Button(550, 325, "Segunda Fase");
+	buttons["FASE_1"] = new Button(550, 175, "Primeira Fase");
+	buttons["FASE_2"] = new Button(550, 250 , "Segunda Fase");
+	buttons["MULTIPLAYER"] = new Button(550, 325, "Multiplayer");
 	buttons["RANKING"] = new Button(550, 400, "Ranking");
 	buttons["SAIR"] = new Button(550, 475, "Sair");
 }
 
 MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
-	State(state),
+	State(state, pIM),
 	background("Imagens/background_.jpg", 0.73f)
 {
 	stateID = MENU_STATE;
-	pInput = pIM;
 	initButtons();
 }
 
@@ -47,27 +46,40 @@ void MenuState::updateButtons()
 		it.second->update((const float) (pInput->getMousePos().x), (const float) (pInput->getMousePos().y));
 	}
 
-	if (buttons["FASE_1"]->estaPressionado())
+	if (buttons["NOVO_JOGO"]->estaPressionado())
 	{
 		states->push(new GameState(states, pInput, 1));
 	}
-	if (buttons["SAIR"]->estaPressionado())
+	else if (buttons["FASE_1"]->estaPressionado())
+	{
+		states->push(new GameState(states, pInput, 1));
+	}
+	else if (buttons["FASE_2"]->estaPressionado())
+	{
+		states->push(new GameState(states, pInput, 1));
+	}
+	else if (buttons["MULTIPLAYER"]->estaPressionado())
+	{
+		states->push(new GameState(states, pInput, 1));
+	}
+	else if (buttons["RANKING"]->estaPressionado())
+	{
+		states->push(new GameState(states, pInput, 1));
+	}
+	else if (buttons["SAIR"]->estaPressionado())
 	{
 		terminar = true;
 	}
 }
 
-void MenuState::updateInput(const float& dt)
+void MenuState::updateInput()
 {
-	verificarFim();
 	pInput->updateMousePos();
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
-		std::cout << "BEIJAR OUTRAS BOCAS DEPOIS QUE TERMINA" << std::endl;
 }
 
-void MenuState::update(const float& dt)
+void MenuState::update()
 {
-	updateInput(dt);
+	updateInput();
 	updateButtons();
 	
 }

@@ -172,6 +172,7 @@
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
+    <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Plataforma.cpp" />
     <ClCompile Include="Orbe.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Obstaculo.h" />
+    <ClInclude Include="PauseState.h" />
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Plataforma.h" />
     <ClInclude Include="Orbe.h" />

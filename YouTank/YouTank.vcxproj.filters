@@ -162,6 +162,9 @@
     <ClCompile Include="Ferrao.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="PauseState.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -256,6 +259,9 @@
     </ClInclude>
     <ClInclude Include="Ferrao.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseState.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

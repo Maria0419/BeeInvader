@@ -4,7 +4,6 @@
 
 void Jogador::initShape()	
 {
-	id = ID_JOGADOR; //j0g4d0r, 2 pois é rectangle shape
 	setSize(50.f, 50.f);
 	setTexture("Imagens/red_fairy.png", 1.f);
 	setOriginCenter();
@@ -21,6 +20,7 @@ Jogador::Jogador():
 	Personagem(100,100),
 	barraVida(static_cast<Personagem*>(this),25.f, 20.f, 210.f, 25.f)
 {
+	id = ID_JOGADOR; 
 	rapidez = 25.f;
 	alturaPulo = 100.f;
 	cooldownAtaqueMax = 30.f;

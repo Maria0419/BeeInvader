@@ -15,6 +15,9 @@ private:
     //cores
     unsigned int red, green, blue;
 
+    void initText(std::string text);
+    void initShape(float x, float y);
+
 public:
     Button(float x, float y, std::string text);
     ~Button();

@@ -2,7 +2,25 @@
 #include "AbelhaRainha.h"
 #include "Global.h"
 
-AbelhaRainha::AbelhaRainha() :
+void AbelhaRainha::initTimers()
+{
+	spawnTimerMAX = 200;
+	spawnTimer = spawnTimerMAX;
+	curaTimerMAX = 20;
+	curaTimer = curaTimerMAX;
+	ferraoTimerMAX = 500;
+	ferraoTimer = ferraoTimerMAX;
+}
+
+void AbelhaRainha::initShape()
+{
+	setSize(300.f, 400.f);
+	setTexture("Imagens/queen_bee.png", 1.f);
+	setOriginCenter();
+	setPosition(1130.f, 250.f);
+}
+
+AbelhaRainha::AbelhaRainha():
 	pFerrao(NULL),
 	pJogador(NULL),
 	pAbelha(NULL),

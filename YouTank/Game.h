@@ -32,6 +32,7 @@ private:
 
 	void initStates();
 	void setGraphicManager();
+	void setJogador();
 
 public:
 	Game();
