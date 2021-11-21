@@ -8,23 +8,39 @@ void GameState::runFase()
 	case 1:
 		jogador1 = new FadaCaida();
 		pInput->setFadaCaida(jogador1);
+
 		fasePrimeira = new FasePrimeira();
 		fasePrimeira->setFadaCaida(jogador1);
 		fasePrimeira->spawnPlataforma();
-	
-		if (multiplayer == true)
-		{
-			fasePrimeira->spawnCurandeira();
-			pInput->setCurandeira(fasePrimeira->getCurandeira());
-		}
 		
 		pInput->setFase(static_cast<Fase*>(fasePrimeira));
 		
 		break;
 
 	case 2:
+		jogador1 = new FadaCaida();
+		pInput->setFadaCaida(jogador1);
+		faseSegunda = new FaseSegunda();
+		faseSegunda->setFadaCaida(jogador1);
+		faseSegunda->spawnPlataforma();
+		pInput->setFase(static_cast<Fase*>(faseSegunda));
 		break;
 
+	case 12:
+		jogador1 = new FadaCaida();
+		pInput->setFadaCaida(jogador1);
+		faseSegunda = new FaseSegunda();
+		faseSegunda->setFadaCaida(jogador1);
+		faseSegunda->spawnPlataforma();
+
+		if (multiplayer == true)
+		{
+			faseSegunda->spawnCurandeira();
+			pInput->setCurandeira(faseSegunda->getCurandeira());
+		}
+
+		pInput->setFase(static_cast<Fase*>(faseSegunda));
+		break;
 	default:
 		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
 		break;
@@ -39,7 +55,8 @@ void GameState::updateDeltaTime()
 //Construtora e Destrutora
 GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool multip):
 	State(state,pIM),
-	fasePrimeira(NULL)
+	fasePrimeira(NULL),
+	faseSegunda(NULL)
 {
 	multiplayer = multip;
 	stateID = GAME_STATE;
@@ -60,6 +77,12 @@ GameState::~GameState()
 		break;
 
 	case 2:
+		delete faseSegunda;
+		delete jogador1;
+		break;
+	case 12:
+		delete faseSegunda;
+		delete jogador1;
 		break;
 
 	default:
@@ -131,10 +154,14 @@ void GameState::update()
 		break;
 
 	case 2:
+		faseSegunda->update();
 		break;
 
+	case 12:
+		faseSegunda->update();
+		break;
 	default:
-		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
+		std::cout << "ERROR::GAMESTATE::UPDATE::Fase não existente" << std::endl;
 		break;
 	}
 	
@@ -149,6 +176,11 @@ void GameState::render()
 		break;
 
 	case 2:
+		faseSegunda->renderFaseSegunda();
+		break;
+
+	case 12:
+		faseSegunda->renderFaseSegunda();
 		break;
 
 	default:

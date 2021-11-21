@@ -132,7 +132,7 @@
     <ClCompile Include="Fase.cpp">
       <Filter>Arquivos de Origem\Fases</Filter>
     </ClCompile>
-    <ClCompile Include="FasePrimeira.cpp">
+    <ClCompile Include="FaseSegunda.cpp">
       <Filter>Arquivos de Origem\Fases</Filter>
     </ClCompile>
     <ClCompile Include="AbelhaRainha.cpp">
@@ -183,8 +183,8 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="FaseSegunda.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="FasePrimeira.cpp">
+      <Filter>Arquivos de Origem\Fases</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -239,7 +239,7 @@
     <ClInclude Include="Elemento.h">
       <Filter>Arquivos de Cabeçalho\Listas</Filter>
     </ClInclude>
-    <ClInclude Include="FasePrimeira.h">
+    <ClInclude Include="FaseSegunda.h">
       <Filter>Arquivos de Cabeçalho\Fases</Filter>
     </ClInclude>
     <ClInclude Include="Fase.h">
@@ -302,8 +302,8 @@
     <ClInclude Include="Menu.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="FaseSegunda.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="FasePrimeira.h">
+      <Filter>Arquivos de Cabeçalho\Fases</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

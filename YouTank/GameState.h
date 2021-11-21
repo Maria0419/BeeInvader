@@ -3,6 +3,7 @@
 #include "FasePrimeira.h"
 #include "PauseState.h"
 #include "GameOverState.h"
+#include "FaseSegunda.h"
 
 class GameState: public State
 {
@@ -11,7 +12,9 @@ private:
 
 
     FasePrimeira* fasePrimeira;
-    //Funções Inicializadoras
+    FaseSegunda* faseSegunda;
+
+   
     short fase;
     bool multiplayer;
 
@@ -19,6 +22,7 @@ private:
     sf::Clock clock;
     float deltaTime;
 
+    //Funções Inicializadoras
     void runFase();
     void updateDeltaTime();
     
