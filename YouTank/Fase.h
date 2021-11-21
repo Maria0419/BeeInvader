@@ -20,10 +20,10 @@ protected:
     ListaEntidades listaEntidades;
     Entidade* pEn;
     CollisionManager collisionManager;
-    Curandeira* pCurandeira;
 
-    //Jogador
-    static Jogador* pJogador;
+    //Jogadores
+    Jogador* pJogador;
+    Curandeira* pCurandeira;
 
 public:
     Fase();
@@ -31,7 +31,5 @@ public:
     void limpeza();
 
     virtual void update();
-
-    void setJogador(Jogador* pJ);
 };
 

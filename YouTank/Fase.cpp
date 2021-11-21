@@ -2,10 +2,9 @@
 #include "Fase.h"
 #include "Global.h"
 
-Jogador* Fase::pJogador = NULL;
-
 Fase::Fase():
 	pEn(NULL),
+	pJogador(NULL),
 	pCurandeira(NULL),
 	listaEntidades()
 {
@@ -35,15 +34,4 @@ void Fase::limpeza()
 
 void Fase::update()
 {
-}
-
-
-void Fase::setJogador(Jogador* pJ)
-{
-	if (pJ)
-		pJogador = pJ;
-	
-	else
-		std::cout << "ERROR::FASE::SETJOGADOR::Ponteiro Jogador Nulo" << std::endl;
-	
 }

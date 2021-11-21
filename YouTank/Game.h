@@ -18,21 +18,13 @@ private:
 	EventManager eventManager;
 	InputManager inputManager;
 
-	//Menu menu;
-	Jogador jogador1;
-
 	//Fases
 	Fase fase;
-
-	//aux
-	sf::Clock clock;
-	float deltaTime;
 
 	std::stack<State*> states;
 
 	void initStates();
 	void setGraphicManager();
-	void setJogador();
 
 public:
 	Game();

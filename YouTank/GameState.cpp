@@ -6,15 +6,17 @@ void GameState::runFase()
 	switch (fase)
 	{
 	case 1:
+		jogador1 = new Jogador();
+		pInput->setJogador(jogador1);
 		fasePrimeira = new FasePrimeira();
+		fasePrimeira->setJogador(jogador1);
 		fasePrimeira->spawnPlataforma();
-
+	
 		if (multiplayer == true)
 		{
 			fasePrimeira->spawnCurandeira();
 			pInput->setCurandeira(fasePrimeira->getCurandeira());
 		}
-		
 		
 		pInput->setFase(static_cast<Fase*>(fasePrimeira));
 		
@@ -29,6 +31,11 @@ void GameState::runFase()
 	}
 }
 
+void GameState::updateDeltaTime()
+{
+	deltaTime = clock.restart().asSeconds();
+}
+
 //Construtora e Destrutora
 GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool multip):
 	State(state,pIM),
@@ -37,6 +44,8 @@ GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool
 	multiplayer = multip;
 	stateID = GAME_STATE;
 	fase = f;
+	clock.restart();
+	deltaTime = clock.restart().asSeconds();
 	runFase();
 	
 }
@@ -47,6 +56,7 @@ GameState::~GameState()
 	{
 	case 1:
 		delete fasePrimeira;
+		delete jogador1;
 		break;
 
 	case 2:
@@ -90,6 +100,8 @@ void GameState::updatePause()
 
 void GameState::updateInput()
 {
+	updateDeltaTime();
+	pInput->update(deltaTime);
 	verificarPause();
 }
 

@@ -4,9 +4,8 @@
 
 void FasePrimeira::initInimigo()
 {
-	abelha_rainha.setJogadorAlvo(&(*pJogador));
 	contaCogu = 0;
-	cogumelosMAX = rand() % 5;
+	cogumelosMAX = rand() % 3 + 1;
 	obstaculosMAX = rand() % 3 + 3;
 	contaPedras = 0;
 	contaObstaculos = 0;
@@ -18,9 +17,7 @@ FasePrimeira::FasePrimeira():
 {
 	Ente::pLista = &listaEntidades;
 	initInimigo();
-	collisionManager.setGraphicManager(pGraphic);
-	collisionManager.setJogador(pJogador);
-	
+	collisionManager.setGraphicManager(pGraphic);	
 }
 
 FasePrimeira::~FasePrimeira()
@@ -312,8 +309,23 @@ void FasePrimeira::renderFasePrimeira()
 		}
 		abelha_rainha.renderAbelhaRainha();
 	}
+	pJogador->renderBarraVida();
+	pJogador->render();
+
 	if(pCurandeira!=NULL)
 		pCurandeira->render();
+}
+
+void FasePrimeira::setJogador(Jogador* pJ)
+{
+	if (pJ)
+	{
+		pJogador = pJ;
+		collisionManager.setJogador(pJogador);
+		abelha_rainha.setJogadorAlvo(pJogador);
+	}
+	else
+		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro Jogador NULL" << std::endl;
 }
 
 Curandeira* FasePrimeira::getCurandeira() const

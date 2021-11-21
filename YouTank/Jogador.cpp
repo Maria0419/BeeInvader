@@ -7,7 +7,7 @@ void Jogador::initShape()
 	setSize(50.f, 50.f);
 	setTexture("Imagens/red_fairy.png");
 	setOriginCenter();
-	setPosition(150.f, 150.f);
+	setPosition(200.f, 300.f);
 }
 
 void Jogador::initBarraVida()

@@ -42,6 +42,7 @@ public:
 
     void renderFasePrimeira();
 
+    void setJogador(Jogador* pJogador);
     Curandeira* getCurandeira() const;
 };
 

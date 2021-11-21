@@ -6,13 +6,21 @@
 class GameState: public State
 {
 private:
-    
+    Jogador* jogador1;
+
+
     FasePrimeira* fasePrimeira;
     //Funções Inicializadoras
     short fase;
     bool multiplayer;
 
+    //aux
+    sf::Clock clock;
+    float deltaTime;
+
     void runFase();
+    void updateDeltaTime();
+    
 public:
 
     //Construtora e Destrutora

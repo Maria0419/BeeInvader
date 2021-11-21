@@ -1,16 +1,11 @@
 #include "stdafx.h"
 #include "Game.h"
 
-Game::Game() :
-	deltaTime(0)
+Game::Game()
 {
 	graphicManager = GraphicManager::getInstance();
 
 	setGraphicManager();
-	setJogador();
-
-	clock.restart();
-	deltaTime = clock.restart().asSeconds();
 
 	initStates();
 	run();
@@ -39,13 +34,6 @@ void Game::setGraphicManager()
 	eventManager.setGraphicManager(graphicManager);
 }
 
-void Game::setJogador()
-{
-	fase.setJogador(&jogador1);
-	inputManager.setJogador(&jogador1);
-
-}
-
 void Game::run()
 {
 	
@@ -60,18 +48,19 @@ void Game::run()
 void Game::update()
 {
 	updatePollEvents();
-	updateDeltaTime();
+	
 
 	if (!states.empty())
 	{
 		states.top()->update();
+		
 		if (states.top()->getState() == MENU_STATE)
 		{
 		}
 
 		else if (states.top()->getState() == GAME_STATE)
 		{
-			inputManager.update(deltaTime);			
+			
 		}
 		else if (states.top()->getState() == PAUSE_STATE && states.top()->getPause() == false)
 		{
@@ -96,21 +85,9 @@ void Game::render()
 	if (!states.empty())
 	{
 		states.top()->render();
-
-		if (states.top()->getState() == GAME_STATE)
-		{
-			jogador1.renderBarraVida();
-			jogador1.render();
-		}
 	}
 				
 	graphicManager->display();
-}
-
-
-void Game::updateDeltaTime()
-{
-	deltaTime = clock.restart().asSeconds();
 }
 
 void Game::updatePollEvents()
