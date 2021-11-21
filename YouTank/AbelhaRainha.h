@@ -17,10 +17,7 @@ private:
 	unsigned int curaTimerMAX;
 	unsigned int ferraoTimer;
 	unsigned int ferraoTimerMAX;
-	unsigned int spawnTimer;
-	unsigned int spawnTimerMAX;
-	unsigned int abelhasMAX;
-	unsigned int contaAbelhas;
+	
 	float angulo;
 	float anguloMAX;
 	Ferrao* pFerrao;
@@ -43,9 +40,6 @@ public:
 	void renderAbelhaRainha();
 
 	void setFadaCaidaAlvo(FadaCaida* pJ);
-	void spawnAbelhas();
-
-	void morreuAbelha();
 
 	const bool getExisteNaFase() const;
 

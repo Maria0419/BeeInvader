@@ -4,8 +4,6 @@
 
 void AbelhaRainha::initTimers()
 {
-	spawnTimerMAX = 200;
-	spawnTimer = spawnTimerMAX;
 	curaTimerMAX = 20;
 	curaTimer = curaTimerMAX;
 	ferraoTimerMAX = 500;
@@ -32,8 +30,6 @@ AbelhaRainha::AbelhaRainha():
 	initTimers();
 	anguloMAX =(float) (2*3.1415);
 	angulo = anguloMAX;
-	abelhasMAX = 10;
-	contaAbelhas = 0;
 	x = getPosition().x - 50.f;
 	y = getPosition().y;
 }
@@ -69,10 +65,7 @@ void AbelhaRainha::update()
 {
 	barraVida.update();
 	if (emFuria())
-	{
 		curaVida();
-		spawnAbelhas();
-	}
 	else
 		updateMovimento();
 
@@ -110,7 +103,7 @@ void AbelhaRainha::updateMovimento()
 void AbelhaRainha::updateTaVivo()
 {
 	if (vida <= 0)
-		aparece = true;
+		aparece = false;
 }
 
 void AbelhaRainha::updateAtaque()
@@ -126,25 +119,7 @@ void AbelhaRainha::updateAtaque()
 	}
 }
 
-void AbelhaRainha::spawnAbelhas()
-{
-	//timer
-	if (spawnTimer < spawnTimerMAX)
-		spawnTimer += 5;
 
-	else if (contaAbelhas < abelhasMAX)
-	{
-		Abelha* inim = new Abelha();
-		pLista->incluaEntidade(static_cast<Entidade*>(inim));
-		contaAbelhas++;
-		spawnTimer = 0;
-	}
-}
-
-void AbelhaRainha::morreuAbelha()
-{
-	contaAbelhas--;
-}
 
 const bool AbelhaRainha::getExisteNaFase() const
 {

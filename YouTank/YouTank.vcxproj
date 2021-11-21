@@ -162,6 +162,7 @@
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Fase.cpp" />
     <ClCompile Include="FasePrimeira.cpp" />
+    <ClCompile Include="FaseSegunda.cpp" />
     <ClCompile Include="Ferrao.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOverState.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Fase.h" />
     <ClInclude Include="FasePrimeira.h" />
+    <ClInclude Include="FaseSegunda.h" />
     <ClInclude Include="Ferrao.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOverState.h" />

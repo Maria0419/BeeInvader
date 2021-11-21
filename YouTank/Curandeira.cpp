@@ -4,8 +4,9 @@
 
 Curandeira::Curandeira():
 	pOrbeCura(NULL),
-	Personagem(100,100)
+	Personagem(100,0)
 {
+	cura = 5;
 	id = ID_CURANDEIRA;
 	rapidez = 15.f;
 	olhaEsquerda = false;
@@ -37,10 +38,15 @@ void Curandeira::update()
 	updateAnimacao();
 }
 
-void Curandeira::cura(float dir_x, float dir_y, float pos_x, float pos_y)
+void Curandeira::curar(float dir_x, float dir_y, float pos_x, float pos_y)
 {
 	OrbeCura* pP = new OrbeCura(dir_x, dir_y, pos_x, pos_y);
 	pLista->incluaEntidade(static_cast<Entidade*>(pP));
+}
+
+const int Curandeira::getCura() const
+{
+	return cura;
 }
 
 void Curandeira::updateAnimacao()

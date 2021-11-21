@@ -41,7 +41,7 @@ void InputManager::updateAtaqueCurandeira()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && pCurandeira->getPodeAtacar())
 	{
-		pCurandeira->cura(pFadaCaida1->getPosition().x , pFadaCaida1->getPosition().y, pCurandeira->getPosition().x, pCurandeira->getPosition().y);
+		pCurandeira->curar(pFadaCaida1->getPosition().x , pFadaCaida1->getPosition().y, pCurandeira->getPosition().x, pCurandeira->getPosition().y);
 	}
 }
 

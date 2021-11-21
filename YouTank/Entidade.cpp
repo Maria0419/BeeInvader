@@ -45,6 +45,11 @@ const int Entidade::getDano() const
 	return dano;
 }
 
+void Entidade::receberCura(int cura)
+{
+	vida += cura;
+}
+
 void Entidade::setRapidez(float rapidez)
 {
 	rapidez = rapidez;

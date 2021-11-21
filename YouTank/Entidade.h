@@ -28,6 +28,8 @@ public:
     virtual void tomarDano(int dmg);
     const int getDano() const;
 
+    virtual void receberCura(int cura);
+ 
     void setRapidez(float rapidez);
     float getRapidez() const;
 

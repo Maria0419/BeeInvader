@@ -11,6 +11,7 @@ void FadaCaida::initShape()
 }
 
 FadaCaida::FadaCaida():
+	pOrbe(NULL),
 	Personagem(100,100),
 	barraVida(static_cast<Personagem*>(this),25.f, 20.f, 210.f, 25.f)
 {
@@ -27,7 +28,8 @@ FadaCaida::FadaCaida():
 
 FadaCaida::~FadaCaida()
 {
-
+	if (pOrbe)
+		delete pOrbe;
 }
 
 void FadaCaida::setOlhaEsquerda(bool x)
