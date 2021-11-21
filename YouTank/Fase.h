@@ -1,7 +1,7 @@
 #pragma once
 #include "ListaEntidades.h"
 #include "CollisionManager.h"
-#include "Jogador.h"
+#include "FadaCaida.h"
 #include "Orbe.h"
 #include "ListaEntidades.h"
 #include "Abelha.h"
@@ -21,8 +21,8 @@ protected:
     Entidade* pEn;
     CollisionManager collisionManager;
 
-    //Jogadores
-    Jogador* pJogador;
+    //FadaCaidaes
+    FadaCaida* pFadaCaida;
     Curandeira* pCurandeira;
 
 public:

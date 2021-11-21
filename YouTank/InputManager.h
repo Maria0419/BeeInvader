@@ -2,14 +2,14 @@
 #include "stdafx.h"
 #include "EventManager.h"
 #include "GraphicManager.h"
-#include "Jogador.h"
+#include "FadaCaida.h"
 #include "Curandeira.h"
 #include "Fase.h"
 
 class InputManager
 {
 private:
-	Jogador* pJogador1;
+	FadaCaida* pFadaCaida1;
 	Curandeira* pCurandeira;
 	GraphicManager* pGraphic;
 	Fase* pFase;
@@ -26,7 +26,7 @@ public:
 	void updateMousePos();
 	void updateFadaCaida(float deltaTime);
 	void updateCurandeira(float deltaTime);
-	void setJogador(Jogador* pJogador);
+	void setFadaCaida(FadaCaida* pFadaCaida);
 	void setCurandeira(Curandeira* pC);
 	void setGraphicManager(GraphicManager* pGM);
 	void setFase(Fase* pFase);

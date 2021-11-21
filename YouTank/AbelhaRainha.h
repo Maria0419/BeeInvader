@@ -3,7 +3,7 @@
 #include "BarraVida.h"
 #include "Ferrao.h"
 #include "Abelha.h"
-#include "Jogador.h"
+#include "FadaCaida.h"
 
 class AbelhaRainha:
 	public Inimigo
@@ -25,7 +25,7 @@ private:
 	float anguloMAX;
 	Ferrao* pFerrao;
 	Abelha* pAbelha;
-	Jogador* pJogador;
+	FadaCaida* pFadaCaida;
 
 	void initTimers();
 	void initShape();
@@ -39,12 +39,15 @@ public:
 	void update();
 	void updateAtaque();
 	void updateMovimento();
+	void updateTaVivo();
 	void renderAbelhaRainha();
 
-	void setJogadorAlvo(Jogador* pJ);
+	void setFadaCaidaAlvo(FadaCaida* pJ);
 	void spawnAbelhas();
 
 	void morreuAbelha();
+
+	const bool getExisteNaFase() const;
 
 };
 

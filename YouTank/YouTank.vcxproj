@@ -169,7 +169,7 @@
     <ClCompile Include="Inimigo.cpp" />
     <ClCompile Include="Abelha.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Jogador.cpp" />
+    <ClCompile Include="FadaCaida.cpp" />
     <ClCompile Include="Lista.cpp" />
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="MenuState.cpp" />
@@ -213,7 +213,7 @@
     <ClInclude Include="Inimigo.h" />
     <ClInclude Include="Abelha.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="Jogador.h" />
+    <ClInclude Include="FadaCaida.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="MenuState.h" />

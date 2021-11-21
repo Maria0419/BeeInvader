@@ -6,10 +6,10 @@ void GameState::runFase()
 	switch (fase)
 	{
 	case 1:
-		jogador1 = new Jogador();
-		pInput->setJogador(jogador1);
+		jogador1 = new FadaCaida();
+		pInput->setFadaCaida(jogador1);
 		fasePrimeira = new FasePrimeira();
-		fasePrimeira->setJogador(jogador1);
+		fasePrimeira->setFadaCaida(jogador1);
 		fasePrimeira->spawnPlataforma();
 	
 		if (multiplayer == true)

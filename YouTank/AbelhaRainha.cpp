@@ -21,10 +21,10 @@ void AbelhaRainha::initShape()
 }
 
 AbelhaRainha::AbelhaRainha():
-	pFerrao(NULL),
-	pJogador(NULL),
-	pAbelha(NULL),
 	Inimigo(1000, 7),
+	pFerrao(NULL),
+	pFadaCaida(NULL),
+	pAbelha(NULL),
 	barraVida(static_cast<Personagem*>(this), 1000.f, 20.f, 250.f, 25.f)
 {
 	id = ID_RAINHA; //j0g4d0r, 2 pois é rectangle shape
@@ -75,7 +75,9 @@ void AbelhaRainha::update()
 	}
 	else
 		updateMovimento();
+
 	updateAtaque();
+	updateTaVivo();
 	
 }
 
@@ -86,9 +88,9 @@ void AbelhaRainha::renderAbelhaRainha()
 	render();
 }
 
-void AbelhaRainha::setJogadorAlvo(Jogador* pJ)
+void AbelhaRainha::setFadaCaidaAlvo(FadaCaida* pJ)
 {
-	pJogador = pJ;
+	pFadaCaida = pJ;
 }
 
 void AbelhaRainha::updateMovimento()
@@ -105,6 +107,12 @@ void AbelhaRainha::updateMovimento()
 	setPosition(moveX, moveY);
 }
 
+void AbelhaRainha::updateTaVivo()
+{
+	if (vida <= 0)
+		aparece = true;
+}
+
 void AbelhaRainha::updateAtaque()
 {
 	if (ferraoTimer < ferraoTimerMAX)
@@ -112,7 +120,7 @@ void AbelhaRainha::updateAtaque()
 	else
 	{
 		Ferrao* ferrao = new Ferrao(getPosition().x, getPosition().y,
-									pJogador->getPosition().x, pJogador->getPosition().y);
+									pFadaCaida->getPosition().x, pFadaCaida->getPosition().y);
 		pLista->incluaEntidade(static_cast<Entidade*>(ferrao));
 		ferraoTimer = 0;
 	}
@@ -136,4 +144,9 @@ void AbelhaRainha::spawnAbelhas()
 void AbelhaRainha::morreuAbelha()
 {
 	contaAbelhas--;
+}
+
+const bool AbelhaRainha::getExisteNaFase() const
+{
+	return aparece;
 }

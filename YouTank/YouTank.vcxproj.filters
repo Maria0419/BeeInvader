@@ -120,7 +120,7 @@
     <ClCompile Include="Plataforma.cpp">
       <Filter>Arquivos de Origem\Entidades\Obstaculos</Filter>
     </ClCompile>
-    <ClCompile Include="Jogador.cpp">
+    <ClCompile Include="FadaCaida.cpp">
       <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
     </ClCompile>
     <ClCompile Include="MenuState.cpp">
@@ -197,7 +197,7 @@
     <ClInclude Include="Inimigo.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="Jogador.h">
+    <ClInclude Include="FadaCaida.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
     </ClInclude>
     <ClInclude Include="Abelha.h">

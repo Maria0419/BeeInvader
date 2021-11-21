@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "Jogador.h"
+#include "FadaCaida.h"
 #include "Global.h"
 
-void Jogador::initShape()	
+void FadaCaida::initShape()	
 {
 	setSize(50.f, 50.f);
 	setTexture("Imagens/red_fairy.png");
@@ -10,13 +10,7 @@ void Jogador::initShape()
 	setPosition(200.f, 300.f);
 }
 
-void Jogador::initBarraVida()
-{
-	
-
-}
-
-Jogador::Jogador():
+FadaCaida::FadaCaida():
 	Personagem(100,100),
 	barraVida(static_cast<Personagem*>(this),25.f, 20.f, 210.f, 25.f)
 {
@@ -31,44 +25,49 @@ Jogador::Jogador():
 	initShape();
 }
 
-Jogador::~Jogador()
+FadaCaida::~FadaCaida()
 {
 
 }
 
-void Jogador::setOlhaEsquerda(bool x)
+void FadaCaida::setOlhaEsquerda(bool x)
 {
 	olhaEsquerda = x;
 }
 
 
-const bool Jogador::olhandoEsquerda() const
+const bool FadaCaida::olhandoEsquerda() const
 {
 	return olhaEsquerda;
 }
 
-void Jogador::setDirecao_x(float dir_x)
+void FadaCaida::setDirecao_x(float dir_x)
 {
 	direcao.x = dir_x;
 }
 
-void Jogador::setDirecao_y(float dir_y)
+void FadaCaida::setDirecao_y(float dir_y)
 {
 	direcao.y = dir_y;
 }
 
-void Jogador::renderBarraVida()
+void FadaCaida::renderBarraVida()
 {
 	barraVida.renderBodyBack();
 	barraVida.render();
 }
 
-const bool Jogador::getColisaoBot() const
+const bool FadaCaida::getColisaoBot() const
 {
 	return colisaoBot;
 }
 
-void Jogador::naColisao()
+const bool FadaCaida::getExisteNaFase() const
+{
+	return aparece;
+}
+
+void FadaCaida::naColisao()
 {
 	if (direcao.x < 0.0f)
 	{
@@ -97,27 +96,35 @@ void Jogador::naColisao()
 	}
 }
 
-void Jogador::updateAnimacao()
+void FadaCaida::updateAnimacao()
 {
+	//caso esteja andando para direita, o personagem irá virar para a direita
 	if (olhaEsquerda == false)
 	{
 		body.setScale(1.f, 1.f);
 	}
-	//caso esteja andando para a esquerda, vira a imagem
+	//caso esteja andando para esquerda, o personagem irá virar para a esquerda
 	if (olhaEsquerda == true)
 	{
 		body.setScale(-1.f, 1.f);
 	}
 }
 
-void Jogador::ataca(float dir_x, float dir_y)
+void FadaCaida::updateTaVivo()
+{
+	if (vida <= 0)
+		aparece = true;
+}
+
+void FadaCaida::ataca(float dir_x, float dir_y)
 {
 	Orbe* pP = new Orbe(dir_x, dir_y, 80.f, getPosition().x, getPosition().y);
 	pLista->incluaEntidade(static_cast<Entidade*>(pP));
 }
 
-void Jogador::update()
+void FadaCaida::update()
 {
 	updateAnimacao();
+	updateTaVivo();
 	barraVida.update();
 }

@@ -4,25 +4,26 @@
 
 
 CollisionManager::CollisionManager():
-	pJogador(NULL),
+	pFadaCaida(NULL),
 	pCurandeira(NULL),
 	pWindow(NULL),
 	pGraphic(NULL)
 {
 	timerMAX = 300.f;
 	timer = timerMAX;
+	timerCurandeira = timerMAX;
 }
 
 CollisionManager::~CollisionManager()
 {
 }
 
-bool CollisionManager::verificaColisaoJogador(Entidade& entidade)
+bool CollisionManager::verificaColisaoFadaCaida(Entidade& entidade)
 {
 	sf::Vector2f outraPosicao = entidade.getPosition();
 	sf::Vector2f outraMetadeTam = (entidade.getSize()/ 2.f);
-	sf::Vector2f jogadorPosicao = pJogador->getPosition();
-	sf::Vector2f jogadorMetadeTam = (pJogador->getSize() / 2.f);
+	sf::Vector2f jogadorPosicao = pFadaCaida->getPosition();
+	sf::Vector2f jogadorMetadeTam = (pFadaCaida->getSize() / 2.f);
 
 	float deltaX = outraPosicao.x - jogadorPosicao.x;
 	float deltaY = outraPosicao.y - jogadorPosicao.y;
@@ -37,37 +38,37 @@ bool CollisionManager::verificaColisaoJogador(Entidade& entidade)
 		{
 			if (deltaX > 0.0f)
 			{
-				pJogador->move(intersectX , 0.0f);
+				pFadaCaida->move(intersectX , 0.0f);
 				
-				pJogador->setDirecao_x(1.0f);
-				pJogador->setDirecao_y(0.0f);
+				pFadaCaida->setDirecao_x(1.0f);
+				pFadaCaida->setDirecao_y(0.0f);
 			}
 			else
 			{
-				pJogador->move(-intersectX * 1.0f , 0.0f);
+				pFadaCaida->move(-intersectX * 1.0f , 0.0f);
 
-				pJogador->setDirecao_x(-1.0f);
-				pJogador->setDirecao_y(0.0f);
+				pFadaCaida->setDirecao_x(-1.0f);
+				pFadaCaida->setDirecao_y(0.0f);
 			}
 		}
 		else
 		{
 			if (deltaY > 0.0f)
 			{
-				pJogador->move(0.0f,intersectY * 1.0f );
+				pFadaCaida->move(0.0f,intersectY * 1.0f );
 		
-				pJogador->setDirecao_x(0.0f);
-				pJogador->setDirecao_y(1.0f);
+				pFadaCaida->setDirecao_x(0.0f);
+				pFadaCaida->setDirecao_y(1.0f);
 			}
 			else
 			{
-				pJogador->move(0.0f, -intersectY * 1.0f );
+				pFadaCaida->move(0.0f, -intersectY * 1.0f );
 	
-				pJogador->setDirecao_x(0.0f);
-				pJogador->setDirecao_y(-1.0f);
+				pFadaCaida->setDirecao_x(0.0f);
+				pFadaCaida->setDirecao_y(-1.0f);
 			}
 		}
-		pJogador->naColisao();
+		pFadaCaida->naColisao();
 		return true;
 	}
 	return false;
@@ -83,27 +84,27 @@ void CollisionManager::updateColisoesJanela()
 void CollisionManager::updateColisoesJanelaJ1()
 {
 	//Colisão com a borda esquerda da janela
-	if (pJogador->getBounds().left < 0.f)
+	if (pFadaCaida->getBounds().left < 0.f)
 	{
-		pJogador->setPosition(pJogador->getBounds().width / 2.f, pJogador->getBounds().top + pJogador->getBounds().width / 2.f);
+		pFadaCaida->setPosition(pFadaCaida->getBounds().width / 2.f, pFadaCaida->getBounds().top + pFadaCaida->getBounds().width / 2.f);
 	}
-	if (pJogador->getBounds().left + pJogador->getBounds().width > pWindow->getSize().x)
+	if (pFadaCaida->getBounds().left + pFadaCaida->getBounds().width > pWindow->getSize().x)
 	{
-		pJogador->setPosition(pWindow->getSize().x - pJogador->getBounds().width / 2.f, pJogador->getBounds().top + pJogador->getBounds().width / 2.f);
+		pFadaCaida->setPosition(pWindow->getSize().x - pFadaCaida->getBounds().width / 2.f, pFadaCaida->getBounds().top + pFadaCaida->getBounds().width / 2.f);
 	}
 
 	//Colisão com a borda inferior da janela
-	if (pJogador->getBounds().top + pJogador->getBounds().height > pWindow->getSize().y)
+	if (pFadaCaida->getBounds().top + pFadaCaida->getBounds().height > pWindow->getSize().y)
 	{
-		pJogador->setPosition(pJogador->getPosition().x, pWindow->getSize().y - pJogador->getBounds().height / 2);
+		pFadaCaida->setPosition(pFadaCaida->getPosition().x, pWindow->getSize().y - pFadaCaida->getBounds().height / 2);
 	}
 
 	//Colisão com a borda superior da janela
-	else if (pJogador->getBounds().top < 0.f)
+	else if (pFadaCaida->getBounds().top < 0.f)
 	{
-		pJogador->setPosition(pJogador->getPosition().x, pJogador->getBounds().height / 2.f);
-		pJogador->setDirecao_x(0.0f);
-		pJogador->setDirecao_y(-1.0f);
+		pFadaCaida->setPosition(pFadaCaida->getPosition().x, pFadaCaida->getBounds().height / 2.f);
+		pFadaCaida->setDirecao_x(0.0f);
+		pFadaCaida->setDirecao_y(-1.0f);
 	}
 }
 
@@ -135,7 +136,7 @@ void CollisionManager::updateColisoesJanelaJ2()
 bool CollisionManager::updateColisoes(Entidade* pEn)
 {
 	updateColisoesJanela();
-	return verificaColisaoJogador(*pEn);
+	return verificaColisaoFadaCaida(*pEn);
 }
 
 bool CollisionManager::updateCombate(Entidade* pOrbe, Entidade* pInimigo)
@@ -204,9 +205,9 @@ bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
 	return false;
 }
 
-bool CollisionManager::verificaContato(Entidade* entidade)
+bool CollisionManager::verificaContatoFadaCaida(Entidade* entidade)
 {
-	bool intersecta = pJogador->intersecta(static_cast<Ente*>(entidade));
+	bool intersecta = pFadaCaida->intersecta(static_cast<Ente*>(entidade));
 	if (timer < timerMAX || intersecta == false )
 	{
 		timer += 1.f;
@@ -217,14 +218,27 @@ bool CollisionManager::verificaContato(Entidade* entidade)
 		timer = 0.f;
 		return intersecta;
 	}
-	
-	
 }
 
-void CollisionManager::setJogador(Jogador* pJ1)
+bool CollisionManager::verificaContatoCurandeira(Entidade* entidade)
+{
+	bool intersecta = pCurandeira->intersecta(static_cast<Ente*>(entidade));
+	if (timerCurandeira < timerMAX || intersecta == false)
+	{
+		timerCurandeira += 1.f;
+		return false;
+	}
+	else
+	{
+		timerCurandeira = 0.f;
+		return intersecta;
+	}
+}
+
+void CollisionManager::setFadaCaida(FadaCaida* pJ1)
 {
 	if(pJ1)
-		pJogador = pJ1;
+		pFadaCaida = pJ1;
 	else
 		std::cout << "ERROR::COLLISIONMANAGER::SETJOGADOR::Ponteiro Nulo" << std::endl;
 }

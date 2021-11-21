@@ -3,7 +3,7 @@
 #include "Orbe.h"
 #include "BarraVida.h"
 
-class Jogador :
+class FadaCaida :
     public Personagem
 {
 private:
@@ -11,15 +11,15 @@ private:
     BarraVida barraVida;
     Orbe* pOrbe;
 
-    //private functions
-    void initShape();
-    void initBarraVida();
     bool olhaEsquerda;
     bool colisaoBot;
 
+    //private functions
+    void initShape();
+
 public:
-    Jogador();
-    ~Jogador();
+    FadaCaida();
+    ~FadaCaida();
 
     void setOlhaEsquerda(bool x);
     const bool olhandoEsquerda() const;
@@ -31,12 +31,14 @@ public:
     void ataca(float dir_x, float dir_y);
 
     void updateAnimacao();
+    void updateTaVivo();
     
     void update();
 
     void renderBarraVida();    
 
     const bool getColisaoBot() const;
+    const bool getExisteNaFase() const;
    
 };
 

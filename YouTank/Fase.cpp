@@ -4,7 +4,7 @@
 
 Fase::Fase():
 	pEn(NULL),
-	pJogador(NULL),
+	pFadaCaida(NULL),
 	pCurandeira(NULL),
 	listaEntidades()
 {

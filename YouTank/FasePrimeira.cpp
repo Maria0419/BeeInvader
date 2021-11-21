@@ -5,7 +5,6 @@
 void FasePrimeira::initInimigo()
 {
 	contaCogu = 0;
-	cogumelosMAX = rand() % 3 + 1;
 	obstaculosMAX = rand() % 3 + 3;
 	contaPedras = 0;
 	contaObstaculos = 0;
@@ -34,6 +33,8 @@ void FasePrimeira::spawnCurandeira()
 
 void FasePrimeira::spawnCogumelo()
 {
+	cogumelosMAX = rand() % 5;
+
 	if (contaCogu < cogumelosMAX)
 	{
 		Cogumelo* cogu = new Cogumelo();
@@ -100,7 +101,7 @@ void FasePrimeira::updateMovimento()
 		{
 		case ID_ABELHA://move inimigos
 		{
-			listaEntidades.operator[](i)->persegue(pJogador->getPosition().x, pJogador->getPosition().y);
+			listaEntidades.operator[](i)->persegue(pFadaCaida->getPosition().x, pFadaCaida->getPosition().y);
 		}
 		break;
 		case ID_ORBE://move orbe de dano
@@ -146,7 +147,7 @@ void FasePrimeira::updateColisoes()
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
-				pJogador->tomarDano(listaEntidades.operator[](i)->getDano());
+				pFadaCaida->tomarDano(listaEntidades.operator[](i)->getDano());
 				listaEntidades.operator[](i)->setShowing(false);
 				abelha_rainha.morreuAbelha();
 			}
@@ -177,7 +178,7 @@ void FasePrimeira::updateColisoes()
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
-				pJogador->tomarDano(abelha_rainha.getDano());
+				pFadaCaida->tomarDano(abelha_rainha.getDano());
 				listaEntidades.operator[](i)->setShowing(false);
 			}
 		}
@@ -186,8 +187,8 @@ void FasePrimeira::updateColisoes()
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
-				if(!pJogador->getColisaoBot())
-					pJogador->tomarDano(5);
+				if(!pFadaCaida->getColisaoBot())
+					pFadaCaida->tomarDano(5);
 				listaEntidades.operator[](i)->setShowing(false);
 				contaCogu--;
 			}
@@ -195,9 +196,9 @@ void FasePrimeira::updateColisoes()
 		break;
 		case ID_ESPINHOS:
 		{
-			if (collisionManager.verificaContato(listaEntidades.operator[](i)))
+			if (collisionManager.verificaContatoFadaCaida(listaEntidades.operator[](i)))
 			{
-				pJogador->tomarDano(1);
+				pFadaCaida->tomarDano(1);
 			}
 		}
 		break;
@@ -209,8 +210,13 @@ void FasePrimeira::updateColisoes()
 		default:
 		break;
 		}
-		if(collisionManager.verificaContato(static_cast<Entidade*>(&abelha_rainha)))
-			pJogador->tomarDano(4);
+		if(collisionManager.verificaContatoFadaCaida(static_cast<Entidade*>(&abelha_rainha)))
+			pFadaCaida->tomarDano(4);
+		if (pCurandeira != NULL)
+		{
+			if (collisionManager.verificaContatoCurandeira(static_cast<Entidade*>(&abelha_rainha)))
+				pFadaCaida->tomarDano(4);
+		}
 	}
 }
 
@@ -227,7 +233,7 @@ void FasePrimeira::updateCombate()
 			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&abelha_rainha)))
 			{
 				listaEntidades.operator[](counter)->setShowing(false);
-				abelha_rainha.tomarDano(pJogador->getDano());
+				abelha_rainha.tomarDano(pFadaCaida->getDano());
 			}
 			unsigned counter_2 = 0;
 			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
@@ -289,7 +295,7 @@ void FasePrimeira::update()
 	updateCombate();
 	updateInimigoPlataforma();
 	updateBoss();
-	pJogador->update();
+	pFadaCaida->update();
 	if(pCurandeira!=NULL)
 		pCurandeira->update();
 	
@@ -309,23 +315,23 @@ void FasePrimeira::renderFasePrimeira()
 		}
 		abelha_rainha.renderAbelhaRainha();
 	}
-	pJogador->renderBarraVida();
-	pJogador->render();
+	pFadaCaida->renderBarraVida();
+	pFadaCaida->render();
 
 	if(pCurandeira!=NULL)
 		pCurandeira->render();
 }
 
-void FasePrimeira::setJogador(Jogador* pJ)
+void FasePrimeira::setFadaCaida(FadaCaida* pJ)
 {
 	if (pJ)
 	{
-		pJogador = pJ;
-		collisionManager.setJogador(pJogador);
-		abelha_rainha.setJogadorAlvo(pJogador);
+		pFadaCaida = pJ;
+		collisionManager.setFadaCaida(pFadaCaida);
+		abelha_rainha.setFadaCaidaAlvo(pFadaCaida);
 	}
 	else
-		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro Jogador NULL" << std::endl;
+		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
 }
 
 Curandeira* FasePrimeira::getCurandeira() const

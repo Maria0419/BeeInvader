@@ -6,7 +6,7 @@
 class GameState: public State
 {
 private:
-    Jogador* jogador1;
+    FadaCaida* jogador1;
 
 
     FasePrimeira* fasePrimeira;

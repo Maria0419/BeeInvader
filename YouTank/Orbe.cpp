@@ -23,10 +23,10 @@ Orbe::Orbe(float dir_x, float dir_y, float vel, float jog_x, float jog_y)
 	direcao.y = dir_y / sqrtf(static_cast<float>(pow(dir_x, 2)) + static_cast<float>(pow(dir_y, 2)));
 	rapidez = vel;
 
-	float distanciaJogadorDestino;
-	distanciaJogadorDestino = (float) (sqrt(pow(jog_y - destino.y, 2) + pow(destino.x - jog_x, 2)));
-	velocidade.x = rapidez * (destino.x - jog_x)/distanciaJogadorDestino;
-	velocidade.y = rapidez * (jog_y - destino.y)/distanciaJogadorDestino;
+	float distanciaFadaCaidaDestino;
+	distanciaFadaCaidaDestino = (float) (sqrt(pow(jog_y - destino.y, 2) + pow(destino.x - jog_x, 2)));
+	velocidade.x = rapidez * (destino.x - jog_x)/distanciaFadaCaidaDestino;
+	velocidade.y = rapidez * (jog_y - destino.y)/distanciaFadaCaidaDestino;
 
 	if(velocidade.y < 0)
 		velocidade.y *= -1;
