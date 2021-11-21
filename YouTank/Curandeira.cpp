@@ -10,7 +10,7 @@ Curandeira::Curandeira():
 	id = ID_CURANDEIRA;
 	rapidez = 15.f;
 	olhaEsquerda = false;
-	cooldownAtaqueMax = 30.f;
+	cooldownAtaqueMax = 100.f;
 	cooldownAtaque = cooldownAtaqueMax;
 	setSize(50.f, 50.f);
 	setTexture("Imagens/fada_blue.png", 1.f);

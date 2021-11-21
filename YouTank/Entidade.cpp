@@ -47,7 +47,10 @@ const int Entidade::getDano() const
 
 void Entidade::receberCura(int cura)
 {
-	vida += cura;
+	if (vida + cura > vidaMAX)
+		vida = vidaMAX;
+	else
+		vida += cura;
 }
 
 void Entidade::setRapidez(float rapidez)

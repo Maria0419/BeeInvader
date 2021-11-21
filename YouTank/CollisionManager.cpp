@@ -135,7 +135,6 @@ void CollisionManager::updateColisoesJanelaJ2()
 
 bool CollisionManager::updateColisoes(Entidade* pEn)
 {
-	updateColisoesJanela();
 	return verificaColisaoFadaCaida(*pEn);
 }
 

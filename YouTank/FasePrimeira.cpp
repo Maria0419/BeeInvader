@@ -152,6 +152,7 @@ void FasePrimeira::updateMovimento()
 void FasePrimeira::updateColisoes()
 {
 	int i;
+	collisionManager.updateColisoesJanela();
 	for (i = 0; i < listaEntidades.getTamanho(); i++) 
 	{
 		
@@ -188,7 +189,15 @@ void FasePrimeira::updateColisoes()
 		break;
 		case ID_ORBECURA:
 		{   //update colisoes do orbe de cura com janela
-			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
+			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
+			{
+				if (pCurandeira)
+				{
+					pFadaCaida->receberCura(pCurandeira->getCura());
+					listaEntidades.operator[](i)->setShowing(false);
+				}
+			}
+			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
 			}
@@ -215,7 +224,7 @@ void FasePrimeira::updateColisoes()
 		break;
 		case ID_ESPINHOS:
 		{
-			if (collisionManager.verificaContatoFadaCaida(listaEntidades.operator[](i)))
+			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
 				pFadaCaida->tomarDano(1);
 			}
@@ -281,20 +290,6 @@ void FasePrimeira::updateCombate()
 			
 		}
 		counter++;
-	}
-	if (pCurandeira != NULL)
-	{
-		for (int i = 0; i < listaEntidades.getTamanho(); i++)
-		{
-			if (listaEntidades.operator[](i)->getId() == ID_ORBECURA)
-			{
-				if (collisionManager.verificaColisaoFadaCaida(*listaEntidades.operator[](i)))
-				{
-					pFadaCaida->receberCura(pCurandeira->getCura());
-					listaEntidades.operator[](i)->setShowing(false);
-				}
-			}
-		}
 	}
 	if (abelha_rainha.emFuria())
 		spawnAbelhas();
