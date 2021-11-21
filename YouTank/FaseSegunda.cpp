@@ -85,6 +85,8 @@ void FaseSegunda::spawnPlataforma()
 
 	Plataforma* plat7 = new Plataforma(300.f, 20.f, 300.f, 180.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat7));
+
+
 }
 
 void FaseSegunda::spawnObstaculos()

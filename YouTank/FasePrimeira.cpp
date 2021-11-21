@@ -73,23 +73,32 @@ void FasePrimeira::spawnPlataforma()
 	plat2->setVelocidadeY(0.0f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat2));
 
-	Plataforma* plat3 = new Plataforma(100.f, 20.f, 180.f, 500.f);
+	Plataforma* plat3 = new Plataforma(100.f, 20.f, 180.f, static_cast<float>(rand() % 500 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat3));
 
-	Plataforma* plat4 = new Plataforma(100.f, 20.f, 300.f, 420.f);
+	Plataforma* plat4 = new Plataforma(100.f, 20.f, 300.f, static_cast<float>(rand() % 500 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat4));
 
-	Plataforma* plat5 = new Plataforma(100.f, 20.f, 420.f, 340.f);
+	Plataforma* plat5 = new Plataforma(100.f, 20.f, 420.f, static_cast<float>(rand() % 500 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat5));
 
-	Plataforma* plat6 = new Plataforma(100.f, 20.f, 540.f, 260.f);
+	Plataforma* plat6 = new Plataforma(100.f, 20.f, 540.f, static_cast<float>(rand() % 500 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat6));
 
-	Plataforma* plat7 = new Plataforma(100.f, 20.f, 660.f, 180.f);
+	Plataforma* plat7 = new Plataforma(100.f, 20.f, 660.f, static_cast<float>(rand() % 500 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat7));
 
-	Plataforma* plat8 = new Plataforma(100.f, 20.f, 780.f, 180.f);
+	Plataforma* plat8 = new Plataforma(100.f, 20.f, 780.f, static_cast<float>(rand() % 500 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat8));
+
+	Plataforma* plat9 = new Plataforma(100.f, 20.f, 900.f, static_cast<float>(rand() % 500 + 100));
+	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat9));
+
+	Plataforma* plat10 = new Plataforma(100.f, 20.f, 1020.f, static_cast<float>(rand() % 500 + 100));
+	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat10));
+
+	Plataforma* plat11 = new Plataforma(100.f, 20.f, 1140.f, static_cast<float>(rand() % 500 + 100));
+	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat11));
 }
 
 void FasePrimeira::spawnObstaculos()
@@ -186,12 +195,13 @@ void FasePrimeira::updateColisoes()
 			{
 				pFadaCaida->tomarDano(listaEntidades.operator[](i)->getDano());
 				listaEntidades.operator[](i)->setShowing(false);
+				contaAbelhas--;
 				
 			}
 			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
-				
+				contaAbelhas--;
 			}
 
 		}
@@ -272,6 +282,7 @@ void FasePrimeira::updateCombate()
 					{
 						listaEntidades.operator[](counter_2)->setShowing(false);
 						listaEntidades.operator[](counter)->setShowing(false);
+						contaAbelhas--;
 						colidiu = true;
 					}
 				}
