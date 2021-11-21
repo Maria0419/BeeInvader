@@ -164,6 +164,7 @@
     <ClCompile Include="FasePrimeira.cpp" />
     <ClCompile Include="Ferrao.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="Inimigo.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="FadaCaida.cpp" />
     <ClCompile Include="Lista.cpp" />
     <ClCompile Include="ListaEntidades.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="OrbeCura.cpp" />
@@ -207,6 +209,7 @@
     <ClInclude Include="FasePrimeira.h" />
     <ClInclude Include="Ferrao.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameOverState.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="GraphicManager.h" />
@@ -216,6 +219,7 @@
     <ClInclude Include="FadaCaida.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidades.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="OrbeCura.h" />

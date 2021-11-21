@@ -1,14 +1,12 @@
 #pragma once
 #include "State.h"
-#include "Background.h"
-#include "Button.h"
+#include "Menu.h"
 
 class PauseState :
-    public State
+    public State, public Menu
 {
 private:
-    Background background;
-    std::map<std::string, Button*> buttons;
+    
     void initButtons();
 
 public:

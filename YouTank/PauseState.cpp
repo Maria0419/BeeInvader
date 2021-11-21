@@ -10,7 +10,7 @@ void PauseState::initButtons()
 
 PauseState::PauseState(std::stack<State*>* state, InputManager* pIM):
 	State(state, pIM),
-	background("Imagens/floresta.png",2.f)
+	Menu("Imagens/floresta.png", 2.f)
 {
 	stateID = PAUSE_STATE;
 	pause = true;

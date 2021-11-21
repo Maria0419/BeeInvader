@@ -1,14 +1,11 @@
 #pragma once
 #include "GameState.h"
-#include "Background.h"
-#include "Button.h"
+#include "Menu.h"
 
 class MenuState :
-    public State
+    public State, public Menu
 {
 private:
-    Background background;
-    std::map<std::string, Button*> buttons;
 
     void initButtons();
 
