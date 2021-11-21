@@ -3,7 +3,6 @@
 #include "Global.h"
 
 Fase::Fase():
-	pEn(NULL),
 	pFadaCaida(NULL),
 	pCurandeira(NULL),
 	listaEntidades()

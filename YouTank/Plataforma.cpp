@@ -14,7 +14,7 @@ Plataforma::Plataforma(float tam_x, float tam_y, float pos_x, float pos_y):
 	setOriginCenter();
 	setOutline(2.f);
 	rapidez = 1.f;
-	velocidade.y = static_cast<float>(rand()%3 + 1.f);
+	velocidade.y = static_cast<float>(rand()%2 + 1.f);
 }
 
 Plataforma::Plataforma():

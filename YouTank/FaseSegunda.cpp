@@ -55,7 +55,7 @@ void FaseSegunda::spawnAbelhas()
 
 	else if (contaAbelhas < abelhasMAX)
 	{
-		Abelha* inim = new Abelha();
+		Abelha* inim = new Abelha(2);
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(inim));
 		contaAbelhas++;
 		spawnTimer = 0;

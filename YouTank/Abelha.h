@@ -8,6 +8,7 @@ private:
     void initShape();
 public:
     Abelha();
+    Abelha(int i);
     ~Abelha();
 
     float getDirecao_x();

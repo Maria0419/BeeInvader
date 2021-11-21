@@ -18,6 +18,7 @@ private:
     unsigned int obstaculosMAX;
     unsigned int contaObstaculos;
     unsigned int contaPedras;
+    unsigned int contaPoteMel;
 
     //privateFunctions
     void initInimigo();
@@ -32,6 +33,7 @@ public:
     void spawnObstaculos();
     void spawnCurandeira();
     void spawnAbelhas();
+    void spawnPoteMel();
 
     void updateMovimento();
     void updateColisoes();

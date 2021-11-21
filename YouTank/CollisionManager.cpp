@@ -33,7 +33,8 @@ bool CollisionManager::verificaColisaoFadaCaida(Entidade& entidade)
 
 	if (intersectX < 0.f && intersectY < 0.f && entidade.getId() != ID_ORBE)
 	{
-
+		if (entidade.getId() == ID_POTEMEL)
+			return true;
 		if (intersectX > intersectY)
 		{
 			if (deltaX > 0.0f)
@@ -69,8 +70,11 @@ bool CollisionManager::verificaColisaoFadaCaida(Entidade& entidade)
 			}
 		}
 		pFadaCaida->naColisao();
+		if (entidade.getId() == ID_FAVOMEL)
+			pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() * 0.5);
 		return true;
 	}
+	
 	return false;
 }
 
@@ -105,6 +109,7 @@ void CollisionManager::updateColisoesJanelaJ1()
 		pFadaCaida->setPosition(pFadaCaida->getPosition().x, pFadaCaida->getBounds().height / 2.f);
 		pFadaCaida->setDirecao_x(0.0f);
 		pFadaCaida->setDirecao_y(-1.0f);
+		pFadaCaida->naColisao();
 	}
 }
 

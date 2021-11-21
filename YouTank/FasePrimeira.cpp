@@ -12,6 +12,7 @@ void FasePrimeira::initInimigo()
 	obstaculosMAX = rand() % 3 + 3;
 	contaPedras = 0;
 	contaObstaculos = 0;
+	contaPoteMel = 0;
 }
 
 FasePrimeira::FasePrimeira() :
@@ -55,10 +56,20 @@ void FasePrimeira::spawnAbelhas()
 
 	else if (contaAbelhas < abelhasMAX)
 	{
-		Abelha* inim = new Abelha();
+		Abelha* inim = new Abelha(1);
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(inim));
 		contaAbelhas++;
 		spawnTimer = 0;
+	}
+}
+
+void FasePrimeira::spawnPoteMel()
+{
+	if (contaPoteMel < 1)
+	{
+		PoteMel* pote = new PoteMel();
+		listaEntidades.incluaEntidade(static_cast<Entidade*>(pote));
+		contaPoteMel++;
 	}
 }
 
@@ -69,35 +80,38 @@ void FasePrimeira::spawnPlataforma()
 	Plataforma* plat = new Plataforma();
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat));
 
-	Plataforma* plat2 = new Plataforma(100.f, 20.f, 60.f, 600.f);
-	plat2->setVelocidadeY(0.0f);
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat2));
+	FavoMel* favo1 = new FavoMel(100.f, 20.f, 60.f, 600.f);
+	favo1->setVelocidadeY(0.0f);
+	listaEntidades.incluaEntidade(static_cast<Entidade*>(favo1));
+	//Plataforma* plat2 = new Plataforma(100.f, 20.f, 60.f, 600.f);
+	//plat2->setVelocidadeY(0.0f);
+	//listaEntidades.incluaEntidade(static_cast<Entidade*>(plat2));
 
-	Plataforma* plat3 = new Plataforma(100.f, 20.f, 180.f, static_cast<float>(rand() % 500 + 100));
+	Plataforma* plat3 = new Plataforma(100.f, 20.f, 180.f, static_cast<float>(rand() % 400 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat3));
 
-	Plataforma* plat4 = new Plataforma(100.f, 20.f, 300.f, static_cast<float>(rand() % 500 + 100));
+	Plataforma* plat4 = new Plataforma(100.f, 20.f, 300.f, static_cast<float>(rand() % 400 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat4));
 
-	Plataforma* plat5 = new Plataforma(100.f, 20.f, 420.f, static_cast<float>(rand() % 500 + 100));
+	Plataforma* plat5 = new Plataforma(100.f, 20.f, 420.f, static_cast<float>(rand() % 400 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat5));
 
-	Plataforma* plat6 = new Plataforma(100.f, 20.f, 540.f, static_cast<float>(rand() % 500 + 100));
+	Plataforma* plat6 = new Plataforma(100.f, 20.f, 540.f, static_cast<float>(rand() % 400 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat6));
 
-	Plataforma* plat7 = new Plataforma(100.f, 20.f, 660.f, static_cast<float>(rand() % 500 + 100));
+	Plataforma* plat7 = new Plataforma(100.f, 20.f, 660.f, static_cast<float>(rand() % 400 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat7));
 
-	Plataforma* plat8 = new Plataforma(100.f, 20.f, 780.f, static_cast<float>(rand() % 500 + 100));
+	Plataforma* plat8 = new Plataforma(100.f, 20.f, 780.f, static_cast<float>(rand() % 400 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat8));
 
-	Plataforma* plat9 = new Plataforma(100.f, 20.f, 900.f, static_cast<float>(rand() % 500 + 100));
+	Plataforma* plat9 = new Plataforma(100.f, 20.f, 900.f, static_cast<float>(rand() % 400 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat9));
 
-	Plataforma* plat10 = new Plataforma(100.f, 20.f, 1020.f, static_cast<float>(rand() % 500 + 100));
+	Plataforma* plat10 = new Plataforma(100.f, 20.f, 1020.f, static_cast<float>(rand() % 400 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat10));
 
-	Plataforma* plat11 = new Plataforma(100.f, 20.f, 1140.f, static_cast<float>(rand() % 500 + 100));
+	Plataforma* plat11 = new Plataforma(100.f, 20.f, 1140.f, static_cast<float>(rand() % 400 + 100));
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat11));
 }
 
@@ -189,6 +203,10 @@ void FasePrimeira::updateColisoes()
 			collisionManager.updateColisoes(listaEntidades.operator[](i));
 		}
 		break;
+		case ID_FAVOMEL:
+		{
+			collisionManager.updateColisoes(listaEntidades.operator[](i));
+		}
 		case ID_ABELHA://update colisoes do player com inimigos e janela
 		{
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
@@ -245,7 +263,7 @@ void FasePrimeira::updateColisoes()
 		{
 			if (collisionManager.verificaContatoFadaCaida(listaEntidades.operator[](i)))
 			{
-				pFadaCaida->tomarDano(1);
+				pFadaCaida->tomarDano(3);
 			}
 		}
 		break;
@@ -254,6 +272,16 @@ void FasePrimeira::updateColisoes()
 			collisionManager.updateColisoes(listaEntidades.operator[](i));
 		}
 		break;
+		case ID_POTEMEL:
+		{
+			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
+			{
+				listaEntidades.operator[](i)->setShowing(false);
+				contaPoteMel--;
+			
+			}
+				
+		}
 		default:
 			break;
 		}
@@ -327,6 +355,7 @@ void FasePrimeira::update()
 	spawnCogumelo();
 	spawnAbelhas();
 	spawnObstaculos();
+	spawnPoteMel();
 	updateMovimento();
 	updateCombate();
 	updateInimigoPlataforma();

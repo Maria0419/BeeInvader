@@ -2,11 +2,28 @@
 #include "Abelha.h"
 #include "Global.h"
 
-Abelha::Abelha():
+Abelha::Abelha()
+{
+
+}
+
+Abelha::Abelha(int i):
 	Inimigo(1, 1)
 {
 	id = ID_ABELHA; 
 	initShape();
+	if (i = 1)
+	{
+		int x = rand() % 2;
+		if (x)
+			setPosition(10.f, static_cast<float>(rand() % 500 + 25));
+		else
+			setPosition(1200.f, static_cast<float>(rand() % 500 + 25));
+	}
+	else if(i = 2)
+		setPosition(static_cast<float> (rand() % 1100 + 25), static_cast<float>(rand() % 50 + 25));
+	
+		
 	setRapidez(8.f);
 	aparece = true;
 	olhaEsquerda = true;
@@ -66,5 +83,5 @@ void Abelha::initShape()
 	setSize(30.f, 30.f);
 	setTexture("Imagens/bee.png");
 	setOriginCenter();
-	setPosition(static_cast<float> (rand() % 1100+25), static_cast<float>(rand() % 50+25));
+	
 }

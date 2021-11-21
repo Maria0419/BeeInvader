@@ -12,13 +12,14 @@
 #include "Curandeira.h"
 #include "Espinhos.h"
 #include "Pedra.h"
+#include "FavoMel.h"
+#include "PoteMel.h"
 
 class Fase :
     public Ente
 {
 protected:
     ListaEntidades listaEntidades;
-    Entidade* pEn;
     CollisionManager collisionManager;
 
     //FadaCaidaes
