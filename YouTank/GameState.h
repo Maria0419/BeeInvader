@@ -10,7 +10,6 @@ class GameState: public State
 private:
     FadaCaida* jogador1;
 
-
     FasePrimeira* fasePrimeira;
     FaseSegunda* faseSegunda;
 

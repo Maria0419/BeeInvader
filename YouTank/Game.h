@@ -23,6 +23,8 @@ private:
 
 	std::stack<State*> states;
 
+	bool sair;
+
 	void initStates();
 	void setGraphicManager();
 
