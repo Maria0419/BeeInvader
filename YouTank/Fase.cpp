@@ -2,12 +2,23 @@
 #include "Fase.h"
 #include "Global.h"
 
+void Fase::initInimigo()
+{
+	spawnTimer = SPAWN_TIMER_MAX;
+	contaAbelhas = 0;
+	abelhasMAX = ABELHAS_MAX;
+	contaCogu = 0;
+	obstaculosMAX = rand() % 3 + 3;
+	contaPedras = 0;
+	contaObstaculos = 0;
+}
+
 Fase::Fase():
 	pFadaCaida(NULL),
 	pCurandeira(NULL),
 	listaEntidades()
 {
-
+	initInimigo();
 }
 
 Fase::~Fase()

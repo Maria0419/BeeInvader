@@ -2,19 +2,6 @@
 #include "FasePrimeira.h"
 #include "Global.h"
 
-void FasePrimeira::initInimigo()
-{
-	spawnTimerMAX = 200;
-	spawnTimer = spawnTimerMAX;
-	contaAbelhas = 0;
-	abelhasMAX = 10;
-	contaCogu = 0;
-	obstaculosMAX = rand() % 3 + 3;
-	contaPedras = 0;
-	contaObstaculos = 0;
-	contaPoteMel = 0;
-}
-
 FasePrimeira::FasePrimeira() :
 	Fase(),
 	background("Imagens/floresta.png", 2.f)
@@ -22,6 +9,7 @@ FasePrimeira::FasePrimeira() :
 	Ente::pLista = &listaEntidades;
 	initInimigo();
 	collisionManager.setGraphicManager(pGraphic);
+	contaPoteMel = 0;
 }
 
 FasePrimeira::~FasePrimeira()

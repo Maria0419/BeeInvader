@@ -2,17 +2,7 @@
 #include "FaseSegunda.h"
 #include "Global.h"
 
-void FaseSegunda::initInimigo()
-{
-	spawnTimerMAX = 200;
-	spawnTimer = spawnTimerMAX;
-	contaAbelhas = 0;
-	abelhasMAX = 10;
-	contaCogu = 0;
-	obstaculosMAX = rand() % 3 + 3;
-	contaPedras = 0;
-	contaObstaculos = 0;
-}
+
 
 FaseSegunda::FaseSegunda():
 	Fase(),
