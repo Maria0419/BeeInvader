@@ -234,7 +234,15 @@ void FasePrimeira::updateColisoes()
 		break;
 		case ID_ORBECURA:
 		{   //update colisoes do orbe de cura com janela
-			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
+			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
+			{
+				if (pCurandeira)
+				{
+					pFadaCaida->receberCura(pCurandeira->getCura());
+					listaEntidades.operator[](i)->setShowing(false);
+				}
+			}
+			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
 			}
@@ -336,7 +344,7 @@ void FasePrimeira::updateInimigoPlataforma()
 {
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{
-		if (listaEntidades.operator[](i)->getId() == ID_PLATAFORMA)
+		if (listaEntidades.operator[](i)->getId() == ID_PLATAFORMA || listaEntidades.operator[](i)->getId() == ID_FAVOMEL)
 		{
 			for (int j = 0; j < listaEntidades.getTamanho(); j++)
 				if (listaEntidades.operator[](j)->getId() == ID_COGUMELO)
