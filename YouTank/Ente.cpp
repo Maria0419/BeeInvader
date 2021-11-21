@@ -64,7 +64,7 @@ void Ente::rotate(float angulo)
 
 void Ente::renderBodyBack()
 {
-	pGraphic->drawShapes(bodyBack);
+	pGraphic->render(bodyBack);
 }
 
 
@@ -99,14 +99,14 @@ void Ente::setPosition(float x, float y)
 void Ente::render()
 {
 	if (id % 2)
-		pGraphic->drawShapes(sprite);
+		pGraphic->render(sprite);
 	else
-		pGraphic->drawShapes(body);
+		pGraphic->render(body);
 }
 
 void Ente::renderTexto(sf::Text texto)
 {
-	pGraphic->getWindow()->draw(texto);
+	pGraphic->render(texto);
 }
 
 bool Ente::contem(float x, float y)

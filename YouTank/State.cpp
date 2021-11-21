@@ -6,6 +6,8 @@ GraphicManager* State::pGraphic = NULL;
 State::State(std::stack<State*>* state, InputManager* pIM):
 	terminar(false),
 	pause(false),
+	gameOver(false),
+	goToMenu(false),
 	stateID(STATE),
 	pInput(pIM)
 {
@@ -41,10 +43,25 @@ const bool State::getPause() const
 	return pause;
 }
 
+const bool State::getGameOver() const
+{
+	return gameOver;
+}
+
+const bool State::getGoToMenu() const
+{
+	return goToMenu;
+}
+
 void State::verificarPause()
 {
 	if (pInput->getPause() == true)
 		pause = true;	
+}
+
+void State::verificarGoToMenu()
+{
+
 }
 
 void State::endState()

@@ -88,6 +88,13 @@ void GameState::endState()
 	std::cout << "ending game state" << std::endl;
 }
 
+void GameState::verificarGameOver()
+{
+	if (jogador1->getExisteNaFase() == false)
+		gameOver = true;
+	
+}
+
 
 void GameState::updatePause()
 {
@@ -96,6 +103,12 @@ void GameState::updatePause()
 		states->push(new PauseState(states, pInput));
 	}
 		
+}
+
+void GameState::updateGameOver()
+{
+	if (gameOver == true)
+		states->push(new GameOverState(states, pInput));
 }
 
 void GameState::updateInput()
@@ -109,6 +122,8 @@ void GameState::update()
 {
 	updateInput();
 	updatePause();
+	verificarGameOver();
+	updateGameOver();
 	switch (fase)
 	{
 	case 1:

@@ -5,7 +5,7 @@ GraphicManager* GraphicManager::instance = NULL;
 
 void GraphicManager::initFont()
 {
-	if (!fonte.loadFromFile("Fonts/GraphikSemibold.otf"))
+	if (!fonte.loadFromFile("Fonts/Beezybee.ttf"))
 		std::cout << "ERROR::GRAPHICMANAGER::INITFONT::Erro ao carregar a fonte" << std::endl;
 }
 
@@ -33,12 +33,12 @@ void GraphicManager::clear()
 	window.clear();
 }
 
-void GraphicManager::drawShapes(sf::RectangleShape body)
+void GraphicManager::render(sf::RectangleShape body)
 {
 	window.draw(body); 
 }
 
-void GraphicManager::drawShapes(sf::Sprite body)
+void GraphicManager::render(sf::Sprite body)
 {
 	window.draw(body);
 }

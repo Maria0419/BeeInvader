@@ -68,10 +68,17 @@ void Game::update()
 			states.pop();
 			states.top()->setPause(false);
 		}
+		if (states.top()->getGoToMenu() == true)
+		{
+			while (states.top()->getState() != MENU_STATE)
+			{
+				delete states.top();
+				states.pop();
+			}
+		}
 
 		if (states.top()->getTerminar())
 		{
-			states.top()->endState();
 			delete states.top();
 			states.pop();
 		}

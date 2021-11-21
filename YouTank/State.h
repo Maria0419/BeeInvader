@@ -17,6 +17,8 @@ protected:
 
 	bool terminar;
 	bool pause;
+	bool gameOver;
+	bool goToMenu;
 
 public:
 	State(std::stack<State*>* state, InputManager* pIM);
@@ -29,8 +31,11 @@ public:
 	const bool& getTerminar() const;
 	virtual const short getState() = 0;
 	virtual const bool getPause() const;
+	virtual const bool getGameOver() const;
+	virtual const bool getGoToMenu() const;
 
 	virtual void verificarPause();
+	virtual void verificarGoToMenu();
 
 	virtual void endState() ;
 

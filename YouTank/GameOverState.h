@@ -7,15 +7,23 @@ class GameOverState :
 {
 private:
 
+	sf::Text texto;
+	sf::Font* fonte;
 
+	void initText();
+	void initButtons();
 public:
-	GameOverState();
-	~GameOverState()
+	GameOverState(std::stack<State*>* state, InputManager* pIM);
+	~GameOverState();
 
 	const short getState();
 
+	void updateButtons();
 	void updateInput();
 	void update();
+
+	void renderText();
+	void renderButtons();
 	void render();
 };
 

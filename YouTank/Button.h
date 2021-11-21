@@ -8,6 +8,7 @@ class Button :
 {
 private:
     short unsigned estadoBotao;
+    static bool mouseHeld;
 
     sf::Text texto;
     sf::Font* fonte;

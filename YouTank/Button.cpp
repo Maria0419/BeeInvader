@@ -2,6 +2,7 @@
 #include "Button.h"
 #include "Global.h"
 
+bool Button::mouseHeld = false;
 
 void Button::initText(std::string text)
 {
@@ -11,7 +12,9 @@ void Button::initText(std::string text)
 	texto.setFont(*fonte);
 	texto.setString(text);
 	texto.setFillColor(sf::Color::White);
-	texto.setCharacterSize(24);
+	texto.setOutlineColor(sf::Color::Black);
+	texto.setOutlineThickness(1.f);
+	texto.setCharacterSize(36);
 	texto.setPosition(
 		getPosition().x + getBounds().width / 2.f - texto.getGlobalBounds().width / 2.f,
 		getPosition().y + getBounds().height / 3.f - texto.getGlobalBounds().height / 2.f);
@@ -65,7 +68,15 @@ void Button::update(const float posX, const float posY)
 		//botao pressionado
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			estadoBotao = BT_PRESSIONADO;
+			if (mouseHeld == false)
+			{
+				mouseHeld = true;
+				estadoBotao = BT_PRESSIONADO;
+			}
+		}
+		else
+		{
+			mouseHeld = false;
 		}
 	}
 

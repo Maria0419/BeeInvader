@@ -2,6 +2,7 @@
 #include "State.h"
 #include "FasePrimeira.h"
 #include "PauseState.h"
+#include "GameOverState.h"
 
 class GameState: public State
 {
@@ -32,7 +33,10 @@ public:
     const bool getPause() const;
     void endState();
 
+    void verificarGameOver();
+
     void updatePause();
+    void updateGameOver();
     void updateInput();
     void update();
     void render();
