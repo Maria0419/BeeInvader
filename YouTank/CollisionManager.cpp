@@ -71,7 +71,7 @@ bool CollisionManager::verificaColisaoFadaCaida(Entidade& entidade)
 		}
 		pFadaCaida->naColisao();
 		if (entidade.getId() == ID_FAVOMEL)
-			pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() * 0.5);
+			pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() * 0.5f);
 		return true;
 	}
 	

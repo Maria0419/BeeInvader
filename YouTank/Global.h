@@ -15,3 +15,6 @@
 #define ID_PEDRA 342 // p3dr4, 2 pois é um Rectangle shape
 #define ID_FAVOMEL 4032
 #define ID_POTEMEL 332
+
+#define SPAWN_TIMER_MAX 200
+#define ABELHAS_MAX 10

@@ -13,7 +13,7 @@ FavoMel::FavoMel(float tam_x, float tam_y, float pos_x, float pos_y):
 	aparece = true;
 	setSize(tam_x, tam_y);
 	setPosition(pos_x, pos_y);
-	setTexture("Imagens/grass.png");
+	setTexture("Imagens/favo.png");
 	setOriginCenter();
 	setOutline(2.f);
 	rapidez = 1.f;
