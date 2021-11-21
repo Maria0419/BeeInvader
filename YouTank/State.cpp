@@ -4,7 +4,7 @@
 GraphicManager* State::pGraphic = NULL;
 
 State::State(std::stack<State*>* state, InputManager* pIM):
-	terminar(false),
+	sair(false),
 	pause(false),
 	gameOver(false),
 	goToMenu(false),
@@ -33,9 +33,9 @@ void State::setPause(bool p)
 	pause = p;
 }
 
-const bool& State::getTerminar() const
+const bool State::getSair() const
 {
-	return terminar;
+	return sair;
 }
 
 const bool State::getPause() const

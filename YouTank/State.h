@@ -15,7 +15,7 @@ protected:
 
 	short stateID;
 
-	bool terminar;
+	bool sair;
 	bool pause;
 	bool gameOver;
 	bool goToMenu;
@@ -28,7 +28,7 @@ public:
 
 	virtual void setPause(bool p);
 
-	const bool& getTerminar() const;
+	const bool getSair() const;
 	virtual const short getState() = 0;
 	virtual const bool getPause() const;
 	virtual const bool getGameOver() const;

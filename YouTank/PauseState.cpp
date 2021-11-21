@@ -54,7 +54,7 @@ void PauseState::updateButtons()
 	}
 	else if (buttons["SAIR"]->estaPressionado())
 	{
-		pause = false;
+		sair = true;
 	}
 }
 

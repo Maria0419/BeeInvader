@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Game.h"
 
-Game::Game()
+Game::Game():
+	sair(false)
 {
 	graphicManager = GraphicManager::getInstance();
 
@@ -37,7 +38,7 @@ void Game::setGraphicManager()
 void Game::run()
 {
 	
-	while (graphicManager->isRunning())
+	while (graphicManager->isRunning() && sair == false)
 	{
 		update();
 		render();
@@ -77,8 +78,9 @@ void Game::update()
 			}
 		}
 
-		if (states.top()->getTerminar())
+		if (states.top()->getSair())
 		{
+			sair = true;
 			delete states.top();
 			states.pop();
 		}

@@ -58,7 +58,7 @@ void GameOverState::updateButtons()
 	}
 	else if (buttons["SAIR"]->estaPressionado())
 	{
-		
+		sair = true;
 	}
 }
 

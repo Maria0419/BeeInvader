@@ -60,15 +60,15 @@ void MenuState::updateButtons()
 	}
 	else if (buttons["MULTIPLAYER"]->estaPressionado())
 	{
-		states->push(new GameState(states, pInput, 12,true));
+		states->push(new GameState(states, pInput, 12, true));
 	}
 	else if (buttons["RANKING"]->estaPressionado())
 	{
-		states->push(new GameState(states, pInput, 1));
+		
 	}
 	else if (buttons["SAIR"]->estaPressionado())
 	{
-		terminar = true;
+		sair = true;
 	}
 }
 
