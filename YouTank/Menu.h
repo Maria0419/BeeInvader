@@ -6,6 +6,7 @@ class Menu
 {
 protected:
     Background background;
+    sf::Text texto;
     std::map<std::string, Button*> buttons;
 
     virtual void initButtons() = 0;

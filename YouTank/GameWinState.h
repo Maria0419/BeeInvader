@@ -1,8 +1,7 @@
 #pragma once
 #include "State.h"
 #include "Menu.h"
-
-class GameOverState :
+class GameWinState :
     public State, public Menu
 {
 private:
@@ -12,8 +11,8 @@ private:
 	void initText();
 	void initButtons();
 public:
-	GameOverState(std::stack<State*>* state, InputManager* pIM);
-	~GameOverState();
+	GameWinState(std::stack<State*>* state, InputManager* pIM);
+	~GameWinState();
 
 	const short getState();
 

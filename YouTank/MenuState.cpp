@@ -48,7 +48,7 @@ void MenuState::updateButtons()
 
 	if (buttons["NOVO_JOGO"]->estaPressionado())
 	{
-		states->push(new GameState(states, pInput, 12));
+		states->push(new GameState(states, pInput, 1));
 	}
 	else if (buttons["FASE_1"]->estaPressionado())
 	{
@@ -60,7 +60,7 @@ void MenuState::updateButtons()
 	}
 	else if (buttons["MULTIPLAYER"]->estaPressionado())
 	{
-		states->push(new GameState(states, pInput, 12, true));
+		states->push(new GameState(states, pInput, 1, true));
 	}
 	else if (buttons["RANKING"]->estaPressionado())
 	{

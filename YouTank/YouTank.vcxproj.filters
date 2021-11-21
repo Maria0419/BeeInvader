@@ -186,6 +186,9 @@
     <ClCompile Include="FasePrimeira.cpp">
       <Filter>Arquivos de Origem\Fases</Filter>
     </ClCompile>
+    <ClCompile Include="GameWinState.cpp">
+      <Filter>Arquivos de Origem\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -304,6 +307,9 @@
     </ClInclude>
     <ClInclude Include="FasePrimeira.h">
       <Filter>Arquivos de Cabeçalho\Fases</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWinState.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

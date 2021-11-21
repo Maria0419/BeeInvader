@@ -167,6 +167,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameWinState.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="Inimigo.cpp" />
     <ClCompile Include="Abelha.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOverState.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameWinState.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="Inimigo.h" />

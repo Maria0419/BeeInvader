@@ -68,11 +68,14 @@ void Button::update(const float posX, const float posY)
 		//botao pressionado
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
+			//só um clique permitido nos botão
 			if (mouseHeld == false)
 			{
 				mouseHeld = true;
 				estadoBotao = BT_PRESSIONADO;
+				
 			}
+			
 		}
 		else
 		{

@@ -5,7 +5,7 @@
 void PauseState::initButtons()
 {
 	buttons["CONTINUAR"] = new Button(550, 250, "Continuar");
-	buttons["VOLTAR"] = new Button(550, 325, "Voltar ao Menu");
+	buttons["VOLTAR_MENU"] = new Button(550, 325, "Voltar ao Menu");
 	buttons["SAIR"] = new Button(550, 400, "Sair");
 }
 
@@ -44,7 +44,7 @@ void PauseState::updateButtons()
 		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
 	}
 
-	if (buttons["VOLTAR"]->estaPressionado())
+	if (buttons["VOLTAR_MENU"]->estaPressionado())
 	{
 		goToMenu = true;
 	}

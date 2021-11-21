@@ -1,9 +1,11 @@
 #pragma once
 #include "State.h"
 #include "FasePrimeira.h"
+#include "FaseSegunda.h"
 #include "PauseState.h"
 #include "GameOverState.h"
-#include "FaseSegunda.h"
+#include "GameWinState.h"
+
 
 class GameState: public State
 {
@@ -37,9 +39,11 @@ public:
     void endState();
 
     void verificarGameOver();
+    void verificarGameWin();
 
     void updatePause();
     void updateGameOver();
+    void updateGameWin();
     void updateInput();
     void update();
     void render();

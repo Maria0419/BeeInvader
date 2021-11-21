@@ -1,37 +1,39 @@
 #include "stdafx.h"
-#include "GameOverState.h"
+#include "GameWinState.h"
 
-void GameOverState::initText()
+void GameWinState::initText()
 {
 	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
 
 	texto.setFont(*fonte);
-	texto.setString("GAME OVER");
+	texto.setString("VITÓRIA");
 	texto.setFillColor(sf::Color::Yellow);
 	texto.setOutlineColor(sf::Color::Black);
 	texto.setOutlineThickness(3.f);
 	texto.setCharacterSize(120);
-	texto.setPosition(390.f, 80.f);
+	texto.setPosition(430.f, 80.f);
 }
 
-void GameOverState::initButtons()
+void GameWinState::initButtons()
 {
-	buttons["VOLTAR_MENU"] = new Button(550, 300, "Voltar ao Menu");
-	buttons["SAIR"] = new Button(550, 375, "Sair");
+	buttons["SALVAR"] = new Button(550, 300, "Salvar");
+	buttons["RANKING"] = new Button(550, 375, "Ranking");
+	buttons["VOLTAR_MENU"] = new Button(550, 450, "Voltar ao Menu");
+	buttons["SAIR"] = new Button(550, 525, "Sair");
 }
 
-GameOverState::GameOverState(std::stack<State*>* state, InputManager* pIM):
-	State(state,pIM),
-	Menu("Imagens/f.png", 1.9f)
+GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM) :
+	State(state, pIM),
+	Menu("Imagens/gamewin.jpg", 1.f)
 {
-	stateID = GOVER_STATE;
+	stateID = GWIN_STATE;
 	gameOver = true;
 	initButtons();
 	initText();
 }
 
-GameOverState::~GameOverState()
+GameWinState::~GameWinState()
 {
 	auto it = buttons.begin();
 	for (it = buttons.begin(); it != buttons.end(); ++it)
@@ -40,18 +42,25 @@ GameOverState::~GameOverState()
 	}
 }
 
-const short GameOverState::getState()
+const short GameWinState::getState()
 {
 	return stateID;
 }
 
-void GameOverState::updateButtons()
+void GameWinState::updateButtons()
 {
 	for (auto& it : buttons)
 	{
 		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
 	}
-
+	if (buttons["SALVAR"]->estaPressionado())
+	{
+		//goToMenu = true;
+	}
+	if (buttons["RANKING"]->estaPressionado())
+	{
+		//goToMenu = true;
+	}
 	if (buttons["VOLTAR_MENU"]->estaPressionado())
 	{
 		goToMenu = true;
@@ -62,23 +71,23 @@ void GameOverState::updateButtons()
 	}
 }
 
-void GameOverState::updateInput()
+void GameWinState::updateInput()
 {
 	pInput->updateMousePos();
 }
 
-void GameOverState::update()
+void GameWinState::update()
 {
 	updateInput();
 	updateButtons();
 }
 
-void GameOverState::renderText()
+void GameWinState::renderText()
 {
 	pGraphic->render(texto);
 }
 
-void GameOverState::renderButtons()
+void GameWinState::renderButtons()
 {
 	for (auto& it : buttons)
 	{
@@ -87,7 +96,7 @@ void GameOverState::renderButtons()
 	}
 }
 
-void GameOverState::render()
+void GameWinState::render()
 {
 	background.render();
 	renderText();

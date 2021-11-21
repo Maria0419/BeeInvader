@@ -12,21 +12,18 @@ void GameState::runFase()
 		fasePrimeira = new FasePrimeira();
 		fasePrimeira->setFadaCaida(jogador1);
 		fasePrimeira->spawnPlataforma();
+
+		if (multiplayer == true)
+		{
+			fasePrimeira->spawnCurandeira();
+			pInput->setCurandeira(fasePrimeira->getCurandeira());
+		}
 		
 		pInput->setFase(static_cast<Fase*>(fasePrimeira));
 		
 		break;
 
 	case 2:
-		jogador1 = new FadaCaida();
-		pInput->setFadaCaida(jogador1);
-		faseSegunda = new FaseSegunda();
-		faseSegunda->setFadaCaida(jogador1);
-		faseSegunda->spawnPlataforma();
-		pInput->setFase(static_cast<Fase*>(faseSegunda));
-		break;
-
-	case 12:
 		jogador1 = new FadaCaida();
 		pInput->setFadaCaida(jogador1);
 		faseSegunda = new FaseSegunda();
@@ -80,10 +77,6 @@ GameState::~GameState()
 		delete faseSegunda;
 		delete jogador1;
 		break;
-	case 12:
-		delete faseSegunda;
-		delete jogador1;
-		break;
 
 	default:
 		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
@@ -118,6 +111,26 @@ void GameState::verificarGameOver()
 	
 }
 
+void GameState::verificarGameWin()
+{
+	switch (fase)
+	{
+	case 1:
+		
+		break;
+
+	case 2:
+		if (faseSegunda->getTerminou())
+			gameWin = true;
+		break;
+
+	default:
+		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
+		break;
+	}
+	
+}
+
 
 void GameState::updatePause()
 {
@@ -134,6 +147,12 @@ void GameState::updateGameOver()
 		states->push(new GameOverState(states, pInput));
 }
 
+void GameState::updateGameWin()
+{
+	if (gameWin == true)
+		states->push(new GameWinState(states, pInput));
+}
+
 void GameState::updateInput()
 {
 	updateDeltaTime();
@@ -143,10 +162,12 @@ void GameState::updateInput()
 
 void GameState::update()
 {
-	updateInput();
 	updatePause();
 	verificarGameOver();
+	verificarGameWin();
 	updateGameOver();
+	updateGameWin();
+	updateInput();
 	switch (fase)
 	{
 	case 1:
@@ -157,9 +178,6 @@ void GameState::update()
 		faseSegunda->update();
 		break;
 
-	case 12:
-		faseSegunda->update();
-		break;
 	default:
 		std::cout << "ERROR::GAMESTATE::UPDATE::Fase não existente" << std::endl;
 		break;
@@ -176,10 +194,6 @@ void GameState::render()
 		break;
 
 	case 2:
-		faseSegunda->renderFaseSegunda();
-		break;
-
-	case 12:
 		faseSegunda->renderFaseSegunda();
 		break;
 

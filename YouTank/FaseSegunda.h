@@ -48,5 +48,6 @@ public:
 
     void setFadaCaida(FadaCaida* pFadaCaida);
     Curandeira* getCurandeira() const;
+    const bool getTerminou() const;
 };
 

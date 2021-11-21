@@ -3,10 +3,11 @@
 
 GraphicManager* State::pGraphic = NULL;
 
-State::State(std::stack<State*>* state, InputManager* pIM):
+State::State(std::stack<State*>* state, InputManager* pIM) :
 	sair(false),
 	pause(false),
 	gameOver(false),
+	gameWin(false),
 	goToMenu(false),
 	stateID(STATE),
 	pInput(pIM)
@@ -46,6 +47,11 @@ const bool State::getPause() const
 const bool State::getGameOver() const
 {
 	return gameOver;
+}
+
+const bool State::getGameWin() const
+{
+	return gameWin;
 }
 
 const bool State::getGoToMenu() const

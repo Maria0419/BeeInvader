@@ -326,6 +326,7 @@ void FaseSegunda::update()
 	updateInimigoPlataforma();
 	updateBoss();
 	pFadaCaida->update();
+
 	if(pCurandeira!=NULL)
 		pCurandeira->update();
 	
@@ -368,4 +369,13 @@ void FaseSegunda::setFadaCaida(FadaCaida* pJ)
 Curandeira* FaseSegunda::getCurandeira() const
 {
 	return pCurandeira;
+}
+
+const bool FaseSegunda::getTerminou() const
+{
+	if (abelha_rainha.getVida() <= 0)
+		return true;
+
+	else
+		return false;
 }
