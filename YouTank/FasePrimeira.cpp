@@ -4,6 +4,10 @@
 
 void FasePrimeira::initInimigo()
 {
+	spawnTimerMAX = 200;
+	spawnTimer = spawnTimerMAX;
+	contaAbelhas = 0;
+	abelhasMAX = 10;
 	contaCogu = 0;
 	obstaculosMAX = rand() % 3 + 3;
 	contaPedras = 0;
@@ -43,37 +47,60 @@ void FasePrimeira::spawnCogumelo()
 	}
 }
 
+void FasePrimeira::spawnAbelhas()
+{
+	//timer
+	if (spawnTimer < spawnTimerMAX)
+		spawnTimer += 5;
+
+	else if (contaAbelhas < abelhasMAX)
+	{
+		Abelha* inim = new Abelha();
+		listaEntidades.incluaEntidade(static_cast<Entidade*>(inim));
+		contaAbelhas++;
+		spawnTimer = 0;
+	}
+}
+
+
 void FasePrimeira::spawnPlataforma()
 {
 	//plataforma
 	Plataforma* plat = new Plataforma();
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat));
 
-	Plataforma* plat2 = new Plataforma(300.f, 20.f, 100.f, 580.f);
+	Plataforma* plat2 = new Plataforma(100.f, 20.f, 60.f, 600.f);
+	plat2->setVelocidadeY(0.0f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat2));
 
-	Plataforma* plat3 = new Plataforma(300.f, 20.f, 300.f, 500.f);
+	Plataforma* plat3 = new Plataforma(100.f, 20.f, 180.f, 500.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat3));
 
-	Plataforma* plat4 = new Plataforma(300.f, 20.f, 500.f, 420.f);
+	Plataforma* plat4 = new Plataforma(100.f, 20.f, 300.f, 420.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat4));
 
-	Plataforma* plat5 = new Plataforma(300.f, 20.f, 300.f, 340.f);
+	Plataforma* plat5 = new Plataforma(100.f, 20.f, 420.f, 340.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat5));
 
-	Plataforma* plat6 = new Plataforma(300.f, 20.f, 500.f, 260.f);
+	Plataforma* plat6 = new Plataforma(100.f, 20.f, 540.f, 260.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat6));
 
-	Plataforma* plat7 = new Plataforma(300.f, 20.f, 300.f, 180.f);
+	Plataforma* plat7 = new Plataforma(100.f, 20.f, 660.f, 180.f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat7));
+
+	Plataforma* plat8 = new Plataforma(100.f, 20.f, 780.f, 180.f);
+	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat8));
 }
 
 void FasePrimeira::spawnObstaculos()
 {
+	
 	if (contaObstaculos < obstaculosMAX)
 	{
 		Espinhos* espinhos = new Espinhos((float)(rand() % 1180 + 100), 620.f);
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(espinhos));
+
+		/*
 		if (contaPedras < obstaculosMAX)
 		{
 			Pedra* pedra = new Pedra((float)(rand() % 170 + 180), 480.f);
@@ -86,7 +113,7 @@ void FasePrimeira::spawnObstaculos()
 			listaEntidades.incluaEntidade(static_cast<Entidade*>(pedra2));
 			contaPedras++;
 		}
-
+		*/
 		contaObstaculos++;
 
 	}
@@ -99,6 +126,15 @@ void FasePrimeira::updateMovimento()
 	{
 		switch (listaEntidades.operator[](i)->getId())
 		{
+		case ID_PLATAFORMA:
+		{
+			if (listaEntidades.operator[](i)->getPosition().y > 550)
+				listaEntidades.operator[](i)->setVelocidadeY(listaEntidades.operator[](i)->getVelocidadeY() * -1);
+			else if(listaEntidades.operator[](i)->getPosition().y < 100)
+				listaEntidades.operator[](i)->setVelocidadeY(listaEntidades.operator[](i)->getVelocidadeY() * -1);
+			listaEntidades.operator[](i)->movePlataforma();
+
+		}
 		case ID_ABELHA://move inimigos
 		{
 			listaEntidades.operator[](i)->persegue(pFadaCaida->getPosition().x, pFadaCaida->getPosition().y);
@@ -132,6 +168,7 @@ void FasePrimeira::updateMovimento()
 
 void FasePrimeira::updateColisoes()
 {
+	collisionManager.updateColisoesJanela();
 	int i;
 	for (i = 0; i < listaEntidades.getTamanho(); i++)
 	{
@@ -277,6 +314,7 @@ void FasePrimeira::update()
 	updateColisoes();
 	limpeza();
 	spawnCogumelo();
+	spawnAbelhas();
 	spawnObstaculos();
 	updateMovimento();
 	updateCombate();

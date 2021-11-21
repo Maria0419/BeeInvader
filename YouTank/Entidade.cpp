@@ -141,6 +141,10 @@ void Entidade::updateAnimacao()
 {
 }
 
+void Entidade::movePlataforma()
+{
+}
+
 void Entidade::naColisao()
 {
 }

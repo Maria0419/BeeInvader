@@ -13,6 +13,8 @@ Plataforma::Plataforma(float tam_x, float tam_y, float pos_x, float pos_y):
 	setTexture("Imagens/grass.png");
 	setOriginCenter();
 	setOutline(2.f);
+	rapidez = 1.f;
+	velocidade.y = static_cast<float>(rand()%3 + 1.f);
 }
 
 Plataforma::Plataforma():
@@ -24,6 +26,11 @@ Plataforma::Plataforma():
 
 Plataforma::~Plataforma()
 {
+}
+
+void Plataforma::movePlataforma()
+{
+	move(velocidade.x * rapidez, velocidade.y * rapidez);
 }
 
 void Plataforma::initShape()

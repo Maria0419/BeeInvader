@@ -57,6 +57,7 @@ public:
     virtual void updateFerrao();
     virtual void updateAnimacao();
 
+    virtual void movePlataforma();
     virtual void naColisao();
 };
 
