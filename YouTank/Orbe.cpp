@@ -2,7 +2,6 @@
 #include "Orbe.h"
 #include "Global.h"
 
-//TODO ARRUMAR OS PARAMETROS DA CONSTRUTORA
 Orbe::Orbe()
 {
 

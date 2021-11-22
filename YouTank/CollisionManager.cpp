@@ -20,21 +20,31 @@ CollisionManager::~CollisionManager()
 
 bool CollisionManager::verificaColisaoFadaCaida(Entidade& entidade)
 {
+	/*==================COLISOES FADA CAIDA=====================*/
+	/*															*/
+	/*	ADMINISTRA AS COLISOES DO JOGADOR 1					    */
+	/*  Utiliza-se de conceitos de geometria analitica para		*/
+	/*  calcular se dois corpos se intersectam ou não,			*/
+	/*  verificando a distancia entre seus centros de massa.	*/
+	/*==========================================================*/
+
 	sf::Vector2f outraPosicao = entidade.getPosition();
 	sf::Vector2f outraMetadeTam = (entidade.getSize()/ 2.f);
 	sf::Vector2f jogadorPosicao = pFadaCaida->getPosition();
 	sf::Vector2f jogadorMetadeTam = (pFadaCaida->getSize() / 2.f);
 
+	//calcula as distancias entre seus centros de massa
 	float deltaX = outraPosicao.x - jogadorPosicao.x;
 	float deltaY = outraPosicao.y - jogadorPosicao.y;
 
+	//analisa a diferenca entre o delta e a menor distancia possivel antes de colidirem
 	float intersectX = abs(deltaX) - (outraMetadeTam.x + jogadorMetadeTam.x);
 	float intersectY = abs(deltaY) - (outraMetadeTam.y + jogadorMetadeTam.y);
 
+	//verifica se houve interseccao
 	if (intersectX < 0.f && intersectY < 0.f && entidade.getId() != ID_ORBE)
 	{
-		if (entidade.getId() == ID_POTEMEL)
-			return true;
+		//verifica em qual direcao ocorreu a colisao
 		if (intersectX > intersectY)
 		{
 			if (deltaX > 0.0f)
@@ -70,6 +80,8 @@ bool CollisionManager::verificaColisaoFadaCaida(Entidade& entidade)
 			}
 		}
 		pFadaCaida->naColisao();
+		
+		//colisao com o favo de mel, diminui a velocidade do jogador
 		if (entidade.getId() == ID_FAVOMEL)
 			pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() * 0.5f);
 		return true;
@@ -150,19 +162,32 @@ bool CollisionManager::updateCombate(Entidade* pOrbe, Entidade* pInimigo)
 
 void CollisionManager::updateInimigoPlataforma(Entidade& inimigo, Entidade* plataforma)
 {
+
+	/*===============COLISOES INIMIGO/PLATAFORMA================*/
+	/*															*/
+	/*	ADMINISTRA AS COLISOES DO INIMIGO COM A PLATAFORMA	    */
+	/*  Utiliza-se de conceitos de geometria analitica para		*/
+	/*  calcular se dois corpos se intersectam ou não,			*/
+	/*  verificando a distancia entre seus centros de massa.	*/
+	/*==========================================================*/
+
 	sf::Vector2f outraPosicao = plataforma->getPosition();
 	sf::Vector2f outraMetadeTam = (plataforma->getSize() / 2.f);
 	sf::Vector2f Posicao = inimigo.getPosition();
 	sf::Vector2f MetadeTam = (inimigo.getSize() / 2.f);
 
+	//calcula as distancias entre seus centros de massa
 	float deltaX = outraPosicao.x - Posicao.x;
 	float deltaY = outraPosicao.y - Posicao.y;
 
+	//analisa a diferenca entre o delta e a menor distancia possivel antes de colidirem
 	float intersectX = abs(deltaX) - (outraMetadeTam.x + MetadeTam.x);
 	float intersectY = abs(deltaY) - (outraMetadeTam.y + MetadeTam.y);
+
+	//verifica se houve interseccao
 	if (intersectX < 0.f && intersectY < 0.f)
 	{
-		
+		//verifica em qual direcao ocorreu a colisao
 		if (intersectX > intersectY)
 		{
 			if (deltaX > 0.0f)
@@ -199,6 +224,10 @@ void CollisionManager::updateInimigoPlataforma(Entidade& inimigo, Entidade* plat
 
 bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
 {
+	/*=====================SAIU DA TELA=========================*/
+	/*															*/
+	/*	VERIFICA SE A ENTIDADE SAIU DOS LIMITES DA TELA		    */
+	/*==========================================================*/
 	if (entidade->getBounds().top + entidade->getBounds().height < 0.f ||
 		entidade->getBounds().top + entidade->getBounds().height > pGraphic->getWindow()->getSize().y ||
 		entidade->getPosition().x > pGraphic->getWindow()->getSize().x ||
@@ -211,6 +240,10 @@ bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
 
 bool CollisionManager::verificaContatoFadaCaida(Entidade* entidade)
 {
+	/*===================VERIFICA CONTATO=======================*/
+	/*															*/
+	/*	VERIFICA O CONTATO DA FADA COM A ENTIDADE			    */
+	/*==========================================================*/
 	bool intersecta = pFadaCaida->intersecta(static_cast<Ente*>(entidade));
 	if (timer < timerMAX || intersecta == false )
 	{
@@ -226,6 +259,10 @@ bool CollisionManager::verificaContatoFadaCaida(Entidade* entidade)
 
 bool CollisionManager::verificaContatoCurandeira(Entidade* entidade)
 {
+	/*===================VERIFICA CONTATO=======================*/
+	/*															*/
+	/*	VERIFICA O CONTATO DA CURANDEIRA COM A ENTIDADE		    */
+	/*==========================================================*/
 	bool intersecta = pCurandeira->intersecta(static_cast<Ente*>(entidade));
 	if (timerCurandeira < timerMAX || intersecta == false)
 	{
