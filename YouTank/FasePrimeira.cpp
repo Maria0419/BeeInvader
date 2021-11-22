@@ -9,6 +9,7 @@ FasePrimeira::FasePrimeira() :
 	Ente::pLista = &listaEntidades;
 	initInimigo();
 	collisionManager.setGraphicManager(pGraphic);
+	obstaculosMAX = rand() % 3 + 3;
 	contaPoteMel = 0;
 }
 
@@ -20,12 +21,23 @@ FasePrimeira::~FasePrimeira()
 
 void FasePrimeira::spawnCurandeira()
 {
+	/*========================CURANDEIRA========================*/
+	/*															*/
+	/*	SPAWNA CURANDEIRA									    */
+	/*	Curandeira é o jogador dois, cura o jogador principal	*/
+	/*==========================================================*/
 	pCurandeira = new Curandeira();
 	collisionManager.setCurandeira(pCurandeira);
 }
 
 void FasePrimeira::spawnCogumelo()
 {
+	/*========================COGUMELOS=========================*/
+	/*															*/
+	/*	SPAWNA COGUMELOS									    */
+	/*	Cogumelos andam pra direita e pra esquerda				*/
+	/*==========================================================*/
+
 	cogumelosMAX = rand() % 5;
 
 	if (contaCogu < cogumelosMAX)
@@ -38,6 +50,12 @@ void FasePrimeira::spawnCogumelo()
 
 void FasePrimeira::spawnAbelhas()
 {
+	/*=========================ABELHAS==========================*/
+	/*															*/
+	/*	SPAWNA ABELHAS										    */
+	/*	Abelhas perseguem o jogador, dão dano ou pontos			*/
+	/*==========================================================*/
+
 	//timer
 	if (spawnTimer < spawnTimerMAX)
 		spawnTimer += 5;
@@ -53,6 +71,13 @@ void FasePrimeira::spawnAbelhas()
 
 void FasePrimeira::spawnPoteMel()
 {
+
+	/*=====================POTES DE MEL=========================*/
+	/*															*/
+	/*	SPAWNA POTES DE MEL RANDOMICAMENTE					    */
+	/*	Potes de mel dão ao player pontos para o ranking		*/
+	/*==========================================================*/
+
 	if (contaPoteMel < 1)
 	{
 		PoteMel* pote = new PoteMel();
@@ -64,81 +89,68 @@ void FasePrimeira::spawnPoteMel()
 
 void FasePrimeira::spawnPlataforma()
 {
-	//plataforma
+	/*=====================PLATAFORMAS==========================*/
+	/*															*/
+	/*    SPAWNA PLATAFORMAS OU FAVOS DE MEL RANDOMICAMENTE		*/
+	/*==========================================================*/
+
+
+	//chao principal
 	Plataforma* plat = new Plataforma();
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat));
 
-	FavoMel* favo1 = new FavoMel(100.f, 20.f, 60.f, 600.f);
-	favo1->setVelocidadeY(0.0f);
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(favo1));
-	//Plataforma* plat2 = new Plataforma(100.f, 20.f, 60.f, 600.f);
-	//plat2->setVelocidadeY(0.0f);
-	//listaEntidades.incluaEntidade(static_cast<Entidade*>(plat2));
+	//favo mel principal
+	FavoMel* favo = new FavoMel(100.f, 20.f, 60.f, 600.f);
+	favo->setVelocidadeY(0.0f);
+	listaEntidades.incluaEntidade(static_cast<Entidade*>(favo));
 
-	Plataforma* plat3 = new Plataforma(100.f, 20.f, 180.f, static_cast<float>(rand() % 400 + 100));
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat3));
-
-	Plataforma* plat4 = new Plataforma(100.f, 20.f, 300.f, static_cast<float>(rand() % 400 + 100));
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat4));
-
-	Plataforma* plat5 = new Plataforma(100.f, 20.f, 420.f, static_cast<float>(rand() % 400 + 100));
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat5));
-
-	Plataforma* plat6 = new Plataforma(100.f, 20.f, 540.f, static_cast<float>(rand() % 400 + 100));
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat6));
-
-	Plataforma* plat7 = new Plataforma(100.f, 20.f, 660.f, static_cast<float>(rand() % 400 + 100));
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat7));
-
-	Plataforma* plat8 = new Plataforma(100.f, 20.f, 780.f, static_cast<float>(rand() % 400 + 100));
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat8));
-
-	Plataforma* plat9 = new Plataforma(100.f, 20.f, 900.f, static_cast<float>(rand() % 400 + 100));
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat9));
-
-	Plataforma* plat10 = new Plataforma(100.f, 20.f, 1020.f, static_cast<float>(rand() % 400 + 100));
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat10));
-
-	Plataforma* plat11 = new Plataforma(100.f, 20.f, 1140.f, static_cast<float>(rand() % 400 + 100));
-	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat11));
+	//plataformas ou favos de mel ao longo do eixo x na fase
+	int random;
+	for (int i = 180; i <= 1140; i += 120)
+	{
+		random = rand() % 2;
+		if (random)
+		{
+			FavoMel* favo1 = new FavoMel(100.f, 20.f, i, static_cast<float>(rand() % 400 + 100));
+			listaEntidades.incluaEntidade(static_cast<Entidade*>(favo1));
+		}
+		else
+		{
+			Plataforma* plat1 = new Plataforma(100.f, 20.f, i, static_cast<float>(rand() % 400 + 100));
+			listaEntidades.incluaEntidade(static_cast<Entidade*>(plat1));
+		}
+			
+	}
 }
 
 void FasePrimeira::spawnObstaculos()
 {
-	
+	/*=====================OBSTACULOS===========================*/
+	/*															*/
+	/*    SPAWNA OBSTACULOS PELA FASE DE FORMA RANDOMICA 		*/
+	/*==========================================================*/
 	if (contaObstaculos < obstaculosMAX)
 	{
 		Espinhos* espinhos = new Espinhos((float)(rand() % 1180 + 100), 620.f);
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(espinhos));
-
-		/*
-		if (contaPedras < obstaculosMAX)
-		{
-			Pedra* pedra = new Pedra((float)(rand() % 170 + 180), 480.f);
-			listaEntidades.incluaEntidade(static_cast<Entidade*>(pedra));
-			contaPedras++;
-		}
-		if (contaPedras < obstaculosMAX)
-		{
-			Pedra* pedra2 = new Pedra((float)(rand() % 190 + 160), 160.f);
-			listaEntidades.incluaEntidade(static_cast<Entidade*>(pedra2));
-			contaPedras++;
-		}
-		*/
 		contaObstaculos++;
-
 	}
 
 }
 
 void FasePrimeira::updateMovimento()
 {
+	/*========================MOVIMENTACAO======================*/
+	/*															*/
+	/*	ADMINISTRA OS MOVIMENTOS DAS ENTIDADES				    */
+	/*==========================================================*/
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{
 		switch (listaEntidades.operator[](i)->getId())
 		{
 		case ID_PLATAFORMA:
 		{
+			//movimenta as plataformas para cima e para baixo
 			if (listaEntidades.operator[](i)->getPosition().y > 550)
 				listaEntidades.operator[](i)->setVelocidadeY(listaEntidades.operator[](i)->getVelocidadeY() * -1);
 			else if(listaEntidades.operator[](i)->getPosition().y < 100)
@@ -146,28 +158,44 @@ void FasePrimeira::updateMovimento()
 			listaEntidades.operator[](i)->movePlataforma();
 
 		}
-		case ID_ABELHA://move inimigos
+		break;
+		case ID_FAVOMEL:
 		{
+			//movimenta os favos de mel para cima e para baixo
+			if (listaEntidades.operator[](i)->getPosition().y > 550)
+				listaEntidades.operator[](i)->setVelocidadeY(listaEntidades.operator[](i)->getVelocidadeY() * -1);
+			else if (listaEntidades.operator[](i)->getPosition().y < 100)
+				listaEntidades.operator[](i)->setVelocidadeY(listaEntidades.operator[](i)->getVelocidadeY() * -1);
+			listaEntidades.operator[](i)->movePlataforma();
+		}
+		break;
+		case ID_ABELHA:
+		{
+			//move as abelhas na direcao do jogador atraves da funcao persegue
 			listaEntidades.operator[](i)->persegue(pFadaCaida->getPosition().x, pFadaCaida->getPosition().y);
 		}
 		break;
-		case ID_ORBE://move orbe de dano
+		case ID_ORBE:
 		{
+			//move orbe de dano
 			listaEntidades.operator[](i)->updateOrbe();
 		}
 		break;
-		case ID_ORBECURA: //move orbe de cura
+		case ID_ORBECURA: 
 		{
+			//move orbe de cura
 			listaEntidades.operator[](i)->updateOrbeCura();
 		}
 		break;
-		case ID_FERRAO://move ferrao
+		case ID_FERRAO:
 		{
+			//move ferrao
 			listaEntidades.operator[](i)->updateFerrao();
 		}
 		break;
 		case ID_COGUMELO:
 		{
+			//move cogumelos
 			listaEntidades.operator[](i)->move(listaEntidades.operator[](i)->getVelocidadeX(), listaEntidades.operator[](i)->getVelocidadeY());
 			listaEntidades.operator[](i)->setVelocidadeY(listaEntidades.operator[](i)->getVelocidadeY() + 1.f);
 			listaEntidades.operator[](i)->updateAnimacao();
@@ -179,24 +207,31 @@ void FasePrimeira::updateMovimento()
 
 void FasePrimeira::updateColisoes()
 {
-	collisionManager.updateColisoesJanela();
+	/*========================COLISOES==========================*/
+	/*															*/
+	/*	ADMINISTRA AS EVENTUAIS COLISOES					    */
+	/*==========================================================*/
+
+	collisionManager.updateColisoesJanela(); //colisoes da janela
 	int i;
 	for (i = 0; i < listaEntidades.getTamanho(); i++)
 	{
-
 		switch (listaEntidades.operator[](i)->getId())
 		{
-		case ID_PLATAFORMA://update colisoes com plataforma
+		case ID_PLATAFORMA:
 		{
+			//update colisoes com plataforma
 			collisionManager.updateColisoes(listaEntidades.operator[](i));
 		}
 		break;
 		case ID_FAVOMEL:
 		{
+			//update colisoes com favor de mel
 			collisionManager.updateColisoes(listaEntidades.operator[](i));
 		}
-		case ID_ABELHA://update colisoes do player com inimigos e janela
+		case ID_ABELHA:
 		{
+			//update colisoes das abelhas com jogador e janela
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
 				pFadaCaida->tomarDano(listaEntidades.operator[](i)->getDano());
@@ -213,7 +248,8 @@ void FasePrimeira::updateColisoes()
 		}
 		break;
 		case ID_ORBE:
-		{	//update colisoes do orbe de dano com janela
+		{	
+			//update colisoes da orbe de dano com janela
 			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
@@ -221,14 +257,24 @@ void FasePrimeira::updateColisoes()
 		}
 		break;
 		case ID_ORBECURA:
-		{   //update colisoes do orbe de cura com janela
-			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
+		{   
+			//update colisoes do orbe de cura com jogador e janela
+			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
+			{
+				if (pCurandeira)
+				{
+					pFadaCaida->receberCura(pCurandeira->getCura());
+					listaEntidades.operator[](i)->setShowing(false);
+				}
+			}
+			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
 			}
 		}
 		case ID_FERRAO:
 		{
+			//update colisoes do ferrao
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
 				
@@ -238,8 +284,10 @@ void FasePrimeira::updateColisoes()
 		break;
 		case ID_COGUMELO:
 		{
+			//update colisoes do cogumelo
 			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
 			{
+				//se o jogador pular na cabeca do cogumelo, nao toma dano
 				if (!pFadaCaida->getColisaoBot())
 					pFadaCaida->tomarDano(5);
 				listaEntidades.operator[](i)->setShowing(false);
@@ -249,6 +297,7 @@ void FasePrimeira::updateColisoes()
 		break;
 		case ID_ESPINHOS:
 		{
+			//update colisoes com espinho, se estiver em contato o jogador sofre dano
 			if (collisionManager.verificaContatoFadaCaida(listaEntidades.operator[](i)))
 			{
 				pFadaCaida->tomarDano(3);
@@ -257,12 +306,14 @@ void FasePrimeira::updateColisoes()
 		break;
 		case ID_PEDRA:
 		{
+			//update colisoes pedra, obstaculo que não causa dano
 			collisionManager.updateColisoes(listaEntidades.operator[](i));
 		}
 		break;
 		case ID_POTEMEL:
 		{
-			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
+			//update contato com o pote de mel, objetivo que dá pontos
+			if (collisionManager.verificaContatoFadaCaida(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
 				contaPoteMel--;
@@ -280,51 +331,58 @@ void FasePrimeira::updateColisoes()
 
 void FasePrimeira::updateCombate()
 {
+	/*==========================COMBATE=========================*/
+	/*															*/
+	/*	ADMINISTRA O COMBATE DO JOGADOR NA FASE				    */
+	/*  Mais precisamente as colisoes dos orbes da fada caida   */
+	/*==========================================================*/
 	int i, j;
 	bool colidiu = false;
-	unsigned counter = 0;
 	for (i = 0; !colidiu && i < listaEntidades.getTamanho(); i++)
 	{
 
-		if (listaEntidades.operator[](counter)->getId() == ID_ORBE)
+		if (listaEntidades.operator[](i)->getId() == ID_ORBE)
 		{
 			
-			unsigned counter_2 = 0;
 			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
 			{
-				if (listaEntidades.operator[](counter_2)->getId() == ID_ABELHA)
+				if (listaEntidades.operator[](j)->getId() == ID_ABELHA)
 				{
-					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
+					if (collisionManager.updateCombate(listaEntidades.operator[](i), listaEntidades.operator[](j)))
 					{
-						listaEntidades.operator[](counter_2)->setShowing(false);
-						listaEntidades.operator[](counter)->setShowing(false);
+						listaEntidades.operator[](j)->setShowing(false);
+						listaEntidades.operator[](i)->setShowing(false);
 						contaAbelhas--;
 						colidiu = true;
 					}
 				}
-				else if (listaEntidades.operator[](counter_2)->getId() == ID_COGUMELO)
+				else if (listaEntidades.operator[](j)->getId() == ID_COGUMELO)
 				{
-					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
+					if (collisionManager.updateCombate(listaEntidades.operator[](i), listaEntidades.operator[](j)))
 					{
-						listaEntidades.operator[](counter_2)->setShowing(false);
-						listaEntidades.operator[](counter)->setShowing(false);
+						listaEntidades.operator[](j)->setShowing(false);
+						listaEntidades.operator[](i)->setShowing(false);
 						contaCogu--;
 						colidiu = true;
 					}
 				}
-				counter_2++;
 			}
 
 		}
-		counter++;
 	}
 }
 
 void FasePrimeira::updateInimigoPlataforma()
 {
+	/*================GRAVIDADE NOS INIMIGOS====================*/
+	/*															*/
+	/*	ADMINISTRA A COLISAO ENTRE OS INIMIGOS E PLATAFORMA		*/
+	/*  Na pratica, serve para dar o efeito de gravidade.	    */
+	/*==========================================================*/
+
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{
-		if (listaEntidades.operator[](i)->getId() == ID_PLATAFORMA)
+		if (listaEntidades.operator[](i)->getId() == ID_PLATAFORMA || listaEntidades.operator[](i)->getId() == ID_FAVOMEL)
 		{
 			for (int j = 0; j < listaEntidades.getTamanho(); j++)
 				if (listaEntidades.operator[](j)->getId() == ID_COGUMELO)

@@ -12,7 +12,7 @@ Abelha::Abelha(int i):
 {
 	id = ID_ABELHA; 
 	initShape();
-	if (i = 1)
+	if (i == 1)
 	{
 		int x = rand() % 2;
 		if (x)
@@ -20,7 +20,7 @@ Abelha::Abelha(int i):
 		else
 			setPosition(1200.f, static_cast<float>(rand() % 500 + 25));
 	}
-	else if(i = 2)
+	else if(i == 2)
 		setPosition(static_cast<float> (rand() % 1100 + 25), static_cast<float>(rand() % 50 + 25));
 	
 		
