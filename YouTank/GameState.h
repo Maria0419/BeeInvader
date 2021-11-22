@@ -36,7 +36,6 @@ public:
     void setPause(bool p);
     const short getState();
     const bool getPause() const;
-    void endState();
 
     void verificarGameOver();
     void verificarGameWin();
@@ -46,8 +45,6 @@ public:
     void updateGameWin();
     void updateInput();
     void update();
-    void render();
-    
-    
+    void render();  
 };
 

@@ -188,6 +188,7 @@
     <ClCompile Include="AbelhaRainha.cpp" />
     <ClCompile Include="PoteMel.cpp" />
     <ClCompile Include="Projetil.cpp" />
+    <ClCompile Include="RankingState.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -238,6 +239,7 @@
     <ClInclude Include="AbelhaRainha.h" />
     <ClInclude Include="PoteMel.h" />
     <ClInclude Include="Projetil.h" />
+    <ClInclude Include="RankingState.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

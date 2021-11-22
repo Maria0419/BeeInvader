@@ -15,12 +15,8 @@ public:
 
 	//functions
 	void pollEvents();
-	
 
 	//modifiers
 	void setGraphicManager(GraphicManager *pGM);
-	//accessors
-	
-
 };
 

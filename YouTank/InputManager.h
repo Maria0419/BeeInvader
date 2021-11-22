@@ -13,8 +13,7 @@ private:
 	Curandeira* pCurandeira;
 	GraphicManager* pGraphic;
 	Fase* pFase;
-	
-	bool mouseHeld;
+
 	sf::Vector2i mousePosWindow;
 
 public:

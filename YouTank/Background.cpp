@@ -2,6 +2,10 @@
 #include "Background.h"
 #include "Global.h"
 
+Background::Background()
+{
+}
+
 Background::Background(const char* file, float escala) :
 	Ente()
 {

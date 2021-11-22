@@ -189,10 +189,13 @@
     <ClCompile Include="GameWinState.cpp">
       <Filter>Arquivos de Origem\States</Filter>
     </ClCompile>
-    <ClCompile Include="FavoMel.cpp">
+    <ClCompile Include="PoteMel.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="PoteMel.cpp">
+    <ClCompile Include="FavoMel.cpp">
+      <Filter>Arquivos de Origem\Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="RankingState.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
@@ -305,22 +308,25 @@
     <ClInclude Include="PauseState.h">
       <Filter>Arquivos de Cabeçalho\States</Filter>
     </ClInclude>
-    <ClInclude Include="GameOverState.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="FasePrimeira.h">
       <Filter>Arquivos de Cabeçalho\Fases</Filter>
     </ClInclude>
-    <ClInclude Include="GameWinState.h">
+    <ClInclude Include="PoteMel.h">
       <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWinState.h">
+      <Filter>Arquivos de Cabeçalho\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverState.h">
+      <Filter>Arquivos de Cabeçalho\States</Filter>
     </ClInclude>
     <ClInclude Include="FavoMel.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Entidades\Obstaculos</Filter>
     </ClInclude>
-    <ClInclude Include="PoteMel.h">
+    <ClInclude Include="RankingState.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>

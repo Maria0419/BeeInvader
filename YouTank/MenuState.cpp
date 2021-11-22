@@ -13,7 +13,7 @@ void MenuState::initButtons()
 
 MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
 	State(state, pIM),
-	Menu("Imagens/background_.jpg", 0.73f)
+	Menu("Imagens/menu.png", 1.65f)
 {
 	stateID = MENU_STATE;
 	initButtons();
@@ -21,23 +21,13 @@ MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
 
 MenuState::~MenuState()
 {
-	auto it = buttons.begin();
-	for (it = buttons.begin(); it != buttons.end(); ++it)
-	{
-		delete it->second;
-	}
+
 }
 
 const short MenuState::getState()
 {
 	return stateID;
 }
-
-void MenuState::endState()
-{
-	std::cout << "ending Menu state" << std::endl;
-}
-
 
 void MenuState::updateButtons()
 {
@@ -82,15 +72,6 @@ void MenuState::update()
 	updateInput();
 	updateButtons();
 	
-}
-
-void MenuState::renderButtons()
-{
-	for (auto& it : buttons)
-	{
-		it.second->render();
-		it.second->renderText();
-	}
 }
 
 void MenuState::render()

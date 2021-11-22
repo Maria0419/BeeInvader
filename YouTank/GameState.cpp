@@ -99,11 +99,6 @@ const bool GameState::getPause() const
 	return pause;
 }
 
-void GameState::endState()
-{
-	std::cout << "ending game state" << std::endl;
-}
-
 void GameState::verificarGameOver()
 {
 	if (jogador1->getExisteNaFase() == false)

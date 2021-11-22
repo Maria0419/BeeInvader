@@ -20,7 +20,6 @@ public:
     void updateInput();
     void update();
 
-    void renderButtons();
     void render();
 };
 
