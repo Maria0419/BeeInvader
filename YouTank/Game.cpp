@@ -29,7 +29,7 @@ void Game::initStates()
 
 void Game::setGraphicManager()
 {
-	Menu::setGraphicManager(pGraphic);
+	//Menu::setGraphicManager(pGraphic);
 	Ente::setGraphicManager(pGraphic);
 	inputManager.setGraphicManager(pGraphic);
 	eventManager.setGraphicManager(pGraphic);

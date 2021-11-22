@@ -19,7 +19,7 @@ private:
 	InputManager inputManager;
 	Menu menu;
 	//Fases
-	Fase fase;
+	//Fase fase;
 
 	std::stack<State*> states;
 

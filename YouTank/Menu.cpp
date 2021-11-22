@@ -6,12 +6,14 @@ GraphicManager* Menu::pGraphic = NULL;
 Menu::Menu():
 	background()
 {
+	pGraphic = GraphicManager::getInstance();
 	fonte = pGraphic->getFont();
 }
 
 Menu::Menu(const char* file, float escala):
 	background(file,escala)
 {
+	pGraphic = GraphicManager::getInstance();
 	fonte = pGraphic->getFont();
 }
 
