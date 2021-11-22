@@ -5,7 +5,6 @@ class FavoMel :
 {
 private:
 public:
-    FavoMel();
     FavoMel(float tam_x, float tam_y, float pos_x, float pos_y);
     ~FavoMel();
 

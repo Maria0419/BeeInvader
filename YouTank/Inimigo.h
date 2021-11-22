@@ -6,8 +6,7 @@ class Inimigo :
 private:
 
 public:
-    Inimigo();
-    Inimigo(int vida, int dano);
+    Inimigo(int vida, int dano, int i);
     ~Inimigo();
 };
 

@@ -7,7 +7,7 @@ protected:
 
 
 public:
-    Obstaculo();
+    Obstaculo(int i);
     ~Obstaculo();
 };
 

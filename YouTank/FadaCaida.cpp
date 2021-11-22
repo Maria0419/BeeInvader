@@ -7,15 +7,15 @@ void FadaCaida::initShape()
 	setSize(50.f, 50.f);
 	setTexture("Imagens/red_fairy.png");
 	setOriginCenter();
-	setPosition(200.f, 300.f);
+	setPosition(75.f, 300.f);
 }
 
 FadaCaida::FadaCaida():
-	pOrbe(NULL),
-	Personagem(100,100),
-	barraVida(static_cast<Personagem*>(this),25.f, 20.f, 210.f, 25.f)
+	Personagem(100,100, ID_JOGADOR),
+	barraVida(static_cast<Personagem*>(this), 25.f, 20.f, 210.f, 25.f),
+	pOrbe(NULL)
+	
 {
-	id = ID_JOGADOR; 
 	rapidez = 25.f;
 	alturaPulo = 100.f;
 	cooldownAtaqueMax = 30.f;

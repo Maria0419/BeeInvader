@@ -5,7 +5,6 @@ class Ferrao :
 {
 private:
 public:
-    Ferrao();
     Ferrao(float pos_x, float pos_y, float x_jogador, float y_jogador);
     ~Ferrao();
     void updateFerrao();

@@ -3,8 +3,7 @@
 #include "Global.h"
 
 FasePrimeira::FasePrimeira() :
-	Fase(),
-	background("Imagens/floresta.png", 2.f)
+	Fase()
 {
 	Ente::pLista = &listaEntidades;
 	initInimigo();
@@ -415,7 +414,7 @@ void FasePrimeira::update()
 
 void FasePrimeira::renderFasePrimeira()
 {
-	background.renderBackground();
+	background.render();
 
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{

@@ -4,14 +4,14 @@
 
 void PauseState::initButtons()
 {
-	buttons["CONTINUAR"] = new Button(550, 250, "Continuar");
-	buttons["VOLTAR_MENU"] = new Button(550, 325, "Voltar ao Menu");
-	buttons["SAIR"] = new Button(550, 400, "Sair");
+	buttons["CONTINUAR"] = new Button(250, "Continuar");
+	buttons["VOLTAR_MENU"] = new Button(325, "Voltar ao Menu");
+	buttons["SAIR"] = new Button(400, "Sair");
 }
 
 PauseState::PauseState(std::stack<State*>* state, InputManager* pIM):
 	State(state, pIM),
-	Menu("Imagens/floresta.png", 2.f)
+	Menu("Imagens/floresta.png")
 {
 	stateID = PAUSE_STATE;
 	pause = true;

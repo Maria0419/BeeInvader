@@ -7,17 +7,16 @@ class Ente
 {
 private:
 	sf::RectangleShape bodyBack;
-	sf::Texture texture;
+	
 
 protected:
 	int id;
 	bool aparece;
 	static GraphicManager* pGraphic;
-	sf::RenderWindow* pWindow;
 
 	//Shape
 	sf::RectangleShape body;
-	sf::Sprite sprite;
+	sf::Texture texture;
 
 	//Create shape
 	void setSize(float x, float y);
@@ -33,6 +32,7 @@ public:
 	static ListaEntidades* pLista;
 
 	Ente();
+	Ente(int i);
 	~Ente();
 
 	void setPosition(float x, float y);

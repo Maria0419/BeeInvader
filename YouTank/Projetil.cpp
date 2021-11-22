@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Projetil.h"
 
-Projetil::Projetil()
+Projetil::Projetil(int i):
+	Entidade(i)
 {
 }
 

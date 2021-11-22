@@ -6,9 +6,6 @@ class FaseSegunda :
     public Fase
 {
 private:
-    //Background
-    Background background;
-
     //Boss
     AbelhaRainha abelha_rainha;
 

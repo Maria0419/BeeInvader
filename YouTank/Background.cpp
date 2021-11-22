@@ -6,20 +6,17 @@ Background::Background()
 {
 }
 
-Background::Background(const char* file, float escala) :
+Background::Background(const char* file) :
 	Ente()
 {
 	id = ID_BACKGROUND; 
-	setTexture(file, escala);
+
+	setSize(1280.f, 720.f);
+	setTexture(file);
 }
 
 Background::~Background()
 {
-}
-
-void Background::renderBackground()
-{
-	pGraphic->getWindow()->draw(sprite);
 }
 
 

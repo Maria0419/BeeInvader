@@ -17,9 +17,6 @@ private:
 	GraphicManager *pGraphic;
 	EventManager eventManager;
 	InputManager inputManager;
-	Menu menu;
-	//Fases
-	//Fase fase;
 
 	std::stack<State*> states;
 

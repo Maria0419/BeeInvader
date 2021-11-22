@@ -27,7 +27,6 @@ public:
 	//clear & display
 	void clear();
 	void render(sf::RectangleShape body);
-	void render(sf::Sprite body);
 	void render(sf::Text text);
 	void display();
 

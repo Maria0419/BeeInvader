@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Entidade.h"
 
-Entidade::Entidade(int hp, int dmg) :
-	Ente(),
+Entidade::Entidade(int hp, int dmg, int i) :
+	Ente(i),
 	rapidez(1.f),
 	dano(dmg),
 	vida(hp),
@@ -16,8 +16,8 @@ Entidade::Entidade(int hp, int dmg) :
 	direcao.y = 0.f;
 }
 
-Entidade::Entidade():
-	Ente(),
+Entidade::Entidade(int i):
+	Ente(i),
 	rapidez(5.f),
 	dano(0),
 	vida(0),

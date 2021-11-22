@@ -20,7 +20,7 @@ private:
     void initShape(float x, float y);
 
 public:
-    Button(float x, float y, std::string text);
+    Button(float y, std::string text);
     ~Button();
 
     //Gets

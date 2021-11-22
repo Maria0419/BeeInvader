@@ -7,7 +7,7 @@ void Fase::initInimigo()
 	spawnTimer = SPAWN_TIMER_MAX;
 	spawnTimerMAX = SPAWN_TIMER_MAX;
 	contaAbelhas = 0;
-	abelhasMAX = ABELHAS_MAX;
+	abelhasMAX = rand() % 10 + 5;
 	contaCogu = 0;
 	obstaculosMAX = rand() % 3 + 3;
 	contaPedras = 0;
@@ -17,7 +17,8 @@ void Fase::initInimigo()
 Fase::Fase():
 	pFadaCaida(NULL),
 	pCurandeira(NULL),
-	listaEntidades()
+	listaEntidades(),
+	background("Imagens/floresta.png")
 {
 	initInimigo();
 }

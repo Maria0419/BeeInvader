@@ -48,8 +48,8 @@ void GameState::updateDeltaTime()
 {
 	
 	deltaTime = clock.restart().asSeconds();
-	if (deltaTime > 0.017)
-		deltaTime = 0.017;
+	if (deltaTime > 0.017f)
+		deltaTime = 0.017f;
 }
 
 //Construtora e Destrutora

@@ -10,11 +10,10 @@
 #define ID_BUTTON 302
 #define ID_FERRAO 3402 // f3rr40 
 #define ID_COGUMELO 302 // cogum3l0
-#define ID_BACKGROUND 403 // b4ckgr0und, 3 pois é sprite
+#define ID_BACKGROUND 4032 // b4ckgr0und, 3 pois é sprite
 #define ID_ESPINHOS 3102 //3sp1nh0s, 2 pois é um Rectangle shape
 #define ID_PEDRA 342 // p3dr4, 2 pois é um Rectangle shape
 #define ID_FAVOMEL 4032
 #define ID_POTEMEL 332
 
 #define SPAWN_TIMER_MAX 200
-#define ABELHAS_MAX 10

@@ -4,8 +4,6 @@ class FasePrimeira :
     public Fase
 {
 private:
-    //Background
-    Background background;
 
     unsigned int contaPoteMel;
 

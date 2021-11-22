@@ -3,11 +3,8 @@
 #include "Cogumelo.h"
 
 Cogumelo::Cogumelo():
-	Inimigo(100,10)
+	Inimigo(100,10, ID_COGUMELO)
 {
-	id = ID_COGUMELO;
-	aparece = true;
-	olhaEsquerda = false;
 	setTexture("Imagens/mushroom.png");
 	setSize(50.f, 55.f);
 	setOriginCenter();

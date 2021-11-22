@@ -8,7 +8,7 @@ private:
 protected:
 
 public:
-    Projetil();
+    Projetil(int i);
     ~Projetil();
 
     float getDirecao_x();

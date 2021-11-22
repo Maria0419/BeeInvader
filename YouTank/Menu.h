@@ -14,8 +14,7 @@ protected:
    // virtual void initButtons() = 0;
 
 public:
-    Menu();
-    Menu(const char* file, float escala = 1.0f);
+    Menu(const char* file);
     ~Menu();
     static void setGraphicManager(GraphicManager* pGM);
     void renderButtons();
