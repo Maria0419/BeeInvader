@@ -4,12 +4,13 @@
 class GraphicManager
 {
 private:
-	//window
-	sf::RenderWindow window;
-	sf::Font fonte;
 
 	//Singleton
 	static GraphicManager* instance;
+
+	//window
+	sf::RenderWindow window;
+	sf::Font fonte;
 
 	//private functions
 	void initFont();

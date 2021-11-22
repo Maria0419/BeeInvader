@@ -5,8 +5,7 @@ InputManager::InputManager() :
 	pCurandeira(NULL),
 	pFadaCaida1(NULL),
 	pGraphic(NULL), 
-	pFase(NULL),
-	mouseHeld(false)
+	pFase(NULL)
 {
 	
 }

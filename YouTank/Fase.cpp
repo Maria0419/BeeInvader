@@ -5,6 +5,7 @@
 void Fase::initInimigo()
 {
 	spawnTimer = SPAWN_TIMER_MAX;
+	spawnTimerMAX = SPAWN_TIMER_MAX;
 	contaAbelhas = 0;
 	abelhasMAX = ABELHAS_MAX;
 	contaCogu = 0;

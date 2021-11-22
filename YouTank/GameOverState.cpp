@@ -33,11 +33,7 @@ GameOverState::GameOverState(std::stack<State*>* state, InputManager* pIM):
 
 GameOverState::~GameOverState()
 {
-	auto it = buttons.begin();
-	for (it = buttons.begin(); it != buttons.end(); ++it)
-	{
-		delete it->second;
-	}
+	
 }
 
 const short GameOverState::getState()
@@ -71,20 +67,6 @@ void GameOverState::update()
 {
 	updateInput();
 	updateButtons();
-}
-
-void GameOverState::renderText()
-{
-	pGraphic->render(texto);
-}
-
-void GameOverState::renderButtons()
-{
-	for (auto& it : buttons)
-	{
-		it.second->render();
-		it.second->renderText();
-	}
 }
 
 void GameOverState::render()

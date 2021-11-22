@@ -25,7 +25,7 @@ void GameWinState::initButtons()
 
 GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM) :
 	State(state, pIM),
-	Menu("Imagens/gamewin.jpg", 1.f)
+	Menu("Imagens/gamewin.jpg")
 {
 	stateID = GWIN_STATE;
 	gameOver = true;
@@ -35,11 +35,7 @@ GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM) :
 
 GameWinState::~GameWinState()
 {
-	auto it = buttons.begin();
-	for (it = buttons.begin(); it != buttons.end(); ++it)
-	{
-		delete it->second;
-	}
+
 }
 
 const short GameWinState::getState()
@@ -80,20 +76,6 @@ void GameWinState::update()
 {
 	updateInput();
 	updateButtons();
-}
-
-void GameWinState::renderText()
-{
-	pGraphic->render(texto);
-}
-
-void GameWinState::renderButtons()
-{
-	for (auto& it : buttons)
-	{
-		it.second->render();
-		it.second->renderText();
-	}
 }
 
 void GameWinState::render()

@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "State.h"
 
-GraphicManager* State::pGraphic = NULL;
-
 State::State(std::stack<State*>* state, InputManager* pIM) :
 	sair(false),
 	pause(false),
@@ -17,16 +15,6 @@ State::State(std::stack<State*>* state, InputManager* pIM) :
 
 State::~State()
 {
-}
-
-void State::setGraphicManager(GraphicManager* pGM)
-{
-	if(pGM)
-		pGraphic = pGM;
-
-	else
-		std::cout << "ERROR::STATE::SETGRAPHICMANAGER::Ponteiro Nulo" << std::endl;
-	
 }
 
 void State::setPause(bool p)
@@ -68,8 +56,4 @@ void State::verificarPause()
 void State::verificarGoToMenu()
 {
 
-}
-
-void State::endState()
-{
 }

@@ -14,14 +14,11 @@ public:
     ~MenuState();
 
     const short getState();
-    
-    void endState();
 
     void updateButtons();
     void updateInput();
     void update();
 
-    void renderButtons();
     void render();
 };
 

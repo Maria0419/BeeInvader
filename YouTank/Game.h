@@ -14,12 +14,12 @@ class Game
 {
 private:
 	//Gerenciadores
-	GraphicManager *graphicManager;
+	GraphicManager *pGraphic;
 	EventManager eventManager;
 	InputManager inputManager;
-
+	Menu menu;
 	//Fases
-	Fase fase;
+	//Fase fase;
 
 	std::stack<State*> states;
 
@@ -38,7 +38,6 @@ public:
 	void render();
 	void update();
 	
-	void updateDeltaTime();
 	void updatePollEvents();
 
 };

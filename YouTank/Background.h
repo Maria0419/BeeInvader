@@ -7,7 +7,8 @@ class Background :
 private:
 
 public:
-    Background(const char* file, float escala);
+    Background();
+    Background(const char* file, float escala = 1.f);
     ~Background();
 
     void renderBackground();

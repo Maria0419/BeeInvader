@@ -20,11 +20,7 @@ PauseState::PauseState(std::stack<State*>* state, InputManager* pIM):
 
 PauseState::~PauseState()
 {
-	auto it = buttons.begin();
-	for (it = buttons.begin(); it != buttons.end(); ++it)
-	{
-		delete it->second;
-	}
+
 }
 
 const short PauseState::getState()
@@ -70,14 +66,6 @@ void PauseState::update()
 	updateInput();
 }
 
-void PauseState::renderButtons()
-{
-	for (auto& it : buttons)
-	{
-		it.second->render();
-		it.second->renderText();
-	}
-}
 
 void PauseState::render()
 {

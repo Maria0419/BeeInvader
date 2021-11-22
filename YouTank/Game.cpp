@@ -4,7 +4,7 @@
 Game::Game():
 	sair(false)
 {
-	graphicManager = GraphicManager::getInstance();
+	pGraphic = GraphicManager::getInstance();
 
 	setGraphicManager();
 
@@ -29,16 +29,16 @@ void Game::initStates()
 
 void Game::setGraphicManager()
 {
-	State::setGraphicManager(graphicManager);
-	Ente::setGraphicManager(graphicManager);
-	inputManager.setGraphicManager(graphicManager);
-	eventManager.setGraphicManager(graphicManager);
+	//Menu::setGraphicManager(pGraphic);
+	Ente::setGraphicManager(pGraphic);
+	inputManager.setGraphicManager(pGraphic);
+	eventManager.setGraphicManager(pGraphic);
 }
 
 void Game::run()
 {
 	
-	while (graphicManager->isRunning() && sair == false)
+	while (pGraphic->isRunning() && sair == false)
 	{
 		update();
 		render();
@@ -89,14 +89,14 @@ void Game::update()
 
 void Game::render()
 {
-	graphicManager->clear();
+	pGraphic->clear();
 
 	if (!states.empty())
 	{
 		states.top()->render();
 	}
 				
-	graphicManager->display();
+	pGraphic->display();
 }
 
 void Game::updatePollEvents()

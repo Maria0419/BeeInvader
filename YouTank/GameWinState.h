@@ -6,8 +6,6 @@ class GameWinState :
 {
 private:
 
-	sf::Font* fonte;
-
 	void initText();
 	void initButtons();
 public:
@@ -20,8 +18,6 @@ public:
 	void updateInput();
 	void update();
 
-	void renderText();
-	void renderButtons();
 	void render();
 };
 

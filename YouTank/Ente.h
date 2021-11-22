@@ -56,10 +56,6 @@ public:
 	sf::FloatRect getBounds() const;
 	sf::Vector2f getSize() const;
 	const int getId() const;
-
-	
-
-	
 };
 
 

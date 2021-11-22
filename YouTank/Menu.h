@@ -5,16 +5,20 @@
 class Menu
 {
 protected:
+    static GraphicManager* pGraphic;
     Background background;
     sf::Text texto;
+    sf::Font* fonte;
     std::map<std::string, Button*> buttons;
 
-    virtual void initButtons() = 0;
+   // virtual void initButtons() = 0;
 
 public:
-    Menu(const char* file, float escala);
+    Menu();
+    Menu(const char* file, float escala = 1.0f);
     ~Menu();
-
-
+    static void setGraphicManager(GraphicManager* pGM);
+    void renderButtons();
+    void renderText();
 };
 
