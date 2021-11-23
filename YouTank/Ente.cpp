@@ -24,15 +24,7 @@ void Ente::setOutline(float grossura)
 void Ente::setTexture(const char* file, float escala)
 {
 	texture.loadFromFile(file);
-	if (id % 2)
-	{
-		sprite.setTexture(texture);
-		sprite.setScale(escala, escala);
-	}
-	else
-	{
-		body.setTexture(&texture);
-	}
+	body.setTexture(&texture);
 }
 
 void Ente::setBodyBack(float x, float y, float largura, float altura)
@@ -46,15 +38,7 @@ void Ente::setBodyBack(float x, float y, float largura, float altura)
 
 void Ente::setOriginCenter()
 {
-	if (id % 2)
-	{
-		//sprite.setOrigin(sprite.getGlobalBounds() / 2.0f);;
-	}
-	else
-	{
-		body.setOrigin(body.getSize() / 2.0f);
-	}
-	
+	body.setOrigin(body.getSize() / 2.0f);
 }
 
 void Ente::rotate(float angulo)
@@ -71,10 +55,16 @@ void Ente::renderBodyBack()
 Ente::Ente():
 	aparece(true),
 	id(0),
-	pWindow(NULL),
 	texture()
 {
 	
+}
+
+Ente::Ente(int i):
+	aparece(true),
+	id(i),
+	texture()
+{
 }
 
 Ente::~Ente()
@@ -86,22 +76,13 @@ Ente::~Ente()
 //FUNCOES PARA INICIAR E POSICIONAR O SHAPE
 void Ente::setPosition(float x, float y)
 {
-	if (id % 2 ) // se é Sprite
-	{
-		sprite.setPosition(x, y);
-	}
-	else //se é rectangle Shape
-	{
-		body.setPosition(x, y);
-	}
+	body.setPosition(x, y);
+
 }
 
 void Ente::render()
 {
-	if (id % 2)
-		pGraphic->render(sprite);
-	else
-		pGraphic->render(body);
+	pGraphic->render(body);
 }
 
 void Ente::renderTexto(sf::Text texto)
@@ -111,20 +92,10 @@ void Ente::renderTexto(sf::Text texto)
 
 bool Ente::contem(float x, float y)
 {
-	if (id % 2) // se é Sprite
-	{
-		if (sprite.getGlobalBounds().contains(sf::Vector2f(x, y)))
-			return true;
-		else
-			return false;
-	}
-	else //se é rectangle Shape
-	{
-		if (body.getGlobalBounds().contains(sf::Vector2f(x, y)))
-			return true;
-		else
-			return false;
-	}
+	if (body.getGlobalBounds().contains(sf::Vector2f(x, y)))
+		return true;
+	else
+		return false;
 }
 
 bool Ente::intersecta(Ente* pE)
@@ -161,40 +132,17 @@ sf::RectangleShape* Ente::getBody()
 
 sf::Vector2f Ente::getPosition() const
 {
-	if (id % 2) // se é Sprite
-	{
-		return sprite.getPosition();
-	}
-	else //se é rectangle Shape
-	{
-		return body.getPosition();
-	}
-	
+	return body.getPosition();
 }
 
 sf::FloatRect Ente::getBounds() const
 {	
-	if (id % 2) // se é Sprite
-	{
-		return sprite.getGlobalBounds();
-	}
-	else //se é rectangle Shape
-	{
-		return body.getGlobalBounds();
-	}
+	return body.getGlobalBounds();
 }
 
 sf::Vector2f Ente::getSize() const
 {
-	if (id % 2) // se é Sprite
-	{
-		return static_cast<sf::Vector2f> (texture.getSize());
-	}
-	else //se é rectangle Shape
-	{
-		return body.getSize();
-	}
-	
+	return body.getSize();
 }
 
 const int Ente::getId() const

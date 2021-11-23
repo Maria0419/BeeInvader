@@ -11,19 +11,19 @@ void GameOverState::initText()
 	texto.setFillColor(sf::Color::Yellow);
 	texto.setOutlineColor(sf::Color::Black);
 	texto.setOutlineThickness(3.f);
-	texto.setCharacterSize(120);
-	texto.setPosition(390.f, 80.f);
+	texto.setCharacterSize(74);
+	texto.setPosition(295.f, 80.f);
 }
 
 void GameOverState::initButtons()
 {
-	buttons["VOLTAR_MENU"] = new Button(550, 300, "Voltar ao Menu");
-	buttons["SAIR"] = new Button(550, 375, "Sair");
+	buttons["VOLTAR_MENU"] = new Button(300, "Voltar ao Menu");
+	buttons["SAIR"] = new Button(375, "Sair");
 }
 
 GameOverState::GameOverState(std::stack<State*>* state, InputManager* pIM):
 	State(state,pIM),
-	Menu("Imagens/f.png", 1.9f)
+	Menu("Imagens/f.png")
 {
 	stateID = GOVER_STATE;
 	gameOver = true;

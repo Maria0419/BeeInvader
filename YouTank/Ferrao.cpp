@@ -2,15 +2,9 @@
 #include "Global.h"
 #include "Ferrao.h"
 
-Ferrao::Ferrao()
-{
-}
-
 Ferrao::Ferrao(float pos_x, float pos_y, float x_jogador, float y_jogador):
-	Projetil()
+	Projetil(ID_FERRAO)
 {
-	id = ID_FERRAO;
-	aparece = true;
 	setTexture("Imagens/ferrao.png");
 	setSize(30.f, 30.f);
 	setOriginCenter();

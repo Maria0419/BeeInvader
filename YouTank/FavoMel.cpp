@@ -2,15 +2,9 @@
 #include "FavoMel.h"
 #include "Global.h"
 
-FavoMel::FavoMel()
-{
-}
-
 FavoMel::FavoMel(float tam_x, float tam_y, float pos_x, float pos_y):
-	Obstaculo()
+	Obstaculo(ID_FAVOMEL)
 {
-	id = ID_FAVOMEL; 
-	aparece = true;
 	setSize(tam_x, tam_y);
 	setPosition(pos_x, pos_y);
 	setTexture("Imagens/favo.png");

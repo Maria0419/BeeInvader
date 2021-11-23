@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Personagem.h"
-
+/*
 Personagem::Personagem():
 	Entidade(),
 	pontos(0),
@@ -11,10 +11,10 @@ Personagem::Personagem():
 	podeAtacar(true)
 {
 	aparece = true;
-}
+}*/
 
-Personagem::Personagem(int hp, int dmg) :
-	Entidade(hp, dmg),
+Personagem::Personagem(int hp, int dmg, int i) :
+	Entidade(hp, dmg, i),
 	pontos(0),
 	alturaPulo(3.f),
 	podePular(false),

@@ -2,15 +2,9 @@
 #include "Orbe.h"
 #include "Global.h"
 
-Orbe::Orbe()
+Orbe::Orbe(float dir_x, float dir_y, float vel, float jog_x, float jog_y):
+	Projetil(ID_ORBE)
 {
-
-}
-
-Orbe::Orbe(float dir_x, float dir_y, float vel, float jog_x, float jog_y)
-{
-	id = ID_ORBE;
-	aparece = true;
 	podeMatar = true;
 	setTexture("Imagens/orb3.png");
 	setSize(20.f, 18.f);

@@ -2,15 +2,9 @@
 #include "Abelha.h"
 #include "Global.h"
 
-Abelha::Abelha()
-{
-
-}
-
 Abelha::Abelha(int i):
-	Inimigo(1, 1)
+	Inimigo(1, 1, ID_ABELHA)
 {
-	id = ID_ABELHA; 
 	initShape();
 	if (i == 1)
 	{
@@ -25,7 +19,6 @@ Abelha::Abelha(int i):
 	
 		
 	setRapidez(8.f);
-	aparece = true;
 	olhaEsquerda = true;
 }
 

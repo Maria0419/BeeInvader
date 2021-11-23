@@ -26,6 +26,8 @@ protected:
     FadaCaida* pFadaCaida;
     Curandeira* pCurandeira;
 
+    Background background;
+
     //Timer dos inimigos
     unsigned int spawnTimer;
     unsigned int spawnTimerMAX;

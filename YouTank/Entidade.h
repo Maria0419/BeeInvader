@@ -20,8 +20,8 @@ protected:
    
 
 public:
-    Entidade(int hp, int dmg);
-    Entidade();
+    Entidade(int hp, int dmg, int i);
+    Entidade(int i);
     ~Entidade();
 
     //vida e dano

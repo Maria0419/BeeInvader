@@ -2,17 +2,13 @@
 #include "Global.h"
 #include "OrbeCura.h"
 
-OrbeCura::OrbeCura()
-{
-}
-
-OrbeCura::OrbeCura(float x_dir, float y_dir, float x_pos, float y_pos)
+OrbeCura::OrbeCura(float x_dir, float y_dir, float x_pos, float y_pos):
+	Projetil(ID_ORBECURA)
 {
 	setTexture("Imagens/orb2.png");
 	setSize(20.f, 18.f);
 	setOriginCenter();
 	setPosition(x_pos, y_pos);
-	id = ID_ORBECURA;
 	rapidez = 2.f;
 	x_dir -= getPosition().x;
 	y_dir -= getPosition().y;

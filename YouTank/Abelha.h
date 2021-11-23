@@ -7,7 +7,6 @@ private:
     //private functions
     void initShape();
 public:
-    Abelha();
     Abelha(int i);
     ~Abelha();
 

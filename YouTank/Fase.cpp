@@ -17,7 +17,8 @@ void Fase::initInimigo()
 Fase::Fase():
 	pFadaCaida(NULL),
 	pCurandeira(NULL),
-	listaEntidades()
+	listaEntidades(),
+	background("Imagens/floresta.png")
 {
 	initInimigo();
 }

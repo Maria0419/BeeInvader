@@ -3,11 +3,10 @@
 #include "Global.h"
 
 Curandeira::Curandeira():
-	pOrbeCura(NULL),
-	Personagem(100,0)
+	Personagem(100, 0, ID_CURANDEIRA),
+	pOrbeCura(NULL)
 {
 	cura = 5;
-	id = ID_CURANDEIRA;
 	rapidez = 15.f;
 	olhaEsquerda = false;
 	cooldownAtaqueMax = 100.f;

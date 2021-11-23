@@ -5,12 +5,10 @@ class Background :
     public Ente
 {
 private:
-
+    
 public:
     Background();
-    Background(const char* file, float escala = 1.f);
+    Background(const char* file);
     ~Background();
-
-    void renderBackground();
 };
 

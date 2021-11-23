@@ -7,20 +7,20 @@ void GameWinState::initText()
 	fonte = pGraphic->getFont();
 
 	texto.setFont(*fonte);
-	texto.setString("VITÓRIA");
+	texto.setString("VITORIA");
 	texto.setFillColor(sf::Color::Yellow);
 	texto.setOutlineColor(sf::Color::Black);
 	texto.setOutlineThickness(3.f);
-	texto.setCharacterSize(120);
-	texto.setPosition(430.f, 80.f);
+	texto.setCharacterSize(74);
+	texto.setPosition(390.f, 80.f);
 }
 
 void GameWinState::initButtons()
 {
-	buttons["SALVAR"] = new Button(550, 300, "Salvar");
-	buttons["RANKING"] = new Button(550, 375, "Ranking");
-	buttons["VOLTAR_MENU"] = new Button(550, 450, "Voltar ao Menu");
-	buttons["SAIR"] = new Button(550, 525, "Sair");
+	buttons["SALVAR"] = new Button(300, "Salvar");
+	buttons["RANKING"] = new Button(375, "Ranking");
+	buttons["VOLTAR_MENU"] = new Button(450, "Voltar ao Menu");
+	buttons["SAIR"] = new Button(525, "Sair");
 }
 
 GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM) :

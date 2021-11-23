@@ -3,17 +3,17 @@
 
 void MenuState::initButtons()
 {
-	buttons["NOVO_JOGO"] = new Button(550, 100, "Novo Jogo");
-	buttons["FASE_1"] = new Button(550, 175, "Primeira Fase");
-	buttons["FASE_2"] = new Button(550, 250 , "Segunda Fase");
-	buttons["MULTIPLAYER"] = new Button(550, 325, "Multiplayer");
-	buttons["RANKING"] = new Button(550, 400, "Ranking");
-	buttons["SAIR"] = new Button(550, 475, "Sair");
+	buttons["NOVO_JOGO"] = new Button(100, "Novo Jogo");
+	buttons["FASE_1"] = new Button( 175, "Primeira Fase");
+	buttons["FASE_2"] = new Button(250 , "Segunda Fase");
+	buttons["MULTIPLAYER"] = new Button(325, "Multiplayer");
+	buttons["RANKING"] = new Button(400, "Ranking");
+	buttons["SAIR"] = new Button(475, "Sair");
 }
 
 MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
 	State(state, pIM),
-	Menu("Imagens/menu.png", 1.65f)
+	Menu("Imagens/menu.png")
 {
 	stateID = MENU_STATE;
 	initButtons();

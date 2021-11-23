@@ -5,12 +5,12 @@ GraphicManager* GraphicManager::instance = NULL;
 
 void GraphicManager::initFont()
 {
-	if (!fonte.loadFromFile("Fonts/Beezybee.ttf"))
+	if (!fonte.loadFromFile("Fonts/Daydream.ttf"))
 		std::cout << "ERROR::GRAPHICMANAGER::INITFONT::Erro ao carregar a fonte" << std::endl;
 }
 
 GraphicManager::GraphicManager():
-	window(sf::VideoMode(1280, 720), "CubeTank", sf::Style::Close | sf::Style::Titlebar)
+	window(sf::VideoMode(1280, 720), "BeeInvader", sf::Style::Close | sf::Style::Titlebar)
 {
 	window.setFramerateLimit(60);
 	initFont();
@@ -36,11 +36,6 @@ void GraphicManager::clear()
 void GraphicManager::render(sf::RectangleShape body)
 {
 	window.draw(body); 
-}
-
-void GraphicManager::render(sf::Sprite body)
-{
-	window.draw(body);
 }
 
 void GraphicManager::render(sf::Text text)

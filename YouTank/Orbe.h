@@ -5,7 +5,6 @@ class Orbe :
 {
 private:
 public:
-    Orbe();
     Orbe(float dir_x, float dir_y, float vel, float jog_x, float jog_y);
     ~Orbe();
 

@@ -14,7 +14,7 @@ void Button::initText(std::string text)
 	texto.setFillColor(sf::Color::White);
 	texto.setOutlineColor(sf::Color::Black);
 	texto.setOutlineThickness(1.f);
-	texto.setCharacterSize(36);
+	texto.setCharacterSize(18);
 	texto.setPosition(
 		getPosition().x + getBounds().width / 2.f - texto.getGlobalBounds().width / 2.f,
 		getPosition().y + getBounds().height / 3.f - texto.getGlobalBounds().height / 2.f);
@@ -23,7 +23,7 @@ void Button::initText(std::string text)
 void Button::initShape(float x, float y)
 {
 	//Inicializa a forma e cor do botão
-	setSize(200, 50);
+	setSize(260, 50);
 	setPosition(x, y);
 	setOutline(2.f);
 	red = 100;
@@ -33,13 +33,13 @@ void Button::initShape(float x, float y)
 	setCor(red, green, blue, 255);
 }
 
-Button::Button(float x, float y, std::string text):
+Button::Button(float y, std::string text):
 	Ente()
 {
 	id = ID_BUTTON;
 	estadoBotao = BT_IDLE;
 
-	initShape(x,y);
+	initShape(510,y);
 	initText(text);
 }
 

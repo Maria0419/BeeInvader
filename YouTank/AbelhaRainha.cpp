@@ -19,13 +19,12 @@ void AbelhaRainha::initShape()
 }
 
 AbelhaRainha::AbelhaRainha():
-	Inimigo(1000, 7),
+	Inimigo(1000, 7, ID_RAINHA),
 	pFerrao(NULL),
 	pFadaCaida(NULL),
 	pAbelha(NULL),
 	barraVida(static_cast<Personagem*>(this), 1000.f, 20.f, 250.f, 25.f)
 {
-	id = ID_RAINHA; //j0g4d0r, 2 pois é rectangle shape
 	initShape();
 	initTimers();
 	anguloMAX =(float) (2*3.1415);
