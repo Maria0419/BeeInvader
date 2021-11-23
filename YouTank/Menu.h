@@ -2,10 +2,9 @@
 #include "Background.h"
 #include "Button.h"
 
-class Menu
+class Menu:public Ente
 {
 protected:
-    static GraphicManager* pGraphic;
     Background background;
     sf::Text texto;
     sf::Font* fonte;
@@ -16,7 +15,6 @@ protected:
 public:
     Menu(const char* file);
     ~Menu();
-    static void setGraphicManager(GraphicManager* pGM);
     void renderButtons();
     void renderText();
 };

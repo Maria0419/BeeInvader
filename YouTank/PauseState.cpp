@@ -5,8 +5,9 @@
 void PauseState::initButtons()
 {
 	buttons["CONTINUAR"] = new Button(250, "Continuar");
-	buttons["VOLTAR_MENU"] = new Button(325, "Voltar ao Menu");
-	buttons["SAIR"] = new Button(400, "Sair");
+	buttons["SALVAR"] = new Button(325, "Salvar");
+	buttons["VOLTAR_MENU"] = new Button(400, "Voltar ao Menu");
+	buttons["SAIR"] = new Button(475, "Sair");
 }
 
 PauseState::PauseState(std::stack<State*>* state, InputManager* pIM):
@@ -40,13 +41,17 @@ void PauseState::updateButtons()
 		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
 	}
 
-	if (buttons["VOLTAR_MENU"]->estaPressionado())
-	{
-		goToMenu = true;
-	}
 	if (buttons["CONTINUAR"]->estaPressionado())
 	{
 		pause = false;
+	}
+	if (buttons["SALVAR"]->estaPressionado())
+	{
+		pause = false;
+	}
+	if (buttons["VOLTAR_MENU"]->estaPressionado())
+	{
+		goToMenu = true;
 	}
 	else if (buttons["SAIR"]->estaPressionado())
 	{

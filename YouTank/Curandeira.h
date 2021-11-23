@@ -21,15 +21,17 @@ public:
     void setOlhaEsquerda(bool x);
     const bool olhandoEsquerda() const;
 
-    void update();
-    void updateAnimacao();
-
     void naColisao();
     void curar(float dir_x, float dir_y, float pos_x, float pos_y);
 
     const int getCura() const;
     const bool getColisaoBot() const;
+    const bool getExisteNaFase() const;
 
     void renderBarraVida();
+
+    void update();
+    void updateAnimacao();
+    void updateTaVivo();
 };
 

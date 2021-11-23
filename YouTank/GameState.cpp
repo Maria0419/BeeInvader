@@ -106,7 +106,11 @@ void GameState::verificarGameOver()
 {
 	if (jogador1->getExisteNaFase() == false)
 		gameOver = true;
-	
+
+	if (multiplayer == true)
+	{
+		
+	}
 }
 
 void GameState::verificarGameWin()

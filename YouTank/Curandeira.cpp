@@ -46,13 +46,12 @@ const bool Curandeira::olhandoEsquerda() const
 {
 	return olhaEsquerda;
 }
-
-void Curandeira::update()
+
+const bool Curandeira::getExisteNaFase() const
 {
-	updateAnimacao();
-	barraVida.update();
-	
+	return aparece;
 }
+
 
 void Curandeira::naColisao()
 {
@@ -105,6 +104,13 @@ void Curandeira::renderBarraVida()
 	barraVida.render();
 }
 
+void Curandeira::update()
+{
+	updateTaVivo();
+	updateAnimacao();
+	barraVida.update();
+}
+
 void Curandeira::updateAnimacao()
 {
 	if (olhaEsquerda == false)
@@ -116,4 +122,10 @@ void Curandeira::updateAnimacao()
 	{
 		body.setScale(1.f, 1.f);
 	}
+}
+
+void Curandeira::updateTaVivo()
+{
+	if (vida <= 0)
+		aparece = false;
 }
