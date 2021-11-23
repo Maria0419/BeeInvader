@@ -1,11 +1,12 @@
 #pragma once
 #include "Personagem.h"
 #include "OrbeCura.h"
+#include "BarraVida.h"
 class Curandeira :
     public Personagem
 {
 private:
-
+    BarraVida barraVida;
     OrbeCura* pOrbeCura;
     bool colisaoBot;
     int cura;
@@ -28,5 +29,7 @@ public:
 
     const int getCura() const;
     const bool getColisaoBot() const;
+
+    void renderBarraVida();
 };
 

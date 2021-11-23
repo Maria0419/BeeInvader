@@ -12,7 +12,7 @@ void FadaCaida::initShape()
 
 FadaCaida::FadaCaida():
 	Personagem(100,100, ID_JOGADOR),
-	barraVida(static_cast<Personagem*>(this), 25.f, 20.f, 210.f, 25.f),
+	barraVida(static_cast<Personagem*>(this), 25.f, 20.f, 210.f, 25.f, 1),
 	pOrbe(NULL)
 	
 {

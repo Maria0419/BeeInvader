@@ -217,9 +217,14 @@ void FasePrimeira::renderFasePrimeira()
 	}
 	pFadaCaida->renderBarraVida();
 	pFadaCaida->render();
+	
 
 	if (pCurandeira != NULL)
+	{
+		pCurandeira->renderBarraVida();
 		pCurandeira->render();
+	}
+		
 }
 
 void FasePrimeira::setFadaCaida(FadaCaida* pJ)

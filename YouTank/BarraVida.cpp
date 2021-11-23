@@ -1,13 +1,16 @@
 #include "stdafx.h"
 #include "BarraVida.h"
 
-BarraVida::BarraVida(Personagem* pP, float x, float y, float largura, float altura)
+BarraVida::BarraVida(Personagem* pP, float x, float y, float largura, float altura, int i)
 {
 	pPersonagem = pP;
 	tamanho = largura;
 	setPosition(x, y);
 	setSize(largura, altura);
-	setCor(200, 10, 10, 255);
+	if (i == 1)
+		setCor(255, 60, 60, 255);
+	else if (i == 2)
+		setCor(60, 200, 200, 255);
 	setBodyBack(x, y, largura, altura);
 }
 

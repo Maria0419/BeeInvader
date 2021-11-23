@@ -4,6 +4,7 @@
 
 Curandeira::Curandeira():
 	Personagem(100, 0, ID_CURANDEIRA),
+	barraVida(static_cast<Personagem*>(this), 25.f, 65.f, 210.f, 25.f, 2),
 	pOrbeCura(NULL)
 {
 	cura = 5;
@@ -49,6 +50,8 @@ const bool Curandeira::olhandoEsquerda() const
 void Curandeira::update()
 {
 	updateAnimacao();
+	barraVida.update();
+	
 }
 
 void Curandeira::naColisao()
@@ -94,6 +97,12 @@ const int Curandeira::getCura() const
 const bool Curandeira::getColisaoBot() const
 {
 	return colisaoBot;
+}
+
+void Curandeira::renderBarraVida()
+{
+	barraVida.renderBodyBack();
+	barraVida.render();
 }
 
 void Curandeira::updateAnimacao()
