@@ -27,8 +27,6 @@ Orbe::Orbe(float dir_x, float dir_y, float vel, float jog_x, float jog_y)
 	velocidade.x = rapidez * (destino.x - jog_x)/distanciaFadaCaidaDestino;
 	velocidade.y = rapidez * (jog_y - destino.y)/distanciaFadaCaidaDestino;
 
-	//if(velocidade.y < 0)
-	//	velocidade.y *= -1;
 }
 
 Orbe::~Orbe()

@@ -56,6 +56,7 @@ void Lista<TIPO>::limpaLista()
 	while (pPrimeiro != NULL)
 	{
 		pPrimeiro = pPrimeiro->getProximo();
+		delete pAux->getInfo();
 		delete (pAux);
 		pAux = pPrimeiro;
 	}

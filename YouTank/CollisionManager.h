@@ -27,7 +27,8 @@ public:
 	void updateColisoesJanela();
 	void updateColisoesJanelaJ1();
 	void updateColisoesJanelaJ2();
-	bool updateColisoes(Entidade* pEn);
+	bool updateColisoesFadaCaida(Entidade* pEn);
+	
 	bool updateCombate(Entidade* pOrbe, Entidade* pInimigo);
 	void updateInimigoPlataforma(Entidade& inimigo, Entidade* plataforma);
 	bool entidadeSaiuDaTela(Entidade* entidade);

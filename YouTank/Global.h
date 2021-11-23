@@ -17,4 +17,3 @@
 #define ID_POTEMEL 332
 
 #define SPAWN_TIMER_MAX 200
-#define ABELHAS_MAX 10
