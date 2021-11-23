@@ -18,14 +18,12 @@ public:
     void spawnAbelhas();
     void spawnPlataforma();
     void spawnObstaculos();
-    void spawnCurandeira();
     void updateBoss();
     void update();
 
     void renderFaseSegunda();
 
-    void setFadaCaida(FadaCaida* pFadaCaida);
-    Curandeira* getCurandeira() const;
+    void setFadaCaida(FadaCaida* pJ);
     const bool getTerminou() const;
 };
 

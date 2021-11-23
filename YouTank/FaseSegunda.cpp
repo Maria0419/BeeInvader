@@ -14,14 +14,6 @@ FaseSegunda::FaseSegunda():
 
 FaseSegunda::~FaseSegunda()
 {
-	if(pCurandeira != NULL)
-		delete pCurandeira;
-}
-
-void FaseSegunda::spawnCurandeira()
-{
-	pCurandeira = new Curandeira();
-	collisionManager.setCurandeira(pCurandeira);
 }
 
 void FaseSegunda::spawnCogumelo()
@@ -190,11 +182,6 @@ void FaseSegunda::setFadaCaida(FadaCaida* pJ)
 	}
 	else
 		std::cout << "ERRO::FASESEGUNDA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
-}
-
-Curandeira* FaseSegunda::getCurandeira() const
-{
-	return pCurandeira;
 }
 
 const bool FaseSegunda::getTerminou() const

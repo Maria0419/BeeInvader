@@ -14,19 +14,7 @@ FasePrimeira::FasePrimeira() :
 
 FasePrimeira::~FasePrimeira()
 {
-	if (pCurandeira != NULL)
-		delete pCurandeira;
-}
 
-void FasePrimeira::spawnCurandeira()
-{
-	/*========================CURANDEIRA========================*/
-	/*															*/
-	/*	CRIA CURANDEIRA										    */
-	/*	Curandeira é o jogador dois, cura o jogador principal	*/
-	/*==========================================================*/
-	pCurandeira = new Curandeira();
-	collisionManager.setCurandeira(pCurandeira);
 }
 
 void FasePrimeira::spawnCogumelo()
@@ -196,12 +184,12 @@ void FasePrimeira::update()
 	updateInimigoPlataforma();
 	updateFasePrimeira();
 	pFadaCaida->update();
+
 	if (pCurandeira != NULL)
 		pCurandeira->update();
 
 
 }
-
 
 void FasePrimeira::renderFasePrimeira()
 {
@@ -225,21 +213,4 @@ void FasePrimeira::renderFasePrimeira()
 		pCurandeira->render();
 	}
 		
-}
-
-void FasePrimeira::setFadaCaida(FadaCaida* pJ)
-{
-	if (pJ)
-	{
-		pFadaCaida = pJ;
-		collisionManager.setFadaCaida(pFadaCaida);
-		
-	}
-	else
-		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
-}
-
-Curandeira* FasePrimeira::getCurandeira() const
-{
-	return pCurandeira;
 }

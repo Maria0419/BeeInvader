@@ -53,5 +53,7 @@ public:
     void updateColisoes();
     void updateCombate();
     void updateInimigoPlataforma();
+    virtual void setFadaCaida(FadaCaida* pJ);
+    void setCurandeira(Curandeira* pC);
 };
 

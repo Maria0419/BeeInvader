@@ -11,6 +11,7 @@ class GameState: public State
 {
 private:
     FadaCaida* jogador1;
+    Curandeira* jogador2;
 
     FasePrimeira* fasePrimeira;
     FaseSegunda* faseSegunda;
@@ -36,6 +37,8 @@ public:
     void setPause(bool p);
     const short getState();
     const bool getPause() const;
+
+    void criarCurandeira();
 
     void verificarGameOver();
     void verificarGameWin();

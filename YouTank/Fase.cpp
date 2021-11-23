@@ -265,3 +265,25 @@ void Fase::updateInimigoPlataforma()
 		}
 	}
 }
+void Fase::setFadaCaida(FadaCaida* pJ)
+{
+	if (pJ)
+	{
+		pFadaCaida = pJ;
+		collisionManager.setFadaCaida(pFadaCaida);
+
+	}
+	else
+		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
+}
+void Fase::setCurandeira(Curandeira* pC)
+{
+	if (pC)
+	{
+		pCurandeira = pC;
+		collisionManager.setCurandeira(pCurandeira);
+	}
+	else
+		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
+	
+}
