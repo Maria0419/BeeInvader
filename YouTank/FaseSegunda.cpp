@@ -16,34 +16,7 @@ FaseSegunda::~FaseSegunda()
 {
 }
 
-void FaseSegunda::spawnCogumelo()
-{
-	cogumelosMAX = rand() % 5;
-
-	if (contaCogu < cogumelosMAX)
-	{
-		Cogumelo* cogu = new Cogumelo();
-		listaEntidades.incluaEntidade(static_cast<Entidade*>(cogu));
-		contaCogu++;
-	}
-}
-
-void FaseSegunda::spawnAbelhas()
-{
-	//timer
-	if (spawnTimer < spawnTimerMAX)
-		spawnTimer += 5;
-
-	else if (contaAbelhas < abelhasMAX)
-	{
-		Abelha* inim = new Abelha(2);
-		listaEntidades.incluaEntidade(static_cast<Entidade*>(inim));
-		contaAbelhas++;
-		spawnTimer = 0;
-	}
-}
-
-void FaseSegunda::spawnPlataforma()
+void FaseSegunda::criarPlataforma()
 {
 	//plataforma
 	Plataforma* plat = new Plataforma();
@@ -70,7 +43,7 @@ void FaseSegunda::spawnPlataforma()
 
 }
 
-void FaseSegunda::spawnObstaculos()
+void FaseSegunda::criarObstaculos()
 {
 	if (contaObstaculos < obstaculosMAX)
 	{
@@ -107,7 +80,7 @@ void FaseSegunda::updateBoss()
 	if(abelha_rainha.getShowing())
 		abelha_rainha.update();
 	if (abelha_rainha.emFuria())
-		spawnAbelhas();
+		criarAbelhas(2);
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{
 		switch (listaEntidades.operator[](i)->getId())
@@ -139,12 +112,12 @@ void FaseSegunda::update()
 	updateInimigoPlataforma();
 	updateColisoes();
 	limpeza();
-	spawnCogumelo();
-	spawnObstaculos();
+	criarCogumelos();
+	criarObstaculos();
 	updateMovimento();
 	updateCombate();
-	
 	updateBoss();
+
 	pFadaCaida->update();
 
 	if(pCurandeira!=NULL)

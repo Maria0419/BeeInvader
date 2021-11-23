@@ -29,8 +29,8 @@ protected:
     Background background;
 
     //Timer dos inimigos
-    unsigned int spawnTimer;
-    unsigned int spawnTimerMAX;
+    unsigned int criarTimer;
+    unsigned int criarTimerMAX;
     unsigned int abelhasMAX;
     unsigned int contaAbelhas;
     unsigned int cogumelosMAX;
@@ -47,6 +47,9 @@ public:
     Fase();
     ~Fase();
     void limpeza();
+
+    void criarCogumelos();
+    void criarAbelhas(int i);
 
     virtual void update();
     void updateMovimento();

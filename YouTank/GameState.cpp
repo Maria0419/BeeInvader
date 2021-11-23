@@ -11,7 +11,7 @@ void GameState::runFase()
 	case 1:
 		fasePrimeira = new FasePrimeira();
 		fasePrimeira->setFadaCaida(jogador1);
-		fasePrimeira->spawnPlataforma();
+		fasePrimeira->criarPlataforma();
 
 		if (multiplayer == true)
 		{
@@ -26,7 +26,7 @@ void GameState::runFase()
 	case 2:
 		faseSegunda = new FaseSegunda();
 		faseSegunda->setFadaCaida(jogador1);
-		faseSegunda->spawnPlataforma();
+		faseSegunda->criarPlataforma();
 
 		if (multiplayer == true)
 		{

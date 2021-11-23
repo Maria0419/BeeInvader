@@ -14,10 +14,8 @@ public:
     ~FaseSegunda();
 
     //Funçoes
-    void spawnCogumelo();
-    void spawnAbelhas();
-    void spawnPlataforma();
-    void spawnObstaculos();
+    void criarPlataforma();
+    void criarObstaculos();
     void updateBoss();
     void update();
 

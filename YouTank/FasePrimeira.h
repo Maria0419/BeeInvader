@@ -12,11 +12,9 @@ public:
     ~FasePrimeira();
 
     //Funçoes
-    void spawnCogumelo();
-    void spawnPlataforma();
-    void spawnObstaculos();
-    void spawnAbelhas();
-    void spawnPoteMel();
+    void criarPlataforma();
+    void criarObstaculos();
+    void criarPoteMel();
     void updateFasePrimeira();
     void update();
 
