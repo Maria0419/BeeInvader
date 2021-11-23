@@ -2,7 +2,7 @@
 #include "Curandeira.h"
 #include "Global.h"
 
-Curandeira::Curandeira():
+	Curandeira::Curandeira() :
 	Personagem(100, 0, ID_CURANDEIRA),
 	barraVida(static_cast<Personagem*>(this), 25.f, 65.f, 210.f, 25.f, 2),
 	pOrbeCura(NULL)
