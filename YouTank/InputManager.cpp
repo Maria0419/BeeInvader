@@ -3,7 +3,7 @@
 
 InputManager::InputManager() :
 	pCurandeira(NULL),
-	pFadaCaida1(NULL),
+	pFadaCaida(NULL),
 	pGraphic(NULL), 
 	pFase(NULL)
 {
@@ -23,13 +23,13 @@ void InputManager::update(float deltaTime)
 
 void InputManager::updateAtaqueFadaCaida()
 {
-	pFadaCaida1->updateAtaqueCooldown();
+	pFadaCaida->updateAtaqueCooldown();
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && pFadaCaida1->getPodeAtacar())
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && pFadaCaida->getPodeAtacar())
 	{
 		float dir_x = static_cast<float> (sf::Mouse::getPosition(*pGraphic->getWindow()).x);
 		float dir_y = static_cast<float> (sf::Mouse::getPosition(*pGraphic->getWindow()).y);
-		pFadaCaida1->ataca(dir_x, dir_y);
+		pFadaCaida->ataca(dir_x, dir_y);
 	}
 	
 }
@@ -40,7 +40,7 @@ void InputManager::updateAtaqueCurandeira()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && pCurandeira->getPodeAtacar())
 	{
-		pCurandeira->curar(pFadaCaida1->getPosition().x , pFadaCaida1->getPosition().y, pCurandeira->getPosition().x, pCurandeira->getPosition().y);
+		pCurandeira->curar(pFadaCaida->getPosition().x , pFadaCaida->getPosition().y, pCurandeira->getPosition().x, pCurandeira->getPosition().y);
 	}
 }
 
@@ -52,26 +52,26 @@ void InputManager::updateMousePos()
 void InputManager::updateFadaCaida(float deltaTime)
 {
 	
-	pFadaCaida1->setVelocidadeX(pFadaCaida1->getVelocidadeX() * 0.94f);
+	pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() * 0.94f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		pFadaCaida1->setVelocidadeX(pFadaCaida1->getVelocidadeX() - pFadaCaida1->getRapidez());
+		pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() - pFadaCaida->getRapidez());
 
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		pFadaCaida1->setVelocidadeX(pFadaCaida1->getVelocidadeX() + pFadaCaida1->getRapidez());
+		pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() + pFadaCaida->getRapidez());
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && pFadaCaida1->getPodePular())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && pFadaCaida->getPodePular())
 	{
-		pFadaCaida1->setPodePular(false);
-		pFadaCaida1->setVelocidadeY(-sqrtf(2.0f * 981.f * pFadaCaida1->getAlturaPulo()));
+		pFadaCaida->setPodePular(false);
+		pFadaCaida->setVelocidadeY(-sqrtf(2.0f * 981.f * pFadaCaida->getAlturaPulo()));
 	}
-	pFadaCaida1->setVelocidadeY(pFadaCaida1->getVelocidadeY() + 981.f * deltaTime);
+	pFadaCaida->setVelocidadeY(pFadaCaida->getVelocidadeY() + 981.f * deltaTime);
 
-	if (pFadaCaida1->getVelocidadeX() < 0)
-		pFadaCaida1->setOlhaEsquerda(true);
+	if (pFadaCaida->getVelocidadeX() < 0)
+		pFadaCaida->setOlhaEsquerda(true);
 	else
-		pFadaCaida1->setOlhaEsquerda(false);
+		pFadaCaida->setOlhaEsquerda(false);
 
-	pFadaCaida1->move(pFadaCaida1->getVelocidadeX() * deltaTime, pFadaCaida1->getVelocidadeY() * deltaTime);
+	pFadaCaida->move(pFadaCaida->getVelocidadeX() * deltaTime, pFadaCaida->getVelocidadeY() * deltaTime);
 
 	updateAtaqueFadaCaida();
 }
@@ -82,12 +82,17 @@ void InputManager::updateCurandeira(float deltaTime)
 	pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() * 0.98f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() - pCurandeira->getRapidez());
+
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() + pCurandeira->getRapidez());
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() - pCurandeira->getRapidez());
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() + pCurandeira->getRapidez());
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && pCurandeira->getPodePular())
+	{
+		pCurandeira->setPodePular(false);
+		pCurandeira->setVelocidadeY(-sqrtf(2.0f * 981.f * pCurandeira->getAlturaPulo()));
+	}
+	pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() + 981.f * deltaTime);
+
 	if (pCurandeira->getVelocidadeX() < 0)
 		pCurandeira->setOlhaEsquerda(true);
 	else
@@ -97,9 +102,9 @@ void InputManager::updateCurandeira(float deltaTime)
 }
 
 
-void InputManager::setFadaCaida(FadaCaida* pFadaCaida)
+void InputManager::setFadaCaida(FadaCaida* pFada)
 {
-	pFadaCaida1 = pFadaCaida;
+	pFadaCaida = pFada;
 }
 
 void InputManager::setGraphicManager(GraphicManager* pGM)

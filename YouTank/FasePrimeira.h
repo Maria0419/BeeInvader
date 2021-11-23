@@ -18,11 +18,7 @@ public:
     void spawnCurandeira();
     void spawnAbelhas();
     void spawnPoteMel();
-
-    void updateMovimento();
-    void updateColisoes();
-    void updateCombate();
-    void updateInimigoPlataforma();
+    void updateFasePrimeira();
     void update();
 
     void renderFasePrimeira();

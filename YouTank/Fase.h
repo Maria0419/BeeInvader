@@ -49,5 +49,9 @@ public:
     void limpeza();
 
     virtual void update();
+    void updateMovimento();
+    void updateColisoes();
+    void updateCombate();
+    void updateInimigoPlataforma();
 };
 

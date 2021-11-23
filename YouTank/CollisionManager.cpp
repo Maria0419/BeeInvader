@@ -9,9 +9,7 @@ CollisionManager::CollisionManager():
 	pWindow(NULL),
 	pGraphic(NULL)
 {
-	timerMAX = 300.f;
-	timer = timerMAX;
-	timerCurandeira = timerMAX;
+
 }
 
 CollisionManager::~CollisionManager()
@@ -90,6 +88,78 @@ bool CollisionManager::verificaColisaoFadaCaida(Entidade& entidade)
 	return false;
 }
 
+bool CollisionManager::verificaColisaoCurandeira(Entidade& entidade)
+{
+	/*==================COLISOES CURANDEIRA=====================*/
+	/*															*/
+	/*	ADMINISTRA AS COLISOES DO JOGADOR 1					    */
+	/*  Utiliza-se de conceitos de geometria analitica para		*/
+	/*  calcular se dois corpos se intersectam ou não,			*/
+	/*  verificando a distancia entre seus centros de massa.	*/
+	/*==========================================================*/
+
+	sf::Vector2f outraPosicao = entidade.getPosition();
+	sf::Vector2f outraMetadeTam = (entidade.getSize() / 2.f);
+	sf::Vector2f jogadorPosicao = pCurandeira->getPosition();
+	sf::Vector2f jogadorMetadeTam = (pCurandeira->getSize() / 2.f);
+
+	//calcula as distancias entre seus centros de massa
+	float deltaX = outraPosicao.x - jogadorPosicao.x;
+	float deltaY = outraPosicao.y - jogadorPosicao.y;
+
+	//analisa a diferenca entre o delta e a menor distancia possivel antes de colidirem
+	float intersectX = abs(deltaX) - (outraMetadeTam.x + jogadorMetadeTam.x);
+	float intersectY = abs(deltaY) - (outraMetadeTam.y + jogadorMetadeTam.y);
+
+	//verifica se houve interseccao
+	if (intersectX < 0.f && intersectY < 0.f && entidade.getId() != ID_ORBE)
+	{
+		//verifica em qual direcao ocorreu a colisao
+		if (intersectX > intersectY)
+		{
+			if (deltaX > 0.0f)
+			{
+				pCurandeira->move(intersectX, 0.0f);
+
+				pCurandeira->setDirecao_x(1.0f);
+				pCurandeira->setDirecao_y(0.0f);
+			}
+			else
+			{
+				pCurandeira->move(-intersectX * 1.0f, 0.0f);
+
+				pCurandeira->setDirecao_x(-1.0f);
+				pCurandeira->setDirecao_y(0.0f);
+			}
+		}
+		else
+		{
+			if (deltaY > 0.0f)
+			{
+				pCurandeira->move(0.0f, intersectY * 1.0f);
+
+				pCurandeira->setDirecao_x(0.0f);
+				pCurandeira->setDirecao_y(1.0f);
+			}
+			else
+			{
+				pCurandeira->move(0.0f, -intersectY * 1.0f);
+
+				pCurandeira->setDirecao_x(0.0f);
+				pCurandeira->setDirecao_y(-1.0f);
+			}
+		}
+		pCurandeira->naColisao();
+
+		//colisao com o favo de mel, diminui a velocidade do jogador
+		if (entidade.getId() == ID_FAVOMEL)
+			pCurandeira->setVelocidadeX(pFadaCaida->getVelocidadeX() * 0.5f);
+		return true;
+	}
+
+	return false;
+}
+
 void CollisionManager::updateColisoesJanela()
 {
 	updateColisoesJanelaJ1();
@@ -138,21 +208,29 @@ void CollisionManager::updateColisoesJanelaJ2()
 	}
 
 	//Colisão com a borda inferior da janela
-	if (pCurandeira->getBounds().top + pCurandeira->getBounds().height + 100.f> pWindow->getSize().y)
+	if (pCurandeira->getBounds().top + pCurandeira->getBounds().height > pWindow->getSize().y)
 	{
-		pCurandeira->setPosition(pCurandeira->getPosition().x, pWindow->getSize().y - pCurandeira->getBounds().height / 2 - 100.f);
+		pCurandeira->setPosition(pCurandeira->getPosition().x, pWindow->getSize().y - pCurandeira->getBounds().height / 2);
 	}
 
 	//Colisão com a borda superior da janela
 	else if (pCurandeira->getBounds().top < 0.f)
 	{
 		pCurandeira->setPosition(pCurandeira->getPosition().x, pCurandeira->getBounds().height / 2.f);
+		pCurandeira->setDirecao_x(0.0f);
+		pCurandeira->setDirecao_y(-1.0f);
+		pCurandeira->naColisao();
 	}
 }
 
 bool CollisionManager::updateColisoesFadaCaida(Entidade* pEn)
 {
 	return verificaColisaoFadaCaida(*pEn);
+}
+
+bool CollisionManager::updateColisoesCurandeira(Entidade* pEn)
+{
+	return verificaColisaoCurandeira(*pEn);
 }
 
 bool CollisionManager::updateCombate(Entidade* pOrbe, Entidade* pInimigo)
@@ -244,17 +322,7 @@ bool CollisionManager::verificaContatoFadaCaida(Entidade* entidade)
 	/*															*/
 	/*	VERIFICA O CONTATO DA FADA COM A ENTIDADE			    */
 	/*==========================================================*/
-	bool intersecta = pFadaCaida->intersecta(static_cast<Ente*>(entidade));
-	if (timer < timerMAX || intersecta == false )
-	{
-		timer += 1.f;
-		return false;
-	}
-	else
-	{
-		timer = 0.f;
-		return intersecta;
-	}
+	return pFadaCaida->intersecta(static_cast<Ente*>(entidade));
 }
 
 bool CollisionManager::verificaContatoCurandeira(Entidade* entidade)
@@ -263,17 +331,7 @@ bool CollisionManager::verificaContatoCurandeira(Entidade* entidade)
 	/*															*/
 	/*	VERIFICA O CONTATO DA CURANDEIRA COM A ENTIDADE		    */
 	/*==========================================================*/
-	bool intersecta = pCurandeira->intersecta(static_cast<Ente*>(entidade));
-	if (timerCurandeira < timerMAX || intersecta == false)
-	{
-		timerCurandeira += 1.f;
-		return false;
-	}
-	else
-	{
-		timerCurandeira = 0.f;
-		return intersecta;
-	}
+	return pCurandeira->intersecta(static_cast<Ente*>(entidade));
 }
 
 void CollisionManager::setFadaCaida(FadaCaida* pJ1)

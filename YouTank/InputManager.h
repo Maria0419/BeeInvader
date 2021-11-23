@@ -9,7 +9,7 @@
 class InputManager
 {
 private:
-	FadaCaida* pFadaCaida1;
+	FadaCaida* pFadaCaida;
 	Curandeira* pCurandeira;
 	GraphicManager* pGraphic;
 	Fase* pFase;
@@ -26,7 +26,7 @@ public:
 	void updateMousePos();
 	void updateFadaCaida(float deltaTime);
 	void updateCurandeira(float deltaTime);
-	void setFadaCaida(FadaCaida* pFadaCaida);
+	void setFadaCaida(FadaCaida* pFada);
 	void setCurandeira(Curandeira* pC);
 	void setGraphicManager(GraphicManager* pGM);
 	void setFase(Fase* pFase);

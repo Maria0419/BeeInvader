@@ -19,11 +19,6 @@ public:
     void spawnPlataforma();
     void spawnObstaculos();
     void spawnCurandeira();
-    
-    void updateMovimento();
-    void updateColisoes();
-    void updateCombate();
-    void updateInimigoPlataforma();
     void updateBoss();
     void update();
 

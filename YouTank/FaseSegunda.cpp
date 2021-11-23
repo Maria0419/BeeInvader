@@ -103,225 +103,60 @@ void FaseSegunda::spawnObstaculos()
 
 }
 
-void FaseSegunda::updateMovimento()
+void FaseSegunda::updateBoss()
 {
+	if (collisionManager.verificaContatoFadaCaida(static_cast<Entidade*>(&abelha_rainha)))
+		pFadaCaida->tomarDano(4);
+	if (pCurandeira != NULL)
+	{
+		if (collisionManager.verificaContatoCurandeira(static_cast<Entidade*>(&abelha_rainha)))
+			pFadaCaida->tomarDano(4);
+	}
+	if(abelha_rainha.getShowing())
+		abelha_rainha.update();
+	if (abelha_rainha.emFuria())
+		spawnAbelhas();
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{
 		switch (listaEntidades.operator[](i)->getId())
 		{
-		case ID_ABELHA://move inimigos
-		{
-			listaEntidades.operator[](i)->persegue(pFadaCaida->getPosition().x, pFadaCaida->getPosition().y);
-		}
-		break;
-		case ID_ORBE://move orbe de dano
-		{
-			listaEntidades.operator[](i)->updateOrbe();
-		}
-		break;
-		case ID_ORBECURA: //move orbe de cura
-		{
-			listaEntidades.operator[](i)->updateOrbeCura();
-		}
-		break;
-		case ID_FERRAO://move ferrao
-		{
-			listaEntidades.operator[](i)->updateFerrao();
-		}
-		break;
-		case ID_COGUMELO:
-		{
-			listaEntidades.operator[](i)->move(listaEntidades.operator[](i)->getVelocidadeX(), listaEntidades.operator[](i)->getVelocidadeY());
-			listaEntidades.operator[](i)->setVelocidadeY(listaEntidades.operator[](i)->getVelocidadeY() + 1.f);
-			listaEntidades.operator[](i)->updateAnimacao();
-		}
-		break;
-		}
-	}
-}
-
-void FaseSegunda::updateColisoes()
-{
-	int i;
-	collisionManager.updateColisoesJanela();
-	for (i = 0; i < listaEntidades.getTamanho(); i++) 
-	{
-		
-		switch (listaEntidades.operator[](i)->getId())
-		{
-		case ID_PLATAFORMA://update colisoes com plataforma
-		{
-			collisionManager.updateColisoes(listaEntidades.operator[](i));
-		}
-		break;
-		case ID_ABELHA://update colisoes do player com inimigos e janela
-		{
-			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
-			{
-				pFadaCaida->tomarDano(listaEntidades.operator[](i)->getDano());
-				listaEntidades.operator[](i)->setShowing(false);
-				contaAbelhas--;
-			}
-			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
-			{
-				listaEntidades.operator[](i)->setShowing(false);
-				contaAbelhas--;
-			}
-			
-		}
-		break;
-		case ID_ORBE:
-		{	//update colisoes do orbe de dano com janela
-			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
-			{
-				listaEntidades.operator[](i)->setShowing(false);
-			}
-		}
-		break;
-		case ID_ORBECURA:
-		{   //update colisoes do orbe de cura com janela
-			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
-			{
-				if (pCurandeira)
-				{
-					pFadaCaida->receberCura(pCurandeira->getCura());
-					listaEntidades.operator[](i)->setShowing(false);
-				}
-			}
-			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
-			{
-				listaEntidades.operator[](i)->setShowing(false);
-			}
-		}
 		case ID_FERRAO:
 		{
-			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
+			if (collisionManager.updateColisoesFadaCaida(listaEntidades.operator[](i)))
 			{
 				pFadaCaida->tomarDano(abelha_rainha.getDano());
 				listaEntidades.operator[](i)->setShowing(false);
 			}
 		}
 		break;
-		case ID_COGUMELO:
+		case ID_ORBE:
 		{
-			if (collisionManager.updateColisoes(listaEntidades.operator[](i)))
+			if (collisionManager.updateCombate(listaEntidades.operator[](i), static_cast<Entidade*>(&abelha_rainha)))
 			{
-				if(!pFadaCaida->getColisaoBot())
-					pFadaCaida->tomarDano(5);
 				listaEntidades.operator[](i)->setShowing(false);
-				contaCogu--;
-			}
-		}
-		break;
-		case ID_ESPINHOS:
-		{
-			if (collisionManager.verificaContatoFadaCaida(listaEntidades.operator[](i)))
-			{
-				pFadaCaida->tomarDano(1);
-			}
-		}
-		break;
-		case ID_PEDRA:
-		{
-			collisionManager.updateColisoes(listaEntidades.operator[](i));
-		}
-		break;
-		
-		}
-		if(collisionManager.verificaContatoFadaCaida(static_cast<Entidade*>(&abelha_rainha)))
-			pFadaCaida->tomarDano(4);
-		if (pCurandeira != NULL)
-		{
-			if (collisionManager.verificaContatoCurandeira(static_cast<Entidade*>(&abelha_rainha)))
-				pFadaCaida->tomarDano(4);
-		}
-	}
-}
-
-void FaseSegunda::updateCombate()
-{
-	int i, j;
-	bool colidiu = false;
-	unsigned counter = 0;
-	for (i = 0; !colidiu && i < listaEntidades.getTamanho(); i++)
-	{
-
-		if (listaEntidades.operator[](counter)->getId() == ID_ORBE)
-		{
-			if (collisionManager.updateCombate(listaEntidades.operator[](counter), static_cast<Entidade*>(&abelha_rainha)))
-			{
-				listaEntidades.operator[](counter)->setShowing(false);
 				abelha_rainha.tomarDano(pFadaCaida->getDano());
 			}
-			unsigned counter_2 = 0;
-			for (j = 0; !colidiu && j < listaEntidades.getTamanho(); j++)
-			{
-				if (listaEntidades.operator[](counter_2)->getId() == ID_ABELHA)
-				{
-					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
-					{
-						listaEntidades.operator[](counter_2)->setShowing(false);
-						listaEntidades.operator[](counter)->setShowing(false);
-						contaAbelhas--;
-						colidiu = true;
-					}
-				}
-				else if (listaEntidades.operator[](counter_2)->getId() == ID_COGUMELO)
-				{
-					if (collisionManager.updateCombate(listaEntidades.operator[](counter), listaEntidades.operator[](counter_2)))
-					{
-						listaEntidades.operator[](counter_2)->setShowing(false);
-						listaEntidades.operator[](counter)->setShowing(false);
-						contaCogu--;
-						colidiu = true;
-					}
-				}
-				counter_2++;
-			}
-			
 		}
-		counter++;
-	}
-	if (abelha_rainha.emFuria())
-		spawnAbelhas();
-}
-
-void FaseSegunda::updateInimigoPlataforma()
-{
-	for (int i = 0; i < listaEntidades.getTamanho(); i++)
-	{
-		if (listaEntidades.operator[](i)->getId() == ID_PLATAFORMA)
-		{
-			for (int j = 0; j < listaEntidades.getTamanho(); j++)
-				if (listaEntidades.operator[](j)->getId() == ID_COGUMELO)
-					collisionManager.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
+		break;
 		}
 	}
-}
-
-void FaseSegunda::updateBoss()
-{
-	if(abelha_rainha.getShowing())
-		abelha_rainha.update();
 }
 
 void FaseSegunda::update()
 {
-	
+	updateInimigoPlataforma();
 	updateColisoes();
 	limpeza();
 	spawnCogumelo();
 	spawnObstaculos();
 	updateMovimento();
 	updateCombate();
-	updateInimigoPlataforma();
+	
 	updateBoss();
 	pFadaCaida->update();
 
 	if(pCurandeira!=NULL)
 		pCurandeira->update();
-	
-	
 }
 
 
@@ -354,7 +189,7 @@ void FaseSegunda::setFadaCaida(FadaCaida* pJ)
 		abelha_rainha.setFadaCaidaAlvo(pFadaCaida);
 	}
 	else
-		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
+		std::cout << "ERRO::FASESEGUNDA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
 }
 
 Curandeira* FaseSegunda::getCurandeira() const

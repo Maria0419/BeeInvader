@@ -10,8 +10,6 @@ private:
 
     BarraVida barraVida;
     Orbe* pOrbe;
-
-    bool olhaEsquerda;
     bool colisaoBot;
 
     //private functions
