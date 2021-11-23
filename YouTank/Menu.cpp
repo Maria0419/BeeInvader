@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Menu.h"
 
-GraphicManager* Menu::pGraphic = NULL;
-
 Menu::Menu(const char* file):
 	background(file)
 {
@@ -19,15 +17,6 @@ Menu::~Menu()
 	}
 }
 
-void Menu::setGraphicManager(GraphicManager* pGM)
-{
-	if (pGM)
-		pGraphic = pGM;
-
-	else
-		std::cout << "ERROR::STATE::SETGRAPHICMANAGER::Ponteiro Nulo" << std::endl;
-}
-
 void Menu::renderButtons()
 {
 	for (auto& it : buttons)
@@ -39,5 +28,5 @@ void Menu::renderButtons()
 
 void Menu::renderText()
 {
-	pGraphic->render(texto);
+	renderTexto(texto);
 }

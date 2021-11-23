@@ -116,7 +116,6 @@ void FadaCaida::updateTaVivo()
 {
 	if (vida <= 0)
 		aparece = false;
-	
 }
 
 void FadaCaida::ataca(float dir_x, float dir_y)

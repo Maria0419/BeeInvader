@@ -17,10 +17,9 @@ void GameWinState::initText()
 
 void GameWinState::initButtons()
 {
-	buttons["SALVAR"] = new Button(300, "Salvar");
-	buttons["RANKING"] = new Button(375, "Ranking");
-	buttons["VOLTAR_MENU"] = new Button(450, "Voltar ao Menu");
-	buttons["SAIR"] = new Button(525, "Sair");
+	buttons["RANKING"] = new Button(300, "Ranking");
+	buttons["VOLTAR_MENU"] = new Button(375, "Voltar ao Menu");
+	buttons["SAIR"] = new Button(450, "Sair");
 }
 
 GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM) :
@@ -48,10 +47,6 @@ void GameWinState::updateButtons()
 	for (auto& it : buttons)
 	{
 		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
-	}
-	if (buttons["SALVAR"]->estaPressionado())
-	{
-		//goToMenu = true;
 	}
 	if (buttons["RANKING"]->estaPressionado())
 	{
