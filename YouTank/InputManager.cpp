@@ -38,7 +38,7 @@ void InputManager::updateAtaqueCurandeira()
 {
 	pCurandeira->updateAtaqueCooldown();
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && pCurandeira->getPodeAtacar())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && pCurandeira->getPodeAtacar())
 	{
 		pCurandeira->curar(pFadaCaida->getPosition().x , pFadaCaida->getPosition().y, pCurandeira->getPosition().x, pCurandeira->getPosition().y);
 	}
@@ -53,13 +53,13 @@ void InputManager::updateFadaCaida(float deltaTime)
 {
 	
 	pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() * 0.94f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() - pFadaCaida->getRapidez());
 
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() + pFadaCaida->getRapidez());
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && pFadaCaida->getPodePular())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && pFadaCaida->getPodePular())
 	{
 		pFadaCaida->setPodePular(false);
 		pFadaCaida->setVelocidadeY(-sqrtf(2.0f * 981.f * pFadaCaida->getAlturaPulo()));
@@ -80,13 +80,13 @@ void InputManager::updateCurandeira(float deltaTime)
 {
 	pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() * 0.98f);
 	pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() * 0.98f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() - pCurandeira->getRapidez());
 
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() + pCurandeira->getRapidez());
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && pCurandeira->getPodePular())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && pCurandeira->getPodePular())
 	{
 		pCurandeira->setPodePular(false);
 		pCurandeira->setVelocidadeY(-sqrtf(2.0f * 981.f * pCurandeira->getAlturaPulo()));

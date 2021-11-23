@@ -7,7 +7,7 @@ void FadaCaida::initShape()
 	setSize(50.f, 50.f);
 	setTexture("Imagens/red_fairy.png");
 	setOriginCenter();
-	setPosition(75.f, 300.f);
+	setPosition(80.f, 500.f);
 }
 
 FadaCaida::FadaCaida():

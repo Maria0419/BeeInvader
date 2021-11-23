@@ -169,7 +169,8 @@ void Fase::updateColisoes()
 			{
 				if (collisionManager.updateColisoesCurandeira(listaEntidades.operator[](i)))
 				{
-					//TODO COLISAO NA CABEÇA DO COGU
+					if (!pCurandeira->getColisaoBot())
+						pCurandeira->tomarDano(5);
 					listaEntidades.operator[](i)->setShowing(false);
 					contaCogu--;
 				}
@@ -250,7 +251,7 @@ void Fase::updateInimigoPlataforma()
 {
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{
-		if (listaEntidades.operator[](i)->getId() == ID_PLATAFORMA)
+		if (listaEntidades.operator[](i)->getId() == ID_PLATAFORMA || listaEntidades.operator[](i)->getId() == ID_FAVOMEL)
 		{
 			for (int j = 0; j < listaEntidades.getTamanho(); j++)
 			{
@@ -261,7 +262,6 @@ void Fase::updateInimigoPlataforma()
 				if (listaEntidades.operator[](j)->getId() == ID_ESPINHOS)
 					collisionManager.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
 			}
-				
 		}
 	}
 }

@@ -271,12 +271,12 @@ void CollisionManager::updateInimigoPlataforma(Entidade& inimigo, Entidade* plat
 			if (deltaX > 0.0f)
 			{
 				inimigo.move(intersectX, 0.0f);
-				inimigo.setVelocidadeX(-2.f);
+				inimigo.setVelocidadeX(inimigo.getVelocidadeX()*-1);
 			}
 			else
 			{
 				inimigo.move(-intersectX, 0.0f);
-				inimigo.setVelocidadeX(2.f);
+				inimigo.setVelocidadeX(inimigo.getVelocidadeX() * -1);
 			}
 		}
 		else

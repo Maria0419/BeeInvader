@@ -27,6 +27,7 @@ AbelhaRainha::AbelhaRainha():
 {
 	initShape();
 	initTimers();
+	pontos = 200;
 	anguloMAX =(float) (2*3.1415);
 	angulo = anguloMAX;
 	x = getPosition().x - 50.f;

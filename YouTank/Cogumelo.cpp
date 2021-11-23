@@ -5,12 +5,13 @@
 Cogumelo::Cogumelo():
 	Inimigo(100,10, ID_COGUMELO)
 {
+	pontos = 5;
 	setTexture("Imagens/mushroom.png");
 	setSize(50.f, 55.f);
 	setOriginCenter();
 	setPosition(static_cast<float>(rand()%1200), static_cast<float>(rand()%100));
 	setVelocidadeY(1.f);
-	setVelocidadeX(2.f);
+	setVelocidadeX(static_cast<float>(rand()%3+1));
 }
 
 Cogumelo::~Cogumelo()

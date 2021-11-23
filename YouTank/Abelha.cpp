@@ -6,6 +6,7 @@ Abelha::Abelha(int i):
 	Inimigo(1, 1, ID_ABELHA)
 {
 	initShape();
+	pontos = 5;
 	if (i == 1)
 	{
 		int x = rand() % 2;

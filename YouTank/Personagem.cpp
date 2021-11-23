@@ -1,17 +1,5 @@
 #include "stdafx.h"
 #include "Personagem.h"
-/*
-Personagem::Personagem():
-	Entidade(),
-	pontos(0),
-	alturaPulo(3.f),
-	podePular(false),
-	cooldownAtaque(0.f),
-	cooldownAtaqueMax(0.f),
-	podeAtacar(true)
-{
-	aparece = true;
-}*/
 
 Personagem::Personagem(int hp, int dmg, int i) :
 	Entidade(hp, dmg, i),

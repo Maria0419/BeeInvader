@@ -11,6 +11,7 @@ Curandeira::Curandeira():
 	rapidez = 15.f;
 	alturaPulo = 200.f;
 	olhaEsquerda = false;
+	colisaoBot = false;
 	direcao.x = 0.0f;
 	direcao.y = 0.0f;
 	colisaoBot = false;
@@ -19,7 +20,7 @@ Curandeira::Curandeira():
 	setSize(50.f, 50.f);
 	setTexture("Imagens/fada_blue.png", 1.f);
 	setOriginCenter();
-	setPosition(500.f, 500.f);
+	setPosition(60.f, 500.f);
 }
 
 Curandeira::~Curandeira()
