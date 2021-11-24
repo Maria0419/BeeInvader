@@ -12,6 +12,7 @@ InputManager::InputManager() :
 
 InputManager::~InputManager()
 {
+	pCurandeira = NULL;
 }
 
 void InputManager::update(float deltaTime)

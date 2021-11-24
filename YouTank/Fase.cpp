@@ -25,6 +25,8 @@ Fase::Fase():
 
 Fase::~Fase()
 {
+	pCurandeira = NULL;
+
 	listaEntidades.limpaLista();
 }
 
@@ -35,9 +37,7 @@ void Fase::limpeza()
 	{
 		if (listaEntidades.operator[](counter)->getShowing() == false)
 		{
-			Entidade* pAux = listaEntidades.operator[](counter);
-			listaEntidades.destruaEntidade(pAux);
-			delete pAux;
+			listaEntidades.destruaEntidade(listaEntidades.operator[](counter));
 			counter--;
 		}
 		counter++;

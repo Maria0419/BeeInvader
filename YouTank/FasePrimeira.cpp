@@ -179,7 +179,7 @@ void FasePrimeira::renderFasePrimeira()
 
 const bool FasePrimeira::getTerminou() const
 {
-	if (timer.getElapsedTime().asSeconds() > 120)
+	if (timer.getElapsedTime().asSeconds() > 12)
 		return true;
 	else
 		return false;

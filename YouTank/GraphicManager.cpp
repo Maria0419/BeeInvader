@@ -5,7 +5,7 @@ GraphicManager* GraphicManager::instance = NULL;
 
 void GraphicManager::initFont()
 {
-	if (!fonte.loadFromFile("Fonts/Daydream.ttf"))
+	if (!fonte.loadFromFile("Fonts/TfFancy.otf"))
 		std::cout << "ERROR::GRAPHICMANAGER::INITFONT::Erro ao carregar a fonte" << std::endl;
 }
 

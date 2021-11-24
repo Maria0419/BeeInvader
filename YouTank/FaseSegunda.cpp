@@ -149,8 +149,12 @@ void FaseSegunda::renderFaseSegunda()
 	pFadaCaida->renderBarraVida();
 	pFadaCaida->render();
 
-	if(pCurandeira!=NULL)
+	if (pCurandeira != NULL)
+	{
+		pCurandeira->renderBarraVida();
 		pCurandeira->render();
+	}
+		
 }
 
 void FaseSegunda::setFadaCaida(FadaCaida* pJ)

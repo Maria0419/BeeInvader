@@ -1,14 +1,30 @@
 #include "stdafx.h"
 #include "MenuState.h"
 
+void MenuState::initText()
+{
+
+	//Inicializa o texto do botão
+	fonte = pGraphic->getFont();
+
+	texto.setFont(*fonte);
+	texto.setString("BEEINVADER");
+	texto.setFillColor(sf::Color::Yellow);
+	texto.setOutlineColor(sf::Color::Black);
+	texto.setOutlineThickness(3.f);
+	texto.setCharacterSize(134);
+	texto.setPosition(370.f, 30.f);
+
+}
+
 void MenuState::initButtons()
 {
-	buttons["NOVO_JOGO"] = new Button(100, "Novo Jogo");
-	buttons["FASE_1"] = new Button( 175, "Primeira Fase");
-	buttons["FASE_2"] = new Button(250 , "Segunda Fase");
-	buttons["MULTIPLAYER"] = new Button(325, "Multiplayer");
-	buttons["RANKING"] = new Button(400, "Ranking");
-	buttons["SAIR"] = new Button(475, "Sair");
+	buttons["NOVO_JOGO"] = new Button(200, "Novo Jogo");
+	buttons["FASE_1"] = new Button(275, "Primeira Fase");
+	buttons["FASE_2"] = new Button(350, "Segunda Fase");
+	buttons["MULTIPLAYER"] = new Button(425, "Multiplayer");
+	buttons["RANKING"] = new Button(500, "Ranking");
+	buttons["SAIR"] = new Button(575, "Sair");
 }
 
 MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
@@ -17,6 +33,7 @@ MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
 {
 	stateID = MENU_STATE;
 	initButtons();
+	initText();
 }
 
 MenuState::~MenuState()
@@ -77,7 +94,7 @@ void MenuState::update()
 void MenuState::render()
 {
 	background.render();
-
+	renderText();
 	renderButtons();
 }
 
