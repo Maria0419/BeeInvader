@@ -9,6 +9,7 @@ class FadaCaida :
 private:
     Orbe* pOrbe;
     bool colisaoBot;
+    int quantosPoteMel;
 
     //private functions
     void initShape();
@@ -18,6 +19,8 @@ public:
     ~FadaCaida();
 
     void ataca(float dir_x, float dir_y);
+    void coletouPoteMel();
+    const int getPoteMel() const;
     void update();
    
 };

@@ -10,7 +10,6 @@ FasePrimeira::FasePrimeira() :
 	collisionManager.setGraphicManager(pGraphic);
 	obstaculosMAX = rand() % 3 + 3;
 	contaPoteMel = 0;
-	timer.restart().asSeconds();
 }
 
 FasePrimeira::~FasePrimeira()
@@ -104,6 +103,7 @@ void FasePrimeira::updateFasePrimeira()
 			if (collisionManager.verificaContatoJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
+				pFadaCaida->coletouPoteMel();
 				contaPoteMel--;
 			}
 		}
@@ -179,7 +179,7 @@ void FasePrimeira::renderFasePrimeira()
 
 const bool FasePrimeira::getTerminou() const
 {
-	if (timer.getElapsedTime().asSeconds() > 12)
+	if (pFadaCaida->getPoteMel() >= 15)
 		return true;
 	else
 		return false;

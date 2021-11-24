@@ -4,7 +4,6 @@ class FasePrimeira :
     public Fase
 {
 private:
-    sf::Clock timer;
     unsigned int contaPoteMel;
 
 public:
