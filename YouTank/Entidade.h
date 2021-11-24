@@ -56,6 +56,7 @@ public:
     virtual void updateOrbeCura();
     virtual void updateFerrao();
     virtual void updateAnimacao();
+    virtual void updateCogumelo();
 
     virtual void movePlataforma();
     virtual void naColisao();

@@ -141,6 +141,10 @@ void Entidade::updateAnimacao()
 {
 }
 
+void Entidade::updateCogumelo()
+{
+}
+
 void Entidade::movePlataforma()
 {
 }

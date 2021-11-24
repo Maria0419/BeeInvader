@@ -9,5 +9,6 @@ public:
 	Cogumelo();
 	~Cogumelo();
 	void updateAnimacao();
+	void updateCogumelo();
 };
 

@@ -28,7 +28,7 @@ void GameWinState::initButtons()
 
 GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM, bool prox_f, bool multip) :
 	State(state, pIM),
-	Menu("Imagens/sunset4.png")
+	Menu("Imagens/treeForest.jpg")
 {
 	stateID = GWIN_STATE;
 	prox_fase = prox_f;
