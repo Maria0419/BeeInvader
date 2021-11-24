@@ -129,7 +129,11 @@ void GameState::verificarGameWin()
 	switch (fase)
 	{
 	case 1:
-		
+		if (fasePrimeira->getTerminou())
+		{
+			states->push(new GameState(states, pInput, 2));
+		}
+			
 		break;
 
 	case 2:

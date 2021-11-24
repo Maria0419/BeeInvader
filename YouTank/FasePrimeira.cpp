@@ -10,6 +10,7 @@ FasePrimeira::FasePrimeira() :
 	collisionManager.setGraphicManager(pGraphic);
 	obstaculosMAX = rand() % 3 + 3;
 	contaPoteMel = 0;
+	timer.restart().asSeconds();
 }
 
 FasePrimeira::~FasePrimeira()
@@ -175,4 +176,12 @@ void FasePrimeira::renderFasePrimeira()
 		pCurandeira->render();
 	}
 		
+}
+
+const bool FasePrimeira::getTerminou() const
+{
+	if (timer.getElapsedTime().asSeconds() > 120)
+		return true;
+	else
+		return false;
 }

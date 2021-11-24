@@ -9,7 +9,6 @@
 	cura = 5;
 	rapidez = 15.f;
 	alturaPulo = 200.f;
-	olhaEsquerda = false;
 	colisaoBot = false;
 	cooldownAtaqueMax = 100.f;
 	cooldownAtaque = cooldownAtaqueMax;
