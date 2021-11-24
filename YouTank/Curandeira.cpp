@@ -3,7 +3,7 @@
 #include "Global.h"
 
 	Curandeira::Curandeira() :
-	Jogador(100, 0, ID_CURANDEIRA, 65.f, 2),
+	Jogador(100, 0, ID_CURANDEIRA, 65, 2),
 	pOrbeCura(NULL)
 {
 	cura = 5;
