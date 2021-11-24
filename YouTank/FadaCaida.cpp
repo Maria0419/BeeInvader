@@ -37,7 +37,6 @@ void FadaCaida::ataca(float dir_x, float dir_y)
 
 void FadaCaida::update()
 {
-	std::cout << olhaEsquerda << std::endl;
 	updateAnimacao();
 	updateTaVivo();
 	barraVida.update();

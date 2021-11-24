@@ -10,8 +10,7 @@ Cogumelo::Cogumelo():
 	setSize(50.f, 55.f);
 	setOriginCenter();
 	setPosition(static_cast<float>(rand()%1200), static_cast<float>(rand()%100));
-	setVelocidadeY(1.f);
-	setVelocidadeX(static_cast<float>(rand()%3+1));
+	setVelocidadeX(static_cast<float>(rand() % 3 + 1));
 }
 
 Cogumelo::~Cogumelo()
@@ -33,4 +32,11 @@ void Cogumelo::updateAnimacao()
 		olhaEsquerda = true;
 	}
 
+}
+
+void Cogumelo::updateCogumelo()
+{
+	move(velocidade.x, velocidade.y);
+	setVelocidadeY(velocidade.y + 1.f);
+	updateAnimacao();
 }

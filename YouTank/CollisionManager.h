@@ -1,15 +1,12 @@
 #pragma once
-#include "FadaCaida.h"
+
 #include "GraphicManager.h"
-#include "Obstaculo.h"
-#include "Inimigo.h"
-#include "Curandeira.h"
+#include "Entidade.h"
+#include "Jogador.h"
 
 class CollisionManager
 {
 private:
-	FadaCaida* pFadaCaida;
-	Curandeira* pCurandeira;
 	//Tela
 	GraphicManager* pGraphic;
 	sf::RenderWindow* pWindow;
@@ -19,22 +16,16 @@ public:
 	~CollisionManager();
 	
 	/*Funções*/
-	bool verificaColisaoFadaCaida(Entidade& entidade);
-	bool verificaColisaoCurandeira(Entidade& entidade);
-	void updateColisoesJanela();
-	void updateColisoesJanelaJ1();
-	void updateColisoesJanelaJ2();
-	bool updateColisoesFadaCaida(Entidade* pEn);
-	bool updateColisoesCurandeira(Entidade* pEn);
-	
+	bool verificaColisaoJogador(Entidade& entidade, Jogador& jogador);
+	void updateColisoesJanela(Jogador* pJogador);
+	bool updateColisoesJogador(Entidade* pEn, Jogador* pJogador);
 	bool updateCombate(Entidade* pOrbe, Entidade* pInimigo);
 	void updateInimigoPlataforma(Entidade& inimigo, Entidade* plataforma);
 	bool entidadeSaiuDaTela(Entidade* entidade);
-	bool verificaContatoFadaCaida(Entidade* entidade);
-	bool verificaContatoCurandeira(Entidade* entidade);
+
+	bool verificaContatoJogador(Entidade* entidade, Jogador* pJogador);
+
 	//set
-	void setFadaCaida(FadaCaida* jogador1);
-	void setCurandeira(Curandeira* curandeira);
 	void setGraphicManager(GraphicManager* pGM);
 
 };

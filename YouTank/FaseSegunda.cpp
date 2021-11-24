@@ -70,11 +70,11 @@ void FaseSegunda::criarObstaculos()
 
 void FaseSegunda::updateBoss()
 {
-	if (collisionManager.verificaContatoFadaCaida(static_cast<Entidade*>(&abelha_rainha)))
+	if (collisionManager.verificaContatoJogador(static_cast<Entidade*>(&abelha_rainha),static_cast<Jogador*>(pFadaCaida)))
 		pFadaCaida->tomarDano(4);
 	if (pCurandeira != NULL)
 	{
-		if (collisionManager.verificaContatoCurandeira(static_cast<Entidade*>(&abelha_rainha)))
+		if (collisionManager.verificaContatoJogador(static_cast<Entidade*>(&abelha_rainha), static_cast<Jogador*>(pCurandeira)))
 			pFadaCaida->tomarDano(4);
 	}
 	if(abelha_rainha.getShowing())
@@ -87,10 +87,18 @@ void FaseSegunda::updateBoss()
 		{
 		case ID_FERRAO:
 		{
-			if (collisionManager.updateColisoesFadaCaida(listaEntidades.operator[](i)))
+			if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
 			{
 				pFadaCaida->tomarDano(abelha_rainha.getDano());
 				listaEntidades.operator[](i)->setShowing(false);
+			}
+			else if (pCurandeira)
+			{
+				if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira)))
+				{
+					pCurandeira->tomarDano(abelha_rainha.getDano());
+					listaEntidades.operator[](i)->setShowing(false);
+				}
 			}
 		}
 		break;
@@ -150,7 +158,6 @@ void FaseSegunda::setFadaCaida(FadaCaida* pJ)
 	if (pJ)
 	{
 		pFadaCaida = pJ;
-		collisionManager.setFadaCaida(pFadaCaida);
 		abelha_rainha.setFadaCaidaAlvo(pFadaCaida);
 	}
 	else

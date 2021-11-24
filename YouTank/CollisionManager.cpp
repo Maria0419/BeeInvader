@@ -4,8 +4,6 @@
 
 
 CollisionManager::CollisionManager():
-	pFadaCaida(NULL),
-	pCurandeira(NULL),
 	pWindow(NULL),
 	pGraphic(NULL)
 {
@@ -16,7 +14,7 @@ CollisionManager::~CollisionManager()
 {
 }
 
-bool CollisionManager::verificaColisaoFadaCaida(Entidade& entidade)
+bool CollisionManager::verificaColisaoJogador(Entidade& entidade, Jogador& jogador)
 {
 	/*==================COLISOES FADA CAIDA=====================*/
 	/*															*/
@@ -28,8 +26,8 @@ bool CollisionManager::verificaColisaoFadaCaida(Entidade& entidade)
 
 	sf::Vector2f outraPosicao = entidade.getPosition();
 	sf::Vector2f outraMetadeTam = (entidade.getSize()/ 2.f);
-	sf::Vector2f jogadorPosicao = pFadaCaida->getPosition();
-	sf::Vector2f jogadorMetadeTam = (pFadaCaida->getSize() / 2.f);
+	sf::Vector2f jogadorPosicao = jogador.getPosition();
+	sf::Vector2f jogadorMetadeTam = (jogador.getSize() / 2.f);
 
 	//calcula as distancias entre seus centros de massa
 	float deltaX = outraPosicao.x - jogadorPosicao.x;
@@ -47,190 +45,81 @@ bool CollisionManager::verificaColisaoFadaCaida(Entidade& entidade)
 		{
 			if (deltaX > 0.0f)
 			{
-				pFadaCaida->move(intersectX , 0.0f);
+				jogador.move(intersectX , 0.0f);
 				
-				pFadaCaida->setDirecao_x(1.0f);
-				pFadaCaida->setDirecao_y(0.0f);
+				jogador.setDirecao_x(1.0f);
+				jogador.setDirecao_y(0.0f);
 			}
 			else
 			{
-				pFadaCaida->move(-intersectX * 1.0f , 0.0f);
+				jogador.move(-intersectX * 1.0f , 0.0f);
 
-				pFadaCaida->setDirecao_x(-1.0f);
-				pFadaCaida->setDirecao_y(0.0f);
+				jogador.setDirecao_x(-1.0f);
+				jogador.setDirecao_y(0.0f);
 			}
 		}
 		else
 		{
 			if (deltaY > 0.0f)
 			{
-				pFadaCaida->move(0.0f,intersectY * 1.0f );
+				jogador.move(0.0f,intersectY * 1.0f );
 		
-				pFadaCaida->setDirecao_x(0.0f);
-				pFadaCaida->setDirecao_y(1.0f);
+				jogador.setDirecao_x(0.0f);
+				jogador.setDirecao_y(1.0f);
 			}
 			else
 			{
-				pFadaCaida->move(0.0f, -intersectY * 1.0f );
+				jogador.move(0.0f, -intersectY * 1.0f );
 	
-				pFadaCaida->setDirecao_x(0.0f);
-				pFadaCaida->setDirecao_y(-1.0f);
+				jogador.setDirecao_x(0.0f);
+				jogador.setDirecao_y(-1.0f);
 			}
 		}
-		pFadaCaida->naColisao();
+		jogador.naColisao();
 		
 		//colisao com o favo de mel, diminui a velocidade do jogador
 		if (entidade.getId() == ID_FAVOMEL)
-			pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() * 0.5f);
+			jogador.setVelocidadeX(jogador.getVelocidadeX() * 0.5f);
 		return true;
 	}
 	
 	return false;
 }
 
-bool CollisionManager::verificaColisaoCurandeira(Entidade& entidade)
+void CollisionManager::updateColisoesJanela(Jogador* pJogador)
 {
-	/*==================COLISOES CURANDEIRA=====================*/
-	/*															*/
-	/*	ADMINISTRA AS COLISOES DO JOGADOR 1					    */
-	/*  Utiliza-se de conceitos de geometria analitica para		*/
-	/*  calcular se dois corpos se intersectam ou não,			*/
-	/*  verificando a distancia entre seus centros de massa.	*/
-	/*==========================================================*/
-
-	sf::Vector2f outraPosicao = entidade.getPosition();
-	sf::Vector2f outraMetadeTam = (entidade.getSize() / 2.f);
-	sf::Vector2f jogadorPosicao = pCurandeira->getPosition();
-	sf::Vector2f jogadorMetadeTam = (pCurandeira->getSize() / 2.f);
-
-	//calcula as distancias entre seus centros de massa
-	float deltaX = outraPosicao.x - jogadorPosicao.x;
-	float deltaY = outraPosicao.y - jogadorPosicao.y;
-
-	//analisa a diferenca entre o delta e a menor distancia possivel antes de colidirem
-	float intersectX = abs(deltaX) - (outraMetadeTam.x + jogadorMetadeTam.x);
-	float intersectY = abs(deltaY) - (outraMetadeTam.y + jogadorMetadeTam.y);
-
-	//verifica se houve interseccao
-	if (intersectX < 0.f && intersectY < 0.f && entidade.getId() != ID_ORBE)
+	if (pJogador)
 	{
-		//verifica em qual direcao ocorreu a colisao
-		if (intersectX > intersectY)
+		//Colisão com a borda esquerda da janela
+		if (pJogador->getBounds().left < 0.f)
 		{
-			if (deltaX > 0.0f)
-			{
-				pCurandeira->move(intersectX, 0.0f);
-
-				pCurandeira->setDirecao_x(1.0f);
-				pCurandeira->setDirecao_y(0.0f);
-			}
-			else
-			{
-				pCurandeira->move(-intersectX * 1.0f, 0.0f);
-
-				pCurandeira->setDirecao_x(-1.0f);
-				pCurandeira->setDirecao_y(0.0f);
-			}
+			pJogador->setPosition(pJogador->getBounds().width / 2.f, pJogador->getBounds().top + pJogador->getBounds().width / 2.f);
 		}
-		else
+		if (pJogador->getBounds().left + pJogador->getBounds().width > pWindow->getSize().x)
 		{
-			if (deltaY > 0.0f)
-			{
-				pCurandeira->move(0.0f, intersectY * 1.0f);
-
-				pCurandeira->setDirecao_x(0.0f);
-				pCurandeira->setDirecao_y(1.0f);
-			}
-			else
-			{
-				pCurandeira->move(0.0f, -intersectY * 1.0f);
-
-				pCurandeira->setDirecao_x(0.0f);
-				pCurandeira->setDirecao_y(-1.0f);
-			}
+			pJogador->setPosition(pWindow->getSize().x - pJogador->getBounds().width / 2.f, pJogador->getBounds().top + pJogador->getBounds().width / 2.f);
 		}
-		pCurandeira->naColisao();
 
-		//colisao com o favo de mel, diminui a velocidade do jogador
-		if (entidade.getId() == ID_FAVOMEL)
-			pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() * 0.5f);
-		return true;
-	}
+		//Colisão com a borda inferior da janela
+		if (pJogador->getBounds().top + pJogador->getBounds().height > pWindow->getSize().y)
+		{
+			pJogador->setPosition(pJogador->getPosition().x, pWindow->getSize().y - pJogador->getBounds().height / 2);
+		}
 
-	return false;
-}
-
-void CollisionManager::updateColisoesJanela()
-{
-	updateColisoesJanelaJ1();
-	if(pCurandeira!=NULL)
-		updateColisoesJanelaJ2();
-}
-
-void CollisionManager::updateColisoesJanelaJ1()
-{
-	//Colisão com a borda esquerda da janela
-	if (pFadaCaida->getBounds().left < 0.f)
-	{
-		pFadaCaida->setPosition(pFadaCaida->getBounds().width / 2.f, pFadaCaida->getBounds().top + pFadaCaida->getBounds().width / 2.f);
-	}
-	if (pFadaCaida->getBounds().left + pFadaCaida->getBounds().width > pWindow->getSize().x)
-	{
-		pFadaCaida->setPosition(pWindow->getSize().x - pFadaCaida->getBounds().width / 2.f, pFadaCaida->getBounds().top + pFadaCaida->getBounds().width / 2.f);
-	}
-
-	//Colisão com a borda inferior da janela
-	if (pFadaCaida->getBounds().top + pFadaCaida->getBounds().height > pWindow->getSize().y)
-	{
-		pFadaCaida->setPosition(pFadaCaida->getPosition().x, pWindow->getSize().y - pFadaCaida->getBounds().height / 2);
-	}
-
-	//Colisão com a borda superior da janela
-	else if (pFadaCaida->getBounds().top < 0.f)
-	{
-		pFadaCaida->setPosition(pFadaCaida->getPosition().x, pFadaCaida->getBounds().height / 2.f);
-		pFadaCaida->setDirecao_x(0.0f);
-		pFadaCaida->setDirecao_y(-1.0f);
-		pFadaCaida->naColisao();
+		//Colisão com a borda superior da janela
+		else if (pJogador->getBounds().top < 0.f)
+		{
+			pJogador->setPosition(pJogador->getPosition().x, pJogador->getBounds().height / 2.f);
+			pJogador->setDirecao_x(0.0f);
+			pJogador->setDirecao_y(-1.0f);
+			pJogador->naColisao();
+		}
 	}
 }
 
-void CollisionManager::updateColisoesJanelaJ2()
+bool CollisionManager::updateColisoesJogador(Entidade* pEn, Jogador* pJogador)
 {
-	//Colisão com a borda esquerda da janela
-	if (pCurandeira->getBounds().left < 0.f)
-	{
-		pCurandeira->setPosition(pCurandeira->getBounds().width / 2.f, pCurandeira->getBounds().top + pCurandeira->getBounds().width / 2.f);
-	}
-	if (pCurandeira->getBounds().left + pCurandeira->getBounds().width > pWindow->getSize().x)
-	{
-		pCurandeira->setPosition(pWindow->getSize().x - pCurandeira->getBounds().width / 2.f, pCurandeira->getBounds().top + pCurandeira->getBounds().width / 2.f);
-	}
-
-	//Colisão com a borda inferior da janela
-	if (pCurandeira->getBounds().top + pCurandeira->getBounds().height > pWindow->getSize().y)
-	{
-		pCurandeira->setPosition(pCurandeira->getPosition().x, pWindow->getSize().y - pCurandeira->getBounds().height / 2);
-	}
-
-	//Colisão com a borda superior da janela
-	else if (pCurandeira->getBounds().top < 0.f)
-	{
-		pCurandeira->setPosition(pCurandeira->getPosition().x, pCurandeira->getBounds().height / 2.f);
-		pCurandeira->setDirecao_x(0.0f);
-		pCurandeira->setDirecao_y(-1.0f);
-		pCurandeira->naColisao();
-	}
-}
-
-bool CollisionManager::updateColisoesFadaCaida(Entidade* pEn)
-{
-	return verificaColisaoFadaCaida(*pEn);
-}
-
-bool CollisionManager::updateColisoesCurandeira(Entidade* pEn)
-{
-	return verificaColisaoCurandeira(*pEn);
+	return verificaColisaoJogador(*pEn, *pJogador);
 }
 
 bool CollisionManager::updateCombate(Entidade* pOrbe, Entidade* pInimigo)
@@ -316,35 +205,13 @@ bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
 	return false;
 }
 
-bool CollisionManager::verificaContatoFadaCaida(Entidade* entidade)
+bool CollisionManager::verificaContatoJogador(Entidade* entidade, Jogador* pJogador)
 {
 	/*===================VERIFICA CONTATO=======================*/
 	/*															*/
 	/*	VERIFICA O CONTATO DA FADA COM A ENTIDADE			    */
 	/*==========================================================*/
-	return pFadaCaida->intersecta(static_cast<Ente*>(entidade));
-}
-
-bool CollisionManager::verificaContatoCurandeira(Entidade* entidade)
-{
-	/*===================VERIFICA CONTATO=======================*/
-	/*															*/
-	/*	VERIFICA O CONTATO DA CURANDEIRA COM A ENTIDADE		    */
-	/*==========================================================*/
-	return pCurandeira->intersecta(static_cast<Ente*>(entidade));
-}
-
-void CollisionManager::setFadaCaida(FadaCaida* pJ1)
-{
-	if(pJ1)
-		pFadaCaida = pJ1;
-	else
-		std::cout << "ERROR::COLLISIONMANAGER::SETJOGADOR::Ponteiro Nulo" << std::endl;
-}
-
-void CollisionManager::setCurandeira(Curandeira* curandeira)
-{
-	pCurandeira = curandeira;
+	return pJogador->intersecta(static_cast<Ente*>(entidade));
 }
 
 void CollisionManager::setGraphicManager(GraphicManager* pGM)

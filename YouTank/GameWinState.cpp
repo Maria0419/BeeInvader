@@ -24,7 +24,7 @@ void GameWinState::initButtons()
 
 GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM) :
 	State(state, pIM),
-	Menu("Imagens/gamewin.jpg")
+	Menu("Imagens/treeForest.jpg")
 {
 	stateID = GWIN_STATE;
 	gameOver = true;
