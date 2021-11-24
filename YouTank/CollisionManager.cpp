@@ -153,7 +153,7 @@ bool CollisionManager::verificaColisaoCurandeira(Entidade& entidade)
 
 		//colisao com o favo de mel, diminui a velocidade do jogador
 		if (entidade.getId() == ID_FAVOMEL)
-			pCurandeira->setVelocidadeX(pFadaCaida->getVelocidadeX() * 0.5f);
+			pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() * 0.5f);
 		return true;
 	}
 

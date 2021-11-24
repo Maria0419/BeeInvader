@@ -3,17 +3,13 @@
 #include "Global.h"
 
 	Curandeira::Curandeira() :
-	Personagem(100, 0, ID_CURANDEIRA),
-	barraVida(static_cast<Personagem*>(this), 25.f, 65.f, 210.f, 25.f, 2),
+	Jogador(100, 0, ID_CURANDEIRA, 65.f, 2),
 	pOrbeCura(NULL)
 {
 	cura = 5;
 	rapidez = 15.f;
 	alturaPulo = 200.f;
 	olhaEsquerda = false;
-	colisaoBot = false;
-	direcao.x = 0.0f;
-	direcao.y = 0.0f;
 	colisaoBot = false;
 	cooldownAtaqueMax = 100.f;
 	cooldownAtaque = cooldownAtaqueMax;
@@ -27,62 +23,7 @@ Curandeira::~Curandeira()
 {
 }
 
-void Curandeira::setDirecao_x(float dir_x)
-{
-	direcao.x = dir_x;
-}
 
-void Curandeira::setDirecao_y(float dir_y)
-{
-	direcao.y = dir_y;
-}
-
-void Curandeira::setOlhaEsquerda(bool x)
-{
-	olhaEsquerda = x;
-}
-
-
-const bool Curandeira::olhandoEsquerda() const
-{
-	return olhaEsquerda;
-}
-
-
-const bool Curandeira::getExisteNaFase() const
-{
-	return aparece;
-}
-
-
-void Curandeira::naColisao()
-{
-	if (direcao.x < 0.0f)
-	{
-		//colisao na esquerda
-		setVelocidadeX(0.0f);
-		colisaoBot = false;
-	}
-	else if (direcao.x > 0.0f)
-	{
-		//colisao na direita
-		setVelocidadeX(0.0f);
-		colisaoBot = false;
-	}
-	if (direcao.y > 0.0f)
-	{
-		//colisao embaixo
-		velocidade.y = 0.0f;
-		podePular = true;
-		colisaoBot = true;
-	}
-	else if (direcao.y < 0.0f)
-	{
-		//colisao em cima
-		velocidade.y = 0.0f;
-		colisaoBot = false;
-	}
-}
 
 void Curandeira::curar(float dir_x, float dir_y, float pos_x, float pos_y)
 {
@@ -90,44 +31,15 @@ void Curandeira::curar(float dir_x, float dir_y, float pos_x, float pos_y)
 	pLista->incluaEntidade(static_cast<Entidade*>(pP));
 }
 
+void Curandeira::update()
+{
+	updateAnimacao();
+	updateTaVivo();
+	barraVida.update();
+}
+
 const int Curandeira::getCura() const
 {
 	return cura;
 }
 
-const bool Curandeira::getColisaoBot() const
-{
-	return colisaoBot;
-}
-
-void Curandeira::renderBarraVida()
-{
-	barraVida.renderBodyBack();
-	barraVida.render();
-}
-
-void Curandeira::update()
-{
-	updateTaVivo();
-	updateAnimacao();
-	barraVida.update();
-}
-
-void Curandeira::updateAnimacao()
-{
-	if (olhaEsquerda == false)
-	{
-		body.setScale(-1.f, 1.f);
-	}
-	//caso esteja andando para a esquerda, vira a imagem
-	if (olhaEsquerda == true)
-	{
-		body.setScale(1.f, 1.f);
-	}
-}
-
-void Curandeira::updateTaVivo()
-{
-	if (vida <= 0)
-		aparece = false;
-}
