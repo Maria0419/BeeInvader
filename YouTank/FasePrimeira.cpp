@@ -14,61 +14,11 @@ FasePrimeira::FasePrimeira() :
 
 FasePrimeira::~FasePrimeira()
 {
-	if (pCurandeira != NULL)
-		delete pCurandeira;
+
 }
 
-void FasePrimeira::spawnCurandeira()
-{
-	/*========================CURANDEIRA========================*/
-	/*															*/
-	/*	CRIA CURANDEIRA										    */
-	/*	Curandeira é o jogador dois, cura o jogador principal	*/
-	/*==========================================================*/
-	pCurandeira = new Curandeira();
-	collisionManager.setCurandeira(pCurandeira);
-}
 
-void FasePrimeira::spawnCogumelo()
-{
-	/*========================COGUMELOS=========================*/
-	/*															*/
-	/*	CRIA COGUMELOS										    */
-	/*	Cogumelos andam pra direita e pra esquerda				*/
-	/*==========================================================*/
-
-	cogumelosMAX = rand() % 5;
-
-	if (contaCogu < cogumelosMAX)
-	{
-		Cogumelo* cogu = new Cogumelo();
-		listaEntidades.incluaEntidade(static_cast<Entidade*>(cogu));
-		contaCogu++;
-	}
-}
-
-void FasePrimeira::spawnAbelhas()
-{
-	/*=========================ABELHAS==========================*/
-	/*															*/
-	/*	CRIA ABELHAS										    */
-	/*	Abelhas perseguem o jogador, dão dano ou pontos			*/
-	/*==========================================================*/
-
-	//timer
-	if (spawnTimer < spawnTimerMAX)
-		spawnTimer += 5;
-
-	else if (contaAbelhas < abelhasMAX)
-	{
-		Abelha* inim = new Abelha(1);
-		listaEntidades.incluaEntidade(static_cast<Entidade*>(inim));
-		contaAbelhas++;
-		spawnTimer = 0;
-	}
-}
-
-void FasePrimeira::spawnPoteMel()
+void FasePrimeira::criarPoteMel()
 {
 
 	/*=====================POTES DE MEL=========================*/
@@ -88,7 +38,7 @@ void FasePrimeira::spawnPoteMel()
 
 
 
-void FasePrimeira::spawnObstaculos()
+void FasePrimeira::criarObstaculos()
 {
 	/*=====================OBSTACULOS===========================*/
 	/*															*/
@@ -103,7 +53,7 @@ void FasePrimeira::spawnObstaculos()
 
 }
 
-void FasePrimeira::spawnPlataforma()
+void FasePrimeira::criarPlataforma()
 {
 	/*=====================PLATAFORMAS==========================*/
 	/*															*/
@@ -187,21 +137,21 @@ void FasePrimeira::update()
 
 	updateColisoes();
 	limpeza();
-	spawnCogumelo();
-	spawnAbelhas();
-	spawnObstaculos();
-	spawnPoteMel();
+	criarCogumelos();
+	criarAbelhas(1);
+	criarObstaculos();
+	criarPoteMel();
 	updateMovimento();
 	updateCombate();
 	updateInimigoPlataforma();
 	updateFasePrimeira();
 	pFadaCaida->update();
+
 	if (pCurandeira != NULL)
 		pCurandeira->update();
 
 
 }
-
 
 void FasePrimeira::renderFasePrimeira()
 {
@@ -225,21 +175,4 @@ void FasePrimeira::renderFasePrimeira()
 		pCurandeira->render();
 	}
 		
-}
-
-void FasePrimeira::setFadaCaida(FadaCaida* pJ)
-{
-	if (pJ)
-	{
-		pFadaCaida = pJ;
-		collisionManager.setFadaCaida(pFadaCaida);
-		
-	}
-	else
-		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
-}
-
-Curandeira* FasePrimeira::getCurandeira() const
-{
-	return pCurandeira;
 }

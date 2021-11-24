@@ -12,19 +12,14 @@ public:
     ~FasePrimeira();
 
     //Funçoes
-    void spawnCogumelo();
-    void spawnPlataforma();
-    void spawnObstaculos();
-    void spawnCurandeira();
-    void spawnAbelhas();
-    void spawnPoteMel();
+    void criarPlataforma();
+    void criarObstaculos();
+    void criarPoteMel();
     void updateFasePrimeira();
     void update();
 
     void renderFasePrimeira();
 
-    void setFadaCaida(FadaCaida* pFadaCaida);
-    Curandeira* getCurandeira() const;
     const bool getTerminou() const;
 };
 

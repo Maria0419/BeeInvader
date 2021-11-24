@@ -3,20 +3,20 @@
 
 void GameState::runFase()
 {
+	jogador1 = new FadaCaida();
+	pInput->setFadaCaida(jogador1);
+
 	switch (fase)
 	{
 	case 1:
-		jogador1 = new FadaCaida();
-		pInput->setFadaCaida(jogador1);
-
 		fasePrimeira = new FasePrimeira();
 		fasePrimeira->setFadaCaida(jogador1);
-		fasePrimeira->spawnPlataforma();
+		fasePrimeira->criarPlataforma();
 
 		if (multiplayer == true)
 		{
-			fasePrimeira->spawnCurandeira();
-			pInput->setCurandeira(fasePrimeira->getCurandeira());
+			criarCurandeira();
+			fasePrimeira->setCurandeira(jogador2);
 		}
 		
 		pInput->setFase(static_cast<Fase*>(fasePrimeira));
@@ -24,20 +24,20 @@ void GameState::runFase()
 		break;
 
 	case 2:
-		jogador1 = new FadaCaida();
-		pInput->setFadaCaida(jogador1);
 		faseSegunda = new FaseSegunda();
 		faseSegunda->setFadaCaida(jogador1);
-		faseSegunda->spawnPlataforma();
+		faseSegunda->criarPlataforma();
 
 		if (multiplayer == true)
 		{
-			faseSegunda->spawnCurandeira();
-			pInput->setCurandeira(faseSegunda->getCurandeira());
+			criarCurandeira();
+			faseSegunda->setCurandeira(jogador2);
 		}
 
 		pInput->setFase(static_cast<Fase*>(faseSegunda));
+
 		break;
+
 	default:
 		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
 		break;
@@ -69,16 +69,20 @@ GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool
 
 GameState::~GameState()
 {
+	delete jogador1;
+
+	if (multiplayer)
+		delete jogador2;
+
 	switch (fase)
 	{
 	case 1:
 		delete fasePrimeira;
-		delete jogador1;
+		
 		break;
 
 	case 2:
 		delete faseSegunda;
-		delete jogador1;
 		break;
 
 	default:
@@ -102,6 +106,12 @@ const bool GameState::getPause() const
 	return pause;
 }
 
+void GameState::criarCurandeira()
+{
+	jogador2 = new Curandeira();
+	pInput->setCurandeira(jogador2);
+}
+
 void GameState::verificarGameOver()
 {
 	if (jogador1->getExisteNaFase() == false)
@@ -109,7 +119,8 @@ void GameState::verificarGameOver()
 
 	if (multiplayer == true)
 	{
-		
+		if (jogador2->getExisteNaFase() == false)
+			gameOver = true;
 	}
 }
 

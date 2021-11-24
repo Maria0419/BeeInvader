@@ -14,18 +14,14 @@ public:
     ~FaseSegunda();
 
     //Funçoes
-    void spawnCogumelo();
-    void spawnAbelhas();
-    void spawnPlataforma();
-    void spawnObstaculos();
-    void spawnCurandeira();
+    void criarPlataforma();
+    void criarObstaculos();
     void updateBoss();
     void update();
 
     void renderFaseSegunda();
 
-    void setFadaCaida(FadaCaida* pFadaCaida);
-    Curandeira* getCurandeira() const;
+    void setFadaCaida(FadaCaida* pJ);
     const bool getTerminou() const;
 };
 

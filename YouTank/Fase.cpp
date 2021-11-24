@@ -4,8 +4,8 @@
 
 void Fase::initInimigo()
 {
-	spawnTimer = SPAWN_TIMER_MAX;
-	spawnTimerMAX = SPAWN_TIMER_MAX;
+	criarTimer = SPAWN_TIMER_MAX;
+	criarTimerMAX = SPAWN_TIMER_MAX;
 	contaAbelhas = 0;
 	abelhasMAX = rand()%10 + 5;
 	contaCogu = 0;
@@ -41,6 +41,45 @@ void Fase::limpeza()
 			counter--;
 		}
 		counter++;
+	}
+}
+
+void Fase::criarCogumelos()
+{
+	/*========================COGUMELOS=========================*/
+	/*															*/
+	/*	CRIA COGUMELOS										    */
+	/*	Cogumelos andam pra direita e pra esquerda				*/
+	/*==========================================================*/
+
+	cogumelosMAX = rand() % 5;
+
+	if (contaCogu < cogumelosMAX)
+	{
+		Cogumelo* cogu = new Cogumelo();
+		listaEntidades.incluaEntidade(static_cast<Entidade*>(cogu));
+		contaCogu++;
+	}
+}
+
+void Fase::criarAbelhas(int i)
+{
+	/*=========================ABELHAS==========================*/
+	/*															*/
+	/*	CRIA ABELHAS										    */
+	/*	Abelhas perseguem o jogador, dão dano ou pontos			*/
+	/*==========================================================*/
+
+	//timer
+	if (criarTimer < criarTimerMAX)
+		criarTimer += 5;
+
+	else if (contaAbelhas < abelhasMAX)
+	{
+		Abelha* inim = new Abelha(i);
+		listaEntidades.incluaEntidade(static_cast<Entidade*>(inim));
+		contaAbelhas++;
+		criarTimer = 0;
 	}
 }
 
@@ -264,4 +303,26 @@ void Fase::updateInimigoPlataforma()
 			}
 		}
 	}
+}
+void Fase::setFadaCaida(FadaCaida* pJ)
+{
+	if (pJ)
+	{
+		pFadaCaida = pJ;
+		collisionManager.setFadaCaida(pFadaCaida);
+
+	}
+	else
+		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
+}
+void Fase::setCurandeira(Curandeira* pC)
+{
+	if (pC)
+	{
+		pCurandeira = pC;
+		collisionManager.setCurandeira(pCurandeira);
+	}
+	else
+		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
+	
 }
