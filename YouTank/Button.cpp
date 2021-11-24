@@ -14,7 +14,7 @@ void Button::initText(std::string text)
 	texto.setFillColor(sf::Color::White);
 	texto.setOutlineColor(sf::Color::Black);
 	texto.setOutlineThickness(1.f);
-	texto.setCharacterSize(18);
+	texto.setCharacterSize(40);
 	texto.setPosition(
 		getPosition().x + getBounds().width / 2.f - texto.getGlobalBounds().width / 2.f,
 		getPosition().y + getBounds().height / 3.f - texto.getGlobalBounds().height / 2.f);

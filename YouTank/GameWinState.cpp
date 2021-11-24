@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "GameWinState.h"
+#include "GameState.h"
 
 void GameWinState::initText()
 {
@@ -11,22 +12,27 @@ void GameWinState::initText()
 	texto.setFillColor(sf::Color::Yellow);
 	texto.setOutlineColor(sf::Color::Black);
 	texto.setOutlineThickness(3.f);
-	texto.setCharacterSize(74);
-	texto.setPosition(390.f, 80.f);
+	texto.setCharacterSize(134);
+	texto.setPosition(450.f, 50.f);
 }
 
 void GameWinState::initButtons()
 {
+	if(prox_fase == true)
+		buttons["PROX_FASE"] = new Button(225, "Proxima fase");
+
 	buttons["RANKING"] = new Button(300, "Ranking");
 	buttons["VOLTAR_MENU"] = new Button(375, "Voltar ao Menu");
 	buttons["SAIR"] = new Button(450, "Sair");
 }
 
-GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM) :
+GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM, bool prox_f, bool multip) :
 	State(state, pIM),
-	Menu("Imagens/gamewin.jpg")
+	Menu("Imagens/sunset4.png")
 {
 	stateID = GWIN_STATE;
+	prox_fase = prox_f;
+	multiplayer = multip;
 	gameOver = true;
 	initButtons();
 	initText();
@@ -47,6 +53,17 @@ void GameWinState::updateButtons()
 	for (auto& it : buttons)
 	{
 		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
+	}
+	if (prox_fase)
+	{
+		if (buttons["PROX_FASE"]->estaPressionado())
+		{
+			if (multiplayer == true)
+				states->push(new GameState(states, pInput, 2, true));
+			else
+				states->push(new GameState(states, pInput, 2, false));
+
+		}
 	}
 	if (buttons["RANKING"]->estaPressionado())
 	{

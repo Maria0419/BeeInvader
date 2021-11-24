@@ -71,7 +71,7 @@ GameState::~GameState()
 {
 	delete jogador1;
 
-	if (multiplayer)
+	if (jogador2)
 		delete jogador2;
 
 	switch (fase)
@@ -131,7 +131,10 @@ void GameState::verificarGameWin()
 	case 1:
 		if (fasePrimeira->getTerminou())
 		{
-			states->push(new GameState(states, pInput, 2));
+			//if(multiplayer)
+		//		states->push(new GameWinState(states, pInput, true, true));
+		//	else
+				states->push(new GameWinState(states, pInput, true, false));
 		}
 			
 		break;

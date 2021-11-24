@@ -7,6 +7,7 @@ class MenuState :
 {
 private:
 
+    void initText();
     void initButtons();
 
 public:
