@@ -25,7 +25,7 @@ Fase::Fase():
 
 Fase::~Fase()
 {
-	pCurandeira = NULL;
+	//pCurandeira = NULL;
 
 	listaEntidades.limpaLista();
 }

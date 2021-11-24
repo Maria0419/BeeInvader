@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "State.h"
 
-State::State(std::stack<State*>* state, InputManager* pIM) :
+State::State(std::stack<State*>* state, InputManager* pIM, short id) :
 	sair(false),
 	pause(false),
 	gameOver(false),
 	gameWin(false),
 	goToMenu(false),
-	stateID(STATE),
+	stateID(id),
 	pInput(pIM)
 {
 	states = state;

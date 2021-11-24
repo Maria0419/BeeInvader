@@ -28,17 +28,16 @@ void MenuState::initButtons()
 }
 
 MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
-	State(state, pIM),
+	State(state, pIM, MENU_STATE),
 	Menu("Imagens/menu.png")
 {
-	stateID = MENU_STATE;
 	initButtons();
 	initText();
 }
 
 MenuState::~MenuState()
 {
-
+	deletarButtons();
 }
 
 const short MenuState::getState()

@@ -14,7 +14,8 @@ protected:
 
 public:
     Menu(const char* file);
-    ~Menu();
+    virtual ~Menu();
+    void deletarButtons();
     void renderButtons();
     void renderText();
 };

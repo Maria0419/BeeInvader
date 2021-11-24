@@ -10,6 +10,11 @@ Menu::Menu(const char* file):
 
 Menu::~Menu()
 {
+	
+}
+
+void Menu::deletarButtons()
+{
 	auto it = buttons.begin();
 	for (it = buttons.begin(); it != buttons.end(); ++it)
 	{

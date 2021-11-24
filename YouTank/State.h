@@ -21,7 +21,7 @@ protected:
 
 
 public:
-	State(std::stack<State*>* state, InputManager* pIM);
+	State(std::stack<State*>* state, InputManager* pIM, short id );
 	virtual ~State();
 
 	virtual void setPause(bool p);

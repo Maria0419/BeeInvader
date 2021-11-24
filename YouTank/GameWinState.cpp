@@ -26,13 +26,12 @@ void GameWinState::initButtons()
 	buttons["SAIR"] = new Button(450, "Sair");
 }
 
-GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM, bool prox_f, bool multip) :
-	State(state, pIM),
+GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM, bool prox_f, bool mp) :
+	State(state, pIM, GWIN_STATE),
 	Menu("Imagens/treeForest.jpg")
 {
-	stateID = GWIN_STATE;
 	prox_fase = prox_f;
-	multiplayer = multip;
+	multiplayer = mp;
 	gameOver = true;
 	initButtons();
 	initText();
@@ -40,7 +39,7 @@ GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM, bool pr
 
 GameWinState::~GameWinState()
 {
-
+	deletarButtons();
 }
 
 const short GameWinState::getState()

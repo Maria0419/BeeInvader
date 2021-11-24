@@ -11,17 +11,16 @@ void PauseState::initButtons()
 }
 
 PauseState::PauseState(std::stack<State*>* state, InputManager* pIM):
-	State(state, pIM),
+	State(state, pIM, PAUSE_STATE),
 	Menu("Imagens/floresta.png")
 {
-	stateID = PAUSE_STATE;
 	pause = true;
 	initButtons();
 }
 
 PauseState::~PauseState()
 {
-
+	deletarButtons();
 }
 
 const short PauseState::getState()

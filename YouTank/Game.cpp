@@ -55,15 +55,7 @@ void Game::update()
 	{
 		states.top()->update();
 		
-		if (states.top()->getState() == MENU_STATE)
-		{
-		}
-
-		else if (states.top()->getState() == GAME_STATE)
-		{
-			
-		}
-		else if (states.top()->getState() == PAUSE_STATE && states.top()->getPause() == false)
+		if (states.top()->getState() == PAUSE_STATE && states.top()->getPause() == false)
 		{
 			delete states.top();
 			states.pop();
@@ -81,8 +73,11 @@ void Game::update()
 		if (states.top()->getSair())
 		{
 			sair = true;
-			delete states.top();
-			states.pop();
+			while (!states.empty())
+			{
+				delete states.top();
+				states.pop();
+			}
 		}
 	}
 }

@@ -18,7 +18,7 @@ void GameState::runFase()
 			criarCurandeira();
 			fasePrimeira->setCurandeira(jogador2);
 		}
-		
+		pInput->setCurandeira(jogador2);
 		pInput->setFase(static_cast<Fase*>(fasePrimeira));
 		
 		break;
@@ -33,7 +33,7 @@ void GameState::runFase()
 			criarCurandeira();
 			faseSegunda->setCurandeira(jogador2);
 		}
-
+		pInput->setCurandeira(jogador2);
 		pInput->setFase(static_cast<Fase*>(faseSegunda));
 
 		break;
@@ -53,13 +53,14 @@ void GameState::updateDeltaTime()
 }
 
 //Construtora e Destrutora
-GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool multip):
-	State(state,pIM),
+GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool mp):
+	State(state,pIM, GAME_STATE),
 	fasePrimeira(NULL),
-	faseSegunda(NULL)
+	faseSegunda(NULL),
+	jogador1(NULL),
+	jogador2(NULL)
 {
-	multiplayer = multip;
-	stateID = GAME_STATE;
+	multiplayer = mp;
 	fase = f;
 	clock.restart();
 	deltaTime = clock.restart().asSeconds();
@@ -70,9 +71,14 @@ GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool
 GameState::~GameState()
 {
 	delete jogador1;
+	jogador1 = NULL;
 
 	if (jogador2)
+	{
 		delete jogador2;
+		jogador2 = NULL;
+	}
+		
 
 	switch (fase)
 	{
@@ -109,7 +115,7 @@ const bool GameState::getPause() const
 void GameState::criarCurandeira()
 {
 	jogador2 = new Curandeira();
-	pInput->setCurandeira(jogador2);
+	
 }
 
 void GameState::verificarGameOver()
@@ -131,9 +137,9 @@ void GameState::verificarGameWin()
 	case 1:
 		if (fasePrimeira->getTerminou())
 		{
-			//if(multiplayer)
-		//		states->push(new GameWinState(states, pInput, true, true));
-		//	else
+			if(multiplayer)
+				states->push(new GameWinState(states, pInput, true, true));
+			else
 				states->push(new GameWinState(states, pInput, true, false));
 		}
 			
@@ -170,7 +176,7 @@ void GameState::updateGameOver()
 void GameState::updateGameWin()
 {
 	if (gameWin == true)
-		states->push(new GameWinState(states, pInput));
+		states->push(new GameWinState(states, pInput, false, false));
 }
 
 void GameState::updateInput()

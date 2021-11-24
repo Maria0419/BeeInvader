@@ -14,7 +14,7 @@ private:
 	void initText();
 	void initButtons();
 public:
-	GameWinState(std::stack<State*>* state, InputManager* pIM, bool prox_f = false, bool multip = false);
+	GameWinState(std::stack<State*>* state, InputManager* pIM, bool prox_f = false, bool mp = false);
 	~GameWinState();
 
 	const short getState();

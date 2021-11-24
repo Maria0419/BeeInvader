@@ -22,10 +22,9 @@ void GameOverState::initButtons()
 }
 
 GameOverState::GameOverState(std::stack<State*>* state, InputManager* pIM):
-	State(state,pIM),
+	State(state,pIM, GOVER_STATE),
 	Menu("Imagens/f.png")
 {
-	stateID = GOVER_STATE;
 	gameOver = true;
 	initButtons();
 	initText();
@@ -33,7 +32,7 @@ GameOverState::GameOverState(std::stack<State*>* state, InputManager* pIM):
 
 GameOverState::~GameOverState()
 {
-	
+	deletarButtons();
 }
 
 const short GameOverState::getState()

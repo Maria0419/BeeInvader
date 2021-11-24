@@ -31,7 +31,7 @@ private:
 public:
 
     //Construtora e Destrutora
-    GameState(std::stack<State*>* state, InputManager* pIM, short fase, bool multip = false);
+    GameState(std::stack<State*>* state, InputManager* pIM, short f, bool mp = false);
     ~GameState();
 
     void setPause(bool p);
