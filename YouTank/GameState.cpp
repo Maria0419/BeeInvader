@@ -106,8 +106,9 @@ void GameState::setPause(bool p)
 
 void GameState::setNome(std::string nome)
 {
-	std::cout << nome << std::endl;
+	nomeJ = nome;
 }
+
 
 const short GameState::getState()
 {
@@ -145,9 +146,9 @@ void GameState::verificarGameWin()
 		if (fasePrimeira->getTerminou())
 		{
 			if(multiplayer)
-				states->push(new GameWinState(states, pInput, true, true));
+				states->push(new GameWinState(states, pInput, nomeJ, jogador1->getPontos(), true, true));
 			else
-				states->push(new GameWinState(states, pInput, true, false));
+				states->push(new GameWinState(states, pInput, nomeJ, jogador1->getPontos(), true, false));
 		}
 			
 		break;
@@ -187,7 +188,7 @@ void GameState::updateGameOver()
 void GameState::updateGameWin()
 {
 	if (gameWin == true)
-		states->push(new GameWinState(states, pInput, false, false));
+		states->push(new GameWinState(states, pInput, nomeJ, jogador1->getPontos(), false, false));
 }
 
 void GameState::updateInput()

@@ -82,7 +82,7 @@ void MenuState::updateButtons()
 	}
 	else if (buttons["RANKING"]->estaPressionado())
 	{
-		
+		states->push(new RankingState(states, pInput));
 	}
 	else if (buttons["SAIR"]->estaPressionado())
 	{

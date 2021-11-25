@@ -25,6 +25,7 @@ void State::setPause(bool p)
 
 void State::setNome(std::string nome)
 {
+	nomeJ = nome;
 }
 
 const bool State::getSair() const

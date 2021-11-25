@@ -23,6 +23,7 @@ public:
     void update();
 
     void operator+=(int i);
+    void gravar();
    
 };
 

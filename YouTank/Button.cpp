@@ -104,6 +104,11 @@ void Button::update(const float posX, const float posY)
 	}
 }
 
+void Button::setText(std::string novoTexto)
+{
+	texto.setString(novoTexto);
+}
+
 void Button::renderText()
 {
 	renderTexto(texto);

@@ -58,3 +58,26 @@ void FadaCaida::operator+=(int i)
 {
 	pontos += i;
 }
+
+void FadaCaida::gravar()
+{
+	if (getShowing())
+	{
+		std::ofstream gravadorFada("fadaCaida.dat", std::ios::out);
+		if (!gravadorFada)
+		{
+			std::cout << "arquivo não pode ser aberto" << std::endl;
+			fflush(stdin);
+			return;
+		}
+		gravadorFada << direcao.x << " "
+			<< direcao.y << " "
+			<< podeAtacar << " "
+			<< podePular << " "
+			<< pontos << " "
+			<< velocidade.x << " "
+			<< velocidade.y << " "
+			<< vida << std::endl;
+		gravadorFada.close();
+	}
+}

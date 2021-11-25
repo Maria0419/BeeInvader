@@ -8,7 +8,6 @@ class RankingState :
 {
 private:
     FadaCaida* pFada;
-    std::vector<sf::Text> pontuacao;
     void initText();
     void initButtons();
 

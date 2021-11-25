@@ -28,6 +28,7 @@ public:
 
 
     void update(const float posX, const float posY);
+    void setText(std::string novoTexto);
     void renderText();
 };
 

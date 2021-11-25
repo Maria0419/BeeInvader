@@ -11,6 +11,8 @@ protected:
 	InputManager* pInput;
 	std::stack<State*>* states;
 
+	std::string nomeJ; 
+
 	short stateID;
 
 	bool terminarState; //continuar
@@ -19,6 +21,7 @@ protected:
 	bool gameOver;
 	bool gameWin;
 	bool goToMenu;
+	bool salvarPontos;
 
 
 public:

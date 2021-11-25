@@ -16,10 +16,11 @@ private:
     FasePrimeira* fasePrimeira;
     FaseSegunda* faseSegunda;
 
-   
+    std::string nome;
+
     short fase;
     bool multiplayer;
-
+    
     //aux
     sf::Clock clock;
     float deltaTime;

@@ -23,15 +23,17 @@ void GameWinState::initButtons()
 	if(prox_fase == true)
 		buttons["PROX_FASE"] = new Button(225, "Proxima fase");
 
-	buttons["RANKING"] = new Button(300, "Ranking");
+	buttons["SALVAR_PONTOS"] = new Button(300, "Salvar pontos");
 	buttons["VOLTAR_MENU"] = new Button(375, "Voltar ao Menu");
 	buttons["SAIR"] = new Button(450, "Sair");
 }
 
-GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM, bool prox_f, bool mp) :
+GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM,std::string nome, int pontos, bool prox_f, bool mp) :
 	State(state, pIM, GWIN_STATE),
 	Menu("Imagens/treeForest.jpg")
 {
+	nomeJ = nome;
+	pontuacao = pontos;
 	prox_fase = prox_f;
 	multiplayer = mp;
 	gameOver = true;
@@ -66,9 +68,18 @@ void GameWinState::updateButtons()
 
 		}
 	}
-	if (buttons["RANKING"]->estaPressionado())
+	if (buttons["SALVAR_PONTOS"]->estaPressionado())
 	{
-		//goToMenu = true;
+		std::ofstream pontos("ranking.txt", std::ios::app);
+		if (!pontos)
+		{
+			std::cout << "arquivo não pode ser aberto" << std::endl;
+			fflush(stdin);
+			return;
+		}
+		std::string pt = std::to_string(pontuacao);
+		pontos << nomeJ << "-" << pt << std::endl;
+		buttons["SALVAR_PONTOS"]->setText("SALVO");
 	}
 	if (buttons["VOLTAR_MENU"]->estaPressionado())
 	{
