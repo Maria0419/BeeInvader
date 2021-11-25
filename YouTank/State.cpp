@@ -7,6 +7,7 @@ State::State(std::stack<State*>* state, InputManager* pIM, short id) :
 	gameOver(false),
 	gameWin(false),
 	goToMenu(false),
+	terminarState(false),
 	stateID(id),
 	pInput(pIM)
 {
@@ -45,6 +46,11 @@ const bool State::getGameWin() const
 const bool State::getGoToMenu() const
 {
 	return goToMenu;
+}
+
+const bool State::getTerminarState() const
+{
+	return terminarState;
 }
 
 void State::verificarPause()

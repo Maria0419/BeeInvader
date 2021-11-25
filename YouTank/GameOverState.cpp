@@ -11,8 +11,8 @@ void GameOverState::initText()
 	texto.setFillColor(sf::Color::Yellow);
 	texto.setOutlineColor(sf::Color::Black);
 	texto.setOutlineThickness(3.f);
-	texto.setCharacterSize(74);
-	texto.setPosition(295.f, 80.f);
+	texto.setCharacterSize(134);
+	texto.setPosition(380.f, 80.f);
 }
 
 void GameOverState::initButtons()

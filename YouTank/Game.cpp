@@ -69,7 +69,11 @@ void Game::update()
 				states.pop();
 			}
 		}
-
+		if (states.top()->getTerminarState())
+		{
+			delete states.top();
+			states.pop();
+		}
 		if (states.top()->getSair())
 		{
 			sair = true;
