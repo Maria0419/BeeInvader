@@ -6,11 +6,9 @@ class Menu:public Ente
 {
 protected:
     Background background;
-    sf::Text texto;
+    std::vector<sf::Text> texto;
     sf::Font* fonte;
     std::map<std::string, Button*> buttons;
-
-   // virtual void initButtons() = 0;
 
 public:
     Menu(const char* file);

@@ -10,7 +10,6 @@ Menu::Menu(const char* file):
 
 Menu::~Menu()
 {
-	
 }
 
 void Menu::deletarButtons()
@@ -33,5 +32,9 @@ void Menu::renderButtons()
 
 void Menu::renderText()
 {
-	renderTexto(texto);
+	for (auto it : texto)
+	{
+		renderTexto(it);
+	}
+	
 }

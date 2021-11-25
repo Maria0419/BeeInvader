@@ -7,13 +7,13 @@ void GameWinState::initText()
 	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
 
-	texto.setFont(*fonte);
-	texto.setString("VITORIA");
-	texto.setFillColor(sf::Color::Yellow);
-	texto.setOutlineColor(sf::Color::Black);
-	texto.setOutlineThickness(3.f);
-	texto.setCharacterSize(134);
-	texto.setPosition(450.f, 50.f);
+	texto[0].setFont(*fonte);
+	texto[0].setString("VITORIA");
+	texto[0].setFillColor(sf::Color::Yellow);
+	texto[0].setOutlineColor(sf::Color::Black);
+	texto[0].setOutlineThickness(3.f);
+	texto[0].setCharacterSize(134);
+	texto[0].setPosition(450.f, 50.f);
 }
 
 void GameWinState::initButtons()
