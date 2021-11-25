@@ -1,9 +1,8 @@
 #pragma once
 #include "stdafx.h"
 #include "GraphicManager.h"
-#include "State.h"
-#include "NomeState.h"
-
+class NomeState;
+class State;
 class EventManager
 {
 private:

@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "EventManager.h"
+#include "NomeState.h"
+#include "State.h"
 
 EventManager::EventManager():
 	ev(),

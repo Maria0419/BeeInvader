@@ -6,6 +6,9 @@ void GameOverState::initText()
 	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
 
+	sf::Text gameOver;
+	texto.push_back(gameOver);
+
 	texto[0].setFont(*fonte);
 	texto[0].setString("GAME OVER");
 	texto[0].setFillColor(sf::Color::Yellow);

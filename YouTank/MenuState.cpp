@@ -7,6 +7,8 @@ void MenuState::initText()
 	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
 
+	sf::Text titulo;
+	texto.push_back(titulo);
 	texto[0].setFont(*fonte);
 	texto[0].setString("BEEINVADER");
 	texto[0].setFillColor(sf::Color::Yellow);

@@ -6,6 +6,11 @@ void NomeState::initText()
 	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
 
+	sf::Text cabecalho;
+	texto.push_back(cabecalho);
+	sf::Text nome;
+	texto.push_back(nome);
+
 	for (auto it : texto)
 	{
 		it.setFont(*fonte);
@@ -13,10 +18,11 @@ void NomeState::initText()
 		it.setOutlineThickness(3.f);
 	}
 	
-	texto[0].setString("Insira seu nome: ");
+	texto[0].setString("Insira seu nome:");
 	texto[0].setFillColor(sf::Color::Yellow);
 	texto[0].setCharacterSize(124);
 	texto[0].setPosition(340.f, 80.f);
+	
 	
 	texto[1].setFillColor(sf::Color::White);
 	texto[1].setCharacterSize(84);
@@ -75,14 +81,14 @@ void NomeState::retiraLetra(char letra)
 	std::string nome = texto[1].getString();
 	if (nome != "")
 		nome.pop_back();
-	texto.setString(nome);
+	texto[1].setString(nome);
 }
 
 void NomeState::incluaLetra(char letra)
 {
 	std::string nome = texto[1].getString();
 	nome += letra;
-	texto.setString(nome);
+	texto[1].setString(nome);
 }
 
 void NomeState::render()

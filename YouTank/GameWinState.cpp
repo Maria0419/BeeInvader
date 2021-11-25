@@ -7,6 +7,8 @@ void GameWinState::initText()
 	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
 
+	sf::Text gameWin;
+	texto.push_back(gameWin);
 	texto[0].setFont(*fonte);
 	texto[0].setString("VITORIA");
 	texto[0].setFillColor(sf::Color::Yellow);
