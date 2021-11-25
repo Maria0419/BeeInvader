@@ -10,6 +10,7 @@
 #include <list>
 #include <stack>
 #include <map>
+#include <algorithm>
 #include <sstream>
 #include <fstream>
 

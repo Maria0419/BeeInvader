@@ -8,8 +8,8 @@ void RankingState::initText()
 	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
 
-	sf::Text pontos;
-	texto.push_back(pontos);
+	sf::Text ranking;
+	texto.push_back(ranking);
 	texto[0].setFont(*fonte);
 	texto[0].setString("RANKING\n");
 	texto[0].setFillColor(sf::Color::Yellow);
@@ -26,24 +26,29 @@ void RankingState::initText()
 		return;
 	}
 	int i = 1;
-	while (!recuperaPontos.eof())
+	while (!recuperaPontos.eof() && i<=6)
 	{
-		
-		std::string pontuacao;
-		recuperaPontos >> pontuacao;
-		if (pontuacao != "\n")
+		std::string nome;
+		int pontos;
+		recuperaPontos >> nome >> pontos;
+		std::stringstream ss;
+		ss << nome << ' ' << pontos;
+
+		if (nome != "")
 		{
 			sf::Text pts;
 			texto.push_back(pts);
 			texto[i].setFont(*fonte);
-			texto[i].setString(pontuacao);
+			texto[i].setString(ss.str());
 			texto[i].setFillColor(sf::Color::White);
 			texto[i].setOutlineColor(sf::Color::Black);
 			texto[i].setOutlineThickness(3.f);
-			texto[i].setCharacterSize(98);
-			texto[i].setPosition(600.f, 60.f * i);
+			texto[i].setCharacterSize(68);
+			texto[i].setPosition(550.f, 100 + 60.f * i);
+
+			i++;
 		}
-		i++;
+		
 	}
 	recuperaPontos.close();
 }

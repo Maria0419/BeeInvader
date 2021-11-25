@@ -51,6 +51,53 @@ const short GameWinState::getState()
 	return stateID;
 }
 
+void GameWinState::recuperarPontuacao()
+{
+	std::ifstream recuperaPontos("ranking.txt", std::ios::in);
+	if (!recuperaPontos)
+	{
+		std::cout << "erro ao abrir arquivo de ranking" << std::endl;
+		fflush(stdin);
+		return;
+	}
+
+	while (!recuperaPontos.eof())
+	{
+
+		std::string nome;
+		int pnts;
+		recuperaPontos >> nome >> pnts;
+		if (nome != "")
+		{
+			ranking.insert(std::multimap<int, std::string,  std::greater<int>>::value_type(pnts, nome));
+		}
+	}
+	recuperaPontos.close();
+}
+
+void GameWinState::salvarPontuacao()
+{
+	ranking.insert(std::multimap<int, std::string, std::greater<int>>::value_type(pontuacao, nomeJ));
+
+	std::ofstream pontosFile("ranking.txt", std::ios::out);
+	if (!pontosFile)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}	
+	pontosFile.clear();
+	std::multimap<int, std::string, std::greater<int>>::iterator it;
+	for (it = ranking.begin(); it != ranking.end(); ++it)
+	{
+		pontosFile << it->second << ' ' << it->first << std::endl;
+	}
+
+	buttons["SALVAR_PONTOS"]->setText("SALVO");
+
+	pontosFile.close();
+}
+
 void GameWinState::updateButtons()
 {
 	for (auto& it : buttons)
@@ -70,16 +117,8 @@ void GameWinState::updateButtons()
 	}
 	if (buttons["SALVAR_PONTOS"]->estaPressionado())
 	{
-		std::ofstream pontos("ranking.txt", std::ios::app);
-		if (!pontos)
-		{
-			std::cout << "arquivo não pode ser aberto" << std::endl;
-			fflush(stdin);
-			return;
-		}
-		std::string pt = std::to_string(pontuacao);
-		pontos << nomeJ << "-" << pt << std::endl;
-		buttons["SALVAR_PONTOS"]->setText("SALVO");
+		recuperarPontuacao();
+		salvarPontuacao();
 	}
 	if (buttons["VOLTAR_MENU"]->estaPressionado())
 	{

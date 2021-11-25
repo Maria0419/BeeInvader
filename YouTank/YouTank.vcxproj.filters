@@ -195,13 +195,13 @@
     <ClCompile Include="FavoMel.cpp">
       <Filter>Arquivos de Origem\Entidades\Obstaculos</Filter>
     </ClCompile>
+    <ClCompile Include="RankingState.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
     <ClCompile Include="Jogador.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="NomeState.cpp">
-      <Filter>Arquivos de Origem\States</Filter>
-    </ClCompile>
-    <ClCompile Include="RankingState.cpp">
       <Filter>Arquivos de Origem\States</Filter>
     </ClCompile>
   </ItemGroup>
@@ -339,7 +339,7 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="NomeState.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

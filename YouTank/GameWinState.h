@@ -11,6 +11,7 @@ private:
 	bool prox_fase;
 	bool multiplayer;
 	int pontuacao;
+	std::multimap<int, std::string, std::greater<int>> ranking;
 
 	void initText();
 	void initButtons();
@@ -19,6 +20,9 @@ public:
 	~GameWinState();
 
 	const short getState();
+
+	void recuperarPontuacao();
+	void salvarPontuacao();
 
 	void updateButtons();
 	void updateInput();
