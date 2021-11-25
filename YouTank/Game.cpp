@@ -49,18 +49,20 @@ void Game::run()
 void Game::update()
 {
 	updatePollEvents();
-	
 
 	if (!states.empty())
 	{
 		states.top()->update();
 		
+		//Caso estiver na janela do Pause e quer voltar a jogar
 		if (states.top()->getState() == PAUSE_STATE && states.top()->getPause() == false)
 		{
 			delete states.top();
 			states.pop();
 			states.top()->setPause(false);
 		}
+
+		//caso deseja ir ao menu
 		if (states.top()->getGoToMenu() == true)
 		{
 			while (states.top()->getState() != MENU_STATE)
@@ -69,7 +71,9 @@ void Game::update()
 				states.pop();
 			}
 		}
-		if (states.top()->getTerminarState())
+
+		//após ter inserido o nome, continuar para o jogo
+		if (states.top()->getState() == NOME_STATE && states.top()->getTerminarState())
 		{
 			sf::String nome = states.top()->getNome();
 			delete states.top();
@@ -78,6 +82,8 @@ void Game::update()
 				states.top()->setNome(nome);
 
 		}
+
+		//fechar o jogo
 		if (states.top()->getSair())
 		{
 			sair = true;

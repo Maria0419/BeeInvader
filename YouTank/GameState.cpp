@@ -109,6 +109,11 @@ void GameState::setNome(std::string nome)
 	nomeJ = nome;
 }
 
+void GameState::setPontos(int pontos)
+{
+	jogador1->setPontos(pontos);
+}
+
 
 const short GameState::getState()
 {

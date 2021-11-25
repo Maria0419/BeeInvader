@@ -37,6 +37,7 @@ public:
 
     void setPause(bool p);
     void setNome(std::string nome);
+    void setPontos(int pontos);
     const short getState();
     const bool getPause() const;
 

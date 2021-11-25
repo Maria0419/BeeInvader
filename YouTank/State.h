@@ -22,6 +22,7 @@ protected:
 	bool gameWin;
 	bool goToMenu;
 	bool salvarPontos;
+	bool salvarFase;
 
 
 public:
@@ -30,6 +31,7 @@ public:
 
 	virtual void setPause(bool p);
 	virtual void setNome(std::string nome);
+	virtual void setPontos(int i);
 
 	const bool getSair() const;
 	virtual const short getState() = 0;
@@ -38,6 +40,7 @@ public:
 	virtual const bool getGameWin() const;
 	virtual const bool getGoToMenu() const;
 	virtual const bool getTerminarState() const;
+	virtual const bool getSalvarPontos() const;
 	virtual const std::string getNome() const;
 
 

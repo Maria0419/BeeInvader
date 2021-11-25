@@ -6,6 +6,7 @@ Entidade::Entidade(int hp, int dmg, int i) :
 	rapidez(1.f),
 	dano(dmg),
 	vida(hp),
+	pontos(0),
 	podeMatar(true),
 	olhaEsquerda(false)
 {
@@ -20,6 +21,7 @@ Entidade::Entidade(int i):
 	Ente(i),
 	rapidez(5.f),
 	dano(0),
+	pontos(0),
 	vida(0),
 	vidaMAX(0),
 	podeMatar(true),

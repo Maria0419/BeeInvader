@@ -8,6 +8,8 @@ State::State(std::stack<State*>* state, InputManager* pIM, short id) :
 	gameWin(false),
 	goToMenu(false),
 	terminarState(false),
+	salvarPontos(false),
+	salvarFase(false),
 	stateID(id),
 	pInput(pIM)
 {
@@ -26,6 +28,10 @@ void State::setPause(bool p)
 void State::setNome(std::string nome)
 {
 	nomeJ = nome;
+}
+
+void State::setPontos(int i)
+{
 }
 
 const bool State::getSair() const
@@ -56,6 +62,11 @@ const bool State::getGoToMenu() const
 const bool State::getTerminarState() const
 {
 	return terminarState;
+}
+
+const bool State::getSalvarPontos() const
+{
+	return salvarPontos;
 }
 
 const std::string State::getNome() const

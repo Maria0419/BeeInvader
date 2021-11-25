@@ -46,7 +46,7 @@ void PauseState::updateButtons()
 	}
 	if (buttons["SALVAR"]->estaPressionado())
 	{
-		pause = false;
+		salvarFase = true;
 	}
 	if (buttons["VOLTAR_MENU"]->estaPressionado())
 	{

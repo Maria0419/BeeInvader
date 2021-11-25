@@ -23,7 +23,9 @@ public:
     void update();
 
     void operator+=(int i);
-    void gravar();
+    void salvar();
+    void recuperar();
    
+    void setPontos(int pnts);
 };
 

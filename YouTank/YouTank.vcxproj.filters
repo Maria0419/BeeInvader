@@ -189,20 +189,20 @@
     <ClCompile Include="GameWinState.cpp">
       <Filter>Arquivos de Origem\States</Filter>
     </ClCompile>
-    <ClCompile Include="PoteMel.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
     <ClCompile Include="FavoMel.cpp">
       <Filter>Arquivos de Origem\Entidades\Obstaculos</Filter>
     </ClCompile>
-    <ClCompile Include="RankingState.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Jogador.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
     <ClCompile Include="NomeState.cpp">
       <Filter>Arquivos de Origem\States</Filter>
+    </ClCompile>
+    <ClCompile Include="RankingState.cpp">
+      <Filter>Arquivos de Origem\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Jogador.cpp">
+      <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="PoteMel.cpp">
+      <Filter>Arquivos de Origem\Entidades</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

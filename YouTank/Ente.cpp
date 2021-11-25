@@ -106,6 +106,14 @@ bool Ente::intersecta(Ente* pE)
 		return false;
 }
 
+void Ente::salvar()
+{
+}
+
+void Ente::recuperar()
+{
+}
+
 void Ente::setGraphicManager(GraphicManager* pGM)
 {
 	pGraphic = pGM;

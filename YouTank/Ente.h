@@ -44,6 +44,9 @@ public:
 	bool contem(float x, float y);
 	bool intersecta( Ente* pE);
 
+	virtual void salvar();
+	virtual void recuperar();
+
 	//setters
 	
 	static void setGraphicManager(GraphicManager* pGM);

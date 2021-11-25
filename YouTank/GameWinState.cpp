@@ -28,7 +28,7 @@ void GameWinState::initButtons()
 	buttons["SAIR"] = new Button(450, "Sair");
 }
 
-GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM,std::string nome, int pontos, bool prox_f, bool mp) :
+GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM, std::string nome, int pontos, bool prox_f, bool mp) :
 	State(state, pIM, GWIN_STATE),
 	Menu("Imagens/treeForest.jpg")
 {
@@ -44,6 +44,7 @@ GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM,std::str
 GameWinState::~GameWinState()
 {
 	deletarButtons();
+	ranking.clear();
 }
 
 const short GameWinState::getState()
@@ -109,9 +110,19 @@ void GameWinState::updateButtons()
 		if (buttons["PROX_FASE"]->estaPressionado())
 		{
 			if (multiplayer == true)
+			{
 				states->push(new GameState(states, pInput, 2, true));
+				states->top()->setNome(nomeJ);
+				states->top()->setPontos(pontuacao);
+			}
+
 			else
+			{
 				states->push(new GameState(states, pInput, 2, false));
+				states->top()->setNome(nomeJ);
+				states->top()->setPontos(pontuacao);
+			}
+				
 
 		}
 	}
