@@ -3,7 +3,6 @@
 
 Personagem::Personagem(int hp, int dmg, int i) :
 	Entidade(hp, dmg, i),
-	pontos(0),
 	alturaPulo(3.f),
 	podePular(false),
 	cooldownAtaque(0.f),

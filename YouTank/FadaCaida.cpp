@@ -20,6 +20,7 @@ FadaCaida::FadaCaida():
 	colisaoBot = false;
 	cooldownAtaque = 0.f;
 	quantosPoteMel = 0;
+	pontos = 0;
 	initShape();
 }
 
@@ -51,4 +52,9 @@ void FadaCaida::update()
 	updateAnimacao();
 	updateTaVivo();
 	barraVida.update();
+}
+
+void FadaCaida::operator+=(int i)
+{
+	pontos += i;
 }

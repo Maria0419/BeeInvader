@@ -4,9 +4,6 @@ class Personagem :
     public Entidade
 {
 protected:
-    
-    int pontos;
-
     //Pulo
     bool podePular;
     float alturaPulo;

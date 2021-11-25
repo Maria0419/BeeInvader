@@ -17,8 +17,20 @@ void EventManager::pollEvents()
 {
 	while (pGraphic->getWindow()->pollEvent(ev))
 	{
-		if (ev.Event::type == sf::Event::Closed)
+		switch (ev.Event::type)
+		{
+		case sf::Event::Closed:
+		{
 			pGraphic->close();
+		}
+		break;
+		case (sf::Event::TextEntered):
+		{
+			
+		}
+			
+		}
+		
 	}
 }
 

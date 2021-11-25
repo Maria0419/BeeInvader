@@ -5,7 +5,7 @@
 Cogumelo::Cogumelo():
 	Inimigo(100,10, ID_COGUMELO)
 {
-	pontos = 5;
+	pontos = 3;
 	setTexture("Imagens/mushroom.png");
 	setSize(50.f, 55.f);
 	setOriginCenter();

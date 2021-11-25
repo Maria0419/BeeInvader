@@ -25,7 +25,7 @@ Fase::Fase():
 
 Fase::~Fase()
 {
-	//pCurandeira = NULL;
+	pCurandeira = NULL;
 
 	listaEntidades.limpaLista();
 }
@@ -202,6 +202,8 @@ void Fase::updateColisoes()
 			{
 				if (!pFadaCaida->getColisaoBot())
 					pFadaCaida->tomarDano(5);
+				else
+					pFadaCaida->operator+=(listaEntidades.operator[](i)->getPontos());
 				listaEntidades.operator[](i)->setShowing(false);
 				contaCogu--;
 			}
@@ -211,6 +213,8 @@ void Fase::updateColisoes()
 				{
 					if (!pCurandeira->getColisaoBot())
 						pCurandeira->tomarDano(5);
+					else
+						pFadaCaida->operator+=(listaEntidades.operator[](i)->getPontos());
 					listaEntidades.operator[](i)->setShowing(false);
 					contaCogu--;
 				}
@@ -266,6 +270,7 @@ void Fase::updateCombate()
 					{
 						listaEntidades.operator[](j)->setShowing(false);
 						listaEntidades.operator[](i)->setShowing(false);
+						pFadaCaida->operator+=(listaEntidades.operator[](j)->getPontos());
 						contaAbelhas--;
 						colidiu = true;
 					}
@@ -276,6 +281,7 @@ void Fase::updateCombate()
 					{
 						listaEntidades.operator[](j)->setShowing(false);
 						listaEntidades.operator[](i)->setShowing(false);
+						pFadaCaida->operator+=(listaEntidades.operator[](j)->getPontos());
 						contaCogu--;
 						colidiu = true;
 					}

@@ -10,6 +10,7 @@
 #include <list>
 #include <stack>
 #include <map>
+#include <sstream>
 
 
 #include <SFML/Graphics.hpp>

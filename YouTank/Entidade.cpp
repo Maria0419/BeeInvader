@@ -121,6 +121,11 @@ const bool Entidade::getPodeMatar() const
 	return podeMatar;
 }
 
+const int Entidade::getPontos() const
+{
+	return pontos;
+}
+
 void Entidade::persegue(float x_jogador, float y_jogador)
 {
 }
@@ -150,6 +155,10 @@ void Entidade::movePlataforma()
 }
 
 void Entidade::naColisao()
+{
+}
+
+void Entidade::operator+=(int i)
 {
 }
 

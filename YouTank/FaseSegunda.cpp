@@ -125,7 +125,7 @@ void FaseSegunda::update()
 	updateMovimento();
 	updateCombate();
 	updateBoss();
-
+	std::cout << "pontos: " << pFadaCaida->getPontos() << std::endl;
 	pFadaCaida->update();
 
 	if(pCurandeira!=NULL)
@@ -171,7 +171,11 @@ void FaseSegunda::setFadaCaida(FadaCaida* pJ)
 const bool FaseSegunda::getTerminou() const
 {
 	if (abelha_rainha.getVida() <= 0)
+	{
+		pFadaCaida->operator+=(abelha_rainha.getPontos());
 		return true;
+	}
+		
 
 	else
 		return false;

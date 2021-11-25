@@ -10,7 +10,6 @@ private:
     Orbe* pOrbe;
     bool colisaoBot;
     int quantosPoteMel;
-
     //private functions
     void initShape();
 
@@ -22,6 +21,8 @@ public:
     void coletouPoteMel();
     const int getPoteMel() const;
     void update();
+
+    void operator+=(int i);
    
 };
 

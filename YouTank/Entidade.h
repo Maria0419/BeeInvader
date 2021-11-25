@@ -13,7 +13,9 @@ protected:
     bool podeMatar;
     bool olhaEsquerda;
 
+    int pontos;
     //vida e dano
+
     int dano;
     int vida;
     int vidaMAX;
@@ -51,6 +53,8 @@ public:
     virtual void setPodeMatar(bool x);
     virtual const bool getPodeMatar() const;
 
+    const int getPontos() const;
+
     virtual void persegue(float x_jogador, float y_jogador);
     virtual void updateOrbe();
     virtual void updateOrbeCura();
@@ -60,5 +64,7 @@ public:
 
     virtual void movePlataforma();
     virtual void naColisao();
+
+    virtual void operator+=(int i);
 };
 
