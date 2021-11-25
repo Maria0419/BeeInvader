@@ -62,6 +62,21 @@ void NomeState::update()
 	updateButtons();
 }
 
+void NomeState::retiraLetra(char letra)
+{
+	std::string nome = texto[1].getString();
+	if (nome != "")
+		nome.pop_back();
+	texto.setString(nome);
+}
+
+void NomeState::incluaLetra(char letra)
+{
+	std::string nome = texto[1].getString();
+	nome += letra;
+	texto.setString(nome);
+}
+
 void NomeState::render()
 {
 	background.render();

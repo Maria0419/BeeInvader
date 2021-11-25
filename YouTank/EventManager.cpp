@@ -13,7 +13,7 @@ EventManager::~EventManager()
 	pGraphic = NULL;
 }
 
-void EventManager::pollEvents()
+void EventManager::pollEvents(State* pState)
 {
 	while (pGraphic->getWindow()->pollEvent(ev))
 	{
@@ -26,7 +26,15 @@ void EventManager::pollEvents()
 		break;
 		case (sf::Event::TextEntered):
 		{
-			
+			if (pState->getState() == NOME_STATE && ev.text.unicode <= 128)
+			{
+				NomeState* nState = static_cast<NomeState*>(pState);
+				char tecla = static_cast<char> (ev.text.unicode);
+				if (tecla == '\b')
+					nState->retiraLetra(tecla);
+				else
+					nState->incluaLetra(tecla);
+			}
 		}
 			
 		}

@@ -100,7 +100,7 @@ void Game::render()
 
 void Game::updatePollEvents()
 {
-	eventManager.pollEvents();
+	eventManager.pollEvents(states.top());
 	
 }
 

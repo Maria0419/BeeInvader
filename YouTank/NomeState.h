@@ -18,6 +18,8 @@ public:
 	void updateButtons();
 	void updateInput();
 	void update();
+	void retiraLetra(char letra);
+	void incluaLetra(char letra);
 
 	void render();
 };
