@@ -23,6 +23,10 @@ void State::setPause(bool p)
 	pause = p;
 }
 
+void State::setNome(std::string nome)
+{
+}
+
 const bool State::getSair() const
 {
 	return sair;
@@ -51,6 +55,11 @@ const bool State::getGoToMenu() const
 const bool State::getTerminarState() const
 {
 	return terminarState;
+}
+
+const std::string State::getNome() const
+{
+	return std::string();
 }
 
 void State::verificarPause()

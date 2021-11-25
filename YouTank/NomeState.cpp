@@ -11,22 +11,20 @@ void NomeState::initText()
 	sf::Text nome;
 	texto.push_back(nome);
 
-	for (auto it : texto)
-	{
-		it.setFont(*fonte);
-		it.setOutlineColor(sf::Color::Black);
-		it.setOutlineThickness(3.f);
-	}
-	
+	texto[0].setFont(*fonte);
+	texto[0].setOutlineColor(sf::Color::Black);
+	texto[0].setOutlineThickness(3.f);
 	texto[0].setString("Insira seu nome:");
 	texto[0].setFillColor(sf::Color::Yellow);
 	texto[0].setCharacterSize(124);
 	texto[0].setPosition(340.f, 80.f);
 	
-	
+	texto[1].setFont(*fonte);
 	texto[1].setFillColor(sf::Color::White);
 	texto[1].setCharacterSize(84);
-	texto[1].setPosition(340.f, 400.f);
+	texto[1].setPosition(500.f, 300.f);
+	texto[1].setOutlineColor(sf::Color::Black);
+	texto[1].setOutlineThickness(3.f);
 }
 
 void NomeState::initButtons()
@@ -50,6 +48,11 @@ NomeState::~NomeState()
 const short NomeState::getState()
 {
 	return stateID;
+}
+
+const std::string NomeState::getNome() const
+{
+	return texto[1].getString();
 }
 
 void NomeState::updateButtons()

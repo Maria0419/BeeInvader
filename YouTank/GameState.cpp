@@ -104,6 +104,11 @@ void GameState::setPause(bool p)
 	pause = p;
 }
 
+void GameState::setNome(std::string nome)
+{
+	std::cout << nome << std::endl;
+}
+
 const short GameState::getState()
 {
 	return stateID;

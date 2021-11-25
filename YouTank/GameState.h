@@ -35,6 +35,7 @@ public:
     ~GameState();
 
     void setPause(bool p);
+    void setNome(std::string nome);
     const short getState();
     const bool getPause() const;
 

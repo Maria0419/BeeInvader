@@ -70,9 +70,13 @@ void Game::update()
 			}
 		}
 		if (states.top()->getTerminarState())
-		{
+		{//tdo
+			std::string nome = states.top()->getNome();
+
 			delete states.top();
 			states.pop();
+			states.top()->setNome(nome);
+
 		}
 		if (states.top()->getSair())
 		{

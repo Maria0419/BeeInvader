@@ -14,6 +14,7 @@ public:
 	~NomeState();
 
 	const short getState();
+	const std::string getNome() const;
 
 	void updateButtons();
 	void updateInput();

@@ -13,7 +13,7 @@ protected:
 
 	short stateID;
 
-	bool terminarState;
+	bool terminarState; //continuar
 	bool sair;
 	bool pause;
 	bool gameOver;
@@ -26,6 +26,7 @@ public:
 	virtual ~State();
 
 	virtual void setPause(bool p);
+	virtual void setNome(std::string nome);
 
 	const bool getSair() const;
 	virtual const short getState() = 0;
@@ -34,6 +35,8 @@ public:
 	virtual const bool getGameWin() const;
 	virtual const bool getGoToMenu() const;
 	virtual const bool getTerminarState() const;
+	virtual const std::string getNome() const;
+
 
 	virtual void verificarPause();
 	virtual void verificarGoToMenu();
