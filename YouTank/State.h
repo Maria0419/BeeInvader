@@ -2,7 +2,7 @@
 #include "GraphicManager.h"
 #include "InputManager.h"
 
-enum qual_state {STATE = 0, MENU_STATE, GAME_STATE, PAUSE_STATE, GOVER_STATE, GWIN_STATE, RANKING_STATE};
+enum qual_state {STATE = 0, MENU_STATE, GAME_STATE, PAUSE_STATE, GOVER_STATE, GWIN_STATE, NOME_STATE, RANKING_STATE};
 
 class State
 {
@@ -13,6 +13,7 @@ protected:
 
 	short stateID;
 
+	bool terminarState;
 	bool sair;
 	bool pause;
 	bool gameOver;
@@ -32,6 +33,7 @@ public:
 	virtual const bool getGameOver() const;
 	virtual const bool getGameWin() const;
 	virtual const bool getGoToMenu() const;
+	virtual const bool getTerminarState() const;
 
 	virtual void verificarPause();
 	virtual void verificarGoToMenu();

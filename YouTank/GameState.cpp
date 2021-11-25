@@ -8,6 +8,7 @@ void GameState::runFase()
 
 	switch (fase)
 	{
+	case 12:
 	case 1:
 		fasePrimeira = new FasePrimeira();
 		fasePrimeira->setFadaCaida(jogador1);
@@ -82,6 +83,7 @@ GameState::~GameState()
 
 	switch (fase)
 	{
+	case 12:
 	case 1:
 		delete fasePrimeira;
 		
@@ -134,7 +136,7 @@ void GameState::verificarGameWin()
 {
 	switch (fase)
 	{
-	case 1:
+	case 12:
 		if (fasePrimeira->getTerminou())
 		{
 			if(multiplayer)
@@ -143,6 +145,10 @@ void GameState::verificarGameWin()
 				states->push(new GameWinState(states, pInput, true, false));
 		}
 			
+		break;
+	case 1:
+		if (fasePrimeira->getTerminou())
+			gameWin = true;
 		break;
 
 	case 2:
@@ -196,6 +202,7 @@ void GameState::update()
 	updateInput();
 	switch (fase)
 	{
+	case 12:
 	case 1:
 		fasePrimeira->update();
 		break;
@@ -215,6 +222,7 @@ void GameState::render()
 {
 	switch (fase)
 	{
+	case 12:
 	case 1:
 		fasePrimeira->renderFasePrimeira();
 		break;

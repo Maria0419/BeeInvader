@@ -13,18 +13,19 @@ void MenuState::initText()
 	texto.setOutlineColor(sf::Color::Black);
 	texto.setOutlineThickness(3.f);
 	texto.setCharacterSize(134);
-	texto.setPosition(370.f, 30.f);
+	texto.setPosition(370.f, 0.f);
 
 }
 
 void MenuState::initButtons()
 {
-	buttons["NOVO_JOGO"] = new Button(200, "Novo Jogo");
-	buttons["FASE_1"] = new Button(275, "Primeira Fase");
-	buttons["FASE_2"] = new Button(350, "Segunda Fase");
-	buttons["MULTIPLAYER"] = new Button(425, "Multiplayer");
-	buttons["RANKING"] = new Button(500, "Ranking");
-	buttons["SAIR"] = new Button(575, "Sair");
+	buttons["NOVO_JOGO"] = new Button(175, "Novo Jogo");
+	buttons["CONTINUAR_JOGO"] = new Button(250, "Continuar Jogo");
+	buttons["FASE_1"] = new Button(325, "Primeira Fase");
+	buttons["FASE_2"] = new Button(400, "Segunda Fase");
+	buttons["MULTIPLAYER"] = new Button(475, "Multiplayer");
+	buttons["RANKING"] = new Button(550, "Ranking");
+	buttons["SAIR"] = new Button(625, "Sair");
 }
 
 MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
@@ -54,19 +55,28 @@ void MenuState::updateButtons()
 
 	if (buttons["NOVO_JOGO"]->estaPressionado())
 	{
-		states->push(new GameState(states, pInput, 1));
+		states->push(new GameState(states, pInput, 12));
+		states->push(new NomeState(states, pInput));
+		
+	}
+	if (buttons["CONTINUAR_JOGO"]->estaPressionado())
+	{
+
 	}
 	else if (buttons["FASE_1"]->estaPressionado())
 	{
 		states->push(new GameState(states, pInput, 1));
+		states->push(new NomeState(states, pInput));
 	}
 	else if (buttons["FASE_2"]->estaPressionado())
 	{
 		states->push(new GameState(states, pInput, 2));
+		states->push(new NomeState(states, pInput));
 	}
 	else if (buttons["MULTIPLAYER"]->estaPressionado())
 	{
 		states->push(new GameState(states, pInput, 1, true));
+		states->push(new NomeState(states, pInput));
 	}
 	else if (buttons["RANKING"]->estaPressionado())
 	{

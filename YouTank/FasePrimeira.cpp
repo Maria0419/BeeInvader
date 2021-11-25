@@ -179,7 +179,7 @@ void FasePrimeira::renderFasePrimeira()
 
 const bool FasePrimeira::getTerminou() const
 {
-	if (pFadaCaida->getPoteMel() >= 15)
+	if (pFadaCaida->getPoteMel() >= 1)
 		return true;
 	else
 		return false;
