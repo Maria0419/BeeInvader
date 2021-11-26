@@ -1,28 +1,33 @@
 #pragma once
 #include "Fase.h"
-class FasePrimeira :
-    public Fase
-{
-private:
-    unsigned int contaPoteMel;
+using namespace Fases;
 
-public:
-    FasePrimeira();
-    ~FasePrimeira();
+namespace Fases {
 
-    //Funçoes
-    void criarPlataforma();
-    void criarObstaculos();
-    void criarPoteMel();
-    void updateFasePrimeira();
-    void update();
+    class FasePrimeira :
+        public Fase
+    {
+    private:
+        unsigned int contaPoteMel;
 
-    void renderFasePrimeira();
-    void salvar();
+    public:
+        FasePrimeira();
+        ~FasePrimeira();
 
-    void recuperar();
-    
+        //Funçoes
+        void criarPlataforma();
+        void criarObstaculos();
+        void criarPoteMel();
+        void updateFasePrimeira();
+        void update();
 
-    const bool getTerminou() const;
-};
+        void renderFasePrimeira();
+        void salvar();
 
+        void recuperar();
+
+
+        const bool getTerminou() const;
+    };
+
+}

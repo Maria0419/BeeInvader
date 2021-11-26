@@ -5,6 +5,7 @@
 #include "FadaCaida.h"
 #include "Curandeira.h"
 #include "Fase.h"
+using namespace Fases;
 
 class InputManager
 {

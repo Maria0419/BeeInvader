@@ -1,6 +1,10 @@
 #pragma once
 #include "Fase.h"
+using namespace Fases;
 #include "AbelhaRainha.h"
+
+namespace Fases {
+
 
 class FaseSegunda :
     public Fase
@@ -26,3 +30,4 @@ public:
     const bool getTerminou() const;
 };
 
+}

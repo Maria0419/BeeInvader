@@ -15,6 +15,8 @@
 #include "FavoMel.h"
 #include "PoteMel.h"
 
+namespace Fases {
+
 class Fase :
     public Ente
 {
@@ -68,3 +70,4 @@ public:
     void reiniciarArquivos();
 };
 
+}

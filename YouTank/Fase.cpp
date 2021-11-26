@@ -1,6 +1,9 @@
 #include "stdafx.h"
-#include "Fase.h"
 #include "Global.h"
+
+#include "Fase.h"
+using namespace Fases;
+
 
 void Fase::initInimigo()
 {

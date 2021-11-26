@@ -9,7 +9,7 @@
 
 #include "FadaCaida.h"
 #include "Fase.h"
-
+using namespace Fases;
 
 class Game
 {

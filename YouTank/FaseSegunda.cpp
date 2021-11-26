@@ -1,8 +1,6 @@
 #include "stdafx.h"
-#include "FaseSegunda.h"
 #include "Global.h"
-
-
+#include "FaseSegunda.h"
 
 FaseSegunda::FaseSegunda():
 	Fase()
