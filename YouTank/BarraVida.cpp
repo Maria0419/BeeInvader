@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "BarraVida.h"
+using namespace ElementosVisuais;
 
 BarraVida::BarraVida(Personagem* pP, float x, float y, float largura, float altura, int i)
 {

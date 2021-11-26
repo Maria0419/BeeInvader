@@ -1,7 +1,7 @@
 #pragma once
 #include "Jogador.h"
 #include "OrbeCura.h"
-#include "BarraVida.h"
+
 class Curandeira :
     public Jogador
 {

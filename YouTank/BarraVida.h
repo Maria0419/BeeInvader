@@ -1,6 +1,10 @@
 #pragma once
 #include "Ente.h"
 #include "Personagem.h"
+
+namespace ElementosVisuais
+{
+
 class BarraVida :
     public Ente
 {
@@ -14,4 +18,5 @@ public:
 
     void update();
 };
+}
 

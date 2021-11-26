@@ -1,6 +1,8 @@
 #pragma once
 #include "Personagem.h"
 #include "BarraVida.h"
+using namespace ElementosVisuais;
+
 class Jogador :
     public Personagem
 {

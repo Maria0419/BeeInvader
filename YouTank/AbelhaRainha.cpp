@@ -1,6 +1,7 @@
 #include "stdafx.h"
-#include "AbelhaRainha.h"
 #include "Global.h"
+#include "AbelhaRainha.h"
+using namespace ElementosVisuais;
 
 void AbelhaRainha::initTimers()
 {

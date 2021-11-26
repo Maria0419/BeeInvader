@@ -8,6 +8,7 @@
 #include "Ferrao.h"
 #include "Plataforma.h"
 #include "Background.h"
+using namespace ElementosVisuais;
 #include "Cogumelo.h"
 #include "Curandeira.h"
 #include "Espinhos.h"

@@ -1,7 +1,7 @@
 #pragma once
 #include "Jogador.h"
 #include "Orbe.h"
-#include "BarraVida.h"
+
 
 class FadaCaida :
     public Jogador
@@ -25,7 +25,8 @@ public:
     void operator+=(int i);
     void salvar();
     void recuperar();
-   
+
     void setPontos(int pnts);
 };
+
 

@@ -1,5 +1,7 @@
 #pragma once
 #include "Ente.h"
+namespace ElementosVisuais
+{
 
 class Background :
     public Ente
@@ -12,3 +14,4 @@ public:
     ~Background();
 };
 
+}

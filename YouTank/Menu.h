@@ -1,6 +1,7 @@
 #pragma once
 #include "Background.h"
 #include "Button.h"
+using namespace ElementosVisuais;
 
 class Menu:public Ente
 {

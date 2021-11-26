@@ -335,6 +335,9 @@
     <ClInclude Include="NomeState.h">
       <Filter>Arquivos de Cabeçalho\States</Filter>
     </ClInclude>
+    <ClInclude Include="PoteMel.h">
+      <Filter>Arquivos de Cabeçalho\Entidades</Filter>
+    </ClInclude>
     <ClInclude Include="Jogador.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
     </ClInclude>

@@ -1,6 +1,8 @@
 #include "stdafx.h"
-#include "Button.h"
 #include "Global.h"
+#include "Button.h"
+using namespace ElementosVisuais;
+
 
 bool Button::mouseHeld = false;
 

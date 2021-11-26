@@ -1,34 +1,36 @@
 #pragma once
 #include "Ente.h"
-
-enum estado_botao{BT_IDLE = 0, BT_EMCIMA, BT_PRESSIONADO};
-
-class Button :
-    public Ente
+namespace ElementosVisuais
 {
-private:
-    short unsigned estadoBotao;
-    static bool mouseHeld;
+    enum estado_botao { BT_IDLE = 0, BT_EMCIMA, BT_PRESSIONADO };
 
-    sf::Text texto;
-    sf::Font* fonte;
+    class Button :
+        public Ente
+    {
+    private:
+        short unsigned estadoBotao;
+        static bool mouseHeld;
 
-    //cores
-    unsigned int red, green, blue;
+        sf::Text texto;
+        sf::Font* fonte;
 
-    void initText(std::string text);
-    void initShape(float x, float y);
+        //cores
+        unsigned int red, green, blue;
 
-public:
-    Button(float y, std::string text);
-    ~Button();
+        void initText(std::string text);
+        void initShape(float x, float y);
 
-    //Gets
-    const bool estaPressionado() const;
+    public:
+        Button(float y, std::string text);
+        ~Button();
+
+        //Gets
+        const bool estaPressionado() const;
 
 
-    void update(const float posX, const float posY);
-    void setText(std::string novoTexto);
-    void renderText();
-};
+        void update(const float posX, const float posY);
+        void setText(std::string novoTexto);
+        void renderText();
+    };
 
+}
