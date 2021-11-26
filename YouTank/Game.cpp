@@ -59,7 +59,15 @@ void Game::update()
 		{
 			delete states.top();
 			states.pop();
-			states.top()->setPause(false);
+			states.top()->setPause(false); //ver se funciona sem
+		}
+		//Caso estiver na janela do Pause e quer salvar
+		if (states.top()->getState() == PAUSE_STATE && states.top()->getSalvarFase())
+		{
+			delete states.top();
+			states.pop();
+			states.top()->salvar();
+			states.push(new PauseState(&states, &inputManager));
 		}
 
 		//caso deseja ir ao menu

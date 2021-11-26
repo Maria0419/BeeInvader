@@ -63,7 +63,22 @@ void MenuState::updateButtons()
 	}
 	if (buttons["CONTINUAR_JOGO"]->estaPressionado())
 	{
+		std::ifstream recuperar("./Carregamentos/ConfiguracoesFase.txt", std::ios::in);
+		if (!recuperar)
+		{
+			std::cout << "arquivo não pode ser aberto" << std::endl;
+			fflush(stdin);
+			return;
+		}
+		std::string nome;
+		int fase;
+		bool multiPlayer;
+		recuperar >> nome >> fase >> multiPlayer;
+		recuperar.close();
 
+		states->push(new GameState(states, pInput, fase, multiPlayer));
+		states->top()->setNome(nome);
+		states->top()->recuperar();
 	}
 	else if (buttons["FASE_1"]->estaPressionado())
 	{

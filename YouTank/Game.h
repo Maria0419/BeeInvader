@@ -5,6 +5,7 @@
 #include "InputManager.h"
 
 #include "MenuState.h"
+#include "PauseState.h"
 
 #include "FadaCaida.h"
 #include "Fase.h"

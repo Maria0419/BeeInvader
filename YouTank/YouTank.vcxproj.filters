@@ -320,9 +320,6 @@
     <ClInclude Include="FasePrimeira.h">
       <Filter>Arquivos de Cabeçalho\Fases</Filter>
     </ClInclude>
-    <ClInclude Include="PoteMel.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="GameWinState.h">
       <Filter>Arquivos de Cabeçalho\States</Filter>
     </ClInclude>
@@ -340,6 +337,9 @@
     </ClInclude>
     <ClInclude Include="NomeState.h">
       <Filter>Arquivos de Cabeçalho\States</Filter>
+    </ClInclude>
+    <ClInclude Include="PoteMel.h">
+      <Filter>Arquivos de Cabeçalho\Entidades</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

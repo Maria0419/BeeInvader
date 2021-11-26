@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "Entidade.h"
 
-Entidade::Entidade(int hp, int dmg, int i) :
+Entidade::Entidade(int hp, int dmg, int i, int pnts) :
 	Ente(i),
 	rapidez(1.f),
 	dano(dmg),
 	vida(hp),
-	pontos(0),
+	pontos(pnts),
 	podeMatar(true),
 	olhaEsquerda(false)
 {

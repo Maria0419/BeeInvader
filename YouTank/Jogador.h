@@ -9,7 +9,7 @@ protected:
     bool colisaoBot;
 
 public:
-    Jogador(int vida, int dano, int id, int barraVida_y, int player);
+    Jogador(int vida, int dano, int id, float barraVida_y, int player);
     ~Jogador();
     void setOlhaEsquerda(bool x);
     const bool olhandoEsquerda() const;

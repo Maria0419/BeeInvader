@@ -63,7 +63,7 @@ void FadaCaida::salvar()
 {
 	if (getShowing())
 	{
-		std::ofstream gravadorFada("./Carregamentos/fadaCaida.txt", std::ios::out);
+		std::ofstream gravadorFada("./Carregamentos/FadaCaida.txt", std::ios::out);
 		if (!gravadorFada)
 		{
 			std::cout << "arquivo não pode ser aberto" << std::endl;
@@ -77,9 +77,33 @@ void FadaCaida::salvar()
 			<< pontos << " "
 			<< velocidade.x << " "
 			<< velocidade.y << " "
-			<< vida << std::endl;
+			<< vida << " "
+			<< getPosition().x  << " "
+			<< getPosition().y << std::endl;
 		gravadorFada.close();
+		
 	}
+}
+
+void FadaCaida::recuperar()
+{
+	std::ifstream recuperarFada("./Carregamentos/FadaCaida.txt", std::ios::in);
+	if (!recuperarFada)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}
+	float pos_x, pos_y;
+	recuperarFada >> direcao.x >> direcao.y
+		>> podeAtacar 
+		>> podePular
+		>> pontos
+		>> velocidade.x >> velocidade.y
+		>> vida
+		>> pos_x >> pos_y;
+	recuperarFada.close();
+	setPosition(pos_x, pos_y);
 }
 
 void FadaCaida::setPontos(int pnts)

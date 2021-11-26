@@ -19,7 +19,7 @@ void AbelhaRainha::initShape()
 }
 
 AbelhaRainha::AbelhaRainha():
-	Inimigo(1000, 7, ID_RAINHA),
+	Inimigo(1000, 7, ID_RAINHA, 200),
 	pFerrao(NULL),
 	pFadaCaida(NULL),
 	pAbelha(NULL),
@@ -27,7 +27,6 @@ AbelhaRainha::AbelhaRainha():
 {
 	initShape();
 	initTimers();
-	pontos = 200;
 	anguloMAX =(float) (2*3.1415);
 	angulo = anguloMAX;
 	x = getPosition().x - 50.f;

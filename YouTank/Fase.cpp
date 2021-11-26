@@ -7,9 +7,8 @@ void Fase::initInimigo()
 	criarTimer = SPAWN_TIMER_MAX;
 	criarTimerMAX = SPAWN_TIMER_MAX;
 	contaAbelhas = 0;
-	abelhasMAX = rand()%10 + 5;
-	contaCogu = 0;
 	obstaculosMAX = rand() % 3 + 3;
+	contaCogu = 0;
 	contaPedras = 0;
 	contaObstaculos = 0;
 }
@@ -69,6 +68,8 @@ void Fase::criarAbelhas(int i)
 	/*	CRIA ABELHAS										    */
 	/*	Abelhas perseguem o jogador, dão dano ou pontos			*/
 	/*==========================================================*/
+
+	abelhasMAX = rand() % 10 + 5;
 
 	//timer
 	if (criarTimer < criarTimerMAX)
@@ -311,6 +312,7 @@ void Fase::updateInimigoPlataforma()
 		}
 	}
 }
+
 void Fase::setFadaCaida(FadaCaida* pJ)
 {
 	if (pJ)
@@ -329,4 +331,83 @@ void Fase::setCurandeira(Curandeira* pC)
 	else
 		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
 	
+}
+
+void Fase::recuperarAbelhas()
+{
+	std::ifstream recuperar("./Carregamentos/Abelha.txt", std::ios::in);
+	if (!recuperar)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}
+	float  posX, posY;
+	while (recuperar >> posX >> posY)
+	{
+		Abelha* pAux = new Abelha(posX, posY);
+		listaEntidades.incluaEntidade(pAux);
+		contaAbelhas++;
+	}
+	recuperar.close();
+}
+
+void Fase::recuperarCogumelos()
+{
+	std::ifstream recuperar("./Carregamentos/Cogumelo.txt", std::ios::in);
+	if (!recuperar)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}
+	float  velX, posX, posY;
+	while (recuperar >> velX >> posX >> posY)
+	{
+		Cogumelo* pAux = new Cogumelo(velX, posX, posY);
+		listaEntidades.incluaEntidade(pAux);
+		contaCogu++;
+	}
+	recuperar.close();
+}
+
+void Fase::recuperarPlataformas()
+{
+}
+
+void Fase::recuperarEspinhos()
+{
+}
+
+void Fase::recuperarProjetil()
+{
+}
+
+void Fase::reiniciarArquivos()
+{
+	std::ofstream limpar;
+	limpar.open("./Carregamentos/FadaCaida.txt", std::ios::out);
+	limpar.close();
+	limpar.open("./Carregamentos/Abelha.txt", std::ios::out);
+	limpar.close();
+	limpar.open("./Carregamentos/Cogumelo.txt", std::ios::out);
+	limpar.close();
+	//limpar.open("./Carregamentos/Curandeira.txt", std::ios::out);
+	//limpar.close();
+	//limpar.open("./Carregamentos/AbelhaRainha.txt", std::ios::out);
+	//limpar.close();
+	//limpar.open("./Carregamentos/Ferrao.txt", std::ios::out);
+	//limpar.close();
+	//limpar.open("./Carregamentos/Orbe.txt", std::ios::out);
+	//limpar.close();
+	//limpar.open("./Carregamentos/OrbeCura.txt", std::ios::out);
+	//limpar.close();
+	//limpar.open("./Carregamentos/Espinhos.txt", std::ios::out);
+	//limpar.close();
+	//limpar.open("./Carregamentos/FavoMel.txt", std::ios::out);
+	//limpar.close();
+	//limpar.open("./Carregamentos/Pedra.txt", std::ios::out);
+	//limpar.close();
+	//limpar.open("./Carregamentos/Plataforma.txt", std::ios::out);
+	//limpar.close();
 }
