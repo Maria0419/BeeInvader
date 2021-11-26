@@ -1,14 +1,59 @@
 #pragma once
 #include "stdafx.h"
-#include "Elemento.h"
 
-
-template<class TIPO>
+template<class TL>
 class Lista
 {
+	template<class TE>
+	class Elemento
+	{
+	private:
+		Elemento<TE>* pProximo;
+		Elemento<TE>* pAnterior;
+		TE* pInfo;
+
+	public:
+		Elemento() {
+			pProximo = NULL;
+			pAnterior = NULL;
+			pInfo = NULL;
+		}
+		~Elemento() {
+			pProximo = NULL;
+			pAnterior = NULL;
+			pInfo = NULL;
+		}
+
+		void setProximo(Elemento<TE>* pp) {
+			pProximo = pp;
+		}
+		Elemento<TE>* getProximo() {
+			return pProximo;
+		}
+
+		void setAnterior(Elemento<TE>* pa) {
+			pAnterior = pa;
+		}
+		Elemento<TE>* getAnterior() {
+			return pAnterior;
+		}
+
+		void setInfo(TE* pi) {
+			pInfo = pi;
+		}
+		TE* getInfo() {
+			return pInfo;
+		}
+
+		void deletaInfo() {
+			pInfo = NULL;
+		}
+
+	};
+
 private:
-	Elemento<TIPO>* pPrimeiro;
-	Elemento<TIPO>* pAtual;
+	Elemento<TL>* pPrimeiro;
+	Elemento<TL>* pAtual;
 	int tamanho;
 
 public:
@@ -17,42 +62,55 @@ public:
 	void inicializa();
 	void limpaLista();
 
-	void incluaElemento(Elemento<TIPO>* pElemento);
-	void incluaInfo(TIPO* pInfo);
-	void deletaInfo(TIPO* pInfo);
-	Elemento<TIPO>* procuraElemento(TIPO* pInfo);
+	void incluaElemento(Elemento<TL>* pElemento);
+	void incluaInfo(TL* pInfo);
+	void deletaInfo(TL* pInfo);
+	Elemento<TL>* procuraElemento(TL* pInfo) {
+		Elemento<TL>* pAux = pPrimeiro;
+		while (pAux != NULL && pAux->getInfo() != pInfo)
+		{
+			pAux = pAux->getProximo();
+		}
+		return pAux;
+	}
 
-	Elemento<TIPO>* getPrimeiro();
-	Elemento<TIPO>* getAtual();
-	TIPO* operator[](int i);
+	Elemento<TL>* getPrimeiro() {
+		return pPrimeiro;
+	}
+	Elemento<TL>* getAtual() {
+		return pAtual;
+	}
+	TL* operator[](int i);
 
 	int getTamanho();
 };
 
-template<class TIPO>
-Lista<TIPO>::Lista()
+
+
+template<class TL>
+Lista<TL>::Lista()
 {
 	inicializa();
 }
 
-template<class TIPO>
-Lista<TIPO>::~Lista()
+template<class TL>
+Lista<TL>::~Lista()
 {
 	limpaLista();
 }
 
-template<class TIPO>
-void Lista<TIPO>::inicializa()
+template<class TL>
+void Lista<TL>::inicializa()
 {
 	tamanho = 0;
 	pPrimeiro = NULL;
 	pAtual = NULL;
 }
 
-template<class TIPO>
-void Lista<TIPO>::limpaLista()
+template<class TL>
+void Lista<TL>::limpaLista()
 {
-	Elemento<TIPO>* pAux = pPrimeiro;
+	Elemento<TL>* pAux = pPrimeiro;
 	while (pPrimeiro != NULL)
 	{
 		pPrimeiro = pPrimeiro->getProximo();
@@ -63,8 +121,8 @@ void Lista<TIPO>::limpaLista()
 	pAtual = NULL;
 }
 
-template<class TIPO>
-void Lista<TIPO>::incluaElemento(Elemento<TIPO>* pElemento)
+template<class TL>
+void Lista<TL>::incluaElemento(Elemento<TL>* pElemento)
 {
 	if (pElemento)
 	{
@@ -86,12 +144,12 @@ void Lista<TIPO>::incluaElemento(Elemento<TIPO>* pElemento)
 	
 }
 
-template<class TIPO>
-void Lista<TIPO>::incluaInfo(TIPO* pInfo)
+template<class TL>
+void Lista<TL>::incluaInfo(TL* pInfo)
 {
 	if (pInfo != NULL)
 	{
-		Elemento<TIPO>* pElemento = new Elemento<TIPO>();
+		Elemento<TL>* pElemento = new Elemento<TL>();
 		pElemento->setInfo(pInfo);
 		incluaElemento(pElemento);
 		tamanho++;
@@ -102,10 +160,10 @@ void Lista<TIPO>::incluaInfo(TIPO* pInfo)
 	}
 }
 
-template<class TIPO>
-void Lista<TIPO>::deletaInfo(TIPO* pElemento)
+template<class TL>
+void Lista<TL>::deletaInfo(TL* pElemento)
 {
-	Elemento<TIPO>* pAux = procuraElemento(pElemento);
+	Elemento<TL>* pAux = procuraElemento(pElemento);
 	if (pAux->getAnterior() != NULL && pAux->getProximo() != NULL)
 	{
 		pAux->getAnterior()->setProximo(pAux->getProximo());
@@ -129,33 +187,11 @@ void Lista<TIPO>::deletaInfo(TIPO* pElemento)
 	tamanho--;
 }
 
-template<class TIPO>
-inline Elemento<TIPO>* Lista<TIPO>::procuraElemento(TIPO* pInfo)
-{
-	Elemento<TIPO>* pAux = pPrimeiro;
-	while (pAux != NULL && pAux->getInfo() != pInfo)
-	{
-		pAux = pAux->getProximo();
-	}
-	return pAux;
-}
 
-template<class TIPO>
-Elemento<TIPO>* Lista<TIPO>::getPrimeiro()
+template<class TL>
+inline TL* Lista<TL>::operator[](int i)
 {
-	return pPrimeiro;
-}
-
-template<class TIPO>
-Elemento<TIPO>* Lista<TIPO>::getAtual()
-{
-	return pAtual;
-}
-
-template<class TIPO>
-inline TIPO* Lista<TIPO>::operator[](int i)
-{
-	Elemento<TIPO>* pAux = pPrimeiro;
+	Elemento<TL>* pAux = pPrimeiro;
 	while (pAux != NULL && i > 0)
 	{
 		pAux = pAux->getProximo();
@@ -164,8 +200,8 @@ inline TIPO* Lista<TIPO>::operator[](int i)
 	return pAux->getInfo();
 }
 
-template<class TIPO>
-inline int Lista<TIPO>::getTamanho()
+template<class TL>
+inline int Lista<TL>::getTamanho()
 {
 	return tamanho;
 }
