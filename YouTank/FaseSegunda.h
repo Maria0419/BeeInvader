@@ -21,6 +21,8 @@ public:
 
     void renderFaseSegunda();
 
+    void setFadaCaida(FadaCaida* pJ);
+
     const bool getTerminou() const;
 };
 

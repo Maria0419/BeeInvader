@@ -24,7 +24,7 @@ public:
 
     void operator+=(int i);
     void salvar();
-    //void recuperar();
+    void recuperar();
    
     void setPontos(int pnts);
 };

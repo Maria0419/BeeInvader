@@ -125,7 +125,6 @@ void FaseSegunda::update()
 	updateMovimento();
 	updateCombate();
 	updateBoss();
-	std::cout << "pontos: " << pFadaCaida->getPontos() << std::endl;
 	pFadaCaida->update();
 
 	if(pCurandeira!=NULL)
@@ -155,6 +154,18 @@ void FaseSegunda::renderFaseSegunda()
 		pCurandeira->render();
 	}
 		
+}
+
+void FaseSegunda::setFadaCaida(FadaCaida* pJ)
+{
+	if (pJ)
+	{
+		pFadaCaida = pJ;
+		abelha_rainha.setFadaCaidaAlvo(pFadaCaida);
+	}
+	else
+		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
+	
 }
 
 const bool FaseSegunda::getTerminou() const
