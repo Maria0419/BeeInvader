@@ -64,9 +64,9 @@ const bool State::getTerminarState() const
 	return terminarState;
 }
 
-const bool State::getSalvarPontos() const
+const bool State::getSalvarFase() const
 {
-	return salvarPontos;
+	return salvarFase;
 }
 
 const std::string State::getNome() const
@@ -83,4 +83,12 @@ void State::verificarPause()
 void State::verificarGoToMenu()
 {
 
+}
+
+void State::salvar()
+{
+}
+
+void State::recuperar()
+{
 }

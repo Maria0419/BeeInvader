@@ -3,10 +3,9 @@
 #include "Global.h"
 
 Abelha::Abelha(int i):
-	Inimigo(1, 1, ID_ABELHA)
+	Inimigo(1, 1, ID_ABELHA, 2)
 {
 	initShape();
-	pontos = 2;
 	if (i == 1)
 	{
 		int x = rand() % 2;
@@ -21,6 +20,15 @@ Abelha::Abelha(int i):
 		
 	setRapidez(8.f);
 	olhaEsquerda = true;
+}
+
+Abelha::Abelha(float posX, float posY) :
+	Inimigo(1, 1, ID_ABELHA, 2)
+{
+	initShape();
+	setRapidez(8.f);
+	olhaEsquerda = true;
+	setPosition(posX, posY);
 }
 
 Abelha::~Abelha()
@@ -69,6 +77,24 @@ void Abelha::persegue(float x_jogador, float y_jogador)
 	}
 
 	this->body.move(direcao.x * rapidez, direcao.y * rapidez);
+}
+
+void Abelha::salvar()
+{
+	if (getShowing())
+	{
+		std::ofstream gravador("./Carregamentos/Abelha.txt", std::ios::app);
+		if (!gravador)
+		{
+			std::cout << "arquivo não pode ser aberto" << std::endl;
+			fflush(stdin);
+			return;
+		}
+		gravador
+			<< getPosition().x << " "
+			<< getPosition().y << std::endl;
+		gravador.close();
+	}
 }
 
 

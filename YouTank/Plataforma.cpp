@@ -30,6 +30,24 @@ void Plataforma::movePlataforma()
 	move(velocidade.x * rapidez, velocidade.y * rapidez);
 }
 
+void Plataforma::salvar()
+{
+	if (getShowing())
+	{
+		std::ofstream gravador("./Carregamentos/Plataforma.txt", std::ios::app);
+		if (!gravador)
+		{
+			std::cout << "arquivo não pode ser aberto" << std::endl;
+			fflush(stdin);
+			return;
+		}
+		gravador
+			<< getPosition().x << " "
+			<< getPosition().y << std::endl;
+		gravador.close();
+	}
+}
+
 void Plataforma::initShape()
 {
 	setSize(1400.f, 100.f);

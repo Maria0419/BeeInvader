@@ -8,6 +8,7 @@ private:
     void initShape();
 public:
     Abelha(int i);
+    Abelha(float posX, float posY);
     ~Abelha();
 
     float getDirecao_x();
@@ -16,5 +17,7 @@ public:
     void setShowing(bool x);
     const bool getShowing() const;
     void persegue(float x_jogador, float y_jogador);
+
+    void salvar();
 };
 

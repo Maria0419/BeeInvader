@@ -58,5 +58,13 @@ public:
     void updateInimigoPlataforma();
     virtual void setFadaCaida(FadaCaida* pJ);
     void setCurandeira(Curandeira* pC);
+
+    void recuperarAbelhas();
+    void recuperarCogumelos();
+    void recuperarPlataformas();
+    void recuperarEspinhos();
+    void recuperarProjetil();
+
+    void reiniciarArquivos();
 };
 

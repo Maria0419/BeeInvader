@@ -18,6 +18,10 @@ public:
     void update();
 
     void renderFasePrimeira();
+    void salvar();
+
+    void recuperar();
+    
 
     const bool getTerminou() const;
 };

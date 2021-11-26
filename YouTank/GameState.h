@@ -16,7 +16,7 @@ private:
     FasePrimeira* fasePrimeira;
     FaseSegunda* faseSegunda;
 
-    std::string nome;
+ //   std::string nome;
 
     short fase;
     bool multiplayer;
@@ -51,6 +51,10 @@ public:
     void updateGameWin();
     void updateInput();
     void update();
-    void render();  
+    
+    void render(); 
+
+    void salvar();
+    void recuperar();
 };
 

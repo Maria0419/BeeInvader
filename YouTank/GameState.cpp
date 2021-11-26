@@ -211,6 +211,7 @@ void GameState::update()
 	updateGameOver();
 	updateGameWin();
 	updateInput();
+
 	switch (fase)
 	{
 	case 12:
@@ -247,4 +248,56 @@ void GameState::render()
 		break;
 	}
 	
+}
+
+void GameState::salvar()
+{
+	std::ofstream gravador("./Carregamentos/ConfiguracoesFase.txt", std::ios::out);
+	if (!gravador)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}
+	gravador
+		<< nomeJ << " "
+		<< fase << " "
+		<< multiplayer << std::endl;
+	gravador.close();
+
+	switch (fase)
+	{
+	case 12:
+	case 1:
+		fasePrimeira->salvar();
+
+		break;
+
+	case 2:
+
+		break;
+
+	default:
+		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
+		break;
+	}
+}
+
+void GameState::recuperar()
+{
+	switch (fase)
+	{
+	case 12:
+	case 1:
+		fasePrimeira->recuperar();
+
+		break;
+
+	case 2:
+
+		break;
+
+	default:
+		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
+	}
 }

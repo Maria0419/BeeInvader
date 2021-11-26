@@ -40,12 +40,14 @@ public:
 	virtual const bool getGameWin() const;
 	virtual const bool getGoToMenu() const;
 	virtual const bool getTerminarState() const;
-	virtual const bool getSalvarPontos() const;
+	virtual const bool getSalvarFase() const;
 	virtual const std::string getNome() const;
 
 
 	virtual void verificarPause();
 	virtual void verificarGoToMenu();
+	virtual void salvar();
+	virtual void recuperar();
 
 	virtual void updateInput() = 0;
 	virtual void update() = 0;

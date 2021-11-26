@@ -17,7 +17,6 @@ FasePrimeira::~FasePrimeira()
 
 }
 
-
 void FasePrimeira::criarPoteMel()
 {
 
@@ -35,11 +34,9 @@ void FasePrimeira::criarPoteMel()
 	}
 }
 
-
-
-
 void FasePrimeira::criarObstaculos()
 {
+
 	/*=====================OBSTACULOS===========================*/
 	/*															*/
 	/*  CRIA OBSTACULOS PELA FASE DE FORMA RANDOMICA			*/
@@ -175,6 +172,23 @@ void FasePrimeira::renderFasePrimeira()
 		pCurandeira->render();
 	}
 		
+}
+
+void FasePrimeira::salvar()
+{
+	reiniciarArquivos();
+	for (int i = 0; i < listaEntidades.getTamanho(); i++)
+	{
+		listaEntidades[i]->salvar();
+	}
+	pFadaCaida->salvar();
+}
+
+void FasePrimeira::recuperar()
+{
+	recuperarAbelhas();
+	recuperarCogumelos();
+	pFadaCaida->recuperar();
 }
 
 const bool FasePrimeira::getTerminou() const

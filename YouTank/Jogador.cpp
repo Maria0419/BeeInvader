@@ -12,7 +12,7 @@ void Jogador::setDirecao_y(float dir_y)
 }
 
 Jogador::Jogador(int vida, int dano, int id, float barraVida_y, int player):
-	Personagem(vida, dano, id),
+	Personagem(vida, dano, id, 0),
 	colisaoBot(false),
 	barraVida(static_cast<Personagem*>(this), 25.f, barraVida_y, 210.f, 25.f, player)
 {
