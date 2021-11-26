@@ -32,7 +32,7 @@ void RankingState::initText()
 		int pontos;
 		recuperaPontos >> nome >> pontos;
 		std::stringstream ss;
-		ss << nome << ' ' << pontos;
+		ss << i << ". " << nome << ' ' << pontos;
 
 		if (nome != "")
 		{
@@ -44,7 +44,7 @@ void RankingState::initText()
 			texto[i].setOutlineColor(sf::Color::Black);
 			texto[i].setOutlineThickness(3.f);
 			texto[i].setCharacterSize(68);
-			texto[i].setPosition(550.f, 100 + 60.f * i);
+			texto[i].setPosition(460.f, 100 + 60.f * i);
 
 			i++;
 		}
