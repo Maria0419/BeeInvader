@@ -157,17 +157,6 @@ void FaseSegunda::renderFaseSegunda()
 		
 }
 
-void FaseSegunda::setFadaCaida(FadaCaida* pJ)
-{
-	if (pJ)
-	{
-		pFadaCaida = pJ;
-		abelha_rainha.setFadaCaidaAlvo(pFadaCaida);
-	}
-	else
-		std::cout << "ERRO::FASESEGUNDA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
-}
-
 const bool FaseSegunda::getTerminou() const
 {
 	if (abelha_rainha.getVida() <= 0)

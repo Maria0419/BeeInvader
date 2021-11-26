@@ -11,7 +11,7 @@ void FadaCaida::initShape()
 }
 
 FadaCaida::FadaCaida():
-	Jogador(100,100, ID_JOGADOR, 20, 1),
+	Jogador(100,100, ID_JOGADOR, 20.f, 1),
 	pOrbe(NULL)
 {
 	rapidez = 25.f;
