@@ -75,9 +75,7 @@ void Button::update(const float posX, const float posY)
 			{
 				mouseHeld = true;
 				estadoBotao = BT_PRESSIONADO;
-				
 			}
-			
 		}
 		else
 		{
@@ -109,6 +107,10 @@ void Button::update(const float posX, const float posY)
 void Button::setText(std::string novoTexto)
 {
 	texto.setString(novoTexto);
+
+	texto.setPosition(
+		getPosition().x + getBounds().width / 2.f - texto.getGlobalBounds().width / 2.f,
+		getPosition().y + getBounds().height / 3.f - texto.getGlobalBounds().height / 2.f);
 }
 
 void Button::renderText()

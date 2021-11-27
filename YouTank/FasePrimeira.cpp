@@ -63,7 +63,7 @@ void FasePrimeira::criarPlataforma()
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(plat));
 
 	//favo mel principal
-	FavoMel* favo = new FavoMel(100.f, 20.f, 60.f, 600.f);
+	FavoMel* favo = new FavoMel(60.f, 600.f);
 	favo->setVelocidadeY(0.0f);
 	listaEntidades.incluaEntidade(static_cast<Entidade*>(favo));
 
@@ -75,7 +75,7 @@ void FasePrimeira::criarPlataforma()
 		random = rand() % 2;
 		if (random || contaPlat > 5)
 		{
-			FavoMel* favo1 = new FavoMel(100.f, 20.f, (float) i, static_cast<float>(rand() % 400 + 100));
+			FavoMel* favo1 = new FavoMel((float) i, static_cast<float>(rand() % 400 + 100));
 			listaEntidades.incluaEntidade(static_cast<Entidade*>(favo1));
 		}
 		else

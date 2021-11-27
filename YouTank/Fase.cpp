@@ -399,7 +399,7 @@ void Fase::recuperarPlataformas()
 			break;
 
 		case ID_FAVOMEL:
-			pFavo = new FavoMel(tamX, tamY, posX, posY);
+			pFavo = new FavoMel(posX, posY);
 			pFavo->setVelocidadeY(velY);
 			listaEntidades.incluaEntidade(pFavo);
 			break;

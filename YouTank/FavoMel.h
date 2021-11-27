@@ -5,7 +5,7 @@ class FavoMel :
 {
 private:
 public:
-    FavoMel(float tam_x, float tam_y, float pos_x, float pos_y);
+    FavoMel(float pos_x, float pos_y);
     ~FavoMel();
 
     void movePlataforma();
