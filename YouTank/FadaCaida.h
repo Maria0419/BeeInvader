@@ -25,8 +25,6 @@ namespace Jogadores
         void update();
 
         void operator+=(int i);
-        void salvar();
-        void recuperar();
 
         void setPontos(int pnts);
     };

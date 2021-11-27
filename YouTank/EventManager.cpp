@@ -34,7 +34,7 @@ void EventManager::pollEvents(State* pState)
 				char tecla = static_cast<char> (ev.text.unicode);
 				if (tecla == '\b')
 					nState->retiraLetra(tecla);
-				else
+				else if(tecla != ' ')
 					nState->incluaLetra(tecla);
 			}
 		}

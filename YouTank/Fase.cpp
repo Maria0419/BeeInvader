@@ -394,10 +394,6 @@ void Fase::reiniciarArquivos()
 	limpar.close();
 	limpar.open("./Carregamentos/Cogumelo.txt", std::ios::out);
 	limpar.close();
-	//limpar.open("./Carregamentos/Curandeira.txt", std::ios::out);
-	//limpar.close();
-	//limpar.open("./Carregamentos/AbelhaRainha.txt", std::ios::out);
-	//limpar.close();
 	//limpar.open("./Carregamentos/Ferrao.txt", std::ios::out);
 	//limpar.close();
 	//limpar.open("./Carregamentos/Orbe.txt", std::ios::out);

@@ -12,9 +12,10 @@ void Jogador::setDirecao_y(float dir_y)
 	direcao.y = dir_y;
 }
 
-Jogador::Jogador(int vida, int dano, int id, float barraVida_y, int player):
+Jogador::Jogador(int vida, int dano, int id, float barraVida_y, int player, const char* arqv):
 	Personagem(vida, dano, id, 0),
 	colisaoBot(false),
+	arquivo(arqv),
 	barraVida(static_cast<Personagem*>(this), 25.f, barraVida_y, 210.f, 25.f, player)
 {
 	direcao.x = 0.0f;
@@ -110,4 +111,51 @@ void Jogador::updateTaVivo()
 {
 	if (vida <= 0)
 		aparece = false;
+}
+
+void Jogador::salvar()
+{
+	if (getShowing())
+	{
+		std::ofstream gravador(arquivo, std::ios::out);
+		if (!gravador)
+		{
+			std::cout << "arquivo não pode ser aberto" << std::endl;
+			fflush(stdin);
+			return;
+		}
+		gravador << direcao.x << " "
+			<< direcao.y << " "
+			<< podeAtacar << " "
+			<< podePular << " "
+			<< pontos << " "
+			<< velocidade.x << " "
+			<< velocidade.y << " "
+			<< vida << " "
+			<< getPosition().x << " "
+			<< getPosition().y << std::endl;
+		gravador.close();
+
+	}
+}
+
+void Jogador::recuperar()
+{
+	std::ifstream recuperar(arquivo, std::ios::in);
+	if (!recuperar)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}
+	float pos_x, pos_y;
+	recuperar >> direcao.x >> direcao.y
+		>> podeAtacar
+		>> podePular
+		>> pontos
+		>> velocidade.x >> velocidade.y
+		>> vida
+		>> pos_x >> pos_y;
+	recuperar.close();
+	setPosition(pos_x, pos_y);
 }

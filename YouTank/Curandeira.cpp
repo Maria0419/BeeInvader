@@ -5,7 +5,7 @@ using namespace Jogadores;
 
 
 Curandeira::Curandeira() :
-Jogador(100, 0, ID_CURANDEIRA, 65.f, 2),
+Jogador(100, 0, ID_CURANDEIRA, 65.f, 2, "./Carregamentos/Curandeira.txt"),
 pOrbeCura(NULL)
 {
 	cura = 5;

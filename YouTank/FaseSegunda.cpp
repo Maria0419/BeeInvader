@@ -165,6 +165,9 @@ void Fases::FaseSegunda::salvar()
 	}
 	pFadaCaida->salvar();
 	abelha_rainha->salvar();
+
+	if (pCurandeira != NULL)
+		pCurandeira->salvar();
 }
 
 void Fases::FaseSegunda::recuperar()
@@ -173,6 +176,9 @@ void Fases::FaseSegunda::recuperar()
 	recuperarCogumelos();
 	pFadaCaida->recuperar();
 	abelha_rainha->recuperar();
+
+	if (pCurandeira != NULL)
+		pCurandeira->recuperar();
 }
 
 void FaseSegunda::setFadaCaida(FadaCaida* pJ)

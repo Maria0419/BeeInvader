@@ -182,6 +182,9 @@ void FasePrimeira::salvar()
 		listaEntidades[i]->salvar();
 	}
 	pFadaCaida->salvar();
+
+	if (pCurandeira != NULL)
+		pCurandeira->salvar();
 }
 
 void FasePrimeira::recuperar()
@@ -189,6 +192,9 @@ void FasePrimeira::recuperar()
 	recuperarAbelhas();
 	recuperarCogumelos();
 	pFadaCaida->recuperar();
+
+	if (pCurandeira != NULL)
+		pCurandeira->recuperar();
 }
 
 const bool FasePrimeira::getTerminou() const

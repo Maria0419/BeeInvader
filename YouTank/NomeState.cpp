@@ -62,7 +62,7 @@ void NomeState::updateButtons()
 		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
 	}
 
-	if (buttons["CONTINUAR"]->estaPressionado())
+	if (buttons["CONTINUAR"]->estaPressionado() && texto[1].getString()!="")
 	{
 		terminarState = true;
 	}
