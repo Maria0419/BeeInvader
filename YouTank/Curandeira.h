@@ -2,6 +2,8 @@
 #include "Jogador.h"
 #include "OrbeCura.h"
 
+namespace Jogadores
+{
 class Curandeira :
     public Jogador
 {
@@ -20,3 +22,4 @@ public:
     const int getCura() const;
 };
 
+}

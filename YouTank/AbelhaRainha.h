@@ -4,6 +4,7 @@
 #include "Ferrao.h"
 #include "Abelha.h"
 #include "FadaCaida.h"
+using namespace Jogadores;
 
 class AbelhaRainha:
 	public Inimigo

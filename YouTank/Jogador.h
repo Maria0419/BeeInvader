@@ -3,6 +3,7 @@
 #include "BarraVida.h"
 using namespace ElementosVisuais;
 
+namespace Jogadores {
 class Jogador :
     public Personagem
 {
@@ -30,4 +31,4 @@ public:
     void updateAnimacao();
     void updateTaVivo();
 };
-
+}

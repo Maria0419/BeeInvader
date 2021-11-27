@@ -1,10 +1,12 @@
 #include "stdafx.h"
-#include "Curandeira.h"
 #include "Global.h"
+#include "Curandeira.h"
+using namespace Jogadores;
 
-	Curandeira::Curandeira() :
-	Jogador(100, 0, ID_CURANDEIRA, 65.f, 2),
-	pOrbeCura(NULL)
+
+Curandeira::Curandeira() :
+Jogador(100, 0, ID_CURANDEIRA, 65.f, 2),
+pOrbeCura(NULL)
 {
 	cura = 5;
 	rapidez = 15.f;

@@ -3,6 +3,7 @@
 #include "GraphicManager.h"
 #include "Entidade.h"
 #include "Jogador.h"
+using namespace Jogadores;
 
 class CollisionManager
 {

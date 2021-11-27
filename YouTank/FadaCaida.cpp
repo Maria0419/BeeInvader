@@ -1,6 +1,7 @@
 #include "stdafx.h"
-#include "FadaCaida.h"
 #include "Global.h"
+#include "FadaCaida.h"
+using namespace Jogadores;
 
 void FadaCaida::initShape()	
 {

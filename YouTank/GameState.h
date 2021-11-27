@@ -5,7 +5,7 @@
 #include "PauseState.h"
 #include "GameOverState.h"
 #include "GameWinState.h"
-
+using namespace Jogadores;
 
 class GameState: public State
 {

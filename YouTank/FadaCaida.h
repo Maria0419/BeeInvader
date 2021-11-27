@@ -2,31 +2,33 @@
 #include "Jogador.h"
 #include "Orbe.h"
 
-
-class FadaCaida :
-    public Jogador
+namespace Jogadores
 {
-private:
-    Orbe* pOrbe;
-    bool colisaoBot;
-    int quantosPoteMel;
-    //private functions
-    void initShape();
 
-public:
-    FadaCaida();
-    ~FadaCaida();
+    class FadaCaida :
+        public Jogador
+    {
+    private:
+        Orbe* pOrbe;
+        bool colisaoBot;
+        int quantosPoteMel;
+        //private functions
+        void initShape();
 
-    void ataca(float dir_x, float dir_y);
-    void coletouPoteMel();
-    const int getPoteMel() const;
-    void update();
+    public:
+        FadaCaida();
+        ~FadaCaida();
 
-    void operator+=(int i);
-    void salvar();
-    void recuperar();
+        void ataca(float dir_x, float dir_y);
+        void coletouPoteMel();
+        const int getPoteMel() const;
+        void update();
 
-    void setPontos(int pnts);
-};
+        void operator+=(int i);
+        void salvar();
+        void recuperar();
 
+        void setPontos(int pnts);
+    };
 
+}

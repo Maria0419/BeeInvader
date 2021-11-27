@@ -11,10 +11,12 @@
 using namespace ElementosVisuais;
 #include "Cogumelo.h"
 #include "Curandeira.h"
+
 #include "Espinhos.h"
 #include "Pedra.h"
 #include "FavoMel.h"
 #include "PoteMel.h"
+using namespace Jogadores;
 
 namespace Fases {
 
