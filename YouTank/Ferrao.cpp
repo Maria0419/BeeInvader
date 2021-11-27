@@ -40,8 +40,8 @@ void Ferrao::salvar()
 			return;
 		}
 		gravador
-			<< jogX+getPosition().x << " "
-			<< jogY+getPosition().y << " "
+			<< direcao.x << " "
+			<< direcao.y << " "
 			<< getPosition().x << " "
 			<< getPosition().y << std::endl;
 		gravador.close();

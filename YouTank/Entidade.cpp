@@ -99,10 +99,12 @@ const bool Entidade::getShowing() const
 
 void Entidade::setDirecao_x(float dir_x)
 {
+	direcao.x = dir_x;
 }
 
 void Entidade::setDirecao_y(float dir_y)
 {
+	direcao.y = dir_y;
 }
 
 float Entidade::getDirecao_x()
