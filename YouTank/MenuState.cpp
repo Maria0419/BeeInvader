@@ -42,6 +42,7 @@ MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
 MenuState::~MenuState()
 {
 	deletarButtons();
+	texto.clear();
 }
 
 const short MenuState::getState()

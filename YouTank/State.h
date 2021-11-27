@@ -16,7 +16,7 @@ protected:
 
 	short stateID;
 
-	bool terminarState; //continuar
+	bool terminarState; 
 	bool sair;
 	bool pause;
 	bool gameOver;

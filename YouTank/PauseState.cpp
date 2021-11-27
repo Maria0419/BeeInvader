@@ -22,6 +22,7 @@ PauseState::PauseState(std::stack<State*>* state, InputManager* pIM):
 PauseState::~PauseState()
 {
 	deletarButtons();
+	texto.clear();
 }
 
 const short PauseState::getState()

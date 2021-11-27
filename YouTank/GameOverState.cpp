@@ -37,6 +37,7 @@ GameOverState::GameOverState(std::stack<State*>* state, InputManager* pIM):
 GameOverState::~GameOverState()
 {
 	deletarButtons();
+	texto.clear();
 }
 
 const short GameOverState::getState()

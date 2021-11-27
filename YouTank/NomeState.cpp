@@ -44,6 +44,7 @@ NomeState::NomeState(std::stack<State*>* state, InputManager* pIM) :
 NomeState::~NomeState()
 {
 	deletarButtons();
+	texto.clear();
 }
 
 const short NomeState::getState()

@@ -21,8 +21,8 @@ public:
 
 	const short getState();
 
-	void recuperarPontuacao();
 	void salvarPontuacao();
+	void recuperarPontuacao();
 
 	void updateButtons();
 	void updateInput();

@@ -10,9 +10,12 @@ private:
 	
 
 protected:
+
+	static GraphicManager* pGraphic;
+
 	int id;
 	bool aparece;
-	static GraphicManager* pGraphic;
+	
 
 	//Shape
 	sf::RectangleShape body;

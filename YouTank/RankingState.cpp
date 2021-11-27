@@ -18,7 +18,7 @@ void RankingState::initText()
 	texto[0].setCharacterSize(134);
 	texto[0].setPosition(460.f, 30.f);
 
-	std::ifstream recuperaPontos("ranking.txt", std::ios::in);
+	std::ifstream recuperaPontos("./Carregamentos/ranking.txt", std::ios::in);
 	if (!recuperaPontos)
 	{
 		std::cout << "erro ao abrir arquivo de ranking" << std::endl;
@@ -69,6 +69,7 @@ RankingState::RankingState(std::stack<State*>* state, InputManager* pIM) :
 RankingState::~RankingState()
 {
 	deletarButtons();
+	texto.clear();
 }
 
 const short RankingState::getState()

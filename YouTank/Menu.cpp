@@ -11,6 +11,7 @@ Menu::Menu(const char* file):
 
 Menu::~Menu()
 {
+
 }
 
 void Menu::deletarButtons()
