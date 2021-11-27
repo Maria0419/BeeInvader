@@ -11,7 +11,7 @@ class FaseSegunda :
 {
 private:
     //Boss
-    AbelhaRainha abelha_rainha;
+    AbelhaRainha* abelha_rainha;
 
 public:
     FaseSegunda();
@@ -24,6 +24,9 @@ public:
     void update();
 
     void renderFaseSegunda();
+    void salvar();
+
+    void recuperar();
 
     void setFadaCaida(FadaCaida* pJ);
 

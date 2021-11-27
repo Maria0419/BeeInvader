@@ -11,6 +11,7 @@ void Fase::initInimigo()
 	criarTimerMAX = SPAWN_TIMER_MAX;
 	contaAbelhas = 0;
 	obstaculosMAX = rand() % 3 + 3;
+	abelhasMAX = rand() % 10 + 5;
 	contaCogu = 0;
 	contaPedras = 0;
 	contaObstaculos = 0;
@@ -71,8 +72,6 @@ void Fase::criarAbelhas(int i)
 	/*	CRIA ABELHAS										    */
 	/*	Abelhas perseguem o jogador, dão dano ou pontos			*/
 	/*==========================================================*/
-
-	abelhasMAX = rand() % 10 + 5;
 
 	//timer
 	if (criarTimer < criarTimerMAX)

@@ -8,10 +8,12 @@ FaseSegunda::FaseSegunda():
 	Ente::pLista = &listaEntidades;
 	initInimigo();
 	collisionManager.setGraphicManager(pGraphic);	
+	abelha_rainha = new AbelhaRainha();
 }
 
 FaseSegunda::~FaseSegunda()
 {
+	delete abelha_rainha;
 }
 
 void FaseSegunda::criarPlataforma()
@@ -68,16 +70,16 @@ void FaseSegunda::criarObstaculos()
 
 void FaseSegunda::updateBoss()
 {
-	if (collisionManager.verificaContatoJogador(static_cast<Entidade*>(&abelha_rainha),static_cast<Jogador*>(pFadaCaida)))
+	if (collisionManager.verificaContatoJogador(static_cast<Entidade*>(abelha_rainha),static_cast<Jogador*>(pFadaCaida)))
 		pFadaCaida->tomarDano(4);
 	if (pCurandeira != NULL)
 	{
-		if (collisionManager.verificaContatoJogador(static_cast<Entidade*>(&abelha_rainha), static_cast<Jogador*>(pCurandeira)))
+		if (collisionManager.verificaContatoJogador(static_cast<Entidade*>(abelha_rainha), static_cast<Jogador*>(pCurandeira)))
 			pFadaCaida->tomarDano(4);
 	}
-	if(abelha_rainha.getShowing())
-		abelha_rainha.update();
-	if (abelha_rainha.emFuria())
+	if(abelha_rainha->getShowing())
+		abelha_rainha->update();
+	if (abelha_rainha->emFuria())
 		criarAbelhas(2);
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{
@@ -87,14 +89,14 @@ void FaseSegunda::updateBoss()
 		{
 			if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
 			{
-				pFadaCaida->tomarDano(abelha_rainha.getDano());
+				pFadaCaida->tomarDano(abelha_rainha->getDano());
 				listaEntidades.operator[](i)->setShowing(false);
 			}
 			else if (pCurandeira)
 			{
 				if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira)))
 				{
-					pCurandeira->tomarDano(abelha_rainha.getDano());
+					pCurandeira->tomarDano(abelha_rainha->getDano());
 					listaEntidades.operator[](i)->setShowing(false);
 				}
 			}
@@ -102,10 +104,10 @@ void FaseSegunda::updateBoss()
 		break;
 		case ID_ORBE:
 		{
-			if (collisionManager.updateCombate(listaEntidades.operator[](i), static_cast<Entidade*>(&abelha_rainha)))
+			if (collisionManager.updateCombate(listaEntidades.operator[](i), static_cast<Entidade*>(abelha_rainha)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
-				abelha_rainha.tomarDano(pFadaCaida->getDano());
+				abelha_rainha->tomarDano(pFadaCaida->getDano());
 			}
 		}
 		break;
@@ -140,8 +142,8 @@ void FaseSegunda::renderFaseSegunda()
 		{
 			listaEntidades.operator[](i)->render();
 		}
-		if(abelha_rainha.getShowing())
-			abelha_rainha.renderAbelhaRainha();
+		if(abelha_rainha->getShowing())
+			abelha_rainha->renderAbelhaRainha();
 	}
 	pFadaCaida->renderBarraVida();
 	pFadaCaida->render();
@@ -154,12 +156,31 @@ void FaseSegunda::renderFaseSegunda()
 		
 }
 
+void Fases::FaseSegunda::salvar()
+{
+	reiniciarArquivos();
+	for (int i = 0; i < listaEntidades.getTamanho(); i++)
+	{
+		listaEntidades[i]->salvar();
+	}
+	pFadaCaida->salvar();
+	abelha_rainha->salvar();
+}
+
+void Fases::FaseSegunda::recuperar()
+{
+	recuperarAbelhas();
+	recuperarCogumelos();
+	pFadaCaida->recuperar();
+	abelha_rainha->recuperar();
+}
+
 void FaseSegunda::setFadaCaida(FadaCaida* pJ)
 {
 	if (pJ)
 	{
 		pFadaCaida = pJ;
-		abelha_rainha.setFadaCaidaAlvo(pFadaCaida);
+		abelha_rainha->setFadaCaidaAlvo(pFadaCaida);
 	}
 	else
 		std::cout << "ERRO::FASEPRIMEIRA::SETJOGADOR::Ponteiro FadaCaida NULL" << std::endl;
@@ -168,9 +189,9 @@ void FaseSegunda::setFadaCaida(FadaCaida* pJ)
 
 const bool FaseSegunda::getTerminou() const
 {
-	if (abelha_rainha.getVida() <= 0)
+	if (abelha_rainha->getVida() <= 0)
 	{
-		pFadaCaida->operator+=(abelha_rainha.getPontos());
+		pFadaCaida->operator+=(abelha_rainha->getPontos());
 		return true;
 	}
 		

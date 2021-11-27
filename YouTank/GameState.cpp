@@ -274,7 +274,7 @@ void GameState::salvar()
 		break;
 
 	case 2:
-
+		faseSegunda->salvar();
 		break;
 
 	default:
@@ -294,7 +294,7 @@ void GameState::recuperar()
 		break;
 
 	case 2:
-
+		faseSegunda->recuperar();
 		break;
 
 	default:

@@ -40,6 +40,9 @@ public:
 	void updateTaVivo();
 	void renderAbelhaRainha();
 
+	void salvar();
+	void recuperar();
+
 	void setFadaCaidaAlvo(FadaCaida* pJ);
 
 	const bool getExisteNaFase() const;

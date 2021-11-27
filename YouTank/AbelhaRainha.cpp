@@ -81,6 +81,41 @@ void AbelhaRainha::renderAbelhaRainha()
 	render();
 }
 
+void AbelhaRainha::salvar()
+{
+	if (getShowing())
+	{
+		std::ofstream gravador("./Carregamentos/AbelhaRainha.txt", std::ios::out);
+		if (!gravador)
+		{
+			std::cout << "arquivo não pode ser aberto" << std::endl;
+			fflush(stdin);
+			return;
+		}
+		gravador << vida << " "
+			<< getPosition().x << " "
+			<< getPosition().y << std::endl;
+		gravador.close();
+
+	}
+}
+
+void AbelhaRainha::recuperar()
+{
+	std::ifstream recuperar("./Carregamentos/AbelhaRainha.txt", std::ios::in);
+	if (!recuperar)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}
+	float pos_x, pos_y;
+	recuperar >> vida >> pos_x >> pos_y;
+	recuperar.close();
+	setPosition(pos_x, pos_y);
+}
+
+
 void AbelhaRainha::setFadaCaidaAlvo(FadaCaida* pJ)
 {
 	pFadaCaida = pJ;
