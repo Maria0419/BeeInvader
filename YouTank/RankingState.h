@@ -7,7 +7,7 @@ class RankingState :
     public State, public Menu
 {
 private:
-    FadaCaida* pFada;
+    Jogadores::FadaCaida* pFada;
     void initText();
     void initButtons();
 

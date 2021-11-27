@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "GameOverState.h"
+using namespace ElementosVisuais;
 
 void GameOverState::initText()
 {

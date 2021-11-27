@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Menu.h"
+using namespace ElementosVisuais;
 
 Menu::Menu(const char* file):
 	background(file)

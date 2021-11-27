@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PauseState.h"
+using namespace ElementosVisuais;
 
 
 void PauseState::initButtons()

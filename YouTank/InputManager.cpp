@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "InputManager.h"
+using namespace Jogadores;
+using namespace Fases;
 
 InputManager::InputManager() :
 	pCurandeira(NULL),

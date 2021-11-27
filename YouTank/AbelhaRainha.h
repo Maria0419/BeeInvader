@@ -4,13 +4,12 @@
 #include "Ferrao.h"
 #include "Abelha.h"
 #include "FadaCaida.h"
-using namespace Jogadores;
 
 class AbelhaRainha:
 	public Inimigo
 {
 private:
-	BarraVida barraVida;
+	ElementosVisuais::BarraVida barraVida;
 	float originX;
 	float x;
 	float y;
@@ -23,7 +22,7 @@ private:
 	float anguloMAX;
 	Ferrao* pFerrao;
 	Abelha* pAbelha;
-	FadaCaida* pFadaCaida;
+	Jogadores::FadaCaida* pFadaCaida;
 
 	void initTimers();
 	void initShape();
@@ -43,7 +42,7 @@ public:
 	void salvar();
 	void recuperar();
 
-	void setFadaCaidaAlvo(FadaCaida* pJ);
+	void setFadaCaidaAlvo(Jogadores::FadaCaida* pJ);
 
 	const bool getExisteNaFase() const;
 

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CollisionManager.h"
 #include "Global.h"
+using namespace Jogadores;
 
 
 CollisionManager::CollisionManager():

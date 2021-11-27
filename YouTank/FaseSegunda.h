@@ -1,6 +1,5 @@
 #pragma once
 #include "Fase.h"
-using namespace Fases;
 #include "AbelhaRainha.h"
 
 namespace Fases {
@@ -28,7 +27,7 @@ public:
 
     void recuperar();
 
-    void setFadaCaida(FadaCaida* pJ);
+    void setFadaCaida(Jogadores::FadaCaida* pJ);
 
     const bool getTerminou() const;
 };

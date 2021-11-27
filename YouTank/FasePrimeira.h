@@ -1,6 +1,5 @@
 #pragma once
 #include "Fase.h"
-using namespace Fases;
 
 namespace Fases {
 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "RankingState.h"
-#include "stdafx.h"
+using namespace ElementosVisuais;
 
 void RankingState::initText()
 {

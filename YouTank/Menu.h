@@ -1,15 +1,14 @@
 #pragma once
 #include "Background.h"
 #include "Button.h"
-using namespace ElementosVisuais;
 
 class Menu:public Ente
 {
 protected:
-    Background background;
+    ElementosVisuais::Background background;
     std::vector<sf::Text> texto;
     sf::Font* fonte;
-    std::map<std::string, Button*> buttons;
+    std::map<std::string, ElementosVisuais::Button*> buttons;
 
 public:
     Menu(const char* file);

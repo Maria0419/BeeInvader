@@ -5,16 +5,16 @@
 #include "PauseState.h"
 #include "GameOverState.h"
 #include "GameWinState.h"
-using namespace Jogadores;
+
 
 class GameState: public State
 {
 private:
-    FadaCaida* jogador1;
-    Curandeira* jogador2;
+    Jogadores::FadaCaida* jogador1;
+    Jogadores::Curandeira* jogador2;
 
-    FasePrimeira* fasePrimeira;
-    FaseSegunda* faseSegunda;
+    Fases::FasePrimeira* fasePrimeira;
+    Fases::FaseSegunda* faseSegunda;
 
     short fase;
     bool multiplayer;

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "State.h"
 
+
 State::State(std::stack<State*>* state, InputManager* pIM, short id) :
 	sair(false),
 	pause(false),

@@ -3,6 +3,8 @@
 
 #include "Fase.h"
 using namespace Fases;
+using namespace Jogadores;
+using namespace ElementosVisuais;
 
 
 void Fase::initInimigo()

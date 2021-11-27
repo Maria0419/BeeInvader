@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Jogador.h"
 using namespace Jogadores;
+using namespace ElementosVisuais;
 
 void Jogador::setDirecao_x(float dir_x)
 {

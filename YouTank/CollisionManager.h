@@ -3,7 +3,7 @@
 #include "GraphicManager.h"
 #include "Entidade.h"
 #include "Jogador.h"
-using namespace Jogadores;
+
 
 class CollisionManager
 {
@@ -17,14 +17,14 @@ public:
 	~CollisionManager();
 	
 	/*Funções*/
-	bool verificaColisaoJogador(Entidade& entidade, Jogador& jogador);
-	void updateColisoesJanela(Jogador* pJogador);
-	bool updateColisoesJogador(Entidade* pEn, Jogador* pJogador);
+	bool verificaColisaoJogador(Entidade& entidade, Jogadores::Jogador& jogador);
+	void updateColisoesJanela(Jogadores::Jogador* pJogador);
+	bool updateColisoesJogador(Entidade* pEn, Jogadores::Jogador* pJogador);
 	bool updateCombate(Entidade* pOrbe, Entidade* pInimigo);
 	void updateInimigoPlataforma(Entidade& inimigo, Entidade* plataforma);
 	bool entidadeSaiuDaTela(Entidade* entidade);
 
-	bool verificaContatoJogador(Entidade* entidade, Jogador* pJogador);
+	bool verificaContatoJogador(Entidade* entidade, Jogadores::Jogador* pJogador);
 
 	//set
 	void setGraphicManager(GraphicManager* pGM);

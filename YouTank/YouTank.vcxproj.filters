@@ -93,9 +93,6 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Arquivos de Origem\Gerenciadores</Filter>
     </ClCompile>
-    <ClCompile Include="Elemento.cpp">
-      <Filter>Arquivos de Origem\Listas</Filter>
-    </ClCompile>
     <ClCompile Include="Entidade.cpp">
       <Filter>Arquivos de Origem\Entidades</Filter>
     </ClCompile>

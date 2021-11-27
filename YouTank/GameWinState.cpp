@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameWinState.h"
 #include "GameState.h"
+using namespace ElementosVisuais;
 
 void GameWinState::initText()
 {

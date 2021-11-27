@@ -5,15 +5,14 @@
 #include "FadaCaida.h"
 #include "Curandeira.h"
 #include "Fase.h"
-using namespace Fases;
 
 class InputManager
 {
 private:
-	FadaCaida* pFadaCaida;
-	Curandeira* pCurandeira;
+	Jogadores::FadaCaida* pFadaCaida;
+	Jogadores::Curandeira* pCurandeira;
 	GraphicManager* pGraphic;
-	Fase* pFase;
+	Fases::Fase* pFase;
 
 	sf::Vector2i mousePosWindow;
 
@@ -27,10 +26,10 @@ public:
 	void updateMousePos();
 	void updateFadaCaida(float deltaTime);
 	void updateCurandeira(float deltaTime);
-	void setFadaCaida(FadaCaida* pFada);
-	void setCurandeira(Curandeira* pC);
+	void setFadaCaida(Jogadores::FadaCaida* pFada);
+	void setCurandeira(Jogadores::Curandeira* pC);
 	void setGraphicManager(GraphicManager* pGM);
-	void setFase(Fase* pFase);
+	void setFase(Fases::Fase* pFase);
 	const sf::Vector2i getMousePos() const;
 	const bool getPause() const;
 };

@@ -8,15 +8,13 @@
 #include "Ferrao.h"
 #include "Plataforma.h"
 #include "Background.h"
-using namespace ElementosVisuais;
 #include "Cogumelo.h"
 #include "Curandeira.h"
-
 #include "Espinhos.h"
 #include "Pedra.h"
 #include "FavoMel.h"
 #include "PoteMel.h"
-using namespace Jogadores;
+
 
 namespace Fases {
 
@@ -28,10 +26,10 @@ protected:
     CollisionManager collisionManager;
 
     //FadaCaidaes
-    FadaCaida* pFadaCaida;
-    Curandeira* pCurandeira;
+    Jogadores::FadaCaida* pFadaCaida;
+    Jogadores::Curandeira* pCurandeira;
 
-    Background background;
+    ElementosVisuais::Background background;
 
     //Timer dos inimigos
     unsigned int criarTimer;
@@ -61,8 +59,8 @@ public:
     void updateColisoes();
     void updateCombate();
     void updateInimigoPlataforma();
-    virtual void setFadaCaida(FadaCaida* pJ);
-    void setCurandeira(Curandeira* pC);
+    virtual void setFadaCaida(Jogadores::FadaCaida* pJ);
+    void setCurandeira(Jogadores::Curandeira* pC);
 
     void recuperarAbelhas();
     void recuperarCogumelos();

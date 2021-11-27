@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "NomeState.h"
+using namespace ElementosVisuais;
 
 void NomeState::initText()
 {

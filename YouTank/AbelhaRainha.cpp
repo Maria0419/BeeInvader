@@ -2,6 +2,7 @@
 #include "Global.h"
 #include "AbelhaRainha.h"
 using namespace ElementosVisuais;
+using namespace Jogadores;
 
 void AbelhaRainha::initTimers()
 {

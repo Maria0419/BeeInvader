@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "FasePrimeira.h"
 #include "Global.h"
+using namespace Fases;
+using namespace Jogadores;
+using namespace ElementosVisuais;
 
 FasePrimeira::FasePrimeira() :
 	Fase()

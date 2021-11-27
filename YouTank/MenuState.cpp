@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MenuState.h"
+using namespace ElementosVisuais;
 
 void MenuState::initText()
 {

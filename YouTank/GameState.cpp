@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "GameState.h"
+using namespace Jogadores;
+using namespace Fases;
 
 void GameState::runFase()
 {

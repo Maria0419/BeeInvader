@@ -155,7 +155,6 @@
     <ClCompile Include="Cogumelo.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Curandeira.cpp" />
-    <ClCompile Include="Elemento.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Espinhos.cpp" />

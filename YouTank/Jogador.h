@@ -1,14 +1,13 @@
 #pragma once
 #include "Personagem.h"
 #include "BarraVida.h"
-using namespace ElementosVisuais;
 
 namespace Jogadores {
 class Jogador :
     public Personagem
 {
 protected:
-    BarraVida barraVida;
+    ElementosVisuais::BarraVida barraVida;
     bool colisaoBot;
 
 public:
