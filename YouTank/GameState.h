@@ -16,10 +16,9 @@ private:
     FasePrimeira* fasePrimeira;
     FaseSegunda* faseSegunda;
 
- //   std::string nome;
-
     short fase;
     bool multiplayer;
+    bool recuperacao;
     
     //aux
     sf::Clock clock;
@@ -32,7 +31,7 @@ private:
 public:
 
     //Construtora e Destrutora
-    GameState(std::stack<State*>* state, InputManager* pIM, short f, bool mp = false);
+    GameState(std::stack<State*>* state, InputManager* pIM, short f, bool mp = false, bool rec = false);
     ~GameState();
 
     void setPause(bool p);

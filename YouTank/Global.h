@@ -13,7 +13,7 @@
 #define ID_BACKGROUND 4032 // b4ckgr0und, 3 pois é sprite
 #define ID_ESPINHOS 3102 //3sp1nh0s, 2 pois é um Rectangle shape
 #define ID_PEDRA 342 // p3dr4, 2 pois é um Rectangle shape
-#define ID_FAVOMEL 4032
+#define ID_FAVOMEL 403
 #define ID_POTEMEL 332
 
 #define SPAWN_TIMER_MAX 200

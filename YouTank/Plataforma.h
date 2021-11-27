@@ -12,7 +12,5 @@ public:
     ~Plataforma();
 
     void movePlataforma();
-
-    void salvar();
 };
 

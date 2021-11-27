@@ -12,7 +12,9 @@ void GameState::runFase()
 	case 1:
 		fasePrimeira = new FasePrimeira();
 		fasePrimeira->setFadaCaida(jogador1);
-		fasePrimeira->criarPlataforma();
+
+		if(recuperacao == false)
+			fasePrimeira->criarPlataforma();
 
 		if (multiplayer == true)
 		{
@@ -27,7 +29,9 @@ void GameState::runFase()
 	case 2:
 		faseSegunda = new FaseSegunda();
 		faseSegunda->setFadaCaida(jogador1);
-		faseSegunda->criarPlataforma();
+
+		if (recuperacao == false)
+			faseSegunda->criarPlataforma();
 
 		if (multiplayer == true)
 		{
@@ -54,12 +58,13 @@ void GameState::updateDeltaTime()
 }
 
 //Construtora e Destrutora
-GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool mp):
+GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool mp, bool rec):
 	State(state,pIM, GAME_STATE),
 	fasePrimeira(NULL),
 	faseSegunda(NULL),
 	jogador1(NULL),
-	jogador2(NULL)
+	jogador2(NULL),
+	recuperacao(rec)
 {
 	multiplayer = mp;
 	fase = f;
@@ -114,7 +119,6 @@ void GameState::setPontos(int pontos)
 	jogador1->setPontos(pontos);
 }
 
-
 const short GameState::getState()
 {
 	return stateID;
@@ -128,7 +132,6 @@ const bool GameState::getPause() const
 void GameState::criarCurandeira()
 {
 	jogador2 = new Curandeira();
-	
 }
 
 void GameState::verificarGameOver()

@@ -177,6 +177,7 @@ void Fases::FaseSegunda::recuperar()
 	pFadaCaida->recuperar();
 	abelha_rainha->recuperar();
 	recuperarProjetil();
+	recuperarPlataformas();
 
 	if (pCurandeira != NULL)
 		pCurandeira->recuperar();

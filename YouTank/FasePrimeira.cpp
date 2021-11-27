@@ -193,6 +193,7 @@ void FasePrimeira::recuperar()
 	recuperarCogumelos();
 	pFadaCaida->recuperar();
 	recuperarProjetil();
+	recuperarPlataformas();
 
 	if (pCurandeira != NULL)
 		pCurandeira->recuperar();

@@ -76,7 +76,7 @@ void MenuState::updateButtons()
 		recuperar >> nome >> fase >> multiPlayer;
 		recuperar.close();
 
-		states->push(new GameState(states, pInput, fase, multiPlayer));
+		states->push(new GameState(states, pInput, fase, multiPlayer, true));
 		states->top()->setNome(nome);
 		states->top()->recuperar();
 	}

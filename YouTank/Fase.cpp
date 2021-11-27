@@ -375,6 +375,52 @@ void Fase::recuperarCogumelos()
 
 void Fase::recuperarPlataformas()
 {
+	std::ifstream recuperarFerrao("./Carregamentos/Obstaculos.txt", std::ios::in);
+	if (!recuperarFerrao)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}
+	int id;
+	float velY, tamX, tamY, posX, posY;
+	Plataforma* pPlat = NULL;
+	FavoMel* pFavo = NULL;
+	Espinhos* pEsp = NULL;
+	Pedra* pPedra = NULL;
+	while (recuperarFerrao >> id >> velY >> tamX >> tamY >> posX >> posY)
+	{
+		switch (id)
+		{
+		case ID_PLATAFORMA:
+			pPlat = new Plataforma(tamX, tamY, posX, posY);
+			pPlat->setVelocidadeY(velY);
+			listaEntidades.incluaEntidade(pPlat);
+			break;
+
+		case ID_FAVOMEL:
+			pFavo = new FavoMel(tamX, tamY, posX, posY);
+			pFavo->setVelocidadeY(velY);
+			listaEntidades.incluaEntidade(pFavo);
+			break;
+
+		case ID_ESPINHOS:
+			pEsp = new Espinhos(posX, posY);
+			listaEntidades.incluaEntidade(pEsp);
+			contaObstaculos++;
+			break;
+
+		case ID_PEDRA:
+			pPedra = new Pedra(posX, posY);
+			listaEntidades.incluaEntidade(pPedra);
+			contaObstaculos++;
+			break;
+
+		default:
+			break;
+		}
+	}
+	recuperarFerrao.close();
 }
 
 void Fase::recuperarEspinhos()
@@ -448,6 +494,8 @@ void Fase::reiniciarArquivos()
 	limpar.open("./Carregamentos/Orbe.txt", std::ios::out);
 	limpar.close();
 	limpar.open("./Carregamentos/OrbeCura.txt", std::ios::out);
+	limpar.close();
+	limpar.open("./Carregamentos/Obstaculos.txt", std::ios::out);
 	limpar.close();
 	//limpar.open("./Carregamentos/Espinhos.txt", std::ios::out);
 	//limpar.close();
