@@ -383,6 +383,7 @@ void Fase::recuperarEspinhos()
 
 void Fase::recuperarProjetil()
 {
+	/*ORBE*/
 	std::ifstream recuperarOrbe("./Carregamentos/Orbe.txt", std::ios::in);
 	if (!recuperarOrbe)
 	{
@@ -398,6 +399,7 @@ void Fase::recuperarProjetil()
 	}
 	recuperarOrbe.close();
 
+	/*ORBE CURA*/
 	std::ifstream recuperarOrbeCura("./Carregamentos/OrbeCura.txt", std::ios::in);
 	if (!recuperarOrbeCura)
 	{
@@ -412,6 +414,22 @@ void Fase::recuperarProjetil()
 		listaEntidades.incluaEntidade(pAux);
 	}
 	recuperarOrbeCura.close();
+
+	/*FERRAO*/
+	std::ifstream recuperarFerrao("./Carregamentos/Ferrao.txt", std::ios::in);
+	if (!recuperarFerrao)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}
+
+	while (recuperarFerrao >> dirX >> dirY >> posX >> posY)
+	{
+		Ferrao* pAux = new Ferrao(posX, posY, dirX, dirY);
+		listaEntidades.incluaEntidade(pAux);
+	}
+	recuperarFerrao.close();
 }
 
 void Fase::reiniciarArquivos()
@@ -423,8 +441,8 @@ void Fase::reiniciarArquivos()
 	limpar.close();
 	limpar.open("./Carregamentos/Cogumelo.txt", std::ios::out);
 	limpar.close();
-	//limpar.open("./Carregamentos/Ferrao.txt", std::ios::out);
-//	limpar.close();
+	limpar.open("./Carregamentos/Ferrao.txt", std::ios::out);
+	limpar.close();
 	limpar.open("./Carregamentos/Orbe.txt", std::ios::out);
 	limpar.close();
 	limpar.open("./Carregamentos/OrbeCura.txt", std::ios::out);
