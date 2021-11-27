@@ -426,7 +426,9 @@ void Fase::recuperarProjetil()
 
 	while (recuperarFerrao >> dirX >> dirY >> posX >> posY)
 	{
-		Ferrao* pAux = new Ferrao(posX, posY, dirX, dirY);
+		Ferrao* pAux = new Ferrao(posX, posY);
+		pAux->setDirecao_x(dirX);
+		pAux->setDirecao_y(dirY);
 		listaEntidades.incluaEntidade(pAux);
 	}
 	recuperarFerrao.close();
