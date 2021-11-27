@@ -176,6 +176,7 @@ void Fases::FaseSegunda::recuperar()
 	recuperarCogumelos();
 	pFadaCaida->recuperar();
 	abelha_rainha->recuperar();
+	recuperarProjetil();
 
 	if (pCurandeira != NULL)
 		pCurandeira->recuperar();

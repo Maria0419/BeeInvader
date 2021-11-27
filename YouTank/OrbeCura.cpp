@@ -20,6 +20,10 @@ OrbeCura::~OrbeCura()
 {
 }
 
+void OrbeCura::salvar()
+{
+}
+
 void OrbeCura::updateOrbeCura()
 {
 	move(direcao.x * rapidez, direcao.y * rapidez);

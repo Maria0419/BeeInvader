@@ -8,7 +8,8 @@ Entidade::Entidade(int hp, int dmg, int i, int pnts) :
 	vida(hp),
 	pontos(pnts),
 	podeMatar(true),
-	olhaEsquerda(false)
+	olhaEsquerda(false),
+	arquivo("")
 {
 	aparece = true;
 	vidaMAX = hp;
@@ -25,7 +26,8 @@ Entidade::Entidade(int i):
 	vida(0),
 	vidaMAX(0),
 	podeMatar(true),
-	olhaEsquerda(false)
+	olhaEsquerda(false),
+	arquivo("")
 {
 	aparece = true;
 }

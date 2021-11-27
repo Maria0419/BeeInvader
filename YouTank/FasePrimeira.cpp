@@ -192,6 +192,7 @@ void FasePrimeira::recuperar()
 	recuperarAbelhas();
 	recuperarCogumelos();
 	pFadaCaida->recuperar();
+	recuperarProjetil();
 
 	if (pCurandeira != NULL)
 		pCurandeira->recuperar();

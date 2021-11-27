@@ -9,6 +9,8 @@ public:
     OrbeCura(float x_dir, float y_dir, float x_pos, float y_pos);
     ~OrbeCura();
 
+    void salvar();
+
     void updateOrbeCura();
 };
 

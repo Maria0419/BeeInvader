@@ -383,6 +383,20 @@ void Fase::recuperarEspinhos()
 
 void Fase::recuperarProjetil()
 {
+	std::ifstream recuperar("./Carregamentos/Orbe.txt", std::ios::in);
+	if (!recuperar)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}
+	float dirX, dirY, posX, posY, velX, velY;
+	while (recuperar >> dirX >> dirY >> posX >> posY >> velX >> velY)
+	{
+		Orbe* pAux = new Orbe(dirX, dirY, posX, posY, velX, velY);
+		listaEntidades.incluaEntidade(pAux);
+	}
+	recuperar.close();
 }
 
 void Fase::reiniciarArquivos()
@@ -395,9 +409,9 @@ void Fase::reiniciarArquivos()
 	limpar.open("./Carregamentos/Cogumelo.txt", std::ios::out);
 	limpar.close();
 	//limpar.open("./Carregamentos/Ferrao.txt", std::ios::out);
-	//limpar.close();
-	//limpar.open("./Carregamentos/Orbe.txt", std::ios::out);
-	//limpar.close();
+//	limpar.close();
+	limpar.open("./Carregamentos/Orbe.txt", std::ios::out);
+	limpar.close();
 	//limpar.open("./Carregamentos/OrbeCura.txt", std::ios::out);
 	//limpar.close();
 	//limpar.open("./Carregamentos/Espinhos.txt", std::ios::out);

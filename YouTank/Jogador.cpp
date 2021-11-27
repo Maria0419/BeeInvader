@@ -15,9 +15,9 @@ void Jogador::setDirecao_y(float dir_y)
 Jogador::Jogador(int vida, int dano, int id, float barraVida_y, int player, const char* arqv):
 	Personagem(vida, dano, id, 0),
 	colisaoBot(false),
-	arquivo(arqv),
 	barraVida(static_cast<Personagem*>(this), 25.f, barraVida_y, 210.f, 25.f, player)
 {
+	arquivo = arqv;
 	direcao.x = 0.0f;
 	direcao.y = 0.0f;
 }

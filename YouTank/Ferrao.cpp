@@ -8,7 +8,7 @@ Ferrao::Ferrao(float pos_x, float pos_y, float x_jogador, float y_jogador):
 	setTexture("Imagens/ferrao.png");
 	setSize(30.f, 30.f);
 	setOriginCenter();
-	setPosition(pos_x, pos_y+100.f);
+	setPosition(pos_x, pos_y);
 	setRapidez(1.f);
 	x_jogador -= getPosition().x;
 	y_jogador -= getPosition().y;
@@ -24,4 +24,8 @@ void Ferrao::updateFerrao()
 {
 	move(direcao.x * rapidez, direcao.y * rapidez);
 	rotate(2.f);
+}
+
+void Ferrao::salvar()
+{
 }
