@@ -16,17 +16,6 @@ Ferrao::Ferrao(float pos_x, float pos_y, float x_jogador, float y_jogador):
 	direcao.y = y_jogador / sqrtf(static_cast<float>(pow(x_jogador, 2)) + static_cast<float>(pow(y_jogador, 2)));
 }
 
-Ferrao::Ferrao(float pos_x, float pos_y):
-	Projetil(ID_FERRAO)
-{
-	setTexture("Imagens/ferrao.png");
-	setSize(30.f, 30.f);
-	setOriginCenter();
-	setPosition(pos_x, pos_y);
-	setRapidez(1.f);
-	direcao.x = 0.f;
-	direcao.y = 0.f;
-}
 
 Ferrao::~Ferrao()
 {
