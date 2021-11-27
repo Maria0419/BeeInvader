@@ -251,9 +251,6 @@
     <ClInclude Include="Lista.h">
       <Filter>Arquivos de Cabeçalho\Listas</Filter>
     </ClInclude>
-    <ClInclude Include="Elemento.h">
-      <Filter>Arquivos de Cabeçalho\Listas</Filter>
-    </ClInclude>
     <ClInclude Include="FaseSegunda.h">
       <Filter>Arquivos de Cabeçalho\Fases</Filter>
     </ClInclude>

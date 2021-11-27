@@ -206,7 +206,6 @@
     <ClInclude Include="Cogumelo.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Curandeira.h" />
-    <ClInclude Include="Elemento.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="Espinhos.h" />

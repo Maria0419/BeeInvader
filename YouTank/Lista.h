@@ -161,9 +161,9 @@ void Lista<TL>::incluaInfo(TL* pInfo)
 }
 
 template<class TL>
-void Lista<TL>::deletaInfo(TL* pElemento)
+void Lista<TL>::deletaInfo(TL* pInfo)
 {
-	Elemento<TL>* pAux = procuraElemento(pElemento);
+	Elemento<TL>* pAux = procuraElemento(pInfo);
 	if (pAux->getAnterior() != NULL && pAux->getProximo() != NULL)
 	{
 		pAux->getAnterior()->setProximo(pAux->getProximo());
