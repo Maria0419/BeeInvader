@@ -4,12 +4,12 @@ namespace ElementosVisuais
 {
     enum estado_botao { BT_IDLE = 0, BT_EMCIMA, BT_PRESSIONADO };
 
-    class Button :
+    class Botao :
         public Ente
     {
     private:
         short unsigned estadoBotao;
-        static bool mouseHeld;
+        static bool mousePressionado;
 
         sf::Text texto;
         sf::Font* fonte;
@@ -21,8 +21,8 @@ namespace ElementosVisuais
         void initShape(float x, float y);
 
     public:
-        Button(float y, std::string text);
-        ~Button();
+        Botao(float y, std::string text);
+        ~Botao();
 
         //Gets
         const bool estaPressionado() const;

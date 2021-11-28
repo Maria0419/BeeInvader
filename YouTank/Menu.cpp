@@ -3,10 +3,10 @@
 using namespace ElementosVisuais;
 
 Menu::Menu(const char* file):
-	background(file)
+	plano_fundo(file)
 {
-	pGraphic = GraphicManager::getInstance();
-	fonte = pGraphic->getFont();
+	pGrafico = GerenciadorGrafico::getInstancia();
+	fonte = pGrafico->getFont();
 }
 
 Menu::~Menu()
@@ -14,18 +14,18 @@ Menu::~Menu()
 
 }
 
-void Menu::deletarButtons()
+void Menu::deletarBotoes()
 {
-	auto it = buttons.begin();
-	for (it = buttons.begin(); it != buttons.end(); ++it)
+	auto it = botoes.begin();
+	for (it = botoes.begin(); it != botoes.end(); ++it)
 	{
 		delete it->second;
 	}
 }
 
-void Menu::renderButtons()
+void Menu::renderBotoes()
 {
-	for (auto& it : buttons)
+	for (auto& it : botoes)
 	{
 		it.second->render();
 		it.second->renderText();

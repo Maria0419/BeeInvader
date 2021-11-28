@@ -14,9 +14,9 @@ private:
 	std::multimap<int, std::string, std::greater<int>> ranking;
 
 	void initText();
-	void initButtons();
+	void initBotoes();
 public:
-	VitoriaJogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM, std::string nome, int pontos, bool prox_f = false, bool mp = false);
+	VitoriaJogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC, std::string nome, int pontos, bool prox_f = false, bool mp = false);
 	~VitoriaJogoEstado();
 
 	const short getEstado();
@@ -24,8 +24,8 @@ public:
 	void salvarPontuacao();
 	void recuperarPontuacao();
 
-	void updateButtons();
-	void updateInput();
+	void updateBotoes();
+	void updateComando();
 	void update();
 
 	void render();

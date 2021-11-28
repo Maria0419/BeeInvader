@@ -23,7 +23,7 @@ Fase::Fase():
 	pFadaCaida(NULL),
 	pCurandeira(NULL),
 	listaEntidades(),
-	background("Imagens/floresta.png")
+	plano_fundo("Imagens/floresta.png")
 {
 	initInimigo();
 }
@@ -131,9 +131,9 @@ void Fase::updateMovimento()
 void Fase::updateColisoes()
 {
 	int i;
-	collisionManager.updateColisoesJanela(static_cast<Jogador*>(pFadaCaida));
+	gerenciadorColisao.updateColisoesJanela(static_cast<Jogador*>(pFadaCaida));
 	if(pCurandeira)
-		collisionManager.updateColisoesJanela(static_cast<Jogador*>(pCurandeira));
+		gerenciadorColisao.updateColisoesJanela(static_cast<Jogador*>(pCurandeira));
 	for (i = 0; i < listaEntidades.getTamanho(); i++)
 	{
 
@@ -141,20 +141,20 @@ void Fase::updateColisoes()
 		{
 		case ID_PLATAFORMA://update colisoes com plataforma
 		{
-			collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida));
+			gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida));
 			if(pCurandeira)
-				collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira));
+				gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira));
 		}
 		break;
 		case ID_FAVOMEL:
 		{
-			collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida));
+			gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida));
 			if (pCurandeira)
-				collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira));
+				gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira));
 		}
 		case ID_ABELHA://update colisoes do player com inimigos e janela
 		{
-			if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
+			if (gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
 			{
 				pFadaCaida->tomarDano(listaEntidades.operator[](i)->getDano());
 				listaEntidades.operator[](i)->setShowing(false);
@@ -162,14 +162,14 @@ void Fase::updateColisoes()
 			}
 			if (pCurandeira)
 			{
-				if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira)))
+				if (gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira)))
 				{
 					pCurandeira->tomarDano(listaEntidades.operator[](i)->getDano());
 					listaEntidades.operator[](i)->setShowing(false);
 					contaAbelhas--;
 				}
 			}
-			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
+			else if (gerenciadorColisao.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
 				contaAbelhas--;
@@ -179,7 +179,7 @@ void Fase::updateColisoes()
 		break;
 		case ID_ORBE:
 		{	//update colisoes do orbe de dano com janela
-			if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
+			if (gerenciadorColisao.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
 			}
@@ -187,7 +187,7 @@ void Fase::updateColisoes()
 		break;
 		case ID_ORBECURA:
 		{   //update colisoes do orbe de cura com janela
-			if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
+			if (gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
 			{
 				if (pCurandeira)
 				{
@@ -195,7 +195,7 @@ void Fase::updateColisoes()
 					listaEntidades.operator[](i)->setShowing(false);
 				}
 			}
-			else if (collisionManager.entidadeSaiuDaTela(listaEntidades.operator[](i)))
+			else if (gerenciadorColisao.entidadeSaiuDaTela(listaEntidades.operator[](i)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
 			}
@@ -203,7 +203,7 @@ void Fase::updateColisoes()
 		break;
 		case ID_COGUMELO:
 		{
-			if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
+			if (gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
 			{
 				if (!pFadaCaida->getColisaoBot())
 					pFadaCaida->tomarDano(5);
@@ -214,7 +214,7 @@ void Fase::updateColisoes()
 			}
 			if (pCurandeira)
 			{
-				if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira)))
+				if (gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira)))
 				{
 					if (!pCurandeira->getColisaoBot())
 						pCurandeira->tomarDano(5);
@@ -228,7 +228,7 @@ void Fase::updateColisoes()
 		break;
 		case ID_ESPINHOS:
 		{
-			if (collisionManager.verificaContatoJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
+			if (gerenciadorColisao.verificaContatoJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
 			{
 				int x = rand() % 21;
 				if(x > 19)
@@ -236,7 +236,7 @@ void Fase::updateColisoes()
 			}
 			if (pCurandeira)
 			{
-				if (collisionManager.verificaContatoJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira)))
+				if (gerenciadorColisao.verificaContatoJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira)))
 				{
 					int x = rand() % 21;
 					if (x > 19)
@@ -247,9 +247,9 @@ void Fase::updateColisoes()
 		break;
 		case ID_PEDRA:
 		{
-			collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida));
+			gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida));
 			if (pCurandeira)
-				collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira));
+				gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira));
 		}
 		break;
 
@@ -271,7 +271,7 @@ void Fase::updateCombate()
 			{
 				if (listaEntidades.operator[](j)->getId() == ID_ABELHA)
 				{
-					if (collisionManager.updateCombate(listaEntidades.operator[](i), listaEntidades.operator[](j)))
+					if (gerenciadorColisao.updateCombate(listaEntidades.operator[](i), listaEntidades.operator[](j)))
 					{
 						listaEntidades.operator[](j)->setShowing(false);
 						listaEntidades.operator[](i)->setShowing(false);
@@ -282,7 +282,7 @@ void Fase::updateCombate()
 				}
 				else if (listaEntidades.operator[](j)->getId() == ID_COGUMELO)
 				{
-					if (collisionManager.updateCombate(listaEntidades.operator[](i), listaEntidades.operator[](j)))
+					if (gerenciadorColisao.updateCombate(listaEntidades.operator[](i), listaEntidades.operator[](j)))
 					{
 						listaEntidades.operator[](j)->setShowing(false);
 						listaEntidades.operator[](i)->setShowing(false);
@@ -307,11 +307,11 @@ void Fase::updateInimigoPlataforma()
 			for (int j = 0; j < listaEntidades.getTamanho(); j++)
 			{
 				if (listaEntidades.operator[](j)->getId() == ID_COGUMELO)
-					collisionManager.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
+					gerenciadorColisao.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
 				if(listaEntidades.operator[](j)->getId() == ID_PEDRA)
-					collisionManager.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
+					gerenciadorColisao.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
 				if (listaEntidades.operator[](j)->getId() == ID_ESPINHOS)
-					collisionManager.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
+					gerenciadorColisao.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
 			}
 		}
 	}

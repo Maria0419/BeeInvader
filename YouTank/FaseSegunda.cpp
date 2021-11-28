@@ -12,7 +12,7 @@ FaseSegunda::FaseSegunda():
 {
 	Ente::pLista = &listaEntidades;
 	initInimigo();
-	collisionManager.setGraphicManager(pGraphic);	
+	gerenciadorColisao.setGerenciadorGrafico(pGrafico);	
 	abelha_rainha = new AbelhaRainha();
 }
 
@@ -75,11 +75,11 @@ void FaseSegunda::criarObstaculos()
 
 void FaseSegunda::updateBoss()
 {
-	if (collisionManager.verificaContatoJogador(static_cast<Entidade*>(abelha_rainha),static_cast<Jogador*>(pFadaCaida)))
+	if (gerenciadorColisao.verificaContatoJogador(static_cast<Entidade*>(abelha_rainha),static_cast<Jogador*>(pFadaCaida)))
 		pFadaCaida->tomarDano(4);
 	if (pCurandeira != NULL)
 	{
-		if (collisionManager.verificaContatoJogador(static_cast<Entidade*>(abelha_rainha), static_cast<Jogador*>(pCurandeira)))
+		if (gerenciadorColisao.verificaContatoJogador(static_cast<Entidade*>(abelha_rainha), static_cast<Jogador*>(pCurandeira)))
 			pFadaCaida->tomarDano(4);
 	}
 	if(abelha_rainha->getShowing())
@@ -92,14 +92,14 @@ void FaseSegunda::updateBoss()
 		{
 		case ID_FERRAO:
 		{
-			if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
+			if (gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
 			{
 				pFadaCaida->tomarDano(abelha_rainha->getDano());
 				listaEntidades.operator[](i)->setShowing(false);
 			}
 			else if (pCurandeira)
 			{
-				if (collisionManager.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira)))
+				if (gerenciadorColisao.updateColisoesJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pCurandeira)))
 				{
 					pCurandeira->tomarDano(abelha_rainha->getDano());
 					listaEntidades.operator[](i)->setShowing(false);
@@ -109,7 +109,7 @@ void FaseSegunda::updateBoss()
 		break;
 		case ID_ORBE:
 		{
-			if (collisionManager.updateCombate(listaEntidades.operator[](i), static_cast<Entidade*>(abelha_rainha)))
+			if (gerenciadorColisao.updateCombate(listaEntidades.operator[](i), static_cast<Entidade*>(abelha_rainha)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
 				abelha_rainha->tomarDano(pFadaCaida->getDano());
@@ -139,7 +139,7 @@ void FaseSegunda::update()
 
 void FaseSegunda::renderFaseSegunda()
 {
-	background.render();
+	plano_fundo.render();
 	
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{

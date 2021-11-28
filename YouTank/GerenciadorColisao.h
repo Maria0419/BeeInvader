@@ -1,20 +1,20 @@
 #pragma once
 
-#include "GraphicManager.h"
+#include "GerenciadorGrafico.h"
 #include "Entidade.h"
 #include "Jogador.h"
 
 
-class CollisionManager
+class GerenciadorColisao
 {
 private:
 	//Tela
-	GraphicManager* pGraphic;
+	GerenciadorGrafico* pGrafico;
 	sf::RenderWindow* pWindow;
 
 public:
-	CollisionManager();
-	~CollisionManager();
+	GerenciadorColisao();
+	~GerenciadorColisao();
 	
 	/*Funções*/
 	bool verificaColisaoJogador(Entidade& entidade, Jogadores::Jogador& jogador);
@@ -27,7 +27,7 @@ public:
 	bool verificaContatoJogador(Entidade* entidade, Jogadores::Jogador* pJogador);
 
 	//set
-	void setGraphicManager(GraphicManager* pGM);
+	void setGerenciadorGrafico(GerenciadorGrafico* pGG);
 
 };
 

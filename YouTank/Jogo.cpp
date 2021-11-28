@@ -4,12 +4,12 @@
 Jogo::Jogo():
 	sair(false)
 {
-	pGraphic = GraphicManager::getInstance();
+	pGrafico = GerenciadorGrafico::getInstancia();
 
-	setGraphicManager();
+	setGerenciadorGrafico();
 
 	initEstados();
-	run();
+	executar();
 }
 
 Jogo::~Jogo()
@@ -24,21 +24,21 @@ Jogo::~Jogo()
 
 void Jogo::initEstados()
 {
-	estados.push(new MenuEstado(&estados, &inputManager));
+	estados.push(new MenuEstado(&estados, &gerenciadorComando));
 }
 
-void Jogo::setGraphicManager()
+void Jogo::setGerenciadorGrafico()
 {
-	//Menu::setGraphicManager(pGraphic);
-	Ente::setGraphicManager(pGraphic);
-	inputManager.setGraphicManager(pGraphic);
-	eventManager.setGraphicManager(pGraphic);
+	//Menu::setGerenciadorGrafico(pGrafico);
+	Ente::setGerenciadorGrafico(pGrafico);
+	gerenciadorComando.setGerenciadorGrafico(pGrafico);
+	gerenciadorEvento.setGerenciadorGrafico(pGrafico);
 }
 
-void Jogo::run()
+void Jogo::executar()
 {
 	
-	while (pGraphic->isRunning() && sair == false)
+	while (pGrafico->estaExecutando() && sair == false)
 	{
 		update();
 		render();
@@ -55,25 +55,25 @@ void Jogo::update()
 		estados.top()->update();
 		
 		//Caso estiver na janela do Pause e quer voltar a jogar
-		if (estados.top()->getEstado() == PAUSE_STATE && estados.top()->getPause() == false)
+		if (estados.top()->getEstado() == PAUSE_ESTADO && estados.top()->getPause() == false)
 		{
 			delete estados.top();
 			estados.pop();
 			estados.top()->setPause(false); //ver se funciona sem
 		}
 		//Caso estiver na janela do Pause e quer salvar
-		if (estados.top()->getEstado() == PAUSE_STATE && estados.top()->getSalvarFase())
+		if (estados.top()->getEstado() == PAUSE_ESTADO && estados.top()->getSalvarFase())
 		{
 			delete estados.top();
 			estados.pop();
 			estados.top()->salvar();
-			estados.push(new PauseEstado(&estados, &inputManager));
+			estados.push(new PauseEstado(&estados, &gerenciadorComando));
 		}
 
 		//caso deseja ir ao menu
 		if (estados.top()->getIrMenu() == true)
 		{
-			while (estados.top()->getEstado() != MENU_STATE)
+			while (estados.top()->getEstado() != MENU_ESTADO)
 			{
 				delete estados.top();
 				estados.pop();
@@ -81,12 +81,12 @@ void Jogo::update()
 		}
 
 		//após ter inserido o nome, continuar para o jogo
-		if (estados.top()->getEstado() == NOME_STATE && estados.top()->getTerminarEstado())
+		if (estados.top()->getEstado() == NOME_ESTADO && estados.top()->getTerminarEstado())
 		{
 			sf::String nome = estados.top()->getNome();
 			delete estados.top();
 			estados.pop();
-			if(estados.top()->getEstado() == GAME_STATE)
+			if(estados.top()->getEstado() == JOGO_ESTADO)
 				estados.top()->setNome(nome);
 
 		}
@@ -106,19 +106,19 @@ void Jogo::update()
 
 void Jogo::render()
 {
-	pGraphic->clear();
+	pGrafico->clear();
 
 	if (!estados.empty())
 	{
 		estados.top()->render();
 	}
 				
-	pGraphic->display();
+	pGrafico->display();
 }
 
 void Jogo::updatePollEvents()
 {
-	eventManager.pollEvents(estados.top());
+	gerenciadorEvento.pollEvents(estados.top());
 	
 }
 

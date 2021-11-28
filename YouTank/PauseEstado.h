@@ -7,17 +7,17 @@ class PauseEstado :
 {
 private:
     
-    void initButtons();
+    void initBotoes();
 
 public:
-    PauseEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM);
+    PauseEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC);
     ~PauseEstado();
 
     const short getEstado();
     const bool getPause() const;
 
-    void updateButtons();
-    void updateInput();
+    void updateBotoes();
+    void updateComando();
     void update();
 
     void render();

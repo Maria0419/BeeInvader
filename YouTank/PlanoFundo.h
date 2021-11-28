@@ -3,15 +3,15 @@
 namespace ElementosVisuais
 {
 
-class Background :
+class PlanoFundo :
     public Ente
 {
 private:
     
 public:
-    Background();
-    Background(const char* file);
-    ~Background();
+    PlanoFundo();
+    PlanoFundo(const char* file);
+    ~PlanoFundo();
 };
 
 }

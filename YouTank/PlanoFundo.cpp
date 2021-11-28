@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "Global.h"
-#include "Background.h"
+#include "PlanoFundo.h"
 using namespace ElementosVisuais;
 
-Background::Background()
+PlanoFundo::PlanoFundo()
 {
 }
 
-Background::Background(const char* file) :
+PlanoFundo::PlanoFundo(const char* file) :
 	Ente()
 {
 	id = ID_BACKGROUND; 
@@ -16,7 +16,7 @@ Background::Background(const char* file) :
 	setTexture(file);
 }
 
-Background::~Background()
+PlanoFundo::~PlanoFundo()
 {
 }
 

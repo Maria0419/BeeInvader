@@ -1,12 +1,12 @@
 #pragma once
 #include "stdafx.h"
 
-class GraphicManager
+class GerenciadorGrafico
 {
 private:
 
 	//Singleton
-	static GraphicManager* instance;
+	static GerenciadorGrafico* instancia;
 
 	//window
 	sf::RenderWindow window;
@@ -15,13 +15,13 @@ private:
 	//private functions
 	void initFont();
 
-	GraphicManager();
+	GerenciadorGrafico();
 
 public:
-	~GraphicManager();
+	~GerenciadorGrafico();
 
 	//Singleton
-	static GraphicManager* getInstance();
+	static GerenciadorGrafico* getInstancia();
 
 	//clear & display
 	void clear();
@@ -38,6 +38,6 @@ public:
 	//accessors
 	sf::RenderWindow* getWindow();
 	sf::Font* getFont();
-	const bool isRunning() const;
+	const bool estaExecutando() const;
 
 };

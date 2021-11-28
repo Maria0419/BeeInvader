@@ -2,7 +2,7 @@
 #include "Estado.h"
 
 
-Estado::Estado(std::stack<Estado*>* estado, GerenciadorComando* pIM, short id) :
+Estado::Estado(std::stack<Estado*>* estado, GerenciadorComando* pGC, short id) :
 	sair(false),
 	pause(false),
 	fimJogo(false),
@@ -12,7 +12,7 @@ Estado::Estado(std::stack<Estado*>* estado, GerenciadorComando* pIM, short id) :
 	salvarPontos(false),
 	salvarFase(false),
 	estadoID(id),
-	pComando(pIM)
+	pComando(pGC)
 {
 	estados = estado;
 }

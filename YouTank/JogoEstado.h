@@ -25,13 +25,13 @@ private:
     float deltaTime;
 
     //Funções Inicializadoras
-    void runFase();
+    void executarFase();
     void updateDeltaTime();
     
 public:
 
     //Construtora e Destrutora
-    JogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM, short f, bool mp = false, bool rec = false);
+    JogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC, short f, bool mp = false, bool rec = false);
     ~JogoEstado();
 
     void setPause(bool p);
@@ -48,7 +48,7 @@ public:
     void updatePause();
     void updateFimJogo();
     void updateVitoriaJogo();
-    void updateInput();
+    void updateComando();
     void update();
     
     void render(); 

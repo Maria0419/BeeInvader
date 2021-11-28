@@ -7,16 +7,16 @@ class FimJogoEstado :
 {
 private:
 	void initText();
-	void initButtons();
+	void initBotoes();
 
 public:
-	FimJogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM);
+	FimJogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC);
 	~FimJogoEstado();
 
 	const short getEstado();
 
-	void updateButtons();
-	void updateInput();
+	void updateBotoes();
+	void updateComando();
 	void update();
 
 	void render();

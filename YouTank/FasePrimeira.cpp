@@ -10,7 +10,7 @@ FasePrimeira::FasePrimeira() :
 {
 	Ente::pLista = &listaEntidades;
 	initInimigo();
-	collisionManager.setGraphicManager(pGraphic);
+	gerenciadorColisao.setGerenciadorGrafico(pGrafico);
 	obstaculosMAX = rand() % 3 + 3;
 	contaPoteMel = 0;
 }
@@ -99,8 +99,8 @@ void FasePrimeira::updateFasePrimeira()
 		{
 		case ID_POTEMEL:
 		{
-			//update contato com o pote de mel, objetivo de conclusão de fase
-			if (collisionManager.verificaContatoJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
+			//update contato com o pote de mel, objetivo que dá pontos
+			if (gerenciadorColisao.verificaContatoJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
 				pFadaCaida->coletouPoteMel();
@@ -155,7 +155,7 @@ void FasePrimeira::update()
 
 void FasePrimeira::renderFasePrimeira()
 {
-	background.render();
+	plano_fundo.render();
 
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{

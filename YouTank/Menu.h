@@ -1,20 +1,20 @@
 #pragma once
-#include "Background.h"
-#include "Button.h"
+#include "PlanoFundo.h"
+#include "Botao.h"
 
 class Menu:public Ente
 {
 protected:
-    ElementosVisuais::Background background;
+    ElementosVisuais::PlanoFundo plano_fundo;
     std::vector<sf::Text> texto;
     sf::Font* fonte;
-    std::map<std::string, ElementosVisuais::Button*> buttons;
+    std::map<std::string, ElementosVisuais::Botao*> botoes;
 
 public:
     Menu(const char* file);
     virtual ~Menu();
-    void deletarButtons();
-    void renderButtons();
+    void deletarBotoes();
+    void renderBotoes();
     void renderText();
 };
 

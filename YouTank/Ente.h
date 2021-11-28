@@ -1,6 +1,6 @@
 #pragma once
 #include "stdafx.h"
-#include "GraphicManager.h"
+#include "GerenciadorGrafico.h"
 #include "ListaEntidades.h"
 
 class Ente
@@ -11,7 +11,7 @@ private:
 
 protected:
 
-	static GraphicManager* pGraphic;
+	static GerenciadorGrafico* pGrafico;
 
 	int id;
 	bool aparece;
@@ -52,7 +52,7 @@ public:
 
 	//setters
 	
-	static void setGraphicManager(GraphicManager* pGM);
+	static void setGerenciadorGrafico(GerenciadorGrafico* pGG);
 	virtual void setShowing(bool x);
 
 	//Getters

@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
-#include "EventManager.h"
-#include "GraphicManager.h"
+#include "GerenciadorEvento.h"
+#include "GerenciadorGrafico.h"
 #include "FadaCaida.h"
 #include "Curandeira.h"
 #include "Fase.h"
@@ -9,9 +9,11 @@
 class GerenciadorComando
 {
 private:
+	GerenciadorGrafico* pGrafico;
+
 	Jogadores::FadaCaida* pFadaCaida;
 	Jogadores::Curandeira* pCurandeira;
-	GraphicManager* pGraphic;
+	
 	Fases::Fase* pFase;
 
 	sf::Vector2i mousePosWindow;
@@ -31,7 +33,7 @@ public:
 	//sets
 	void setFadaCaida(Jogadores::FadaCaida* pFada);
 	void setCurandeira(Jogadores::Curandeira* pC);
-	void setGraphicManager(GraphicManager* pGM);
+	void setGerenciadorGrafico(GerenciadorGrafico* pGG);
 	void setFase(Fases::Fase* pFase);
 
 	//gets

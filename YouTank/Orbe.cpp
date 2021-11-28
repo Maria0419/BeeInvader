@@ -6,6 +6,7 @@ Orbe::Orbe(float dir_x, float dir_y, float jog_x, float jog_y):
 	Projetil(ID_ORBE)
 {
 	podeMatar = true;
+
 	setTexture("Imagens/orb3.png");
 	setSize(20.f, 18.f);
 	setOriginCenter();
@@ -45,7 +46,7 @@ Orbe::~Orbe()
 
 void Orbe::renderOrbe()
 {
-	pGraphic->getWindow()->draw(body);
+	render();
 }
 
 void Orbe::updateOrbe()

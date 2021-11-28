@@ -3,25 +3,25 @@
 using namespace ElementosVisuais;
 
 
-void PauseEstado::initButtons()
+void PauseEstado::initBotoes()
 {
-	buttons["CONTINUAR"] = new Button(250, "Continuar");
-	buttons["SALVAR"] = new Button(325, "Salvar");
-	buttons["VOLTAR_MENU"] = new Button(400, "Voltar ao Menu");
-	buttons["SAIR"] = new Button(475, "Sair");
+	botoes["CONTINUAR"] = new Botao(250, "Continuar");
+	botoes["SALVAR"] = new Botao(325, "Salvar");
+	botoes["VOLTAR_MENU"] = new Botao(400, "Voltar ao Menu");
+	botoes["SAIR"] = new Botao(475, "Sair");
 }
 
-PauseEstado::PauseEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM):
-	Estado(estado, pIM, PAUSE_STATE),
+PauseEstado::PauseEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC):
+	Estado(estado, pGC, PAUSE_ESTADO),
 	Menu("Imagens/floresta.png")
 {
 	pause = true;
-	initButtons();
+	initBotoes();
 }
 
 PauseEstado::~PauseEstado()
 {
-	deletarButtons();
+	deletarBotoes();
 	texto.clear();
 }
 
@@ -35,32 +35,32 @@ const bool PauseEstado::getPause() const
 	return pause;
 }
 
-void PauseEstado::updateButtons()
+void PauseEstado::updateBotoes()
 {
-	for (auto& it : buttons)
+	for (auto& it : botoes)
 	{
 		it.second->update((const float)(pComando->getMousePos().x), (const float)(pComando->getMousePos().y));
 	}
 
-	if (buttons["CONTINUAR"]->estaPressionado())
+	if (botoes["CONTINUAR"]->estaPressionado())
 	{
 		pause = false;
 	}
-	if (buttons["SALVAR"]->estaPressionado())
+	if (botoes["SALVAR"]->estaPressionado())
 	{
 		salvarFase = true;
 	}
-	if (buttons["VOLTAR_MENU"]->estaPressionado())
+	if (botoes["VOLTAR_MENU"]->estaPressionado())
 	{
 		irMenu = true;
 	}
-	else if (buttons["SAIR"]->estaPressionado())
+	else if (botoes["SAIR"]->estaPressionado())
 	{
 		sair = true;
 	}
 }
 
-void PauseEstado::updateInput()
+void PauseEstado::updateComando()
 {
 	pComando->updateMousePos();
 	verificarPause();
@@ -68,14 +68,14 @@ void PauseEstado::updateInput()
 
 void PauseEstado::update()
 {
-	updateButtons();
-	updateInput();
+	updateBotoes();
+	updateComando();
 }
 
 
 void PauseEstado::render()
 {
-	background.render();
-	renderButtons();
+	plano_fundo.render();
+	renderBotoes();
 	
 }

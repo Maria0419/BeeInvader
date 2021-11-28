@@ -9,16 +9,16 @@ class RankingEstado :
 private:
 
     void initText();
-    void initButtons();
+    void initBotoes();
 
 public:
-    RankingEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM);
+    RankingEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC);
     ~RankingEstado();
 
     const short getEstado();
 
-    void updateButtons();
-    void updateInput();
+    void updateBotoes();
+    void updateComando();
     void update();
 
     void render();
