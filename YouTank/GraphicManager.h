@@ -15,7 +15,6 @@ private:
 	//private functions
 	void initFont();
 
-protected:
 	GraphicManager();
 
 public:
@@ -42,4 +41,3 @@ public:
 	const bool isRunning() const;
 
 };
-
