@@ -9,8 +9,8 @@ void AbelhaRainha::initTimers()
 {
 	curaTimerMAX = 20;
 	curaTimer = curaTimerMAX;
-	ferraoTimerMAX = 500;
-	ferraoTimer = 0;
+	cooldownAtaqueMax = 100.f;
+	cooldownAtaque = 0;
 }
 
 void AbelhaRainha::initShape()
@@ -57,7 +57,7 @@ void AbelhaRainha::curaVida()
 			curaTimer += 1;
 		else
 		{
-			vida += 1;
+			vida += 2;
 			curaTimer = 0;
 		}
 	}
@@ -145,15 +145,13 @@ void AbelhaRainha::updateTaVivo()
 
 void AbelhaRainha::updateAtaque()
 {
-	if (ferraoTimer < ferraoTimerMAX)
-		ferraoTimer += 5;
-	else
+	updateAtaqueCooldown();
+	if (getPodeAtacar())
 	{
 		Ferrao* ferrao = new Ferrao(getPosition().x, getPosition().y,
-									pFadaCaida->getPosition().x, pFadaCaida->getPosition().y);
+			pFadaCaida->getPosition().x, pFadaCaida->getPosition().y);
 		pLista->incluaEntidade(static_cast<Entidade*>(ferrao));
-		ferraoTimer = 0;
-	}
+	}		
 }
 
 
