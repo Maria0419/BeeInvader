@@ -9,7 +9,7 @@ namespace ElementosVisuais
     {
     private:
         short unsigned estadoBotao;
-        static bool mouseHeld;
+        static bool mousePressionado;
 
         sf::Text texto;
         sf::Font* fonte;

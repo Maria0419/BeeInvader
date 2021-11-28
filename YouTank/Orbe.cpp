@@ -6,20 +6,20 @@ Orbe::Orbe(float dir_x, float dir_y, float jog_x, float jog_y):
 	Projetil(ID_ORBE)
 {
 	podeMatar = true;
+
 	setTexture("Imagens/orb3.png");
 	setSize(20.f, 18.f);
 	setOriginCenter();
 	setPosition(jog_x, jog_y);
-	destino.x = dir_x;
-	destino.y = dir_y;
+
 	direcao.x = dir_x/sqrtf(static_cast<float>(pow(dir_x,2))+ static_cast<float>(pow(dir_y,2)));
 	direcao.y = dir_y / sqrtf(static_cast<float>(pow(dir_x, 2)) + static_cast<float>(pow(dir_y, 2)));
 	rapidez = 80.f;
 
 	float distanciaFadaCaidaDestino;
-	distanciaFadaCaidaDestino = (float) (sqrt(pow(jog_y - destino.y, 2) + pow(destino.x - jog_x, 2)));
-	velocidade.x = rapidez * (destino.x - jog_x)/distanciaFadaCaidaDestino;
-	velocidade.y = rapidez * (jog_y - destino.y)/distanciaFadaCaidaDestino;
+	distanciaFadaCaidaDestino = (float) (sqrt(pow(jog_y - dir_y, 2) + pow(dir_x - jog_x, 2)));
+	velocidade.x = rapidez * (dir_x - jog_x)/distanciaFadaCaidaDestino;
+	velocidade.y = rapidez * (jog_y - dir_y)/distanciaFadaCaidaDestino;
 
 }
 

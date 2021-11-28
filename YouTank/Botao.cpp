@@ -4,7 +4,7 @@
 using namespace ElementosVisuais;
 
 
-bool Botao::mouseHeld = false;
+bool Botao::mousePressionado = false;
 
 void Botao::initText(std::string text)
 {
@@ -71,15 +71,15 @@ void Botao::update(const float posX, const float posY)
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			//só um clique permitido nos botão
-			if (mouseHeld == false)
+			if (mousePressionado == false)
 			{
-				mouseHeld = true;
+				mousePressionado = true;
 				estadoBotao = BT_PRESSIONADO;
 			}
 		}
 		else
 		{
-			mouseHeld = false;
+			mousePressionado = false;
 		}
 	}
 
