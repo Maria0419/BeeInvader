@@ -14,3 +14,21 @@ PoteMel::PoteMel():
 PoteMel::~PoteMel()
 {
 }
+
+void PoteMel::salvar()
+{
+	if (getShowing())
+	{
+		std::ofstream gravador("./Carregamentos/PoteMel.txt", std::ios::app);
+		if (!gravador)
+		{
+			std::cout << "arquivo não pode ser aberto" << std::endl;
+			fflush(stdin);
+			return;
+		}
+		gravador
+			<< getPosition().x << " "
+			<< getPosition().y << std::endl;
+		gravador.close();
+	}
+}

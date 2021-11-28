@@ -7,5 +7,7 @@ private:
 public:
      PoteMel();
      ~PoteMel();
+
+     void salvar();
 };
 

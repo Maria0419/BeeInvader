@@ -20,16 +20,21 @@ public:
 	InputManager();
 	~InputManager();
 
+	//updates
 	void update(float deltaTime);
 	void updateAtaqueFadaCaida();
 	void updateAtaqueCurandeira();
 	void updateMousePos();
 	void updateFadaCaida(float deltaTime);
 	void updateCurandeira(float deltaTime);
+
+	//sets
 	void setFadaCaida(Jogadores::FadaCaida* pFada);
 	void setCurandeira(Jogadores::Curandeira* pC);
 	void setGraphicManager(GraphicManager* pGM);
 	void setFase(Fases::Fase* pFase);
+
+	//gets
 	const sf::Vector2i getMousePos() const;
 	const bool getPause() const;
 };

@@ -24,7 +24,7 @@ namespace Fases {
         void salvar();
 
         void recuperar();
-
+        void recuperarPoteMel();
 
         const bool getTerminou() const;
     };

@@ -375,7 +375,7 @@ void Fase::recuperarCogumelos()
 	recuperar.close();
 }
 
-void Fase::recuperarPlataformas()
+void Fase::recuperarObstaculos()
 {
 	std::ifstream recuperarFerrao("./Carregamentos/Obstaculos.txt", std::ios::in);
 	if (!recuperarFerrao)
@@ -423,10 +423,6 @@ void Fase::recuperarPlataformas()
 		}
 	}
 	recuperarFerrao.close();
-}
-
-void Fase::recuperarEspinhos()
-{
 }
 
 void Fase::recuperarProjetil()
@@ -499,12 +495,7 @@ void Fase::reiniciarArquivos()
 	limpar.close();
 	limpar.open("./Carregamentos/Obstaculos.txt", std::ios::out);
 	limpar.close();
-	//limpar.open("./Carregamentos/Espinhos.txt", std::ios::out);
-	//limpar.close();
-	//limpar.open("./Carregamentos/FavoMel.txt", std::ios::out);
-	//limpar.close();
-	//limpar.open("./Carregamentos/Pedra.txt", std::ios::out);
-	//limpar.close();
-	//limpar.open("./Carregamentos/Plataforma.txt", std::ios::out);
-	//limpar.close();
+	limpar.open("./Carregamentos/PoteMel.txt", std::ios::out);
+	limpar.close();
+
 }

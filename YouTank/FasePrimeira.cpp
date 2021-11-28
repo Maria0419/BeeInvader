@@ -196,10 +196,31 @@ void FasePrimeira::recuperar()
 	recuperarCogumelos();
 	pFadaCaida->recuperar();
 	recuperarProjetil();
-	recuperarPlataformas();
+	recuperarObstaculos();
+	recuperarPoteMel();
 
 	if (pCurandeira != NULL)
 		pCurandeira->recuperar();
+}
+
+void FasePrimeira::recuperarPoteMel()
+{
+	std::ifstream recuperar("./Carregamentos/PoteMel.txt", std::ios::in);
+	if (!recuperar)
+	{
+		std::cout << "arquivo não pode ser aberto" << std::endl;
+		fflush(stdin);
+		return;
+	}
+	float posX, posY;
+	while (recuperar >> posX >> posY)
+	{
+		PoteMel* pAux = new PoteMel();
+		pAux->setPosition(posX, posY);
+		listaEntidades.incluaEntidade(pAux);
+		contaPoteMel++;
+	}
+	recuperar.close();
 }
 
 const bool FasePrimeira::getTerminou() const

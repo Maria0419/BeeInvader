@@ -64,8 +64,7 @@ public:
 
     void recuperarAbelhas();
     void recuperarCogumelos();
-    void recuperarPlataformas();
-    void recuperarEspinhos();
+    void recuperarObstaculos();
     void recuperarProjetil();
 
     void reiniciarArquivos();
