@@ -102,6 +102,7 @@ void VitoriaJogoEstado::recuperarPontuacao()
 	recuperaPontos.close();
 }
 
+
 void VitoriaJogoEstado::updateButtons()
 {
 	for (auto& it : buttons)

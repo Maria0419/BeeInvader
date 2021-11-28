@@ -18,8 +18,6 @@ namespace Inimigos
 		float y;
 		unsigned int curaTimer;
 		unsigned int curaTimerMAX;
-		unsigned int ferraoTimer;
-		unsigned int ferraoTimerMAX;
 
 		float angulo;
 		float anguloMAX;

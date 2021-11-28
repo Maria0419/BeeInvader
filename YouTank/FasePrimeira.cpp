@@ -99,7 +99,7 @@ void FasePrimeira::updateFasePrimeira()
 		{
 		case ID_POTEMEL:
 		{
-			//update contato com o pote de mel, objetivo que dá pontos
+			//update contato com o pote de mel, objetivo de conclusão de fase
 			if (collisionManager.verificaContatoJogador(listaEntidades.operator[](i), static_cast<Jogador*>(pFadaCaida)))
 			{
 				listaEntidades.operator[](i)->setShowing(false);
