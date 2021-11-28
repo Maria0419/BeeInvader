@@ -6,7 +6,7 @@
 #include "Curandeira.h"
 #include "Fase.h"
 
-class InputManager
+class GerenciadorComando
 {
 private:
 	Jogadores::FadaCaida* pFadaCaida;
@@ -17,8 +17,8 @@ private:
 	sf::Vector2i mousePosWindow;
 
 public:
-	InputManager();
-	~InputManager();
+	GerenciadorComando();
+	~GerenciadorComando();
 
 	//updates
 	void update(float deltaTime);

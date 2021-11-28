@@ -1,19 +1,19 @@
 #pragma once
-#include "State.h"
+#include "Estado.h"
 #include "Menu.h"
 
-class PauseState :
-    public State, public Menu
+class PauseEstado :
+    public Estado, public Menu
 {
 private:
     
     void initButtons();
 
 public:
-    PauseState(std::stack<State*>* state, InputManager* pIM);
-    ~PauseState();
+    PauseEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM);
+    ~PauseEstado();
 
-    const short getState();
+    const short getEstado();
     const bool getPause() const;
 
     void updateButtons();

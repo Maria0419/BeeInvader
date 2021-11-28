@@ -1,12 +1,12 @@
 #include "stdafx.h"
-#include "GameState.h"
+#include "JogoEstado.h"
 using namespace Jogadores;
 using namespace Fases;
 
-void GameState::runFase()
+void JogoEstado::runFase()
 {
 	jogador1 = new FadaCaida();
-	pInput->setFadaCaida(jogador1);
+	pComando->setFadaCaida(jogador1);
 
 	switch (fase)
 	{
@@ -23,8 +23,8 @@ void GameState::runFase()
 			criarCurandeira();
 			fasePrimeira->setCurandeira(jogador2);
 		}
-		pInput->setCurandeira(jogador2);
-		pInput->setFase(static_cast<Fase*>(fasePrimeira));
+		pComando->setCurandeira(jogador2);
+		pComando->setFase(static_cast<Fase*>(fasePrimeira));
 		
 		break;
 
@@ -40,8 +40,8 @@ void GameState::runFase()
 			criarCurandeira();
 			faseSegunda->setCurandeira(jogador2);
 		}
-		pInput->setCurandeira(jogador2);
-		pInput->setFase(static_cast<Fase*>(faseSegunda));
+		pComando->setCurandeira(jogador2);
+		pComando->setFase(static_cast<Fase*>(faseSegunda));
 
 		break;
 
@@ -51,7 +51,7 @@ void GameState::runFase()
 	}
 }
 
-void GameState::updateDeltaTime()
+void JogoEstado::updateDeltaTime()
 {
 	
 	deltaTime = clock.restart().asSeconds();
@@ -60,8 +60,8 @@ void GameState::updateDeltaTime()
 }
 
 //Construtora e Destrutora
-GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool mp, bool rec):
-	State(state,pIM, GAME_STATE),
+JogoEstado::JogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM, short f, bool mp, bool rec):
+	Estado(estado,pIM, GAME_STATE),
 	fasePrimeira(NULL),
 	faseSegunda(NULL),
 	jogador1(NULL),
@@ -76,7 +76,7 @@ GameState::GameState(std::stack<State*>* state, InputManager* pIM, short f, bool
 	
 }
 
-GameState::~GameState()
+JogoEstado::~JogoEstado()
 {
 	delete jogador1;
 	jogador1 = NULL;
@@ -106,49 +106,49 @@ GameState::~GameState()
 	}
 }
 
-void GameState::setPause(bool p)
+void JogoEstado::setPause(bool p)
 {
 	pause = p;
 }
 
-void GameState::setNome(std::string nome)
+void JogoEstado::setNome(std::string nome)
 {
 	nomeJ = nome;
 }
 
-void GameState::setPontos(int pontos)
+void JogoEstado::setPontos(int pontos)
 {
 	jogador1->setPontos(pontos);
 }
 
-const short GameState::getState()
+const short JogoEstado::getEstado()
 {
-	return stateID;
+	return estadoID;
 }
 
-const bool GameState::getPause() const
+const bool JogoEstado::getPause() const
 {
 	return pause;
 }
 
-void GameState::criarCurandeira()
+void JogoEstado::criarCurandeira()
 {
 	jogador2 = new Curandeira();
 }
 
-void GameState::verificarGameOver()
+void JogoEstado::verificarFimJogo()
 {
 	if (jogador1->getExisteNaFase() == false)
-		gameOver = true;
+		fimJogo = true;
 
 	if (multiplayer == true)
 	{
 		if (jogador2->getExisteNaFase() == false)
-			gameOver = true;
+			fimJogo = true;
 	}
 }
 
-void GameState::verificarGameWin()
+void JogoEstado::verificarVitoriaJogo()
 {
 	switch (fase)
 	{
@@ -156,20 +156,20 @@ void GameState::verificarGameWin()
 		if (fasePrimeira->getTerminou())
 		{
 			if(multiplayer)
-				states->push(new GameWinState(states, pInput, nomeJ, jogador1->getPontos(), true, true));
+				estados->push(new VitoriaJogoEstado(estados, pComando, nomeJ, jogador1->getPontos(), true, true));
 			else
-				states->push(new GameWinState(states, pInput, nomeJ, jogador1->getPontos(), true, false));
+				estados->push(new VitoriaJogoEstado(estados, pComando, nomeJ, jogador1->getPontos(), true, false));
 		}
 			
 		break;
 	case 1:
 		if (fasePrimeira->getTerminou())
-			gameWin = true;
+			vitoriaJogo = true;
 		break;
 
 	case 2:
 		if (faseSegunda->getTerminou())
-			gameWin = true;
+			vitoriaJogo = true;
 		break;
 
 	default:
@@ -180,41 +180,41 @@ void GameState::verificarGameWin()
 }
 
 
-void GameState::updatePause()
+void JogoEstado::updatePause()
 {
 	if (pause == true)
 	{
-		states->push(new PauseState(states, pInput));
+		estados->push(new PauseEstado(estados, pComando));
 	}
 		
 }
 
-void GameState::updateGameOver()
+void JogoEstado::updateFimJogo()
 {
-	if (gameOver == true)
-		states->push(new GameOverState(states, pInput));
+	if (fimJogo == true)
+		estados->push(new FimJogoEstado(estados, pComando));
 }
 
-void GameState::updateGameWin()
+void JogoEstado::updateVitoriaJogo()
 {
-	if (gameWin == true)
-		states->push(new GameWinState(states, pInput, nomeJ, jogador1->getPontos(), false, false));
+	if (vitoriaJogo == true)
+		estados->push(new VitoriaJogoEstado(estados, pComando, nomeJ, jogador1->getPontos(), false, false));
 }
 
-void GameState::updateInput()
+void JogoEstado::updateInput()
 {
 	updateDeltaTime();
-	pInput->update(deltaTime);
+	pComando->update(deltaTime);
 	verificarPause();
 }
 
-void GameState::update()
+void JogoEstado::update()
 {
 	updatePause();
-	verificarGameOver();
-	verificarGameWin();
-	updateGameOver();
-	updateGameWin();
+	verificarFimJogo();
+	verificarVitoriaJogo();
+	updateFimJogo();
+	updateVitoriaJogo();
 	updateInput();
 
 	switch (fase)
@@ -235,7 +235,7 @@ void GameState::update()
 	
 }
 
-void GameState::render()
+void JogoEstado::render()
 {
 	switch (fase)
 	{
@@ -255,7 +255,7 @@ void GameState::render()
 	
 }
 
-void GameState::salvar()
+void JogoEstado::salvar()
 {
 	std::ofstream gravador("./Carregamentos/ConfiguracoesFase.txt", std::ios::out);
 	if (!gravador)
@@ -288,7 +288,7 @@ void GameState::salvar()
 	}
 }
 
-void GameState::recuperar()
+void JogoEstado::recuperar()
 {
 	switch (fase)
 	{

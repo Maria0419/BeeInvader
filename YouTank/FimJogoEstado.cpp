@@ -1,14 +1,14 @@
 #include "stdafx.h"
-#include "GameOverState.h"
+#include "FimJogoEstado.h"
 using namespace ElementosVisuais;
 
-void GameOverState::initText()
+void FimJogoEstado::initText()
 {
 	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
 
-	sf::Text gameOver;
-	texto.push_back(gameOver);
+	sf::Text fimJogo;
+	texto.push_back(fimJogo);
 
 	texto[0].setFont(*fonte);
 	texto[0].setString("GAME OVER");
@@ -19,42 +19,42 @@ void GameOverState::initText()
 	texto[0].setPosition(380.f, 80.f);
 }
 
-void GameOverState::initButtons()
+void FimJogoEstado::initButtons()
 {
 	buttons["VOLTAR_MENU"] = new Button(300, "Voltar ao Menu");
 	buttons["SAIR"] = new Button(375, "Sair");
 }
 
-GameOverState::GameOverState(std::stack<State*>* state, InputManager* pIM):
-	State(state,pIM, GOVER_STATE),
+FimJogoEstado::FimJogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM):
+	Estado(estado,pIM, GOVER_STATE),
 	Menu("Imagens/f.png")
 {
-	gameOver = true;
+	fimJogo = true;
 	initButtons();
 	initText();
 }
 
-GameOverState::~GameOverState()
+FimJogoEstado::~FimJogoEstado()
 {
 	deletarButtons();
 	texto.clear();
 }
 
-const short GameOverState::getState()
+const short FimJogoEstado::getEstado()
 {
-	return stateID;
+	return estadoID;
 }
 
-void GameOverState::updateButtons()
+void FimJogoEstado::updateButtons()
 {
 	for (auto& it : buttons)
 	{
-		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
+		it.second->update((const float)(pComando->getMousePos().x), (const float)(pComando->getMousePos().y));
 	}
 
 	if (buttons["VOLTAR_MENU"]->estaPressionado())
 	{
-		goToMenu = true;
+		irMenu = true;
 	}
 	else if (buttons["SAIR"]->estaPressionado())
 	{
@@ -62,18 +62,18 @@ void GameOverState::updateButtons()
 	}
 }
 
-void GameOverState::updateInput()
+void FimJogoEstado::updateInput()
 {
-	pInput->updateMousePos();
+	pComando->updateMousePos();
 }
 
-void GameOverState::update()
+void FimJogoEstado::update()
 {
 	updateInput();
 	updateButtons();
 }
 
-void GameOverState::render()
+void FimJogoEstado::render()
 {
 	background.render();
 	renderText();

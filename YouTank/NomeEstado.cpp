@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "NomeState.h"
+#include "NomeEstado.h"
 using namespace ElementosVisuais;
 
-void NomeState::initText()
+void NomeEstado::initText()
 {
 	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
@@ -28,60 +28,60 @@ void NomeState::initText()
 	texto[1].setOutlineThickness(3.f);
 }
 
-void NomeState::initButtons()
+void NomeEstado::initButtons()
 {
 	buttons["CONTINUAR"] = new Button(450, "Continuar");
 }
 
-NomeState::NomeState(std::stack<State*>* state, InputManager* pIM) :
-	State(state, pIM, NOME_STATE),
+NomeEstado::NomeEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM) :
+	Estado(estado, pIM, NOME_STATE),
 	Menu("Imagens/f.png")
 {
 	initButtons();
 	initText();
 }
 
-NomeState::~NomeState()
+NomeEstado::~NomeEstado()
 {
 	deletarButtons();
 	texto.clear();
 }
 
-const short NomeState::getState()
+const short NomeEstado::getEstado()
 {
-	return stateID;
+	return estadoID;
 }
 
-const std::string NomeState::getNome() const
+const std::string NomeEstado::getNome() const
 {
 	return texto[1].getString();
 }
 
-void NomeState::updateButtons()
+void NomeEstado::updateButtons()
 {
 	for (auto& it : buttons)
 	{
-		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
+		it.second->update((const float)(pComando->getMousePos().x), (const float)(pComando->getMousePos().y));
 	}
 
 	if (buttons["CONTINUAR"]->estaPressionado() && texto[1].getString()!="")
 	{
-		terminarState = true;
+		terminarEstado = true;
 	}
 }
 
-void NomeState::updateInput()
+void NomeEstado::updateInput()
 {
-	pInput->updateMousePos();
+	pComando->updateMousePos();
 }
 
-void NomeState::update()
+void NomeEstado::update()
 {
 	updateInput();
 	updateButtons();
 }
 
-void NomeState::retiraLetra(char letra)
+void NomeEstado::retiraLetra(char letra)
 {
 	std::string nome = texto[1].getString();
 	if (nome != "")
@@ -89,14 +89,14 @@ void NomeState::retiraLetra(char letra)
 	texto[1].setString(nome);
 }
 
-void NomeState::incluaLetra(char letra)
+void NomeEstado::incluaLetra(char letra)
 {
 	std::string nome = texto[1].getString();
 	nome += letra;
 	texto[1].setString(nome);
 }
 
-void NomeState::render()
+void NomeEstado::render()
 {
 	background.render();
 	renderText();

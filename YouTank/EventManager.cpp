@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "EventManager.h"
-#include "NomeState.h"
-#include "State.h"
+#include "NomeEstado.h"
+#include "Estado.h"
 
 EventManager::EventManager():
 	ev(),
@@ -15,7 +15,7 @@ EventManager::~EventManager()
 	pGraphic = NULL;
 }
 
-void EventManager::pollEvents(State* pState)
+void EventManager::pollEvents(Estado* pEstado)
 {
 	while (pGraphic->getWindow()->pollEvent(ev))
 	{
@@ -28,14 +28,14 @@ void EventManager::pollEvents(State* pState)
 		break;
 		case (sf::Event::TextEntered):
 		{
-			if (pState->getState() == NOME_STATE && ev.text.unicode <= 128)
+			if (pEstado->getEstado() == NOME_STATE && ev.text.unicode <= 128)
 			{
-				NomeState* nState = static_cast<NomeState*>(pState);
+				NomeEstado* nEstado = static_cast<NomeEstado*>(pEstado);
 				char tecla = static_cast<char> (ev.text.unicode);
 				if (tecla == '\b')
-					nState->retiraLetra(tecla);
+					nEstado->retiraLetra(tecla);
 				else if(tecla != ' ')
-					nState->incluaLetra(tecla);
+					nEstado->incluaLetra(tecla);
 			}
 		}
 			

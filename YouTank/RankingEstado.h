@@ -1,10 +1,10 @@
 #pragma once
-#include "State.h"
+#include "Estado.h"
 #include "FadaCaida.h"
 #include "Menu.h"
 
-class RankingState :
-    public State, public Menu
+class RankingEstado :
+    public Estado, public Menu
 {
 private:
 
@@ -12,10 +12,10 @@ private:
     void initButtons();
 
 public:
-    RankingState(std::stack<State*>* state, InputManager* pIM);
-    ~RankingState();
+    RankingEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM);
+    ~RankingEstado();
 
-    const short getState();
+    const short getEstado();
 
     void updateButtons();
     void updateInput();

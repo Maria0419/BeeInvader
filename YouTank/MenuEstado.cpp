@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "MenuState.h"
+#include "MenuEstado.h"
 using namespace ElementosVisuais;
 
-void MenuState::initText()
+void MenuEstado::initText()
 {
 
 	//Inicializa o texto do botão
@@ -20,7 +20,7 @@ void MenuState::initText()
 
 }
 
-void MenuState::initButtons()
+void MenuEstado::initButtons()
 {
 	buttons["NOVO_JOGO"] = new Button(175, "Novo Jogo");
 	buttons["CONTINUAR_JOGO"] = new Button(250, "Continuar Jogo");
@@ -31,36 +31,36 @@ void MenuState::initButtons()
 	buttons["SAIR"] = new Button(625, "Sair");
 }
 
-MenuState::MenuState(std::stack<State*>* state, InputManager* pIM):
-	State(state, pIM, MENU_STATE),
+MenuEstado::MenuEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM):
+	Estado(estado, pIM, MENU_STATE),
 	Menu("Imagens/menu.png")
 {
 	initButtons();
 	initText();
 }
 
-MenuState::~MenuState()
+MenuEstado::~MenuEstado()
 {
 	deletarButtons();
 	texto.clear();
 }
 
-const short MenuState::getState()
+const short MenuEstado::getEstado()
 {
-	return stateID;
+	return estadoID;
 }
 
-void MenuState::updateButtons()
+void MenuEstado::updateButtons()
 {
 	for (auto& it : buttons)
 	{
-		it.second->update((const float) (pInput->getMousePos().x), (const float) (pInput->getMousePos().y));
+		it.second->update((const float) (pComando->getMousePos().x), (const float) (pComando->getMousePos().y));
 	}
 
 	if (buttons["NOVO_JOGO"]->estaPressionado())
 	{
-		states->push(new GameState(states, pInput, 12));
-		states->push(new NomeState(states, pInput));
+		estados->push(new JogoEstado(estados, pComando, 12));
+		estados->push(new NomeEstado(estados, pComando));
 		
 	}
 	if (buttons["CONTINUAR_JOGO"]->estaPressionado())
@@ -78,28 +78,28 @@ void MenuState::updateButtons()
 		recuperar >> nome >> fase >> multiPlayer;
 		recuperar.close();
 
-		states->push(new GameState(states, pInput, fase, multiPlayer, true));
-		states->top()->setNome(nome);
-		states->top()->recuperar();
+		estados->push(new JogoEstado(estados, pComando, fase, multiPlayer, true));
+		estados->top()->setNome(nome);
+		estados->top()->recuperar();
 	}
 	else if (buttons["FASE_1"]->estaPressionado())
 	{
-		states->push(new GameState(states, pInput, 1));
-		states->push(new NomeState(states, pInput));
+		estados->push(new JogoEstado(estados, pComando, 1));
+		estados->push(new NomeEstado(estados, pComando));
 	}
 	else if (buttons["FASE_2"]->estaPressionado())
 	{
-		states->push(new GameState(states, pInput, 2));
-		states->push(new NomeState(states, pInput));
+		estados->push(new JogoEstado(estados, pComando, 2));
+		estados->push(new NomeEstado(estados, pComando));
 	}
 	else if (buttons["MULTIPLAYER"]->estaPressionado())
 	{
-		states->push(new GameState(states, pInput, 12, true));
-		states->push(new NomeState(states, pInput));
+		estados->push(new JogoEstado(estados, pComando, 12, true));
+		estados->push(new NomeEstado(estados, pComando));
 	}
 	else if (buttons["RANKING"]->estaPressionado())
 	{
-		states->push(new RankingState(states, pInput));
+		estados->push(new RankingEstado(estados, pComando));
 	}
 	else if (buttons["SAIR"]->estaPressionado())
 	{
@@ -107,19 +107,19 @@ void MenuState::updateButtons()
 	}
 }
 
-void MenuState::updateInput()
+void MenuEstado::updateInput()
 {
-	pInput->updateMousePos();
+	pComando->updateMousePos();
 }
 
-void MenuState::update()
+void MenuEstado::update()
 {
 	updateInput();
 	updateButtons();
 	
 }
 
-void MenuState::render()
+void MenuEstado::render()
 {
 	background.render();
 	renderText();

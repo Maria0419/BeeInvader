@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "RankingState.h"
+#include "RankingEstado.h"
 using namespace ElementosVisuais;
 
-void RankingState::initText()
+void RankingEstado::initText()
 {
 
 	//Inicializa o texto do botão
@@ -53,55 +53,55 @@ void RankingState::initText()
 	recuperaPontos.close();
 }
 
-void RankingState::initButtons()
+void RankingEstado::initButtons()
 {
 	buttons["VOLTAR_MENU"] = new Button(600, "Voltar ao Menu");
 }
 
-RankingState::RankingState(std::stack<State*>* state, InputManager* pIM) :
-	State(state, pIM, RANKING_STATE),
+RankingEstado::RankingEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM) :
+	Estado(estado, pIM, RANKING_STATE),
 	Menu("Imagens/menu.png")
 {
 	initButtons();
 	initText();
 }
 
-RankingState::~RankingState()
+RankingEstado::~RankingEstado()
 {
 	deletarButtons();
 	texto.clear();
 }
 
-const short RankingState::getState()
+const short RankingEstado::getEstado()
 {
-	return stateID;
+	return estadoID;
 }
 
-void RankingState::updateButtons()
+void RankingEstado::updateButtons()
 {
 	for (auto& it : buttons)
 	{
-		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
+		it.second->update((const float)(pComando->getMousePos().x), (const float)(pComando->getMousePos().y));
 	}
 	if (buttons["VOLTAR_MENU"]->estaPressionado())
 	{
-		goToMenu = true;
+		irMenu = true;
 	}
 }
 
-void RankingState::updateInput()
+void RankingEstado::updateInput()
 {
-	pInput->updateMousePos();
+	pComando->updateMousePos();
 }
 
-void RankingState::update()
+void RankingEstado::update()
 {
 	updateInput();
 	updateButtons();
 
 }
 
-void RankingState::render()
+void RankingEstado::render()
 {
 	background.render();
 	renderText();

@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "InputManager.h"
+#include "GerenciadorComando.h"
 using namespace Jogadores;
 using namespace Fases;
 
-InputManager::InputManager() :
+GerenciadorComando::GerenciadorComando() :
 	pCurandeira(NULL),
 	pFadaCaida(NULL),
 	pGraphic(NULL), 
@@ -12,12 +12,12 @@ InputManager::InputManager() :
 	
 }
 
-InputManager::~InputManager()
+GerenciadorComando::~GerenciadorComando()
 {
 	pCurandeira = NULL;
 }
 
-void InputManager::update(float deltaTime)
+void GerenciadorComando::update(float deltaTime)
 {
 	updateFadaCaida(deltaTime);
 
@@ -25,7 +25,7 @@ void InputManager::update(float deltaTime)
 		updateCurandeira(deltaTime);
 }
 
-void InputManager::updateAtaqueFadaCaida()
+void GerenciadorComando::updateAtaqueFadaCaida()
 {
 	pFadaCaida->updateAtaqueCooldown();
 
@@ -38,7 +38,7 @@ void InputManager::updateAtaqueFadaCaida()
 	
 }
 
-void InputManager::updateAtaqueCurandeira()
+void GerenciadorComando::updateAtaqueCurandeira()
 {
 	pCurandeira->updateAtaqueCooldown();
 
@@ -48,12 +48,12 @@ void InputManager::updateAtaqueCurandeira()
 	}
 }
 
-void InputManager::updateMousePos()
+void GerenciadorComando::updateMousePos()
 {
 	mousePosWindow = sf::Mouse::getPosition(*pGraphic->getWindow());
 }
 
-void InputManager::updateFadaCaida(float deltaTime)
+void GerenciadorComando::updateFadaCaida(float deltaTime)
 {
 	
 	pFadaCaida->setVelocidadeX(pFadaCaida->getVelocidadeX() * 0.94f);
@@ -80,7 +80,7 @@ void InputManager::updateFadaCaida(float deltaTime)
 	updateAtaqueFadaCaida();
 }
 
-void InputManager::updateCurandeira(float deltaTime)
+void GerenciadorComando::updateCurandeira(float deltaTime)
 {
 	pCurandeira->setVelocidadeX(pCurandeira->getVelocidadeX() * 0.98f);
 	pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() * 0.98f);
@@ -106,17 +106,17 @@ void InputManager::updateCurandeira(float deltaTime)
 }
 
 
-void InputManager::setFadaCaida(FadaCaida* pFada)
+void GerenciadorComando::setFadaCaida(FadaCaida* pFada)
 {
 	pFadaCaida = pFada;
 }
 
-void InputManager::setGraphicManager(GraphicManager* pGM)
+void GerenciadorComando::setGraphicManager(GraphicManager* pGM)
 {
 	pGraphic = pGM;
 }
 
-void InputManager::setFase(Fase* pF)
+void GerenciadorComando::setFase(Fase* pF)
 {
 	if (pF)
 		pFase = pF;
@@ -124,12 +124,12 @@ void InputManager::setFase(Fase* pF)
 		std::cout << "ERROR::INPUTMANAGER::SETFASE::Ponteiro Nulo";
 }
 
-const sf::Vector2i InputManager::getMousePos() const
+const sf::Vector2i GerenciadorComando::getMousePos() const
 {
 	return mousePosWindow;
 }
 
-const bool InputManager::getPause() const 
+const bool GerenciadorComando::getPause() const 
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		return true;
@@ -138,7 +138,7 @@ const bool InputManager::getPause() const
 
 }
 
-void InputManager::setCurandeira(Curandeira* pC)
+void GerenciadorComando::setCurandeira(Curandeira* pC)
 {
 	pCurandeira = pC;
 }

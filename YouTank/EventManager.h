@@ -1,8 +1,8 @@
 #pragma once
 #include "stdafx.h"
 #include "GraphicManager.h"
-class NomeState;
-class State;
+class NomeEstado;
+class Estado;
 class EventManager
 {
 private:
@@ -15,7 +15,7 @@ public:
 	~EventManager();
 
 	//functions
-	void pollEvents(State* pState);
+	void pollEvents(Estado* pEstado);
 
 	//modifiers
 	void setGraphicManager(GraphicManager *pGM);

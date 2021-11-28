@@ -1,11 +1,11 @@
 #pragma once
-#include "State.h"
+#include "Estado.h"
 #include "Menu.h"
 
-class GameState;
+class JogoEstado;
 
-class GameWinState :
-    public State, public Menu
+class VitoriaJogoEstado :
+    public Estado, public Menu
 {
 private:
 	bool prox_fase;
@@ -16,10 +16,10 @@ private:
 	void initText();
 	void initButtons();
 public:
-	GameWinState(std::stack<State*>* state, InputManager* pIM, std::string nome, int pontos, bool prox_f = false, bool mp = false);
-	~GameWinState();
+	VitoriaJogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM, std::string nome, int pontos, bool prox_f = false, bool mp = false);
+	~VitoriaJogoEstado();
 
-	const short getState();
+	const short getEstado();
 
 	void salvarPontuacao();
 	void recuperarPontuacao();

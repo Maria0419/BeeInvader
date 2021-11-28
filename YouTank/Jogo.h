@@ -2,30 +2,30 @@
 #include "stdafx.h"
 #include "GraphicManager.h"
 #include "EventManager.h"
-#include "InputManager.h"
+#include "GerenciadorComando.h"
 
-#include "MenuState.h"
-#include "PauseState.h"
+#include "MenuEstado.h"
+#include "PauseEstado.h"
 
 
-class Game
+class Jogo
 {
 private:
 	//Gerenciadores
 	GraphicManager *pGraphic;
 	EventManager eventManager;
-	InputManager inputManager;
+	GerenciadorComando inputManager;
 
-	std::stack<State*> states;
+	std::stack<Estado*> estados;
 
 	bool sair;
 
-	void initStates();
+	void initEstados();
 	void setGraphicManager();
 
 public:
-	Game();
-	~Game();
+	Jogo();
+	~Jogo();
 
 	//render & update
 	void run();

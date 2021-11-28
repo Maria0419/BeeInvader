@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "PauseState.h"
+#include "PauseEstado.h"
 using namespace ElementosVisuais;
 
 
-void PauseState::initButtons()
+void PauseEstado::initButtons()
 {
 	buttons["CONTINUAR"] = new Button(250, "Continuar");
 	buttons["SALVAR"] = new Button(325, "Salvar");
@@ -11,35 +11,35 @@ void PauseState::initButtons()
 	buttons["SAIR"] = new Button(475, "Sair");
 }
 
-PauseState::PauseState(std::stack<State*>* state, InputManager* pIM):
-	State(state, pIM, PAUSE_STATE),
+PauseEstado::PauseEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM):
+	Estado(estado, pIM, PAUSE_STATE),
 	Menu("Imagens/floresta.png")
 {
 	pause = true;
 	initButtons();
 }
 
-PauseState::~PauseState()
+PauseEstado::~PauseEstado()
 {
 	deletarButtons();
 	texto.clear();
 }
 
-const short PauseState::getState()
+const short PauseEstado::getEstado()
 {
-	return stateID;
+	return estadoID;
 }
 
-const bool PauseState::getPause() const
+const bool PauseEstado::getPause() const
 {
 	return pause;
 }
 
-void PauseState::updateButtons()
+void PauseEstado::updateButtons()
 {
 	for (auto& it : buttons)
 	{
-		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
+		it.second->update((const float)(pComando->getMousePos().x), (const float)(pComando->getMousePos().y));
 	}
 
 	if (buttons["CONTINUAR"]->estaPressionado())
@@ -52,7 +52,7 @@ void PauseState::updateButtons()
 	}
 	if (buttons["VOLTAR_MENU"]->estaPressionado())
 	{
-		goToMenu = true;
+		irMenu = true;
 	}
 	else if (buttons["SAIR"]->estaPressionado())
 	{
@@ -60,20 +60,20 @@ void PauseState::updateButtons()
 	}
 }
 
-void PauseState::updateInput()
+void PauseEstado::updateInput()
 {
-	pInput->updateMousePos();
+	pComando->updateMousePos();
 	verificarPause();
 }
 
-void PauseState::update()
+void PauseEstado::update()
 {
 	updateButtons();
 	updateInput();
 }
 
 
-void PauseState::render()
+void PauseEstado::render()
 {
 	background.render();
 	renderButtons();

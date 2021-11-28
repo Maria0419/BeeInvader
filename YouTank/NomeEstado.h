@@ -1,19 +1,19 @@
 #pragma once
-#include "State.h"
+#include "Estado.h"
 #include "Menu.h"
 
-class NomeState :
-    public State, public Menu
+class NomeEstado :
+    public Estado, public Menu
 {
 
 	void initText();
 	void initButtons();
 
 public:
-	NomeState(std::stack<State*>* state, InputManager* pIM);
-	~NomeState();
+	NomeEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM);
+	~NomeEstado();
 
-	const short getState();
+	const short getEstado();
 	const std::string getNome() const;
 
 	void updateButtons();

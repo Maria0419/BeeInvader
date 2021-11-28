@@ -1,15 +1,15 @@
 #include "stdafx.h"
-#include "GameWinState.h"
-#include "GameState.h"
+#include "VitoriaJogoEstado.h"
+#include "JogoEstado.h"
 using namespace ElementosVisuais;
 
-void GameWinState::initText()
+void VitoriaJogoEstado::initText()
 {
 	//Inicializa o texto do botão
 	fonte = pGraphic->getFont();
 
-	sf::Text gameWin;
-	texto.push_back(gameWin);
+	sf::Text vitoriaJogo;
+	texto.push_back(vitoriaJogo);
 	texto[0].setFont(*fonte);
 	texto[0].setString("VITORIA");
 	texto[0].setFillColor(sf::Color::Yellow);
@@ -19,7 +19,7 @@ void GameWinState::initText()
 	texto[0].setPosition(450.f, 50.f);
 }
 
-void GameWinState::initButtons()
+void VitoriaJogoEstado::initButtons()
 {
 	if(prox_fase == true)
 		buttons["PROX_FASE"] = new Button(225, "Proxima fase");
@@ -29,32 +29,32 @@ void GameWinState::initButtons()
 	buttons["SAIR"] = new Button(450, "Sair");
 }
 
-GameWinState::GameWinState(std::stack<State*>* state, InputManager* pIM, std::string nome, int pontos, bool prox_f, bool mp) :
-	State(state, pIM, GWIN_STATE),
+VitoriaJogoEstado::VitoriaJogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM, std::string nome, int pontos, bool prox_f, bool mp) :
+	Estado(estado, pIM, GWIN_STATE),
 	Menu("Imagens/treeForest.jpg")
 {
 	nomeJ = nome;
 	pontuacao = pontos;
 	prox_fase = prox_f;
 	multiplayer = mp;
-	gameOver = true;
+	fimJogo = true;
 	initButtons();
 	initText();
 }
 
-GameWinState::~GameWinState()
+VitoriaJogoEstado::~VitoriaJogoEstado()
 {
 	deletarButtons();
 	texto.clear();
 	ranking.clear();
 }
 
-const short GameWinState::getState()
+const short VitoriaJogoEstado::getEstado()
 {
-	return stateID;
+	return estadoID;
 }
 
-void GameWinState::salvarPontuacao()
+void VitoriaJogoEstado::salvarPontuacao()
 {
 	ranking.insert(std::multimap<int, std::string, std::greater<int>>::value_type(pontuacao, nomeJ));
 
@@ -77,7 +77,7 @@ void GameWinState::salvarPontuacao()
 	pontosFile.close();
 }
 
-void GameWinState::recuperarPontuacao()
+void VitoriaJogoEstado::recuperarPontuacao()
 {
 	//abre o arquivo ranking.txt
 	std::ifstream recuperaPontos("./Carregamentos/ranking.txt", std::ios::in);
@@ -102,11 +102,11 @@ void GameWinState::recuperarPontuacao()
 	recuperaPontos.close();
 }
 
-void GameWinState::updateButtons()
+void VitoriaJogoEstado::updateButtons()
 {
 	for (auto& it : buttons)
 	{
-		it.second->update((const float)(pInput->getMousePos().x), (const float)(pInput->getMousePos().y));
+		it.second->update((const float)(pComando->getMousePos().x), (const float)(pComando->getMousePos().y));
 	}
 	if (prox_fase)
 	{
@@ -114,16 +114,16 @@ void GameWinState::updateButtons()
 		{
 			if (multiplayer == true)
 			{
-				states->push(new GameState(states, pInput, 2, true));
-				states->top()->setNome(nomeJ);
-				states->top()->setPontos(pontuacao);
+				estados->push(new JogoEstado(estados, pComando, 2, true));
+				estados->top()->setNome(nomeJ);
+				estados->top()->setPontos(pontuacao);
 			}
 
 			else
 			{
-				states->push(new GameState(states, pInput, 2, false));
-				states->top()->setNome(nomeJ);
-				states->top()->setPontos(pontuacao);
+				estados->push(new JogoEstado(estados, pComando, 2, false));
+				estados->top()->setNome(nomeJ);
+				estados->top()->setPontos(pontuacao);
 			}
 				
 
@@ -136,7 +136,7 @@ void GameWinState::updateButtons()
 	}
 	if (buttons["VOLTAR_MENU"]->estaPressionado())
 	{
-		goToMenu = true;
+		irMenu = true;
 	}
 	else if (buttons["SAIR"]->estaPressionado())
 	{
@@ -144,18 +144,18 @@ void GameWinState::updateButtons()
 	}
 }
 
-void GameWinState::updateInput()
+void VitoriaJogoEstado::updateInput()
 {
-	pInput->updateMousePos();
+	pComando->updateMousePos();
 }
 
-void GameWinState::update()
+void VitoriaJogoEstado::update()
 {
 	updateInput();
 	updateButtons();
 }
 
-void GameWinState::render()
+void VitoriaJogoEstado::render()
 {
 	background.render();
 	renderText();

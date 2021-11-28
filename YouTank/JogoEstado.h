@@ -1,13 +1,13 @@
 #pragma once
-#include "State.h"
+#include "Estado.h"
 #include "FasePrimeira.h"
 #include "FaseSegunda.h"
-#include "PauseState.h"
-#include "GameOverState.h"
-#include "GameWinState.h"
+#include "PauseEstado.h"
+#include "FimJogoEstado.h"
+#include "VitoriaJogoEstado.h"
 
 
-class GameState: public State
+class JogoEstado: public Estado
 {
 private:
     Jogadores::FadaCaida* jogador1;
@@ -31,23 +31,23 @@ private:
 public:
 
     //Construtora e Destrutora
-    GameState(std::stack<State*>* state, InputManager* pIM, short f, bool mp = false, bool rec = false);
-    ~GameState();
+    JogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM, short f, bool mp = false, bool rec = false);
+    ~JogoEstado();
 
     void setPause(bool p);
     void setNome(std::string nome);
     void setPontos(int pontos);
-    const short getState();
+    const short getEstado();
     const bool getPause() const;
 
     void criarCurandeira();
 
-    void verificarGameOver();
-    void verificarGameWin();
+    void verificarFimJogo();
+    void verificarVitoriaJogo();
 
     void updatePause();
-    void updateGameOver();
-    void updateGameWin();
+    void updateFimJogo();
+    void updateVitoriaJogo();
     void updateInput();
     void update();
     

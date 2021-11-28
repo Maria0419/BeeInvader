@@ -2,12 +2,12 @@
 //
 
 #include "stdafx.h"
-#include "Game.h"
+#include "Jogo.h"
 
 int main()
 {
     srand(static_cast <unsigned int> (time(NULL)));
-    Game game;
+    Jogo game;
 }
 
 // Executar programa: Ctrl + F5 ou Menu Depurar > Iniciar Sem Depuração
