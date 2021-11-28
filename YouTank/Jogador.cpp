@@ -74,11 +74,11 @@ void Jogador::naColisao()
 	}
 }
 
-void Jogador::update()
+void Jogador::update(float deltaTime)
 {
-	updateTaVivo();
-	updateAnimacao();
-	barraVida.update();
+	setVelocidadeY(getVelocidadeY() + 981.f * deltaTime);
+	move(getVelocidadeX() * deltaTime, getVelocidadeY() * deltaTime);
+	
 }
 
 const bool Jogador::getColisaoBot() const
@@ -112,6 +112,11 @@ void Jogador::updateTaVivo()
 {
 	if (vida <= 0)
 		aparece = false;
+}
+
+void Jogadores::Jogador::pular()
+{
+	setVelocidadeY(-sqrtf(2.0f * 981.f * getAlturaPulo()));
 }
 
 void Jogador::salvar()

@@ -29,9 +29,11 @@ public:
 
     void renderBarraVida();
 
-    void update();
+    void update(float deltaTime);
     void updateAnimacao();
     void updateTaVivo();
+
+    void pular();
 
     void salvar();
     void recuperar();

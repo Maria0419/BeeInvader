@@ -18,7 +18,6 @@ public:
 
     void curar(float dir_x, float dir_y, float pos_x, float pos_y);
     void update();
-
     const int getCura() const;
 };
 

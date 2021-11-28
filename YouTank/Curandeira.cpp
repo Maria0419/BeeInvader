@@ -32,12 +32,13 @@ void Curandeira::curar(float dir_x, float dir_y, float pos_x, float pos_y)
 	pLista->incluaEntidade(static_cast<Entidade*>(pP));
 }
 
-void Curandeira::update()
+void Jogadores::Curandeira::update()
 {
 	updateAnimacao();
 	updateTaVivo();
 	barraVida.update();
 }
+
 
 const int Curandeira::getCura() const
 {

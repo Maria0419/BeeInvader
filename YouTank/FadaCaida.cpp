@@ -48,12 +48,13 @@ const int FadaCaida::getPoteMel() const
 	return quantosPoteMel;
 }
 
-void FadaCaida::update()
+void Jogadores::FadaCaida::update()
 {
 	updateAnimacao();
 	updateTaVivo();
 	barraVida.update();
 }
+
 
 void FadaCaida::operator+=(int i)
 {

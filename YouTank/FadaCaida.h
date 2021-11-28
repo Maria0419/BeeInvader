@@ -22,6 +22,7 @@ namespace Jogadores
         void ataca(float dir_x, float dir_y);
         void coletouPoteMel();
         const int getPoteMel() const;
+
         void update();
 
         void operator+=(int i);

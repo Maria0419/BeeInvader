@@ -65,18 +65,15 @@ void GerenciadorComando::updateFadaCaida(float deltaTime)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && pFadaCaida->getPodePular())
 	{
+		pFadaCaida->pular();
 		pFadaCaida->setPodePular(false);
-		pFadaCaida->setVelocidadeY(-sqrtf(2.0f * 981.f * pFadaCaida->getAlturaPulo()));
 	}
-	pFadaCaida->setVelocidadeY(pFadaCaida->getVelocidadeY() + 981.f * deltaTime);
-
+	
 	if (pFadaCaida->getVelocidadeX() < 0)
 		pFadaCaida->setOlhaEsquerda(true);
 	else
 		pFadaCaida->setOlhaEsquerda(false);
-
-	pFadaCaida->move(pFadaCaida->getVelocidadeX() * deltaTime, pFadaCaida->getVelocidadeY() * deltaTime);
-
+	static_cast<Jogador*>(pFadaCaida)->update(deltaTime);
 	updateAtaqueFadaCaida();
 }
 
@@ -92,17 +89,18 @@ void GerenciadorComando::updateCurandeira(float deltaTime)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && pCurandeira->getPodePular())
 	{
+		pCurandeira->pular();
 		pCurandeira->setPodePular(false);
-		pCurandeira->setVelocidadeY(-sqrtf(2.0f * 981.f * pCurandeira->getAlturaPulo()));
 	}
-	pCurandeira->setVelocidadeY(pCurandeira->getVelocidadeY() + 981.f * deltaTime);
+	
 
 	if (pCurandeira->getVelocidadeX() < 0)
 		pCurandeira->setOlhaEsquerda(true);
 	else
 		pCurandeira->setOlhaEsquerda(false);
-	pCurandeira->move(pCurandeira->getVelocidadeX() * deltaTime, pCurandeira->getVelocidadeY() * deltaTime);
+	static_cast<Jogador*>(pCurandeira)->update(deltaTime);
 	updateAtaqueCurandeira();
+
 }
 
 
