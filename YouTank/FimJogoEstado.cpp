@@ -11,12 +11,12 @@ void FimJogoEstado::initText()
 	texto.push_back(fimJogo);
 
 	texto[0].setFont(*fonte);
-	texto[0].setString("JOGO OVER");
+	texto[0].setString("DERROTA");
 	texto[0].setFillColor(sf::Color::Yellow);
 	texto[0].setOutlineColor(sf::Color::Black);
 	texto[0].setOutlineThickness(3.f);
 	texto[0].setCharacterSize(134);
-	texto[0].setPosition(380.f, 80.f);
+	texto[0].setPosition(430.f, 80.f);
 }
 
 void FimJogoEstado::initBotoes()
