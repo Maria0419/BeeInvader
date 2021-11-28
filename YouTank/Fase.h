@@ -1,13 +1,13 @@
 #pragma once
 #include "ListaEntidades.h"
-#include "CollisionManager.h"
+#include "GerenciadorColisao.h"
 #include "FadaCaida.h"
 #include "Orbe.h"
 #include "ListaEntidades.h"
 #include "Abelha.h"
 #include "Ferrao.h"
 #include "Plataforma.h"
-#include "Background.h"
+#include "PlanoFundo.h"
 #include "Cogumelo.h"
 #include "Curandeira.h"
 #include "Espinhos.h"
@@ -23,13 +23,13 @@ class Fase :
 {
 protected:
     ListaEntidades listaEntidades;
-    CollisionManager collisionManager;
+    GerenciadorColisao gerenciadorColisao;
 
     //FadaCaidaes
     Jogadores::FadaCaida* pFadaCaida;
     Jogadores::Curandeira* pCurandeira;
 
-    ElementosVisuais::Background background;
+    ElementosVisuais::PlanoFundo plano_fundo;
 
     //Timer dos inimigos
     unsigned int criarTimer;

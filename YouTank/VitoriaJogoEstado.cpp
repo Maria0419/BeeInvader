@@ -6,7 +6,7 @@ using namespace ElementosVisuais;
 void VitoriaJogoEstado::initText()
 {
 	//Inicializa o texto do botão
-	fonte = pGraphic->getFont();
+	fonte = pGrafico->getFont();
 
 	sf::Text vitoriaJogo;
 	texto.push_back(vitoriaJogo);
@@ -19,18 +19,18 @@ void VitoriaJogoEstado::initText()
 	texto[0].setPosition(450.f, 50.f);
 }
 
-void VitoriaJogoEstado::initButtons()
+void VitoriaJogoEstado::initBotoes()
 {
 	if(prox_fase == true)
-		buttons["PROX_FASE"] = new Button(225, "Proxima fase");
+		botoes["PROX_FASE"] = new Botao(225, "Proxima fase");
 
-	buttons["SALVAR_PONTOS"] = new Button(300, "Salvar pontos");
-	buttons["VOLTAR_MENU"] = new Button(375, "Voltar ao Menu");
-	buttons["SAIR"] = new Button(450, "Sair");
+	botoes["SALVAR_PONTOS"] = new Botao(300, "Salvar pontos");
+	botoes["VOLTAR_MENU"] = new Botao(375, "Voltar ao Menu");
+	botoes["SAIR"] = new Botao(450, "Sair");
 }
 
-VitoriaJogoEstado::VitoriaJogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM, std::string nome, int pontos, bool prox_f, bool mp) :
-	Estado(estado, pIM, GWIN_STATE),
+VitoriaJogoEstado::VitoriaJogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC, std::string nome, int pontos, bool prox_f, bool mp) :
+	Estado(estado, pGC, VITORIA_ESTADO),
 	Menu("Imagens/treeForest.jpg")
 {
 	nomeJ = nome;
@@ -38,13 +38,13 @@ VitoriaJogoEstado::VitoriaJogoEstado(std::stack<Estado*>* estado, GerenciadorCom
 	prox_fase = prox_f;
 	multiplayer = mp;
 	fimJogo = true;
-	initButtons();
+	initBotoes();
 	initText();
 }
 
 VitoriaJogoEstado::~VitoriaJogoEstado()
 {
-	deletarButtons();
+	deletarBotoes();
 	texto.clear();
 	ranking.clear();
 }
@@ -72,7 +72,7 @@ void VitoriaJogoEstado::salvarPontuacao()
 		pontosFile << it->second << ' ' << it->first << std::endl;
 	}
 
-	buttons["SALVAR_PONTOS"]->setText("SALVO");
+	botoes["SALVAR_PONTOS"]->setText("SALVO");
 
 	pontosFile.close();
 }
@@ -102,15 +102,15 @@ void VitoriaJogoEstado::recuperarPontuacao()
 	recuperaPontos.close();
 }
 
-void VitoriaJogoEstado::updateButtons()
+void VitoriaJogoEstado::updateBotoes()
 {
-	for (auto& it : buttons)
+	for (auto& it : botoes)
 	{
 		it.second->update((const float)(pComando->getMousePos().x), (const float)(pComando->getMousePos().y));
 	}
 	if (prox_fase)
 	{
-		if (buttons["PROX_FASE"]->estaPressionado())
+		if (botoes["PROX_FASE"]->estaPressionado())
 		{
 			if (multiplayer == true)
 			{
@@ -129,35 +129,35 @@ void VitoriaJogoEstado::updateButtons()
 
 		}
 	}
-	if (buttons["SALVAR_PONTOS"]->estaPressionado())
+	if (botoes["SALVAR_PONTOS"]->estaPressionado())
 	{
 		recuperarPontuacao();
 		salvarPontuacao();
 	}
-	if (buttons["VOLTAR_MENU"]->estaPressionado())
+	if (botoes["VOLTAR_MENU"]->estaPressionado())
 	{
 		irMenu = true;
 	}
-	else if (buttons["SAIR"]->estaPressionado())
+	else if (botoes["SAIR"]->estaPressionado())
 	{
 		sair = true;
 	}
 }
 
-void VitoriaJogoEstado::updateInput()
+void VitoriaJogoEstado::updateComando()
 {
 	pComando->updateMousePos();
 }
 
 void VitoriaJogoEstado::update()
 {
-	updateInput();
-	updateButtons();
+	updateComando();
+	updateBotoes();
 }
 
 void VitoriaJogoEstado::render()
 {
-	background.render();
+	plano_fundo.render();
 	renderText();
-	renderButtons();
+	renderBotoes();
 }

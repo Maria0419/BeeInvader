@@ -1,21 +1,21 @@
 #include "stdafx.h"
-#include "CollisionManager.h"
+#include "GerenciadorColisao.h"
 #include "Global.h"
 using namespace Jogadores;
 
 
-CollisionManager::CollisionManager():
+GerenciadorColisao::GerenciadorColisao():
 	pWindow(NULL),
-	pGraphic(NULL)
+	pGrafico(NULL)
 {
 
 }
 
-CollisionManager::~CollisionManager()
+GerenciadorColisao::~GerenciadorColisao()
 {
 }
 
-bool CollisionManager::verificaColisaoJogador(Entidade& entidade, Jogador& jogador)
+bool GerenciadorColisao::verificaColisaoJogador(Entidade& entidade, Jogador& jogador)
 {
 	/*==================COLISOES FADA CAIDA=====================*/
 	/*															*/
@@ -87,7 +87,7 @@ bool CollisionManager::verificaColisaoJogador(Entidade& entidade, Jogador& jogad
 	return false;
 }
 
-void CollisionManager::updateColisoesJanela(Jogador* pJogador)
+void GerenciadorColisao::updateColisoesJanela(Jogador* pJogador)
 {
 	if (pJogador)
 	{
@@ -118,17 +118,17 @@ void CollisionManager::updateColisoesJanela(Jogador* pJogador)
 	}
 }
 
-bool CollisionManager::updateColisoesJogador(Entidade* pEn, Jogador* pJogador)
+bool GerenciadorColisao::updateColisoesJogador(Entidade* pEn, Jogador* pJogador)
 {
 	return verificaColisaoJogador(*pEn, *pJogador);
 }
 
-bool CollisionManager::updateCombate(Entidade* pOrbe, Entidade* pInimigo)
+bool GerenciadorColisao::updateCombate(Entidade* pOrbe, Entidade* pInimigo)
 {
 	return pOrbe->intersecta(static_cast<Ente*>(pInimigo));
 }
 
-void CollisionManager::updateInimigoPlataforma(Entidade& inimigo, Entidade* plataforma)
+void GerenciadorColisao::updateInimigoPlataforma(Entidade& inimigo, Entidade* plataforma)
 {
 
 	/*===============COLISOES INIMIGO/PLATAFORMA================*/
@@ -184,21 +184,21 @@ void CollisionManager::updateInimigoPlataforma(Entidade& inimigo, Entidade* plat
 		}
 	}
 	
-	if (inimigo.getBounds().left + inimigo.getBounds().width > pGraphic->getWindow()->getSize().x)
+	if (inimigo.getBounds().left + inimigo.getBounds().width > pGrafico->getWindow()->getSize().x)
 		inimigo.setVelocidadeX(-2.f);
 	else if (inimigo.getBounds().left < 0.f)
 		inimigo.setVelocidadeX(2.f);
 }
 
-bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
+bool GerenciadorColisao::entidadeSaiuDaTela(Entidade* entidade)
 {
 	/*=====================SAIU DA TELA=========================*/
 	/*															*/
 	/*	VERIFICA SE A ENTIDADE SAIU DOS LIMITES DA TELA		    */
 	/*==========================================================*/
 	if (entidade->getBounds().top + entidade->getBounds().height < 0.f ||
-		entidade->getBounds().top + entidade->getBounds().height > pGraphic->getWindow()->getSize().y ||
-		entidade->getPosition().x > pGraphic->getWindow()->getSize().x ||
+		entidade->getBounds().top + entidade->getBounds().height > pGrafico->getWindow()->getSize().y ||
+		entidade->getPosition().x > pGrafico->getWindow()->getSize().x ||
 		entidade->getPosition().x + entidade->getBounds().width < 0.f)
 	{
 		return true;
@@ -206,7 +206,7 @@ bool CollisionManager::entidadeSaiuDaTela(Entidade* entidade)
 	return false;
 }
 
-bool CollisionManager::verificaContatoJogador(Entidade* entidade, Jogador* pJogador)
+bool GerenciadorColisao::verificaContatoJogador(Entidade* entidade, Jogador* pJogador)
 {
 	/*===================VERIFICA CONTATO=======================*/
 	/*															*/
@@ -215,12 +215,12 @@ bool CollisionManager::verificaContatoJogador(Entidade* entidade, Jogador* pJoga
 	return pJogador->intersecta(static_cast<Ente*>(entidade));
 }
 
-void CollisionManager::setGraphicManager(GraphicManager* pGM)
+void GerenciadorColisao::setGerenciadorGrafico(GerenciadorGrafico* pGG)
 {
-	if (pGM)
+	if (pGG)
 	{
-		pGraphic = pGM;
-		pWindow = pGraphic->getWindow();
+		pGrafico = pGG;
+		pWindow = pGrafico->getWindow();
 	}
 	else
 		std::cout << "ERROR::COLLISIONMANAGER::SETGRAPHICMANAGER::Ponteiro Nulo" << std::endl;

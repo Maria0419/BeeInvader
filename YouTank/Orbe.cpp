@@ -47,7 +47,7 @@ Orbe::~Orbe()
 
 void Orbe::renderOrbe()
 {
-	pGraphic->getWindow()->draw(body);
+	render();
 }
 
 void Orbe::updateOrbe()

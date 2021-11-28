@@ -1,9 +1,9 @@
 #pragma once
-#include "GraphicManager.h"
+#include "GerenciadorGrafico.h"
 #include "GerenciadorComando.h"
 
 
-enum qual_estado {STATE = 0, MENU_STATE, GAME_STATE, PAUSE_STATE, GOVER_STATE, GWIN_STATE, NOME_STATE, RANKING_STATE};
+enum qual_estado {ESTADO = 0, MENU_ESTADO, JOGO_ESTADO, PAUSE_ESTADO, JOGOFIM_ESTADO, VITORIA_ESTADO, NOME_ESTADO, RANKING_ESTADO};
 
 class Estado
 {
@@ -27,7 +27,7 @@ protected:
 
 
 public:
-	Estado(std::stack<Estado*>* estado, GerenciadorComando* pIM, short id );
+	Estado(std::stack<Estado*>* estado, GerenciadorComando* pGC, short id );
 	virtual ~Estado();
 
 	virtual void setPause(bool p);
@@ -50,7 +50,7 @@ public:
 	virtual void salvar();
 	virtual void recuperar();
 
-	virtual void updateInput() = 0;
+	virtual void updateComando() = 0;
 	virtual void update() = 0;
 	virtual void render() = 0;
 };

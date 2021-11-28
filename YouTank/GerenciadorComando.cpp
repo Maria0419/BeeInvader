@@ -6,7 +6,7 @@ using namespace Fases;
 GerenciadorComando::GerenciadorComando() :
 	pCurandeira(NULL),
 	pFadaCaida(NULL),
-	pGraphic(NULL), 
+	pGrafico(NULL), 
 	pFase(NULL)
 {
 	
@@ -31,8 +31,8 @@ void GerenciadorComando::updateAtaqueFadaCaida()
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && pFadaCaida->getPodeAtacar())
 	{
-		float dir_x = static_cast<float> (sf::Mouse::getPosition(*pGraphic->getWindow()).x);
-		float dir_y = static_cast<float> (sf::Mouse::getPosition(*pGraphic->getWindow()).y);
+		float dir_x = static_cast<float> (sf::Mouse::getPosition(*pGrafico->getWindow()).x);
+		float dir_y = static_cast<float> (sf::Mouse::getPosition(*pGrafico->getWindow()).y);
 		pFadaCaida->ataca(dir_x, dir_y);
 	}
 	
@@ -50,7 +50,7 @@ void GerenciadorComando::updateAtaqueCurandeira()
 
 void GerenciadorComando::updateMousePos()
 {
-	mousePosWindow = sf::Mouse::getPosition(*pGraphic->getWindow());
+	mousePosWindow = sf::Mouse::getPosition(*pGrafico->getWindow());
 }
 
 void GerenciadorComando::updateFadaCaida(float deltaTime)
@@ -111,9 +111,9 @@ void GerenciadorComando::setFadaCaida(FadaCaida* pFada)
 	pFadaCaida = pFada;
 }
 
-void GerenciadorComando::setGraphicManager(GraphicManager* pGM)
+void GerenciadorComando::setGerenciadorGrafico(GerenciadorGrafico* pGG)
 {
-	pGraphic = pGM;
+	pGrafico = pGG;
 }
 
 void GerenciadorComando::setFase(Fase* pF)

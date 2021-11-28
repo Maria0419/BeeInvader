@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
-#include "GraphicManager.h"
-#include "EventManager.h"
+#include "GerenciadorGrafico.h"
+#include "GerenciadorEvento.h"
 #include "GerenciadorComando.h"
 
 #include "MenuEstado.h"
@@ -12,23 +12,23 @@ class Jogo
 {
 private:
 	//Gerenciadores
-	GraphicManager *pGraphic;
-	EventManager eventManager;
-	GerenciadorComando inputManager;
+	GerenciadorGrafico *pGrafico;
+	GerenciadorEvento gerenciadorEvento;
+	GerenciadorComando gerenciadorComando;
 
 	std::stack<Estado*> estados;
 
 	bool sair;
 
 	void initEstados();
-	void setGraphicManager();
+	void setGerenciadorGrafico();
 
 public:
 	Jogo();
 	~Jogo();
 
 	//render & update
-	void run();
+	void executar();
 
 	void render();
 	void update();

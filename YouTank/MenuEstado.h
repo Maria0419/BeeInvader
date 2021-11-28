@@ -10,16 +10,16 @@ class MenuEstado :
 private:
 
     void initText();
-    void initButtons();
+    void initBotoes();
 
 public:
-    MenuEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM);
+    MenuEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC);
     ~MenuEstado();
 
     const short getEstado();
 
-    void updateButtons();
-    void updateInput();
+    void updateBotoes();
+    void updateComando();
     void update();
 
     void render();

@@ -1,15 +1,15 @@
 #include "stdafx.h"
 #include "Global.h"
-#include "Button.h"
+#include "Botao.h"
 using namespace ElementosVisuais;
 
 
-bool Button::mouseHeld = false;
+bool Botao::mouseHeld = false;
 
-void Button::initText(std::string text)
+void Botao::initText(std::string text)
 {
 	//Inicializa o texto do botão
-	fonte = pGraphic->getFont();
+	fonte = pGrafico->getFont();
 
 	texto.setFont(*fonte);
 	texto.setString(text);
@@ -22,7 +22,7 @@ void Button::initText(std::string text)
 		getPosition().y + getBounds().height / 3.f - texto.getGlobalBounds().height / 2.f);
 }
 
-void Button::initShape(float x, float y)
+void Botao::initShape(float x, float y)
 {
 	//Inicializa a forma e cor do botão
 	setSize(260, 50);
@@ -35,7 +35,7 @@ void Button::initShape(float x, float y)
 	setCor(red, green, blue, 255);
 }
 
-Button::Button(float y, std::string text):
+Botao::Botao(float y, std::string text):
 	Ente()
 {
 	id = ID_BUTTON;
@@ -45,11 +45,11 @@ Button::Button(float y, std::string text):
 	initText(text);
 }
 
-Button::~Button()
+Botao::~Botao()
 {
 }
 
-const bool Button::estaPressionado() const
+const bool Botao::estaPressionado() const
 {
 	//Indica se o botão está pressionado ou não
 	if (estadoBotao == BT_PRESSIONADO)
@@ -58,7 +58,7 @@ const bool Button::estaPressionado() const
 		return false;
 }
 
-void Button::update(const float posX, const float posY)
+void Botao::update(const float posX, const float posY)
 {
 	estadoBotao = BT_IDLE;
 
@@ -104,7 +104,7 @@ void Button::update(const float posX, const float posY)
 	}
 }
 
-void Button::setText(std::string novoTexto)
+void Botao::setText(std::string novoTexto)
 {
 	texto.setString(novoTexto);
 
@@ -113,7 +113,7 @@ void Button::setText(std::string novoTexto)
 		getPosition().y + getBounds().height / 3.f - texto.getGlobalBounds().height / 2.f);
 }
 
-void Button::renderText()
+void Botao::renderText()
 {
 	renderTexto(texto);
 }

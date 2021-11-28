@@ -6,7 +6,7 @@ void RankingEstado::initText()
 {
 
 	//Inicializa o texto do botão
-	fonte = pGraphic->getFont();
+	fonte = pGrafico->getFont();
 
 	sf::Text ranking;
 	texto.push_back(ranking);
@@ -53,22 +53,22 @@ void RankingEstado::initText()
 	recuperaPontos.close();
 }
 
-void RankingEstado::initButtons()
+void RankingEstado::initBotoes()
 {
-	buttons["VOLTAR_MENU"] = new Button(600, "Voltar ao Menu");
+	botoes["VOLTAR_MENU"] = new Botao(600, "Voltar ao Menu");
 }
 
-RankingEstado::RankingEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM) :
-	Estado(estado, pIM, RANKING_STATE),
+RankingEstado::RankingEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC) :
+	Estado(estado, pGC, RANKING_ESTADO),
 	Menu("Imagens/menu.png")
 {
-	initButtons();
+	initBotoes();
 	initText();
 }
 
 RankingEstado::~RankingEstado()
 {
-	deletarButtons();
+	deletarBotoes();
 	texto.clear();
 }
 
@@ -77,34 +77,34 @@ const short RankingEstado::getEstado()
 	return estadoID;
 }
 
-void RankingEstado::updateButtons()
+void RankingEstado::updateBotoes()
 {
-	for (auto& it : buttons)
+	for (auto& it : botoes)
 	{
 		it.second->update((const float)(pComando->getMousePos().x), (const float)(pComando->getMousePos().y));
 	}
-	if (buttons["VOLTAR_MENU"]->estaPressionado())
+	if (botoes["VOLTAR_MENU"]->estaPressionado())
 	{
 		irMenu = true;
 	}
 }
 
-void RankingEstado::updateInput()
+void RankingEstado::updateComando()
 {
 	pComando->updateMousePos();
 }
 
 void RankingEstado::update()
 {
-	updateInput();
-	updateButtons();
+	updateComando();
+	updateBotoes();
 
 }
 
 void RankingEstado::render()
 {
-	background.render();
+	plano_fundo.render();
 	renderText();
-	renderButtons();
+	renderBotoes();
 }
 

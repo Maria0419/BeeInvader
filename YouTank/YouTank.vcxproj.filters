@@ -73,6 +73,12 @@
     <Filter Include="Arquivos de Cabeçalho\Entidades\Personagens\Jogadores">
       <UniqueIdentifier>{f7b2c6ef-593f-44ad-9e67-43eac266ed09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Arquivos de Origem\Entidades\Personagens\Jogadores">
+      <UniqueIdentifier>{37d482e9-5c88-44fa-9266-713960b330ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Entidades\Personagens\Inimigos">
+      <UniqueIdentifier>{4af4330a-dff3-4b66-aae9-4ef92621d162}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ente.cpp">
@@ -87,13 +93,13 @@
     <ClCompile Include="YouTank.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
+    <ClCompile Include="GerenciadorColisao.cpp">
       <Filter>Arquivos de Origem\Gerenciadores</Filter>
     </ClCompile>
-    <ClCompile Include="EventManager.cpp">
+    <ClCompile Include="GerenciadorEvento.cpp">
       <Filter>Arquivos de Origem\Gerenciadores</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicManager.cpp">
+    <ClCompile Include="GerenciadorGrafico.cpp">
       <Filter>Arquivos de Origem\Gerenciadores</Filter>
     </ClCompile>
     <ClCompile Include="GerenciadorComando.cpp">
@@ -101,12 +107,6 @@
     </ClCompile>
     <ClCompile Include="Entidade.cpp">
       <Filter>Arquivos de Origem\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Inimigo.cpp">
-      <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
-    </ClCompile>
-    <ClCompile Include="Abelha.cpp">
-      <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
     </ClCompile>
     <ClCompile Include="Lista.cpp">
       <Filter>Arquivos de Origem\Listas</Filter>
@@ -123,9 +123,6 @@
     <ClCompile Include="Plataforma.cpp">
       <Filter>Arquivos de Origem\Entidades\Obstaculos</Filter>
     </ClCompile>
-    <ClCompile Include="FadaCaida.cpp">
-      <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
-    </ClCompile>
     <ClCompile Include="MenuEstado.cpp">
       <Filter>Arquivos de Origem\States</Filter>
     </ClCompile>
@@ -138,16 +135,13 @@
     <ClCompile Include="FaseSegunda.cpp">
       <Filter>Arquivos de Origem\Fases</Filter>
     </ClCompile>
-    <ClCompile Include="AbelhaRainha.cpp">
-      <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
-    </ClCompile>
     <ClCompile Include="Estado.cpp">
       <Filter>Arquivos de Origem\States</Filter>
     </ClCompile>
-    <ClCompile Include="Background.cpp">
+    <ClCompile Include="PlanoFundo.cpp">
       <Filter>Arquivos de Origem\Elementos Visuais</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
+    <ClCompile Include="Botao.cpp">
       <Filter>Arquivos de Origem\Elementos Visuais</Filter>
     </ClCompile>
     <ClCompile Include="BarraVida.cpp">
@@ -158,9 +152,6 @@
     </ClCompile>
     <ClCompile Include="Projetil.cpp">
       <Filter>Arquivos de Origem\Entidades\Projetis</Filter>
-    </ClCompile>
-    <ClCompile Include="Cogumelo.cpp">
-      <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
     </ClCompile>
     <ClCompile Include="Ferrao.cpp">
       <Filter>Arquivos de Origem\Entidades\Projetis</Filter>
@@ -176,9 +167,6 @@
     </ClCompile>
     <ClCompile Include="OrbeCura.cpp">
       <Filter>Arquivos de Origem\Entidades\Projetis</Filter>
-    </ClCompile>
-    <ClCompile Include="Curandeira.cpp">
-      <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
     </ClCompile>
     <ClCompile Include="Pedra.cpp">
       <Filter>Arquivos de Origem\Entidades\Obstaculos</Filter>
@@ -207,6 +195,24 @@
     <ClCompile Include="PoteMel.cpp">
       <Filter>Arquivos de Origem\Entidades</Filter>
     </ClCompile>
+    <ClCompile Include="Curandeira.cpp">
+      <Filter>Arquivos de Origem\Entidades\Personagens\Jogadores</Filter>
+    </ClCompile>
+    <ClCompile Include="FadaCaida.cpp">
+      <Filter>Arquivos de Origem\Entidades\Personagens\Jogadores</Filter>
+    </ClCompile>
+    <ClCompile Include="Abelha.cpp">
+      <Filter>Arquivos de Origem\Entidades\Personagens\Inimigos</Filter>
+    </ClCompile>
+    <ClCompile Include="AbelhaRainha.cpp">
+      <Filter>Arquivos de Origem\Entidades\Personagens\Inimigos</Filter>
+    </ClCompile>
+    <ClCompile Include="Cogumelo.cpp">
+      <Filter>Arquivos de Origem\Entidades\Personagens\Inimigos</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo.cpp">
+      <Filter>Arquivos de Origem\Entidades\Personagens\Inimigos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Jogo.h">
@@ -227,13 +233,13 @@
     <ClInclude Include="Entidade.h">
       <Filter>Arquivos de Cabeçalho\Entidades</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionManager.h">
+    <ClInclude Include="GerenciadorColisao.h">
       <Filter>Arquivos de Cabeçalho\Gerenciadores</Filter>
     </ClInclude>
-    <ClInclude Include="EventManager.h">
+    <ClInclude Include="GerenciadorEvento.h">
       <Filter>Arquivos de Cabeçalho\Gerenciadores</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicManager.h">
+    <ClInclude Include="GerenciadorGrafico.h">
       <Filter>Arquivos de Cabeçalho\Gerenciadores</Filter>
     </ClInclude>
     <ClInclude Include="GerenciadorComando.h">
@@ -263,10 +269,10 @@
     <ClInclude Include="Global.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Background.h">
+    <ClInclude Include="PlanoFundo.h">
       <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="Botao.h">
       <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
     </ClInclude>
     <ClInclude Include="Orbe.h">

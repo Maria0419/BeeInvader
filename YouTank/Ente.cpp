@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Ente.h"
 
-GraphicManager* Ente::pGraphic = NULL;
+GerenciadorGrafico* Ente::pGrafico = NULL;
 ListaEntidades* Ente::pLista = NULL;
 
 
@@ -48,7 +48,7 @@ void Ente::rotate(float angulo)
 
 void Ente::renderBodyBack()
 {
-	pGraphic->render(bodyBack);
+	pGrafico->render(bodyBack);
 }
 
 
@@ -82,12 +82,12 @@ void Ente::setPosition(float x, float y)
 
 void Ente::render()
 {
-	pGraphic->render(body);
+	pGrafico->render(body);
 }
 
 void Ente::renderTexto(sf::Text texto)
 {
-	pGraphic->render(texto);
+	pGrafico->render(texto);
 }
 
 bool Ente::contem(float x, float y)
@@ -114,9 +114,9 @@ void Ente::recuperar()
 {
 }
 
-void Ente::setGraphicManager(GraphicManager* pGM)
+void Ente::setGerenciadorGrafico(GerenciadorGrafico* pGG)
 {
-	pGraphic = pGM;
+	pGrafico = pGG;
 }
 
 

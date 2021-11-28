@@ -5,7 +5,7 @@ using namespace ElementosVisuais;
 void NomeEstado::initText()
 {
 	//Inicializa o texto do botão
-	fonte = pGraphic->getFont();
+	fonte = pGrafico->getFont();
 
 	sf::Text cabecalho;
 	texto.push_back(cabecalho);
@@ -28,22 +28,22 @@ void NomeEstado::initText()
 	texto[1].setOutlineThickness(3.f);
 }
 
-void NomeEstado::initButtons()
+void NomeEstado::initBotoes()
 {
-	buttons["CONTINUAR"] = new Button(450, "Continuar");
+	botoes["CONTINUAR"] = new Botao(450, "Continuar");
 }
 
-NomeEstado::NomeEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM) :
-	Estado(estado, pIM, NOME_STATE),
+NomeEstado::NomeEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC) :
+	Estado(estado, pGC, NOME_ESTADO),
 	Menu("Imagens/f.png")
 {
-	initButtons();
+	initBotoes();
 	initText();
 }
 
 NomeEstado::~NomeEstado()
 {
-	deletarButtons();
+	deletarBotoes();
 	texto.clear();
 }
 
@@ -57,28 +57,28 @@ const std::string NomeEstado::getNome() const
 	return texto[1].getString();
 }
 
-void NomeEstado::updateButtons()
+void NomeEstado::updateBotoes()
 {
-	for (auto& it : buttons)
+	for (auto& it : botoes)
 	{
 		it.second->update((const float)(pComando->getMousePos().x), (const float)(pComando->getMousePos().y));
 	}
 
-	if (buttons["CONTINUAR"]->estaPressionado() && texto[1].getString()!="")
+	if (botoes["CONTINUAR"]->estaPressionado() && texto[1].getString()!="")
 	{
 		terminarEstado = true;
 	}
 }
 
-void NomeEstado::updateInput()
+void NomeEstado::updateComando()
 {
 	pComando->updateMousePos();
 }
 
 void NomeEstado::update()
 {
-	updateInput();
-	updateButtons();
+	updateComando();
+	updateBotoes();
 }
 
 void NomeEstado::retiraLetra(char letra)
@@ -98,7 +98,7 @@ void NomeEstado::incluaLetra(char letra)
 
 void NomeEstado::render()
 {
-	background.render();
+	plano_fundo.render();
 	renderText();
-	renderButtons();
+	renderBotoes();
 }

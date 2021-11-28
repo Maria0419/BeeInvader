@@ -3,7 +3,7 @@
 using namespace Jogadores;
 using namespace Fases;
 
-void JogoEstado::runFase()
+void JogoEstado::executarFase()
 {
 	jogador1 = new FadaCaida();
 	pComando->setFadaCaida(jogador1);
@@ -46,7 +46,7 @@ void JogoEstado::runFase()
 		break;
 
 	default:
-		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
+		std::cout << "ERROR::JOGOESTADO::Fase não existente" << std::endl;
 		break;
 	}
 }
@@ -60,8 +60,8 @@ void JogoEstado::updateDeltaTime()
 }
 
 //Construtora e Destrutora
-JogoEstado::JogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM, short f, bool mp, bool rec):
-	Estado(estado,pIM, GAME_STATE),
+JogoEstado::JogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC, short f, bool mp, bool rec):
+	Estado(estado,pGC, JOGO_ESTADO),
 	fasePrimeira(NULL),
 	faseSegunda(NULL),
 	jogador1(NULL),
@@ -72,7 +72,7 @@ JogoEstado::JogoEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM, sho
 	fase = f;
 	clock.restart();
 	deltaTime = clock.restart().asSeconds();
-	runFase();
+	executarFase();
 	
 }
 
@@ -101,7 +101,7 @@ JogoEstado::~JogoEstado()
 		break;
 
 	default:
-		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
+		std::cout << "ERROR::JOGOESTADO::Fase não existente" << std::endl;
 		break;
 	}
 }
@@ -173,7 +173,7 @@ void JogoEstado::verificarVitoriaJogo()
 		break;
 
 	default:
-		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
+		std::cout << "ERROR::JOGOESTADO::Fase não existente" << std::endl;
 		break;
 	}
 	
@@ -201,7 +201,7 @@ void JogoEstado::updateVitoriaJogo()
 		estados->push(new VitoriaJogoEstado(estados, pComando, nomeJ, jogador1->getPontos(), false, false));
 }
 
-void JogoEstado::updateInput()
+void JogoEstado::updateComando()
 {
 	updateDeltaTime();
 	pComando->update(deltaTime);
@@ -215,7 +215,7 @@ void JogoEstado::update()
 	verificarVitoriaJogo();
 	updateFimJogo();
 	updateVitoriaJogo();
-	updateInput();
+	updateComando();
 
 	switch (fase)
 	{
@@ -229,7 +229,7 @@ void JogoEstado::update()
 		break;
 
 	default:
-		std::cout << "ERROR::GAMESTATE::UPDATE::Fase não existente" << std::endl;
+		std::cout << "ERROR::JOGOESTADO::UPDATE::Fase não existente" << std::endl;
 		break;
 	}
 	
@@ -249,7 +249,7 @@ void JogoEstado::render()
 		break;
 
 	default:
-		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
+		std::cout << "ERROR::JOGOESTADO::Fase não existente" << std::endl;
 		break;
 	}
 	
@@ -283,7 +283,7 @@ void JogoEstado::salvar()
 		break;
 
 	default:
-		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
+		std::cout << "ERROR::JOGOESTADO::Fase não existente" << std::endl;
 		break;
 	}
 }
@@ -303,6 +303,6 @@ void JogoEstado::recuperar()
 		break;
 
 	default:
-		std::cout << "ERROR::GAMESTATE::Fase não existente" << std::endl;
+		std::cout << "ERROR::JOGOESTADO::Fase não existente" << std::endl;
 	}
 }

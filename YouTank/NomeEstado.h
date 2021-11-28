@@ -7,17 +7,17 @@ class NomeEstado :
 {
 
 	void initText();
-	void initButtons();
+	void initBotoes();
 
 public:
-	NomeEstado(std::stack<Estado*>* estado, GerenciadorComando* pIM);
+	NomeEstado(std::stack<Estado*>* estado, GerenciadorComando* pGC);
 	~NomeEstado();
 
 	const short getEstado();
 	const std::string getNome() const;
 
-	void updateButtons();
-	void updateInput();
+	void updateBotoes();
+	void updateComando();
 	void update();
 	void retiraLetra(char letra);
 	void incluaLetra(char letra);

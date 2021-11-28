@@ -1,34 +1,34 @@
 #include "stdafx.h"
-#include "EventManager.h"
+#include "GerenciadorEvento.h"
 #include "NomeEstado.h"
 #include "Estado.h"
 
-EventManager::EventManager():
+GerenciadorEvento::GerenciadorEvento():
 	ev(),
-	pGraphic(NULL)
+	pGrafico(NULL)
 {
 	
 }
 
-EventManager::~EventManager()
+GerenciadorEvento::~GerenciadorEvento()
 {
-	pGraphic = NULL;
+	pGrafico = NULL;
 }
 
-void EventManager::pollEvents(Estado* pEstado)
+void GerenciadorEvento::pollEvents(Estado* pEstado)
 {
-	while (pGraphic->getWindow()->pollEvent(ev))
+	while (pGrafico->getWindow()->pollEvent(ev))
 	{
 		switch (ev.Event::type)
 		{
 		case sf::Event::Closed:
 		{
-			pGraphic->close();
+			pGrafico->close();
 		}
 		break;
 		case (sf::Event::TextEntered):
 		{
-			if (pEstado->getEstado() == NOME_STATE && ev.text.unicode <= 128)
+			if (pEstado->getEstado() == NOME_ESTADO && ev.text.unicode <= 128)
 			{
 				NomeEstado* nEstado = static_cast<NomeEstado*>(pEstado);
 				char tecla = static_cast<char> (ev.text.unicode);
@@ -44,9 +44,9 @@ void EventManager::pollEvents(Estado* pEstado)
 	}
 }
 
-void EventManager::setGraphicManager(GraphicManager *pGM)
+void GerenciadorEvento::setGerenciadorGrafico(GerenciadorGrafico *pGG)
 {
-    pGraphic = pGM;
+    pGrafico = pGG;
 }
 
 
