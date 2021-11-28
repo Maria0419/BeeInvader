@@ -19,8 +19,6 @@ protected:
     int dano;
     int vida;
     int vidaMAX;
-
-    std::string arquivo;
    
 
 public:

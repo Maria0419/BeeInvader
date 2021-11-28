@@ -8,7 +8,10 @@ class Jogador :
 {
 protected:
     ElementosVisuais::BarraVida barraVida;
+
     bool colisaoBot;
+
+    std::string arquivo;
 
 public:
     Jogador(int vida, int dano, int id, float barraVida_y, int player, const char* arqv);
