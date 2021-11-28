@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Global.h"
 #include "Cogumelo.h"
+using namespace Inimigos;
 
 Cogumelo::Cogumelo():
 	Inimigo(100,10, ID_COGUMELO, 3)

@@ -10,7 +10,7 @@ class FaseSegunda :
 {
 private:
     //Boss
-    AbelhaRainha* abelha_rainha;
+    Inimigos::AbelhaRainha* abelha_rainha;
 
 public:
     FaseSegunda();

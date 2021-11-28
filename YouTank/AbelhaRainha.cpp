@@ -3,6 +3,7 @@
 #include "AbelhaRainha.h"
 using namespace ElementosVisuais;
 using namespace Jogadores;
+using namespace Inimigos;
 
 void AbelhaRainha::initTimers()
 {

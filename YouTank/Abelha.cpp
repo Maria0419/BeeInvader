@@ -1,6 +1,7 @@
 #include "stdafx.h"
-#include "Abelha.h"
 #include "Global.h"
+#include "Abelha.h"
+using namespace Inimigos;
 
 Abelha::Abelha(int i):
 	Inimigo(1, 1, ID_ABELHA, 2)

@@ -67,6 +67,12 @@
     <Filter Include="Arquivos de Origem\Entidades\Projetis">
       <UniqueIdentifier>{3c896714-a336-4517-9c29-a56bd6b0f0ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Entidades\Personagens\Inimigos">
+      <UniqueIdentifier>{51a98605-d521-465f-b9ba-dc3c2fbb3a2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Entidades\Personagens\Jogadores">
+      <UniqueIdentifier>{f7b2c6ef-593f-44ad-9e67-43eac266ed09}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ente.cpp">
@@ -218,18 +224,6 @@
     <ClInclude Include="GameState.h">
       <Filter>Arquivos de Cabeçalho\States</Filter>
     </ClInclude>
-    <ClInclude Include="Inimigo.h">
-      <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
-    </ClInclude>
-    <ClInclude Include="FadaCaida.h">
-      <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
-    </ClInclude>
-    <ClInclude Include="Abelha.h">
-      <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
-    </ClInclude>
-    <ClInclude Include="AbelhaRainha.h">
-      <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
-    </ClInclude>
     <ClInclude Include="Entidade.h">
       <Filter>Arquivos de Cabeçalho\Entidades</Filter>
     </ClInclude>
@@ -287,17 +281,11 @@
     <ClInclude Include="BarraVida.h">
       <Filter>Arquivos de Cabeçalho\Elementos Visuais</Filter>
     </ClInclude>
-    <ClInclude Include="Cogumelo.h">
-      <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
-    </ClInclude>
     <ClInclude Include="Ferrao.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
     </ClInclude>
     <ClInclude Include="Espinhos.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Obstaculos</Filter>
-    </ClInclude>
-    <ClInclude Include="Curandeira.h">
-      <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
     </ClInclude>
     <ClInclude Include="OrbeCura.h">
       <Filter>Arquivos de Cabeçalho\Entidades\Projetis</Filter>
@@ -332,8 +320,26 @@
     <ClInclude Include="PoteMel.h">
       <Filter>Arquivos de Cabeçalho\Entidades</Filter>
     </ClInclude>
+    <ClInclude Include="Abelha.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Personagens\Inimigos</Filter>
+    </ClInclude>
+    <ClInclude Include="AbelhaRainha.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Personagens\Inimigos</Filter>
+    </ClInclude>
+    <ClInclude Include="Cogumelo.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Personagens\Inimigos</Filter>
+    </ClInclude>
+    <ClInclude Include="Inimigo.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Personagens\Inimigos</Filter>
+    </ClInclude>
     <ClInclude Include="Jogador.h">
-      <Filter>Arquivos de Cabeçalho\Entidades\Personagens</Filter>
+      <Filter>Arquivos de Cabeçalho\Entidades\Personagens\Jogadores</Filter>
+    </ClInclude>
+    <ClInclude Include="Curandeira.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Personagens\Jogadores</Filter>
+    </ClInclude>
+    <ClInclude Include="FadaCaida.h">
+      <Filter>Arquivos de Cabeçalho\Entidades\Personagens\Jogadores</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

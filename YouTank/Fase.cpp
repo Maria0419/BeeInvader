@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "Global.h"
-
 #include "Fase.h"
 using namespace Fases;
 using namespace Jogadores;
 using namespace ElementosVisuais;
+using namespace Inimigos;
 
 
 void Fase::initInimigo()
