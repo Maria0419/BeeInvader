@@ -62,6 +62,7 @@ void Abelha::persegue(float x_jogador, float y_jogador)
 	x_jogador -= getPosition().x;
 	y_jogador -= getPosition().y;
 	
+	//normaliza o vetor direção, que aponta para o jogador
 	direcao.x = x_jogador / sqrtf(static_cast<float>(pow(x_jogador, 2)) + static_cast<float>(pow(y_jogador, 2)));
 	direcao.y = y_jogador / sqrtf(static_cast<float>(pow(x_jogador, 2)) + static_cast<float>(pow(y_jogador, 2)));
 	if (direcao.x > 0)
@@ -77,6 +78,7 @@ void Abelha::persegue(float x_jogador, float y_jogador)
 		olhaEsquerda = true;
 	}
 
+	//movimenta a abelha na direção do jogador com sua rapidez
 	this->body.move(direcao.x * rapidez, direcao.y * rapidez);
 }
 

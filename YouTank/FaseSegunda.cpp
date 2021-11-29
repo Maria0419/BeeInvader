@@ -52,7 +52,7 @@ void FaseSegunda::criarObstaculos()
 {
 	if (contaObstaculos < obstaculosMAX)
 	{
-		Espinhos* espinhos = new Espinhos((float)(rand() % 1180+100), 620.f);
+		Espinhos* espinhos = new Espinhos((float)(rand() % 1080+200), 620.f);
 		listaEntidades.incluaEntidade(static_cast<Entidade*>(espinhos));
 		if (contaPedras < obstaculosMAX)
 		{

@@ -13,9 +13,9 @@ Orbe::Orbe(float dir_x, float dir_y, float jog_x, float jog_y):
 	rapidez = 80.f;
 
 	float distanciaFadaCaidaDestino;
-	distanciaFadaCaidaDestino = (float) (sqrt(pow(jog_y - dir_y, 2) + pow(dir_x - jog_x, 2)));
-	velocidade.x = rapidez * (dir_x - jog_x)/distanciaFadaCaidaDestino;
-	velocidade.y = rapidez * (jog_y - dir_y)/distanciaFadaCaidaDestino;
+	distanciaFadaCaidaDestino = (float) (sqrt(pow(jog_y - dir_y, 2) + pow(dir_x - jog_x, 2))); //hipotenusa
+	velocidade.x = rapidez * (dir_x - jog_x)/distanciaFadaCaidaDestino; //cateto
+	velocidade.y = rapidez * (jog_y - dir_y)/distanciaFadaCaidaDestino; //cateto
 
 }
 
@@ -39,6 +39,7 @@ void Orbe::renderOrbe()
 
 void Orbe::update()
 {
+	/*Aplica o efeito da gravidade*/
 	float dt = 0.1f;
 	float gravidade = 9.81f;
 	move((getPosition().x + velocidade.x * dt) - getPosition().x, (getPosition().y - velocidade.y * dt) - getPosition().y);
@@ -48,6 +49,7 @@ void Orbe::update()
 
 void Orbe::salvar()
 {
+	/*Salva as informações pertinentes*/
 	if (getShowing())
 	{
 		std::ofstream gravador("./Carregamentos/Orbe.txt", std::ios::app);

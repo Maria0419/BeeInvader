@@ -14,6 +14,8 @@ OrbeCura::OrbeCura(float x_dir, float y_dir, float x_pos, float y_pos):
 	dirY = y_dir;
 	x_dir -= getPosition().x;
 	y_dir -= getPosition().y;
+
+	//normaliza o vetor direção
 	direcao.x = x_dir / sqrtf(static_cast<float>(pow(x_dir, 2)) + static_cast<float>(pow(y_dir, 2)));
 	direcao.y = y_dir / sqrtf(static_cast<float>(pow(x_dir, 2)) + static_cast<float>(pow(y_dir, 2)));
 }
