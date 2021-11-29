@@ -25,7 +25,7 @@ protected:
 	void setSize(float x, float y);
 	void setCor(int r, int g, int b, int t);
 	void setOutline(float grossura);
-	void setTexture(const char* file, float escala = 1.f);
+	void setTexture(const char* file);
 	void setBodyBack(float x, float y, float largura, float altura);
 	void setOriginCenter();
 	void rotate(float angulo);
@@ -46,9 +46,6 @@ public:
 	void renderBodyBack();
 	bool contem(float x, float y);
 	bool intersecta( Ente* pE);
-
-	virtual void salvar();
-	virtual void recuperar();
 
 	//setters
 	

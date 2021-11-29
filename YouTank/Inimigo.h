@@ -12,6 +12,8 @@ private:
 public:
     Inimigo(int vida, int dano, int i, int pnts);
     ~Inimigo();
+
+    virtual void salvar() = 0;
 };
 
 

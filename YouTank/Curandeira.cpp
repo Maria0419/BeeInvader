@@ -15,7 +15,7 @@ pOrbeCura(NULL)
 	cooldownAtaqueMax = 100.f;
 	cooldownAtaque = cooldownAtaqueMax;
 	setSize(50.f, 50.f);
-	setTexture("Imagens/fada_blue.png", 1.f);
+	setTexture("Imagens/fada_blue.png");
 	setOriginCenter();
 	setPosition(60.f, 500.f);
 }

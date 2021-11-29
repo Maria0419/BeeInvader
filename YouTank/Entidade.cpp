@@ -162,6 +162,10 @@ void Entidade::naColisao()
 {
 }
 
+void Entidade::recuperar()
+{
+}
+
 void Entidade::operator+=(int i)
 {
 }

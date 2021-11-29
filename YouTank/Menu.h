@@ -14,6 +14,7 @@ public:
     Menu(const char* file);
     virtual ~Menu();
     void deletarBotoes();
+
     void renderBotoes();
     void renderText();
 };

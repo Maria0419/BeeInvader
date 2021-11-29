@@ -161,7 +161,7 @@ void FaseSegunda::renderFaseSegunda()
 		
 }
 
-void Fases::FaseSegunda::salvar()
+void FaseSegunda::salvar()
 {
 	reiniciarArquivos();
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
@@ -175,14 +175,14 @@ void Fases::FaseSegunda::salvar()
 		pCurandeira->salvar();
 }
 
-void Fases::FaseSegunda::recuperar()
+void FaseSegunda::recuperar()
 {
+	recuperarObstaculos();
 	recuperarAbelhas();
 	recuperarCogumelos();
 	pFadaCaida->recuperar();
 	abelha_rainha->recuperar();
 	recuperarProjetil();
-	recuperarObstaculos();
 
 	if (pCurandeira != NULL)
 		pCurandeira->recuperar();

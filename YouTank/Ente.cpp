@@ -21,7 +21,7 @@ void Ente::setOutline(float grossura)
 	body.setOutlineThickness(grossura);
 }
 
-void Ente::setTexture(const char* file, float escala)
+void Ente::setTexture(const char* file)
 {
 	texture.loadFromFile(file);
 	body.setTexture(&texture);
@@ -104,14 +104,6 @@ bool Ente::intersecta(Ente* pE)
 		return true;
 	else
 		return false;
-}
-
-void Ente::salvar()
-{
-}
-
-void Ente::recuperar()
-{
 }
 
 void Ente::setGerenciadorGrafico(GerenciadorGrafico* pGG)

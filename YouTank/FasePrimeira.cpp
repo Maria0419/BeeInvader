@@ -192,11 +192,11 @@ void FasePrimeira::salvar()
 
 void FasePrimeira::recuperar()
 {
+	recuperarObstaculos();
 	recuperarAbelhas();
 	recuperarCogumelos();
 	pFadaCaida->recuperar();
 	recuperarProjetil();
-	recuperarObstaculos();
 	recuperarPoteMel();
 
 	if (pCurandeira != NULL)

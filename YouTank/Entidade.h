@@ -64,6 +64,9 @@ public:
     virtual void movePlataforma();
     virtual void naColisao();
 
+    virtual void salvar() = 0;
+    virtual void recuperar();
+
     virtual void operator+=(int i);
 };
 
