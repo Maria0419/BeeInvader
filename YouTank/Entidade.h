@@ -9,7 +9,6 @@ protected:
     sf::Vector2f velocidade;
     sf::Vector2f direcao;
     float rapidez;
-    bool podeMatar;
     bool olhaEsquerda;
 
     int pontos;
@@ -49,17 +48,15 @@ public:
     virtual float getDirecao_x();
     virtual float getDirecao_y();
 
-    virtual void setPodeMatar(bool x);
-    virtual const bool getPodeMatar() const;
-
     const int getPontos() const;
 
     virtual void persegue(float x_jogador, float y_jogador);
     virtual void updateOrbe();
     virtual void updateOrbeCura();
     virtual void updateFerrao();
-    virtual void updateAnimacao();
     virtual void updateCogumelo();
+
+ //   virtual void update() = 0;
 
     virtual void movePlataforma();
     virtual void naColisao();

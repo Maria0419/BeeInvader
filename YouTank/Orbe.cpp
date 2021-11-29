@@ -5,8 +5,6 @@
 Orbe::Orbe(float dir_x, float dir_y, float jog_x, float jog_y):
 	Projetil(ID_ORBE)
 {
-	podeMatar = true;
-
 	setTexture("Imagens/orb3.png");
 	setSize(20.f, 18.f);
 	setOriginCenter();
@@ -25,7 +23,6 @@ Orbe::Orbe(float dir_x, float dir_y, float jog_x, float jog_y):
 Orbe::Orbe(float dir_x, float dir_y, float pos_x, float pos_y, float vel_x, float vel_y):
 	Projetil(ID_ORBE)
 {
-	podeMatar = true;
 	setTexture("Imagens/orb3.png");
 	setSize(20.f, 18.f);
 	setOriginCenter();
