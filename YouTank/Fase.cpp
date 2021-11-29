@@ -436,9 +436,12 @@ void Fase::recuperarProjetil()
 		return;
 	}
 	float dirX, dirY, posX, posY, velX, velY;
-	while (recuperarOrbe >> dirX >> dirY >> posX >> posY >> velX >> velY)
+	while (recuperarOrbe >> posX >> posY >> velX >> velY)
 	{
-		Orbe* pAux = new Orbe(dirX, dirY, posX, posY, velX, velY);
+		Orbe* pAux = new Orbe();
+		pAux->setPosition(posX, posY);
+		pAux->setVelocidadeX(velX);
+		pAux->setVelocidadeY(velY);
 		listaEntidades.incluaEntidade(pAux);
 	}
 	recuperarOrbe.close();

@@ -30,12 +30,3 @@ const bool Projetil::getShowing() const
 	return aparece;
 }
 
-void Projetil::setPodeMatar(bool x)
-{
-	podeMatar = x;
-}
-
-const bool Projetil::getPodeMatar() const
-{
-	return podeMatar;
-}

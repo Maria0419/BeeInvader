@@ -9,7 +9,7 @@ Cogumelo::Cogumelo():
 	setTexture("Imagens/mushroom.png");
 	setSize(50.f, 55.f);
 	setOriginCenter();
-	setPosition(static_cast<float>(rand()%1200), static_cast<float>(rand()%100));
+	setPosition(static_cast<float>(rand()%1000 + 200), static_cast<float>(rand()%100));
 	setVelocidadeX(static_cast<float>(rand() % 3 + 1));
 }
 

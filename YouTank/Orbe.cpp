@@ -5,14 +5,11 @@
 Orbe::Orbe(float dir_x, float dir_y, float jog_x, float jog_y):
 	Projetil(ID_ORBE)
 {
-	podeMatar = true;
 
 	setTexture("Imagens/orb3.png");
 	setSize(20.f, 18.f);
 	setOriginCenter();
 	setPosition(jog_x, jog_y);
-	direcao.x = dir_x/sqrtf(static_cast<float>(pow(dir_x,2))+ static_cast<float>(pow(dir_y,2)));
-	direcao.y = dir_y / sqrtf(static_cast<float>(pow(dir_x, 2)) + static_cast<float>(pow(dir_y, 2)));
 	rapidez = 80.f;
 
 	float distanciaFadaCaidaDestino;
@@ -22,22 +19,13 @@ Orbe::Orbe(float dir_x, float dir_y, float jog_x, float jog_y):
 
 }
 
-Orbe::Orbe(float dir_x, float dir_y, float pos_x, float pos_y, float vel_x, float vel_y):
+Orbe::Orbe():
 	Projetil(ID_ORBE)
 {
-	podeMatar = true;
 	setTexture("Imagens/orb3.png");
 	setSize(20.f, 18.f);
 	setOriginCenter();
-	setPosition(pos_x, pos_y);
-
-	direcao.x = dir_x;
-	direcao.y = dir_y;
-
 	rapidez = 80.f;
-
-	velocidade.x = vel_x;
-	velocidade.y = vel_y;
 }
 
 Orbe::~Orbe()
@@ -70,8 +58,6 @@ void Orbe::salvar()
 			return;
 		}
 		gravador
-			<< direcao.x << " "
-			<< direcao.y << " "
 			<< getPosition().x << " "
 			<< getPosition().y << " "
 			<< velocidade.x << " "

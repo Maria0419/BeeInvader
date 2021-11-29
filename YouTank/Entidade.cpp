@@ -7,7 +7,6 @@ Entidade::Entidade(int hp, int dmg, int i, int pnts) :
 	dano(dmg),
 	vida(hp),
 	pontos(pnts),
-	podeMatar(true),
 	olhaEsquerda(false)
 {
 	aparece = true;
@@ -24,7 +23,6 @@ Entidade::Entidade(int i):
 	pontos(0),
 	vida(0),
 	vidaMAX(0),
-	podeMatar(true),
 	olhaEsquerda(false)
 {
 	aparece = true;
@@ -115,15 +113,6 @@ float Entidade::getDirecao_y()
 	return direcao.y;
 }
 
-void Entidade::setPodeMatar(bool x)
-{
-	podeMatar = x;
-}
-
-const bool Entidade::getPodeMatar() const
-{
-	return podeMatar;
-}
 
 const int Entidade::getPontos() const
 {

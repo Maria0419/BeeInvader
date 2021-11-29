@@ -18,7 +18,5 @@ public:
     void setShowing(bool x);
     const bool getShowing() const;
 
-    void setPodeMatar(bool x);
-    const bool getPodeMatar() const;
 };
 
