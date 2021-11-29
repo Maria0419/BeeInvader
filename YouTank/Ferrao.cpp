@@ -21,7 +21,7 @@ Ferrao::~Ferrao()
 {
 }
 
-void Ferrao::updateFerrao()
+void Ferrao::update()
 {
 	move(direcao.x * rapidez, direcao.y * rapidez);
 	rotate(2.f);

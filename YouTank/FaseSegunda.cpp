@@ -150,18 +150,16 @@ void FaseSegunda::renderFaseSegunda()
 		if(abelha_rainha->getShowing())
 			abelha_rainha->renderAbelhaRainha();
 	}
-	pFadaCaida->renderBarraVida();
-	pFadaCaida->render();
+	pFadaCaida->renderJogador();
 
 	if (pCurandeira != NULL)
 	{
-		pCurandeira->renderBarraVida();
-		pCurandeira->render();
+		pCurandeira->renderJogador();
 	}
 		
 }
 
-void Fases::FaseSegunda::salvar()
+void FaseSegunda::salvar()
 {
 	reiniciarArquivos();
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
@@ -175,14 +173,14 @@ void Fases::FaseSegunda::salvar()
 		pCurandeira->salvar();
 }
 
-void Fases::FaseSegunda::recuperar()
+void FaseSegunda::recuperar()
 {
+	recuperarObstaculos();
 	recuperarAbelhas();
 	recuperarCogumelos();
 	pFadaCaida->recuperar();
 	abelha_rainha->recuperar();
 	recuperarProjetil();
-	recuperarObstaculos();
 
 	if (pCurandeira != NULL)
 		pCurandeira->recuperar();

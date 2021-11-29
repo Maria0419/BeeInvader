@@ -96,35 +96,11 @@ void Fase::updateMovimento()
 {
 	for (int i = 0; i < listaEntidades.getTamanho(); i++)
 	{
-		switch (listaEntidades.operator[](i)->getId())
-		{
-		case ID_ABELHA://move inimigos
-		{
+		if (listaEntidades.operator[](i)->getId() == ID_ABELHA)
 			listaEntidades.operator[](i)->persegue(pFadaCaida->getPosition().x, pFadaCaida->getPosition().y);
-		}
-		break;
-		case ID_ORBE://move orbe de dano
-		{
-			listaEntidades.operator[](i)->updateOrbe();
-		}
-		break;
-		case ID_ORBECURA: //move orbe de cura
-		{
-			listaEntidades.operator[](i)->updateOrbeCura();
-		}
-		break;
-		case ID_FERRAO://move ferrao
-		{
-			listaEntidades.operator[](i)->updateFerrao();
-		}
-		break;
-		case ID_COGUMELO:
-		{
-			listaEntidades.operator[](i)->updateCogumelo();
+		else
+			listaEntidades.operator[](i)->update();
 
-		}
-		break;
-		}
 	}
 }
 
@@ -306,12 +282,11 @@ void Fase::updateInimigoPlataforma()
 		{
 			for (int j = 0; j < listaEntidades.getTamanho(); j++)
 			{
-				if (listaEntidades.operator[](j)->getId() == ID_COGUMELO)
+				if (listaEntidades.operator[](j)->getId() == ID_COGUMELO ||
+					listaEntidades.operator[](j)->getId() == ID_PEDRA ||
+					listaEntidades.operator[](j)->getId() == ID_ESPINHOS)
 					gerenciadorColisao.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
-				if(listaEntidades.operator[](j)->getId() == ID_PEDRA)
-					gerenciadorColisao.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
-				if (listaEntidades.operator[](j)->getId() == ID_ESPINHOS)
-					gerenciadorColisao.updateInimigoPlataforma(*listaEntidades.operator[](j), listaEntidades.operator[](i));
+
 			}
 		}
 	}
@@ -500,5 +475,4 @@ void Fase::reiniciarArquivos()
 	limpar.close();
 	limpar.open("./Carregamentos/PoteMel.txt", std::ios::out);
 	limpar.close();
-
 }

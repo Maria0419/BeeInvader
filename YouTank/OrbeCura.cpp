@@ -42,7 +42,7 @@ void OrbeCura::salvar()
 	}
 }
 
-void OrbeCura::updateOrbeCura()
+void OrbeCura::update()
 {
 	move(direcao.x * rapidez, direcao.y * rapidez);
 }

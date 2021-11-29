@@ -13,7 +13,7 @@ namespace Inimigos
 		Cogumelo(float velX, float posX, float posY);
 		~Cogumelo();
 		void updateAnimacao();
-		void updateCogumelo();
+		void update();
 
 		void salvar();
 	};

@@ -37,7 +37,7 @@ void Orbe::renderOrbe()
 	render();
 }
 
-void Orbe::updateOrbe()
+void Orbe::update()
 {
 	float dt = 0.1f;
 	float gravidade = 9.81f;

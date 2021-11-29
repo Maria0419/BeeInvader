@@ -189,9 +189,6 @@
     <ClCompile Include="RankingEstado.cpp">
       <Filter>Arquivos de Origem\States</Filter>
     </ClCompile>
-    <ClCompile Include="Jogador.cpp">
-      <Filter>Arquivos de Origem\Entidades\Personagens</Filter>
-    </ClCompile>
     <ClCompile Include="PoteMel.cpp">
       <Filter>Arquivos de Origem\Entidades</Filter>
     </ClCompile>
@@ -212,6 +209,9 @@
     </ClCompile>
     <ClCompile Include="Inimigo.cpp">
       <Filter>Arquivos de Origem\Entidades\Personagens\Inimigos</Filter>
+    </ClCompile>
+    <ClCompile Include="Jogador.cpp">
+      <Filter>Arquivos de Origem\Entidades\Personagens\Jogadores</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
