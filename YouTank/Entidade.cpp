@@ -122,22 +122,9 @@ void Entidade::persegue(float x_jogador, float y_jogador)
 {
 }
 
-void Entidade::updateOrbe()
+void Entidade::update()
 {
-}
 
-void Entidade::updateOrbeCura()
-{
-}
-
-void Entidade::updateFerrao()
-{
-}
-
-
-
-void Entidade::updateCogumelo()
-{
 }
 
 void Entidade::movePlataforma()

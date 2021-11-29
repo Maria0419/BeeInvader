@@ -150,13 +150,11 @@ void FaseSegunda::renderFaseSegunda()
 		if(abelha_rainha->getShowing())
 			abelha_rainha->renderAbelhaRainha();
 	}
-	pFadaCaida->renderBarraVida();
-	pFadaCaida->render();
+	pFadaCaida->renderJogador();
 
 	if (pCurandeira != NULL)
 	{
-		pCurandeira->renderBarraVida();
-		pCurandeira->render();
+		pCurandeira->renderJogador();
 	}
 		
 }

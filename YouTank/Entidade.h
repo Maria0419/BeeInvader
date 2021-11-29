@@ -51,12 +51,8 @@ public:
     const int getPontos() const;
 
     virtual void persegue(float x_jogador, float y_jogador);
-    virtual void updateOrbe();
-    virtual void updateOrbeCura();
-    virtual void updateFerrao();
-    virtual void updateCogumelo();
 
- //   virtual void update() = 0;
+    virtual void update();
 
     virtual void movePlataforma();
     virtual void naColisao();

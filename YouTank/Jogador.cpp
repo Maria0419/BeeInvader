@@ -44,6 +44,11 @@ const bool Jogador::getExisteNaFase() const
 	return aparece;
 }
 
+void Jogador::renderJogador()
+{
+	renderBarraVida();
+	render();
+}
 
 void Jogador::naColisao()
 {

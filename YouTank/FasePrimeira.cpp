@@ -77,12 +77,12 @@ void FasePrimeira::criarPlataforma()
 	{
 		random = rand() % 2;
 		if (random || contaPlat > 5)
-		{
+		{	//cria nova plataforma em uma posição x randomizada
 			FavoMel* favo1 = new FavoMel((float) i, static_cast<float>(rand() % 400 + 100));
 			listaEntidades.incluaEntidade(static_cast<Entidade*>(favo1));
 		}
 		else
-		{
+		{	//cria nova plataforma em uma posição y randomizada
 			Plataforma* plat1 = new Plataforma(100.f, 20.f, (float) i, static_cast<float>(rand() % 400 + 100));
 			listaEntidades.incluaEntidade(static_cast<Entidade*>(plat1));
 			contaPlat++;
@@ -134,7 +134,6 @@ void FasePrimeira::updateFasePrimeira()
 
 void FasePrimeira::update()
 {
-
 	updateColisoes();
 	limpeza();
 	criarCogumelos();
@@ -149,8 +148,6 @@ void FasePrimeira::update()
 
 	if (pCurandeira != NULL)
 		pCurandeira->update();
-
-
 }
 
 void FasePrimeira::renderFasePrimeira()
@@ -165,16 +162,11 @@ void FasePrimeira::renderFasePrimeira()
 		}
 		
 	}
-	pFadaCaida->renderBarraVida();
-	pFadaCaida->render();
-	
+
+	pFadaCaida->renderJogador();
 
 	if (pCurandeira != NULL)
-	{
-		pCurandeira->renderBarraVida();
-		pCurandeira->render();
-	}
-		
+		pCurandeira->renderJogador();
 }
 
 void FasePrimeira::salvar()

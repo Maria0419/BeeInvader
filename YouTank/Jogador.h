@@ -28,6 +28,9 @@ public:
     const bool getExisteNaFase() const;
 
     void renderBarraVida();
+    void renderJogador();
+
+
 
     void update(float deltaTime);
     void updateAnimacao();

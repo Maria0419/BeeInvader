@@ -44,7 +44,7 @@ void Cogumelo::updateAnimacao()
 
 }
 
-void Cogumelo::updateCogumelo()
+void Cogumelo::update()
 {
 	move(velocidade.x, velocidade.y);
 	setVelocidadeY(velocidade.y + 1.f);

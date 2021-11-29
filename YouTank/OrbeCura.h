@@ -13,6 +13,6 @@ public:
 
     void salvar();
 
-    void updateOrbeCura();
+    void update();
 };
 

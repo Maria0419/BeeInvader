@@ -10,7 +10,7 @@ public:
     ~Orbe();
 
     void renderOrbe();
-    void updateOrbe();
+    void update();
 
     void salvar();
 };
